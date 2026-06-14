@@ -1,7 +1,16 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/Button";
+import {
+  calculateLevel,
+  calculateXP,
+  getDefaultProgress,
+  getStoredProgress,
+  recordGameXP,
+  type StoredProgress,
+  type XPRules,
+} from "@/lib/xp";
 
 export type QuizQuestion = {
   question: string;
@@ -9,17 +18,12 @@ export type QuizQuestion = {
   correctAnswer: string;
 };
 
-type XpRules = {
-  correctAnswer: number;
-  completionBonus: number;
-  perfectScoreBonus: number;
-};
-
 type QuizGameProps = {
   title: string;
   description: string;
   questions: QuizQuestion[];
-  xpRules: XpRules;
+  xpRules: XPRules;
+  gameId?: string;
 };
 
 type GameStatus = "start" | "playing" | "finished";
@@ -29,32 +33,49 @@ export function QuizGame({
   description,
   questions,
   xpRules,
+  gameId = "math-quiz-battle",
 }: QuizGameProps) {
   const [status, setStatus] = useState<GameStatus>("start");
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const [progress, setProgress] = useState<StoredProgress>(getDefaultProgress);
+  const [hasSavedResult, setHasSavedResult] = useState(false);
 
   const currentQuestion = questions[currentIndex];
   const isLastQuestion = currentIndex === questions.length - 1;
   const answeredCorrectly = selectedAnswer === currentQuestion?.correctAnswer;
+  const earnedXp = useMemo(
+    () =>
+      calculateXP({
+        correctAnswers: score,
+        totalQuestions: questions.length,
+        rules: xpRules,
+        completed: status === "finished",
+      }),
+    [questions.length, score, status, xpRules],
+  );
+  const levelProgress = calculateLevel(progress.totalXP);
 
-  const earnedXp = useMemo(() => {
-    const answerXp = score * xpRules.correctAnswer;
-    const completionXp = status === "finished" ? xpRules.completionBonus : 0;
-    const perfectXp =
-      status === "finished" && score === questions.length
-        ? xpRules.perfectScoreBonus
-        : 0;
+  useEffect(() => {
+    setProgress(getStoredProgress());
+  }, []);
 
-    return answerXp + completionXp + perfectXp;
-  }, [questions.length, score, status, xpRules]);
+  useEffect(() => {
+    if (status !== "finished" || hasSavedResult) {
+      return;
+    }
+
+    setProgress(recordGameXP(gameId, earnedXp));
+    setHasSavedResult(true);
+  }, [earnedXp, gameId, hasSavedResult, status]);
 
   function startGame() {
     setStatus("playing");
     setCurrentIndex(0);
     setScore(0);
     setSelectedAnswer(null);
+    setHasSavedResult(false);
   }
 
   function chooseAnswer(answer: string) {
@@ -105,12 +126,7 @@ export function QuizGame({
             </ul>
           </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <button
-              onClick={startGame}
-              className="inline-flex min-h-12 items-center justify-center rounded-full bg-coral px-6 py-3 text-base font-extrabold text-white shadow-playful transition hover:-translate-y-0.5 hover:bg-[#e83d8e]"
-            >
-              Start Battle
-            </button>
+            <Button onClick={startGame}>Start Battle</Button>
             <Button href="/games" variant="secondary">
               Back to Games
             </Button>
@@ -138,7 +154,7 @@ export function QuizGame({
             Final Result
           </h1>
           <p className="mt-4 text-lg font-bold text-ink/70">{message}</p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-3xl bg-cloud p-6">
               <p className="text-sm font-black uppercase text-sky">Score</p>
               <p className="mt-2 text-4xl font-black text-ink">
@@ -146,17 +162,32 @@ export function QuizGame({
               </p>
             </div>
             <div className="rounded-3xl bg-sunshine/20 p-6">
-              <p className="text-sm font-black uppercase text-coral">XP Earned</p>
+              <p className="text-sm font-black uppercase text-coral">Game XP</p>
               <p className="mt-2 text-4xl font-black text-ink">{earnedXp}</p>
+            </div>
+            <div className="rounded-3xl bg-mint/15 p-6">
+              <p className="text-sm font-black uppercase text-mint">Total XP</p>
+              <p className="mt-2 text-4xl font-black text-ink">{progress.totalXP}</p>
+            </div>
+            <div className="rounded-3xl bg-purple/10 p-6">
+              <p className="text-sm font-black uppercase text-purple">Level</p>
+              <p className="mt-2 text-4xl font-black text-ink">{progress.level}</p>
+            </div>
+          </div>
+          <div className="mt-5 rounded-3xl bg-cloud p-4 text-left">
+            <div className="flex items-center justify-between text-sm font-black text-ink/70">
+              <span>Level {levelProgress.level} progress</span>
+              <span>{levelProgress.progressPercent}%</span>
+            </div>
+            <div className="mt-3 h-3 overflow-hidden rounded-full bg-white">
+              <div
+                className="h-full rounded-full bg-sky"
+                style={{ width: `${levelProgress.progressPercent}%` }}
+              />
             </div>
           </div>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <button
-              onClick={startGame}
-              className="inline-flex min-h-12 items-center justify-center rounded-full bg-coral px-6 py-3 text-base font-extrabold text-white shadow-playful transition hover:-translate-y-0.5 hover:bg-[#e83d8e]"
-            >
-              Restart Game
-            </button>
+            <Button onClick={startGame}>Restart Game</Button>
             <Button href="/games" variant="secondary">
               Back to Games
             </Button>
@@ -220,19 +251,16 @@ export function QuizGame({
         {selectedAnswer ? (
           <div className="mt-6 rounded-3xl bg-cloud p-5">
             <p className="text-xl font-black text-ink">
-              {answeredCorrectly ? "Correct! +10 XP" : "Good try!"}
+              {answeredCorrectly ? `Correct! +${xpRules.correctAnswer} XP` : "Good try!"}
             </p>
             {!answeredCorrectly ? (
               <p className="mt-2 font-bold text-ink/70">
                 The correct answer is {currentQuestion.correctAnswer}.
               </p>
             ) : null}
-            <button
-              onClick={goNext}
-              className="mt-4 inline-flex min-h-12 items-center justify-center rounded-full bg-sky px-6 py-3 text-base font-extrabold text-white shadow-playful transition hover:-translate-y-0.5 hover:bg-[#0a51c9]"
-            >
+            <Button onClick={goNext} variant="blue" className="mt-4">
               {isLastQuestion ? "See Results" : "Next Question"}
-            </button>
+            </Button>
           </div>
         ) : null}
       </div>

@@ -20,6 +20,14 @@ LearnPlay Academy is a playful learning website for children aged 7 to 12 and th
 - Math Quiz Battle demo game
 - English Word Builder demo game
 
+## Phase 1D Includes
+
+- Reusable XP utilities in `lib/xp.ts`
+- `calculateXP()` for game XP totals
+- `calculateLevel()` for LearnPlay levels
+- Level thresholds: Level 1 at 0 XP, Level 2 at 100 XP, Level 3 at 250 XP, Level 4 at 500 XP, and Level 5 at 1000 XP
+- Local browser storage for total XP, level, completed game counts, and future dashboard integration
+- XP and level display on game result screens
 ## Phase 1C Includes
 
 - A playable English Word Builder demo at /games/word-builder`r
@@ -92,11 +100,12 @@ npm run build
 
 ## Future Plan
 
-Progress, XP history, user accounts, rewards, and parent dashboards can be connected later when the project is ready for backend services.
+Local XP progress is stored in the browser for now. User accounts, synced XP history, rewards, and parent dashboards can be connected later when the project is ready for backend services.
 
 ## Notes
 
 - Math Quiz Battle is functional on the frontend only.
 - Science Explorer remains a placeholder card.
 - Backend services, payments, database, authentication, and deployment setup are intentionally excluded from Phase 1B.
+
 

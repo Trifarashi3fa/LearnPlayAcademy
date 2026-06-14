@@ -1,9 +1,18 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { typography } from "@/components/theme";
+import {
+  calculateLevel,
+  calculateXP,
+  getDefaultProgress,
+  getStoredProgress,
+  recordGameXP,
+  type StoredProgress,
+  type XPRules,
+} from "@/lib/xp";
 
 export type WordChallenge = {
   prompt: string;
@@ -15,11 +24,13 @@ type WordBuilderGameProps = {
   title: string;
   description: string;
   challenges: WordChallenge[];
+  gameId?: string;
+  xpRules?: XPRules;
 };
 
 type GameStatus = "start" | "playing" | "finished";
 
-const xpRules = {
+const defaultXpRules: XPRules = {
   correctAnswer: 10,
   completionBonus: 20,
   perfectScoreBonus: 30,
@@ -29,6 +40,8 @@ export function WordBuilderGame({
   title,
   description,
   challenges,
+  gameId = "word-builder",
+  xpRules = defaultXpRules,
 }: WordBuilderGameProps) {
   const [status, setStatus] = useState<GameStatus>("start");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -36,22 +49,37 @@ export function WordBuilderGame({
   const [selectedLetters, setSelectedLetters] = useState<string[]>([]);
   const [usedIndexes, setUsedIndexes] = useState<number[]>([]);
   const [feedback, setFeedback] = useState<"correct" | "incorrect" | null>(null);
+  const [progress, setProgress] = useState<StoredProgress>(getDefaultProgress);
+  const [hasSavedResult, setHasSavedResult] = useState(false);
 
   const currentChallenge = challenges[currentIndex];
   const builtWord = selectedLetters.join("");
   const isLastChallenge = currentIndex === challenges.length - 1;
   const canCheck = builtWord.length === currentChallenge.answer.length && !feedback;
+  const earnedXp = useMemo(
+    () =>
+      calculateXP({
+        correctAnswers: score,
+        totalQuestions: challenges.length,
+        rules: xpRules,
+        completed: status === "finished",
+      }),
+    [challenges.length, score, status, xpRules],
+  );
+  const levelProgress = calculateLevel(progress.totalXP);
 
-  const earnedXp = useMemo(() => {
-    const answerXp = score * xpRules.correctAnswer;
-    const completionXp = status === "finished" ? xpRules.completionBonus : 0;
-    const perfectXp =
-      status === "finished" && score === challenges.length
-        ? xpRules.perfectScoreBonus
-        : 0;
+  useEffect(() => {
+    setProgress(getStoredProgress());
+  }, []);
 
-    return answerXp + completionXp + perfectXp;
-  }, [challenges.length, score, status]);
+  useEffect(() => {
+    if (status !== "finished" || hasSavedResult) {
+      return;
+    }
+
+    setProgress(recordGameXP(gameId, earnedXp));
+    setHasSavedResult(true);
+  }, [earnedXp, gameId, hasSavedResult, status]);
 
   function startGame() {
     setStatus("playing");
@@ -60,6 +88,7 @@ export function WordBuilderGame({
     setSelectedLetters([]);
     setUsedIndexes([]);
     setFeedback(null);
+    setHasSavedResult(false);
   }
 
   function chooseLetter(letter: string, index: number) {
@@ -157,7 +186,7 @@ export function WordBuilderGame({
           </span>
           <h1 className={`mt-5 ${typography.h1}`}>Final Result</h1>
           <p className={`mt-4 ${typography.body}`}>{message}</p>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <Card tone="blue">
               <p className="text-sm font-black uppercase text-sky">Score</p>
               <p className="mt-2 text-4xl font-black text-ink">
@@ -165,10 +194,30 @@ export function WordBuilderGame({
               </p>
             </Card>
             <Card tone="yellow">
-              <p className="text-sm font-black uppercase text-coral">XP Earned</p>
+              <p className="text-sm font-black uppercase text-coral">Game XP</p>
               <p className="mt-2 text-4xl font-black text-ink">{earnedXp}</p>
             </Card>
+            <Card tone="green">
+              <p className="text-sm font-black uppercase text-mint">Total XP</p>
+              <p className="mt-2 text-4xl font-black text-ink">{progress.totalXP}</p>
+            </Card>
+            <Card tone="purple">
+              <p className="text-sm font-black uppercase text-purple">Level</p>
+              <p className="mt-2 text-4xl font-black text-ink">{progress.level}</p>
+            </Card>
           </div>
+          <Card className="mt-5 text-left" tone="blue">
+            <div className="flex items-center justify-between text-sm font-black text-ink/70">
+              <span>Level {levelProgress.level} progress</span>
+              <span>{levelProgress.progressPercent}%</span>
+            </div>
+            <div className="mt-3 h-3 overflow-hidden rounded-full bg-white">
+              <div
+                className="h-full rounded-full bg-sky"
+                style={{ width: `${levelProgress.progressPercent}%` }}
+              />
+            </div>
+          </Card>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button onClick={startGame}>Restart Game</Button>
             <Button href="/games" variant="secondary">
@@ -249,7 +298,9 @@ export function WordBuilderGame({
         {feedback ? (
           <Card className="mt-6" tone={feedback === "correct" ? "green" : "pink"}>
             <p className="text-xl font-black text-ink">
-              {feedback === "correct" ? "Correct! +10 XP" : "Good try!"}
+              {feedback === "correct"
+                ? `Correct! +${xpRules.correctAnswer} XP`
+                : "Good try!"}
             </p>
             {feedback === "incorrect" ? (
               <p className="mt-2 font-bold text-ink/70">
