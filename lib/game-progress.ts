@@ -11,10 +11,20 @@ type SaveGameResultInput = {
   xpEarned: number;
 };
 
-type SavedGameProgress = {
+export type SaveGameResultResponse = {
   totalXP: number;
   level: number;
+  savedToSupabase: boolean;
+  message: string;
 };
+
+function getErrorMessage(error: unknown) {
+  if (error && typeof error === "object" && "message" in error) {
+    return String(error.message);
+  }
+
+  return "Unable to save progress.";
+}
 
 export async function saveGameResultToSupabase({
   gameId,
@@ -23,40 +33,74 @@ export async function saveGameResultToSupabase({
   score,
   totalQuestions,
   xpEarned,
-}: SaveGameResultInput): Promise<SavedGameProgress | null> {
+}: SaveGameResultInput): Promise<SaveGameResultResponse> {
+  const localProgress = getStoredProgress();
+
   if (!isSupabaseConfigured()) {
-    return null;
+    return {
+      totalXP: localProgress.totalXP,
+      level: localProgress.level,
+      savedToSupabase: false,
+      message: "Supabase is not configured yet. Progress was saved locally only.",
+    };
   }
 
   const supabase = createClient();
   const {
     data: { user },
+    error: userError,
   } = await supabase.auth.getUser();
 
-  if (!user) {
-    return null;
+  if (userError || !user) {
+    return {
+      totalXP: localProgress.totalXP,
+      level: localProgress.level,
+      savedToSupabase: false,
+      message: "Log in before finishing a game to save progress to the dashboard.",
+    };
   }
 
-  const { data: profile } = await supabase
+  const { data: profile, error: profileReadError } = await supabase
     .from("profiles")
     .select("current_xp,current_level,email")
     .eq("id", user.id)
     .maybeSingle();
+
+  if (profileReadError) {
+    return {
+      totalXP: localProgress.totalXP,
+      level: localProgress.level,
+      savedToSupabase: false,
+      message: getErrorMessage(profileReadError),
+    };
+  }
 
   const previousXP = Number(profile?.current_xp ?? 0);
   const totalXP = previousXP + Math.max(0, xpEarned);
   const level = calculateLevel(totalXP).level;
   const now = new Date().toISOString();
 
-  await supabase.from("profiles").upsert({
-    id: user.id,
-    email: user.email,
-    current_xp: totalXP,
-    current_level: level,
-    updated_at: now,
-  });
+  const { error: profileSaveError } = await supabase.from("profiles").upsert(
+    {
+      id: user.id,
+      email: user.email,
+      current_xp: totalXP,
+      current_level: level,
+      updated_at: now,
+    },
+    { onConflict: "id" },
+  );
 
-  await supabase.from("game_results").insert({
+  if (profileSaveError) {
+    return {
+      totalXP: localProgress.totalXP,
+      level: localProgress.level,
+      savedToSupabase: false,
+      message: getErrorMessage(profileSaveError),
+    };
+  }
+
+  const { error: resultSaveError } = await supabase.from("game_results").insert({
     user_id: user.id,
     game_id: gameId,
     game_title: gameTitle,
@@ -68,17 +112,35 @@ export async function saveGameResultToSupabase({
     played_at: now,
   });
 
-  const { data: subjectProgress } = await supabase
+  if (resultSaveError) {
+    return {
+      totalXP: localProgress.totalXP,
+      level: localProgress.level,
+      savedToSupabase: false,
+      message: getErrorMessage(resultSaveError),
+    };
+  }
+
+  const { data: subjectProgress, error: progressReadError } = await supabase
     .from("progress")
     .select("total_xp,current_level,games_played,best_score")
     .eq("user_id", user.id)
     .eq("subject", subject)
     .maybeSingle();
 
+  if (progressReadError) {
+    return {
+      totalXP: localProgress.totalXP,
+      level: localProgress.level,
+      savedToSupabase: false,
+      message: getErrorMessage(progressReadError),
+    };
+  }
+
   const subjectXP = Number(subjectProgress?.total_xp ?? 0) + Math.max(0, xpEarned);
   const subjectLevel = calculateLevel(subjectXP).level;
 
-  await supabase.from("progress").upsert(
+  const { error: progressSaveError } = await supabase.from("progress").upsert(
     {
       user_id: user.id,
       subject,
@@ -92,7 +154,14 @@ export async function saveGameResultToSupabase({
     { onConflict: "user_id,subject" },
   );
 
-  const localProgress = getStoredProgress();
+  if (progressSaveError) {
+    return {
+      totalXP: localProgress.totalXP,
+      level: localProgress.level,
+      savedToSupabase: false,
+      message: getErrorMessage(progressSaveError),
+    };
+  }
 
   saveStoredProgress({
     totalXP,
@@ -101,9 +170,10 @@ export async function saveGameResultToSupabase({
     updatedAt: now,
   });
 
-  return { totalXP, level };
+  return {
+    totalXP,
+    level,
+    savedToSupabase: true,
+    message: "Progress saved to your dashboard.",
+  };
 }
-
-
-
-

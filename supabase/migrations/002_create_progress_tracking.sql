@@ -30,6 +30,12 @@ create table if not exists public.progress (
 alter table public.game_results enable row level security;
 alter table public.progress enable row level security;
 
+drop policy if exists "Users can read their own game results" on public.game_results;
+drop policy if exists "Users can insert their own game results" on public.game_results;
+drop policy if exists "Users can read their own progress" on public.progress;
+drop policy if exists "Users can insert their own progress" on public.progress;
+drop policy if exists "Users can update their own progress" on public.progress;
+
 create policy "Users can read their own game results"
   on public.game_results
   for select
@@ -61,4 +67,3 @@ create index if not exists game_results_user_played_at_idx
 
 create index if not exists progress_user_subject_idx
   on public.progress (user_id, subject);
-

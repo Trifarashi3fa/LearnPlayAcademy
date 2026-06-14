@@ -44,6 +44,8 @@ export function QuizGame({
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [progress, setProgress] = useState<StoredProgress>(getDefaultProgress);
   const [hasSavedResult, setHasSavedResult] = useState(false);
+  const [saveMessage, setSaveMessage] = useState("Progress will save when the game ends.");
+  const [savedToSupabase, setSavedToSupabase] = useState(false);
 
   const currentQuestion = questions[currentIndex];
   const isLastQuestion = currentIndex === questions.length - 1;
@@ -81,9 +83,8 @@ export function QuizGame({
       totalQuestions: questions.length,
       xpEarned: earnedXp,
     }).then((savedProgress) => {
-      if (!savedProgress) {
-        return;
-      }
+      setSaveMessage(savedProgress.message);
+      setSavedToSupabase(savedProgress.savedToSupabase);
 
       setProgress((currentProgress) => ({
         ...currentProgress,
@@ -99,6 +100,8 @@ export function QuizGame({
     setScore(0);
     setSelectedAnswer(null);
     setHasSavedResult(false);
+    setSaveMessage("Progress will save when the game ends.");
+    setSavedToSupabase(false);
   }
 
   function chooseAnswer(answer: string) {
@@ -209,6 +212,9 @@ export function QuizGame({
               />
             </div>
           </div>
+          <div className={`mt-5 rounded-3xl p-4 text-sm font-black ${savedToSupabase ? "bg-mint/15 text-ink" : "bg-coral/10 text-ink"}`}>
+            {saveMessage}
+          </div>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button onClick={startGame}>Restart Game</Button>
             <Button href="/games" variant="secondary">
@@ -290,6 +296,8 @@ export function QuizGame({
     </section>
   );
 }
+
+
 
 
 

@@ -54,6 +54,8 @@ export function WordBuilderGame({
   const [feedback, setFeedback] = useState<"correct" | "incorrect" | null>(null);
   const [progress, setProgress] = useState<StoredProgress>(getDefaultProgress);
   const [hasSavedResult, setHasSavedResult] = useState(false);
+  const [saveMessage, setSaveMessage] = useState("Progress will save when the game ends.");
+  const [savedToSupabase, setSavedToSupabase] = useState(false);
 
   const currentChallenge = challenges[currentIndex];
   const builtWord = selectedLetters.join("");
@@ -92,9 +94,8 @@ export function WordBuilderGame({
       totalQuestions: challenges.length,
       xpEarned: earnedXp,
     }).then((savedProgress) => {
-      if (!savedProgress) {
-        return;
-      }
+      setSaveMessage(savedProgress.message);
+      setSavedToSupabase(savedProgress.savedToSupabase);
 
       setProgress((currentProgress) => ({
         ...currentProgress,
@@ -112,6 +113,8 @@ export function WordBuilderGame({
     setUsedIndexes([]);
     setFeedback(null);
     setHasSavedResult(false);
+    setSaveMessage("Progress will save when the game ends.");
+    setSavedToSupabase(false);
   }
 
   function chooseLetter(letter: string, index: number) {
@@ -241,6 +244,9 @@ export function WordBuilderGame({
               />
             </div>
           </Card>
+          <div className={`mt-5 rounded-3xl p-4 text-sm font-black ${savedToSupabase ? "bg-mint/15 text-ink" : "bg-coral/10 text-ink"}`}>
+            {saveMessage}
+          </div>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Button onClick={startGame}>Restart Game</Button>
             <Button href="/games" variant="secondary">
@@ -339,6 +345,8 @@ export function WordBuilderGame({
     </section>
   );
 }
+
+
 
 
 
