@@ -35,10 +35,10 @@ const games = [
   {
     title: "Science Explorer",
     description:
-      "Open the Science Content Factory for quizzes, facts, activities, learning paths, XP, and badges.",
+      "Explore quizzes, facts, activities, learning paths, XP, and badges in the Science Explorer module.",
     badge: "Playable",
     tone: "blue" as const,
-    href: "/science",
+    href: "/games/science-explorer",
     actionLabel: "Explore",
   },
   {
