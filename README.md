@@ -29,7 +29,7 @@ LearnPlay Academy is a playful learning website for children aged 7 to 12 and th
 - Dashboard reads real Supabase profile, progress, and game history data
 - Games still work locally, but signed-in students also save results to Supabase
 
-Run the SQL in `supabase/migrations/002_create_progress_tracking.sql` after the Phase 3 profile migration.
+Run the SQL in `supabase/migrations/002_create_progress_tracking.sql` after the Phase 3 profile migration. If the app shows `permission denied for table profiles`, also run `supabase/migrations/003_grant_progress_permissions.sql`.
 ## Phase 3 Includes
 
 - Supabase Authentication integration
@@ -147,6 +147,7 @@ Local XP progress is stored in the browser for now. User accounts, synced XP his
 - Math Quiz Battle is functional on the frontend only.
 - Science Explorer remains a placeholder card.
 - Payments and deployment setup are intentionally excluded. Supabase Authentication is introduced in Phase 3.
+
 
 
 
