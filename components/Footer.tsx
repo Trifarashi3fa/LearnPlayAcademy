@@ -10,9 +10,9 @@ const quickLinks = [
 
 const supportLinks = [
   { href: "/parents#faq", label: "FAQ" },
-  { href: "mailto:support@learnplayacademy.com", label: "Contact" },
-  { href: "/about#privacy", label: "Privacy Policy" },
-  { href: "/about#terms", label: "Terms" },
+  { href: "/contact", label: "Contact" },
+  { href: "/privacy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms" },
 ];
 
 export function Footer() {
