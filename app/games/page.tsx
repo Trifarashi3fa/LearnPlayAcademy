@@ -10,11 +10,11 @@ const games = [
     href: "/games/math-quiz-battle",
   },
   {
-    title: "Word Builder",
-    description: "A word-making challenge for spelling, vocabulary, and reading confidence.",
-    badge: "English",
+    title: "English Word Builder",
+    description: "A playable spelling challenge where learners tap letters in order, build words, and earn XP.",
+    badge: "Playable",
     tone: "green" as const,
-    href: "#",
+    href: "/games/word-builder",
   },
   {
     title: "Science Explorer",
@@ -30,7 +30,7 @@ export default function GamesPage() {
     <PageLayout
       eyebrow="Demo games"
       title="Game previews and playable demos"
-      description="Math Quiz Battle is playable with local questions and frontend-only score tracking. Other cards remain visual placeholders for future games."
+      description="Math Quiz Battle and English Word Builder are playable with local questions and frontend-only score tracking. Science Explorer remains a visual placeholder for a future game."
       heroTone="yellow"
     >
       <PageSection>

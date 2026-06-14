@@ -18,6 +18,14 @@ LearnPlay Academy is a playful learning website for children aged 7 to 12 and th
 - Games
 - About
 - Math Quiz Battle demo game
+- English Word Builder demo game
+
+## Phase 1C Includes
+
+- A playable English Word Builder demo at /games/word-builder`r
+- 10 local static word-building challenges
+- Letter selection, answer checking, feedback, score tracking, XP tracking, final results, and restart flow
+- No database, API, authentication, payments, or external services
 
 ## Design System
 
@@ -72,6 +80,10 @@ Start the local server, then open:
 
 [http://localhost:3000/games/math-quiz-battle](http://localhost:3000/games/math-quiz-battle)
 
+English Word Builder:
+
+[http://localhost:3000/games/word-builder](http://localhost:3000/games/word-builder)
+
 ## Build
 
 ```bash
@@ -85,5 +97,6 @@ Progress, XP history, user accounts, rewards, and parent dashboards can be conne
 ## Notes
 
 - Math Quiz Battle is functional on the frontend only.
-- Word Builder and Science Explorer remain placeholder cards.
+- Science Explorer remains a placeholder card.
 - Backend services, payments, database, authentication, and deployment setup are intentionally excluded from Phase 1B.
+
