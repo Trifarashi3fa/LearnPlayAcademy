@@ -1,4 +1,4 @@
-import { Button } from "@/components/Button";
+﻿import { Button } from "@/components/Button";
 import { DashboardCard } from "@/components/DashboardCard";
 
 export type StudentProfileSummary = {
@@ -90,3 +90,4 @@ export function StudentProfileForm({ profile, action }: StudentProfileFormProps)
     </DashboardCard>
   );
 }
+
