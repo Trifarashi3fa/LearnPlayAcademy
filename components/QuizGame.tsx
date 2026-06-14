@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/Button";
+import { saveGameResultToSupabase } from "@/lib/game-progress";
 import {
   calculateLevel,
   calculateXP,
@@ -24,6 +25,7 @@ type QuizGameProps = {
   questions: QuizQuestion[];
   xpRules: XPRules;
   gameId?: string;
+  subject?: string;
 };
 
 type GameStatus = "start" | "playing" | "finished";
@@ -34,6 +36,7 @@ export function QuizGame({
   questions,
   xpRules,
   gameId = "math-quiz-battle",
+  subject = "Mathematics",
 }: QuizGameProps) {
   const [status, setStatus] = useState<GameStatus>("start");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -66,9 +69,29 @@ export function QuizGame({
       return;
     }
 
-    setProgress(recordGameXP(gameId, earnedXp));
+    const localProgress = recordGameXP(gameId, earnedXp);
+    setProgress(localProgress);
     setHasSavedResult(true);
-  }, [earnedXp, gameId, hasSavedResult, status]);
+
+    void saveGameResultToSupabase({
+      gameId,
+      gameTitle: title,
+      subject,
+      score,
+      totalQuestions: questions.length,
+      xpEarned: earnedXp,
+    }).then((savedProgress) => {
+      if (!savedProgress) {
+        return;
+      }
+
+      setProgress((currentProgress) => ({
+        ...currentProgress,
+        totalXP: savedProgress.totalXP,
+        level: savedProgress.level,
+      }));
+    });
+  }, [earnedXp, gameId, hasSavedResult, questions.length, score, status, subject, title]);
 
   function startGame() {
     setStatus("playing");
@@ -267,3 +290,6 @@ export function QuizGame({
     </section>
   );
 }
+
+
+

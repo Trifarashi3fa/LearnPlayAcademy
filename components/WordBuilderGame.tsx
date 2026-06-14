@@ -1,7 +1,8 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/Button";
+import { saveGameResultToSupabase } from "@/lib/game-progress";
 import { Card } from "@/components/Card";
 import { typography } from "@/components/theme";
 import {
@@ -25,6 +26,7 @@ type WordBuilderGameProps = {
   description: string;
   challenges: WordChallenge[];
   gameId?: string;
+  subject?: string;
   xpRules?: XPRules;
 };
 
@@ -41,6 +43,7 @@ export function WordBuilderGame({
   description,
   challenges,
   gameId = "word-builder",
+  subject = "English",
   xpRules = defaultXpRules,
 }: WordBuilderGameProps) {
   const [status, setStatus] = useState<GameStatus>("start");
@@ -77,9 +80,29 @@ export function WordBuilderGame({
       return;
     }
 
-    setProgress(recordGameXP(gameId, earnedXp));
+    const localProgress = recordGameXP(gameId, earnedXp);
+    setProgress(localProgress);
     setHasSavedResult(true);
-  }, [earnedXp, gameId, hasSavedResult, status]);
+
+    void saveGameResultToSupabase({
+      gameId,
+      gameTitle: title,
+      subject,
+      score,
+      totalQuestions: challenges.length,
+      xpEarned: earnedXp,
+    }).then((savedProgress) => {
+      if (!savedProgress) {
+        return;
+      }
+
+      setProgress((currentProgress) => ({
+        ...currentProgress,
+        totalXP: savedProgress.totalXP,
+        level: savedProgress.level,
+      }));
+    });
+  }, [challenges.length, earnedXp, gameId, hasSavedResult, score, status, subject, title]);
 
   function startGame() {
     setStatus("playing");
@@ -316,3 +339,6 @@ export function WordBuilderGame({
     </section>
   );
 }
+
+
+

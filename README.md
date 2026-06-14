@@ -1,4 +1,4 @@
-# LearnPlay Academy
+﻿# LearnPlay Academy
 
 Phase 1B front-end prototype for LearnPlay Academy.
 
@@ -21,6 +21,15 @@ LearnPlay Academy is a playful learning website for children aged 7 to 12 and th
 - Math Quiz Battle demo game
 - English Word Builder demo game
 
+## Phase 4 Includes
+
+- Supabase progress tracking for completed games
+- `game_results` table for game history, scores, XP, and level after play
+- `progress` table for subject-level XP, level, games played, best score, and last played time
+- Dashboard reads real Supabase profile, progress, and game history data
+- Games still work locally, but signed-in students also save results to Supabase
+
+Run the SQL in `supabase/migrations/002_create_progress_tracking.sql` after the Phase 3 profile migration.
 ## Phase 3 Includes
 
 - Supabase Authentication integration
@@ -138,6 +147,8 @@ Local XP progress is stored in the browser for now. User accounts, synced XP his
 - Math Quiz Battle is functional on the frontend only.
 - Science Explorer remains a placeholder card.
 - Payments and deployment setup are intentionally excluded. Supabase Authentication is introduced in Phase 3.
+
+
 
 
 
