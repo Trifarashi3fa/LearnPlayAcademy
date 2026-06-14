@@ -1,6 +1,6 @@
-import type { ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 
-type CardProps = {
+type CardProps = HTMLAttributes<HTMLElement> & {
   children: ReactNode;
   className?: string;
   tone?: "white" | "blue" | "yellow" | "green" | "pink" | "purple";
@@ -15,9 +15,17 @@ const toneClasses = {
   purple: "border-purple/20 bg-purple/10",
 };
 
-export function Card({ children, className = "", tone = "white" }: CardProps) {
+export function Card({
+  children,
+  className = "",
+  tone = "white",
+  ...props
+}: CardProps) {
   return (
-    <article className={`rounded-3xl border p-6 shadow-sm ${toneClasses[tone]} ${className}`}>
+    <article
+      className={`rounded-3xl border p-6 shadow-sm ${toneClasses[tone]} ${className}`}
+      {...props}
+    >
       {children}
     </article>
   );
