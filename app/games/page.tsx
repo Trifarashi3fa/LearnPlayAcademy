@@ -35,11 +35,10 @@ const games = [
   {
     title: "Science Explorer",
     description:
-      "Discover science facts, observation prompts, and mini missions for curious learners.",
-    badge: "Discovery",
+      "Open the Science Content Factory for quizzes, facts, activities, learning paths, XP, and badges.",
+    badge: "Playable",
     tone: "blue" as const,
-    href: "/games#science-explorer",
-    id: "science-explorer",
+    href: "/science",
     actionLabel: "Explore",
   },
   {
