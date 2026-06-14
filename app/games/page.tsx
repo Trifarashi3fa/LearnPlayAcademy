@@ -1,40 +1,69 @@
+import type { Metadata } from "next";
 import { GameCard } from "@/components/GameCard";
 import { PageLayout, PageSection } from "@/components/PageLayout";
+
+export const metadata: Metadata = {
+  title: "Games",
+  description:
+    "Play LearnPlay Academy learning games that build math, English, science, and Bahasa Melayu skills for children aged 7 to 12.",
+  openGraph: {
+    title: "Learning Games That Build Real Skills",
+    description:
+      "Selected activities are available now, with new learning games added regularly.",
+  },
+};
 
 const games = [
   {
     title: "Math Quiz Battle",
-    description: "A playable 10-question math quiz where learners answer questions, earn score, and collect XP.",
+    description:
+      "Answer math questions one at a time, build score confidence, and earn XP for steady practice.",
     badge: "Playable",
     tone: "yellow" as const,
     href: "/games/math-quiz-battle",
+    actionLabel: "Start activity",
   },
   {
     title: "English Word Builder",
-    description: "A playable spelling challenge where learners tap letters in order, build words, and earn XP.",
+    description:
+      "Tap letters in order, build words, and strengthen spelling through a focused word challenge.",
     badge: "Playable",
     tone: "green" as const,
     href: "/games/word-builder",
+    actionLabel: "Start activity",
   },
   {
     title: "Science Explorer",
-    description: "A discovery-style card for science facts, mini missions, and curious questions.",
-    badge: "Science",
+    description:
+      "Discover science facts, observation prompts, and mini missions for curious learners.",
+    badge: "Discovery",
     tone: "blue" as const,
-    href: "#",
+    href: "/games#science-explorer",
+    id: "science-explorer",
+    actionLabel: "Preview activity",
+  },
+  {
+    title: "Bahasa Melayu Builder",
+    description:
+      "Practice everyday words, spelling patterns, and simple language confidence.",
+    badge: "Practice",
+    tone: "purple" as const,
+    href: "/games#bahasa-melayu-builder",
+    id: "bahasa-melayu-builder",
+    actionLabel: "Preview activity",
   },
 ];
 
 export default function GamesPage() {
   return (
     <PageLayout
-      eyebrow="Demo games"
-      title="Game previews and playable demos"
-      description="Math Quiz Battle and English Word Builder are playable with local questions and frontend-only score tracking. Science Explorer remains a visual placeholder for a future game."
+      eyebrow="Learning games"
+      title="Learning Games That Build Real Skills"
+      description="Selected activities are available now, with new activities added regularly for children aged 7 to 12."
       heroTone="yellow"
     >
       <PageSection>
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {games.map((game) => (
             <GameCard key={game.title} {...game} />
           ))}

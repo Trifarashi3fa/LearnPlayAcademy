@@ -4,8 +4,19 @@ import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "LearnPlay Academy",
-  description: "Playful learning for children aged 7 to 12.",
+  title: {
+    default: "LearnPlay Academy | Learning Through Play",
+    template: "%s | LearnPlay Academy",
+  },
+  description:
+    "LearnPlay Academy helps children aged 7 to 12 build school-friendly skills through interactive games, quizzes, rewards, and visible progress.",
+  openGraph: {
+    title: "LearnPlay Academy | Learning Through Play",
+    description:
+      "Interactive games, quizzes, rewards, and progress visibility for children aged 7 to 12.",
+    siteName: "LearnPlay Academy",
+    type: "website",
+  },
   icons: {
     icon: "/icon.png",
     shortcut: "/icon.png",

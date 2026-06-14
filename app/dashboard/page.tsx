@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import { LogoutButton } from "@/components/auth/LogoutButton";
 import {
@@ -11,12 +12,24 @@ import { createClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { calculateLevel } from "@/lib/xp";
 
+export const metadata: Metadata = {
+  title: "Dashboard",
+  description:
+    "View LearnPlay Academy student progress, activities completed, streaks, stars, badges, recent learning, and achievements.",
+  openGraph: {
+    title: "LearnPlay Academy Student Dashboard",
+    description:
+      "A parent-friendly progress view for LearnPlay Academy learners.",
+  },
+};
+
 const defaultSubjects = [
   { subject: "Mathematics", colorClass: "bg-sunshine" },
   { subject: "English", colorClass: "bg-mint" },
   { subject: "Science", colorClass: "bg-sky" },
-  { subject: "Critical Thinking", colorClass: "bg-purple" },
-  { subject: "Life Skills", colorClass: "bg-coral" },
+  { subject: "Bahasa Melayu", colorClass: "bg-purple" },
+  { subject: "Critical Thinking", colorClass: "bg-coral" },
+  { subject: "Life Skills", colorClass: "bg-mint" },
 ];
 
 type ProfileRow = {

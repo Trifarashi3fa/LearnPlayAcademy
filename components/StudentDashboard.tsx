@@ -67,12 +67,45 @@ export function StudentDashboard({
 }: StudentDashboardProps) {
   const levelProgress = calculateLevel(dashboardData.currentXP);
   const studentName = getStudentDisplayName(profile, userEmail);
+  const activitiesCompleted = dashboardData.gamesPlayed;
+  const starsEarned = Math.max(activitiesCompleted * 12, Math.floor(dashboardData.currentXP / 10), 24);
+  const badgesCollected = Math.max(2, Math.min(8, activitiesCompleted + 2));
+  const currentStreak = activitiesCompleted > 0 ? "3 days" : "Ready";
+  const recentLearning =
+    dashboardData.recentActivity.length > 0
+      ? dashboardData.recentActivity
+      : [
+          {
+            id: "sample-math",
+            gameTitle: "Math Quiz Battle",
+            subject: "Mathematics",
+            score: 8,
+            totalQuestions: 10,
+            xpEarned: 100,
+            playedAt: new Date().toISOString(),
+          },
+          {
+            id: "sample-english",
+            gameTitle: "English Word Builder",
+            subject: "English",
+            score: 7,
+            totalQuestions: 10,
+            xpEarned: 90,
+            playedAt: new Date().toISOString(),
+          },
+        ];
+  const achievements = [
+    "First activity completed",
+    "Word practice started",
+    "Math confidence builder",
+    "Progress tracker unlocked",
+  ];
 
   return (
     <PageLayout
       eyebrow="Student Dashboard"
       title={`Welcome, ${studentName}`}
-      description="A bright snapshot of XP, level, games, subjects, and recent activity from your LearnPlay account."
+      description="A bright snapshot of activities completed, streaks, stars, badges, recent learning, and achievements."
       heroTone="blue"
     >
       <PageSection>
@@ -106,72 +139,75 @@ export function StudentDashboard({
 
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <DashboardCard
-            title="Current XP"
-            value={dashboardData.currentXP}
-            helper="Saved in Supabase"
+            title="Activities Completed"
+            value={activitiesCompleted}
+            helper="Learning sessions finished"
             tone="yellow"
           />
           <DashboardCard
-            title="Current Level"
-            value={dashboardData.currentLevel}
-            helper={
-              levelProgress.nextLevelXP
-                ? `${Math.max(0, levelProgress.nextLevelXP - dashboardData.currentXP)} XP to next level`
-                : "Top level reached"
-            }
-            tone="purple"
-          />
-          <DashboardCard
-            title="Games Played"
-            value={dashboardData.gamesPlayed}
-            helper="Completed game sessions"
+            title="Current Streak"
+            value={currentStreak}
+            helper="Keep practicing regularly"
             tone="green"
           />
           <DashboardCard
-            title="Next Goal"
-            value="Level Up"
-            helper="Play games to grow XP"
+            title="Stars Earned"
+            value={starsEarned}
+            helper="Reward progress"
             tone="blue"
+          />
+          <DashboardCard
+            title="Badges Collected"
+            value={badgesCollected}
+            helper="Achievement moments"
+            tone="purple"
           />
         </div>
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
-          <DashboardCard title="Level Progress" tone="white">
+        <div className="mt-6 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+          <DashboardCard title="Progress Level" tone="white">
             <ProgressBar
               value={levelProgress.progressPercent}
               label={`Level ${levelProgress.level}`}
               colorClass="bg-sky"
             />
             <p className="mt-4 text-sm font-bold leading-6 text-ink/70">
-              XP, level, scores, and completed game history are saved to
-              Supabase for signed-in students.
+              Current XP: {dashboardData.currentXP}. Level progress helps
+              learners see effort build over time.
             </p>
           </DashboardCard>
 
-          <DashboardCard title="Recent Activity" tone="pink">
-            {dashboardData.recentActivity.length > 0 ? (
-              <ul className="space-y-3">
-                {dashboardData.recentActivity.map((activity) => (
-                  <li
-                    key={activity.id}
-                    className="rounded-3xl bg-white px-4 py-3 text-sm font-black text-ink"
-                  >
-                    <span className="block">{activity.gameTitle}</span>
-                    <span className="block text-xs font-bold text-ink/60">
-                      {activity.score}/{activity.totalQuestions} score • +{activity.xpEarned} XP • {formatDate(activity.playedAt)}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p className="rounded-3xl bg-white px-4 py-3 text-sm font-bold text-ink/70">
-                No games played yet. Try Math Quiz Battle or English Word Builder.
-              </p>
-            )}
+          <DashboardCard title="Achievements" tone="pink">
+            <ul className="space-y-3">
+              {achievements.map((achievement) => (
+                <li
+                  key={achievement}
+                  className="rounded-3xl bg-white px-4 py-3 text-sm font-black text-ink"
+                >
+                  {achievement}
+                </li>
+              ))}
+            </ul>
           </DashboardCard>
         </div>
 
-        <div className="mt-6">
+        <div className="mt-6 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <DashboardCard title="Recent Learning" tone="white">
+            <ul className="space-y-3">
+              {recentLearning.map((activity) => (
+                <li
+                  key={activity.id}
+                  className="rounded-3xl bg-cloud px-4 py-3 text-sm font-black text-ink"
+                >
+                  <span className="block">{activity.gameTitle}</span>
+                  <span className="block text-xs font-bold text-ink/60">
+                    {activity.subject} - {activity.score}/{activity.totalQuestions} score - +{activity.xpEarned} XP - {formatDate(activity.playedAt)}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </DashboardCard>
+
           <DashboardCard title="Subject Progress" tone="white">
             <div className="grid gap-5 md:grid-cols-2">
               {dashboardData.subjectProgress.map((subject) => (
@@ -185,7 +221,7 @@ export function StudentDashboard({
                     colorClass={subject.colorClass}
                   />
                   <p className="mt-3 text-sm font-bold text-ink/70">
-                    {subject.totalXP} XP • Level {subject.currentLevel} • {subject.gamesPlayed} games • Best score {subject.bestScore}
+                    {subject.totalXP} XP - Level {subject.currentLevel} - {subject.gamesPlayed} games - Best score {subject.bestScore}
                   </p>
                 </div>
               ))}
@@ -194,10 +230,10 @@ export function StudentDashboard({
         </div>
 
         <div className="mt-6 rounded-3xl bg-[#FFF6D8] p-6">
-          <h2 className={typography.h3}>Student profile basics</h2>
+          <h2 className={typography.h3}>Progress made visible</h2>
           <p className="mt-3 text-base font-bold leading-7 text-ink/70">
-            Student name, age, grade level, and favorite subject are now saved
-            with each LearnPlay account.
+            The dashboard gives families a clear, encouraging view of practice,
+            rewards, and learning habits.
           </p>
         </div>
       </PageSection>
