@@ -1,4 +1,4 @@
-﻿import { redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import { LogoutButton } from "@/components/auth/LogoutButton";
 import {
   StudentDashboard,
@@ -6,6 +6,7 @@ import {
   type StudentDashboardData,
   type SubjectProgressSummary,
 } from "@/components/StudentDashboard";
+import { updateStudentProfile } from "@/app/dashboard/actions";
 import { createClient } from "@/lib/supabase/server";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 import { calculateLevel } from "@/lib/xp";
@@ -21,6 +22,11 @@ const defaultSubjects = [
 type ProfileRow = {
   current_xp: number | null;
   current_level: number | null;
+  display_name: string | null;
+  student_name: string | null;
+  age: number | null;
+  grade_level: string | null;
+  favorite_subject: string | null;
 };
 
 type ProgressRow = {
@@ -90,7 +96,7 @@ export default async function DashboardPage() {
     await Promise.all([
       supabase
         .from("profiles")
-        .select("current_xp,current_level")
+        .select("current_xp,current_level,display_name,student_name,age,grade_level,favorite_subject")
         .eq("id", user.id)
         .maybeSingle<ProfileRow>(),
       supabase
@@ -125,9 +131,15 @@ export default async function DashboardPage() {
       </div>
       <StudentDashboard
         userEmail={user.email ?? "Student"}
+        profile={{
+          studentName: profile?.student_name ?? profile?.display_name ?? null,
+          age: profile?.age ?? null,
+          gradeLevel: profile?.grade_level ?? null,
+          favoriteSubject: profile?.favorite_subject ?? null,
+        }}
+        profileAction={updateStudentProfile}
         dashboardData={dashboardData}
       />
     </div>
   );
 }
-
