@@ -1,38 +1,42 @@
+import Image from "next/image";
 import { Button } from "@/components/Button";
+import { Card } from "@/components/Card";
+import { PageSection } from "@/components/PageLayout";
 import { SubjectCard } from "@/components/SubjectCard";
+import { typography } from "@/components/theme";
 
 const subjects = [
   {
     title: "Mathematics",
     description: "Number puzzles, quick quizzes, and playful problem solving.",
     icon: "123",
-    color: "bg-sunshine",
+    tone: "yellow" as const,
   },
   {
     title: "English",
     description: "Vocabulary, spelling, and reading practice through games.",
     icon: "ABC",
-    color: "bg-mint/80",
+    tone: "green" as const,
   },
   {
     title: "Science",
     description: "Curious experiments and facts for young explorers.",
     icon: "SCI",
-    color: "bg-sky/20",
+    tone: "blue" as const,
   },
 ];
 
 export default function Home() {
   return (
     <main>
-      <section className="overflow-hidden bg-[#fff7d8]">
+      <section className="overflow-hidden bg-[#FFF6D8]">
         <div className="mx-auto grid min-h-[calc(100vh-92px)] max-w-6xl items-center gap-10 px-5 py-14 sm:min-h-[620px] lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
           <div>
-            <p className="text-lg font-black text-coral">Play. Learn. Grow.</p>
-            <h1 className="mt-4 max-w-3xl text-5xl font-black leading-tight text-ink sm:text-6xl lg:text-7xl">
+            <p className={typography.eyebrow}>Play. Learn. Grow.</p>
+            <h1 className={`mt-4 max-w-3xl ${typography.display}`}>
               LearnPlay Academy
             </h1>
-            <p className="mt-6 max-w-2xl text-xl font-bold leading-8 text-ink/75">
+            <p className={`mt-6 max-w-2xl ${typography.body}`}>
               Bright, game-inspired lessons for children aged 7 to 12, with
               simple progress moments parents can feel good about.
             </p>
@@ -43,49 +47,39 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="relative min-h-[360px]">
-            <div className="absolute left-3 top-2 h-28 w-28 rounded-full bg-coral/90" />
-            <div className="absolute right-0 top-10 h-24 w-24 rounded-3xl bg-mint" />
-            <div className="absolute bottom-2 left-8 h-20 w-20 rounded-2xl bg-sky" />
-            <div className="absolute inset-x-5 top-20 rounded-lg bg-white p-6 shadow-playful">
-              <div className="rounded-lg bg-[#eff8ff] p-5">
-                <p className="text-sm font-black uppercase tracking-wide text-sky">
-                  Today&apos;s quest
-                </p>
-                <h2 className="mt-2 text-3xl font-black text-ink">
-                  Solve 5 math puzzles
-                </h2>
-                <div className="mt-5 grid grid-cols-5 gap-2">
-                  {[1, 2, 3, 4, 5].map((item) => (
-                    <span
-                      key={item}
-                      className="grid aspect-square place-items-center rounded-2xl bg-white text-xl font-black text-coral shadow-sm"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-              </div>
-              <div className="mt-4 grid grid-cols-2 gap-4">
-                <div className="rounded-lg bg-sunshine/70 p-4">
+          <div className="relative min-h-[390px]">
+            <div className="absolute left-2 top-4 h-24 w-24 rounded-full bg-coral/80" />
+            <div className="absolute right-0 top-12 h-24 w-24 rounded-3xl bg-mint" />
+            <div className="absolute bottom-4 left-8 h-20 w-20 rounded-3xl bg-purple" />
+            <Card className="absolute inset-x-4 top-10 text-center shadow-playful" tone="white">
+              <Image
+                src="/learnplay-academy-logo.png"
+                alt="LearnPlay Academy logo"
+                width={280}
+                height={280}
+                className="mx-auto h-52 w-52 object-contain sm:h-64 sm:w-64"
+                priority
+              />
+              <div className="mt-4 grid grid-cols-2 gap-4 text-left">
+                <Card tone="yellow" className="p-4">
                   <p className="text-sm font-black text-ink/60">Streak</p>
                   <p className="text-3xl font-black text-ink">7 days</p>
-                </div>
-                <div className="rounded-lg bg-mint/50 p-4">
+                </Card>
+                <Card tone="green" className="p-4">
                   <p className="text-sm font-black text-ink/60">Stars</p>
                   <p className="text-3xl font-black text-ink">42</p>
-                </div>
+                </Card>
               </div>
-            </div>
+            </Card>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-16 lg:px-8">
+      <PageSection>
         <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="font-black text-coral">Subject previews</p>
-            <h2 className="text-4xl font-black text-ink">Learning that feels active</h2>
+            <p className={typography.eyebrow}>Subject previews</p>
+            <h2 className={typography.h2}>Learning that feels active</h2>
           </div>
           <Button href="/subjects" variant="secondary" className="sm:self-center">
             See all subjects
@@ -96,13 +90,13 @@ export default function Home() {
             <SubjectCard key={subject.title} {...subject} />
           ))}
         </div>
-      </section>
+      </PageSection>
 
-      <section className="bg-[#eaf7ff]">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-16 lg:grid-cols-3 lg:px-8">
+      <section className="bg-cloud">
+        <PageSection className="grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-1">
             <p className="font-black text-sky">For parents</p>
-            <h2 className="mt-2 text-4xl font-black text-ink">
+            <h2 className={`mt-2 ${typography.h2}`}>
               Skill practice without the daily tug-of-war
             </h2>
           </div>
@@ -112,12 +106,12 @@ export default function Home() {
               "School-friendly subjects",
               "Reward moments that motivate",
             ].map((benefit) => (
-              <div key={benefit} className="rounded-lg bg-white p-5 shadow-sm">
+              <Card key={benefit}>
                 <p className="text-xl font-black text-ink">{benefit}</p>
-              </div>
+              </Card>
             ))}
           </div>
-        </div>
+        </PageSection>
       </section>
     </main>
   );

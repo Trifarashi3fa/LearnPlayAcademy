@@ -4,7 +4,13 @@
 
 :root {
   --background: #fffdf8;
-  --foreground: #06154a;
+  --foreground: #082a7a;
+  --lp-blue: #0d5fea;
+  --lp-yellow: #ffb300;
+  --lp-green: #66cc00;
+  --lp-purple: #8e44ff;
+  --lp-pink: #ff4fa0;
+  --lp-navy: #082a7a;
 }
 
 * {
@@ -20,6 +26,22 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family:
+    "Nunito",
+    "Trebuchet MS",
+    "Segoe UI",
+    Arial,
+    sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family:
+    "Poppins",
+    "Nunito",
     "Trebuchet MS",
     "Segoe UI",
     Arial,

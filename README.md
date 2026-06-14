@@ -19,6 +19,31 @@ LearnPlay Academy is a playful learning website for children aged 7 to 12 and th
 - About
 - Math Quiz Battle demo game
 
+## Design System
+
+The project includes a reusable LearnPlay Academy design system using the official logo from `public/learnplay-academy-logo.png`.
+
+Brand colors are configured in Tailwind and shared theme tokens:
+
+- Blue: `#0D5FEA`
+- Yellow: `#FFB300`
+- Green: `#66CC00`
+- Purple: `#8E44FF`
+- Pink: `#FF4FA0`
+- Navy: `#082A7A`
+
+Typography uses Poppins for headings and Nunito for body text, with local fallbacks so the app does not depend on external font services.
+
+Reusable UI components:
+
+- `Button`
+- `Card`
+- `PageLayout`
+- `PageSection`
+- `SubjectCard`
+- `GameCard`
+- `QuizGame`
+
 ## Phase 1B Includes
 
 - LearnPlay Academy logo and favicon

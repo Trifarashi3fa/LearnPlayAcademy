@@ -8,15 +8,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        sunshine: "#FFB703",
-        coral: "#FF2F76",
-        sky: "#0057D9",
-        mint: "#59C900",
-        purple: "#8B35D6",
-        ink: "#06154A",
+        sunshine: "#FFB300",
+        coral: "#FF4FA0",
+        sky: "#0D5FEA",
+        mint: "#66CC00",
+        purple: "#8E44FF",
+        ink: "#082A7A",
+        cream: "#FFFDF8",
+        cloud: "#EEF6FF",
+      },
+      fontFamily: {
+        heading: ["Poppins", "Nunito", "Trebuchet MS", "Segoe UI", "Arial", "sans-serif"],
+        body: ["Nunito", "Trebuchet MS", "Segoe UI", "Arial", "sans-serif"],
+      },
+      borderRadius: {
+        brand: "1.5rem",
       },
       boxShadow: {
-        playful: "0 18px 45px rgba(6, 21, 74, 0.14)",
+        playful: "0 18px 45px rgba(8, 42, 122, 0.14)",
       },
     },
   },

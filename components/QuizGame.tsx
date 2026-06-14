@@ -81,7 +81,7 @@ export function QuizGame({
   if (status === "start") {
     return (
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
-        <div className="rounded-lg border border-sky/15 bg-white p-6 shadow-playful sm:p-8">
+        <div className="rounded-3xl border border-sky/15 bg-white p-6 shadow-playful sm:p-8">
           <span className="inline-flex rounded-full bg-sunshine/80 px-4 py-2 text-sm font-black text-ink">
             Demo Game
           </span>
@@ -91,7 +91,7 @@ export function QuizGame({
           <p className="mt-4 text-lg font-bold leading-8 text-ink/70">
             {description}
           </p>
-          <div className="mt-8 rounded-lg bg-[#eef6ff] p-5">
+          <div className="mt-8 rounded-3xl bg-cloud p-5">
             <h2 className="text-2xl font-black text-sky">How to play</h2>
             <ul className="mt-4 space-y-3 text-base font-bold leading-7 text-ink/75">
               <li>Answer 10 primary-school math questions.</li>
@@ -107,7 +107,7 @@ export function QuizGame({
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <button
               onClick={startGame}
-              className="inline-flex min-h-12 items-center justify-center rounded-full bg-coral px-6 py-3 text-base font-extrabold text-white shadow-playful transition hover:-translate-y-0.5 hover:bg-[#ef1f66]"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-coral px-6 py-3 text-base font-extrabold text-white shadow-playful transition hover:-translate-y-0.5 hover:bg-[#e83d8e]"
             >
               Start Battle
             </button>
@@ -130,7 +130,7 @@ export function QuizGame({
 
     return (
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
-        <div className="rounded-lg border border-sky/15 bg-white p-6 text-center shadow-playful sm:p-8">
+        <div className="rounded-3xl border border-sky/15 bg-white p-6 text-center shadow-playful sm:p-8">
           <span className="inline-flex rounded-full bg-mint/20 px-4 py-2 text-sm font-black text-mint">
             Battle Complete
           </span>
@@ -139,13 +139,13 @@ export function QuizGame({
           </h1>
           <p className="mt-4 text-lg font-bold text-ink/70">{message}</p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-lg bg-[#eef6ff] p-6">
+            <div className="rounded-3xl bg-cloud p-6">
               <p className="text-sm font-black uppercase text-sky">Score</p>
               <p className="mt-2 text-4xl font-black text-ink">
                 {score}/{questions.length}
               </p>
             </div>
-            <div className="rounded-lg bg-sunshine/20 p-6">
+            <div className="rounded-3xl bg-sunshine/20 p-6">
               <p className="text-sm font-black uppercase text-coral">XP Earned</p>
               <p className="mt-2 text-4xl font-black text-ink">{earnedXp}</p>
             </div>
@@ -153,7 +153,7 @@ export function QuizGame({
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <button
               onClick={startGame}
-              className="inline-flex min-h-12 items-center justify-center rounded-full bg-coral px-6 py-3 text-base font-extrabold text-white shadow-playful transition hover:-translate-y-0.5 hover:bg-[#ef1f66]"
+              className="inline-flex min-h-12 items-center justify-center rounded-full bg-coral px-6 py-3 text-base font-extrabold text-white shadow-playful transition hover:-translate-y-0.5 hover:bg-[#e83d8e]"
             >
               Restart Game
             </button>
@@ -168,7 +168,7 @@ export function QuizGame({
 
   return (
     <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
-      <div className="rounded-lg border border-sky/15 bg-white p-6 shadow-playful sm:p-8">
+      <div className="rounded-3xl border border-sky/15 bg-white p-6 shadow-playful sm:p-8">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <p className="text-sm font-black uppercase text-sky">
@@ -177,18 +177,18 @@ export function QuizGame({
             <h1 className="mt-2 text-3xl font-black text-ink">{title}</h1>
           </div>
           <div className="grid grid-cols-2 gap-3 text-center">
-            <div className="rounded-lg bg-[#eef6ff] px-4 py-3">
+            <div className="rounded-3xl bg-cloud px-4 py-3">
               <p className="text-xs font-black uppercase text-sky">Score</p>
               <p className="text-2xl font-black text-ink">{score}</p>
             </div>
-            <div className="rounded-lg bg-sunshine/20 px-4 py-3">
+            <div className="rounded-3xl bg-sunshine/20 px-4 py-3">
               <p className="text-xs font-black uppercase text-coral">XP</p>
               <p className="text-2xl font-black text-ink">{earnedXp}</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-8 rounded-lg bg-[#fff7d8] p-6">
+        <div className="mt-8 rounded-3xl bg-[#FFF6D8] p-6">
           <p className="text-3xl font-black text-ink">
             {currentQuestion.question}
           </p>
@@ -203,13 +203,13 @@ export function QuizGame({
                 ? "border-mint bg-mint/15 text-ink"
                 : selectedAnswer && isSelected
                   ? "border-coral bg-coral/10 text-ink"
-                  : "border-ink/10 bg-white text-ink hover:border-sky hover:bg-[#eef6ff]";
+                  : "border-ink/10 bg-white text-ink hover:border-sky hover:bg-cloud";
 
             return (
               <button
                 key={option}
                 onClick={() => chooseAnswer(option)}
-                className={`min-h-16 rounded-lg border-2 px-5 py-4 text-left text-xl font-black transition ${feedbackClass}`}
+                className={`min-h-16 rounded-3xl border-2 px-5 py-4 text-left text-xl font-black transition ${feedbackClass}`}
               >
                 {option}
               </button>
@@ -218,7 +218,7 @@ export function QuizGame({
         </div>
 
         {selectedAnswer ? (
-          <div className="mt-6 rounded-lg bg-[#eef6ff] p-5">
+          <div className="mt-6 rounded-3xl bg-cloud p-5">
             <p className="text-xl font-black text-ink">
               {answeredCorrectly ? "Correct! +10 XP" : "Good try!"}
             </p>
@@ -229,7 +229,7 @@ export function QuizGame({
             ) : null}
             <button
               onClick={goNext}
-              className="mt-4 inline-flex min-h-12 items-center justify-center rounded-full bg-sky px-6 py-3 text-base font-extrabold text-white shadow-playful transition hover:-translate-y-0.5 hover:bg-[#0048b5]"
+              className="mt-4 inline-flex min-h-12 items-center justify-center rounded-full bg-sky px-6 py-3 text-base font-extrabold text-white shadow-playful transition hover:-translate-y-0.5 hover:bg-[#0a51c9]"
             >
               {isLastQuestion ? "See Results" : "Next Question"}
             </button>

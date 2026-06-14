@@ -1,36 +1,38 @@
+import { Card } from "@/components/Card";
+import { PageLayout, PageSection } from "@/components/PageLayout";
+import { typography } from "@/components/theme";
+
 export default function AboutPage() {
   return (
-    <main>
-      <section className="bg-[#fff7d8]">
-        <div className="mx-auto max-w-6xl px-5 py-16 lg:px-8">
-          <p className="font-black text-coral">About</p>
-          <h1 className="mt-3 max-w-4xl text-5xl font-black leading-tight text-ink">
-            LearnPlay Academy helps children learn school skills through games,
-            quizzes, and rewards.
-          </h1>
-        </div>
-      </section>
-      <section className="mx-auto grid max-w-6xl gap-6 px-5 py-14 md:grid-cols-3 lg:px-8">
+    <PageLayout
+      eyebrow="About"
+      title="LearnPlay Academy helps children learn school skills through games, quizzes, and rewards."
+      heroTone="yellow"
+    >
+      <PageSection className="grid gap-6 md:grid-cols-3">
         {[
           {
             title: "Games",
             copy: "Learning starts with playful challenges that feel inviting and age-appropriate.",
+            tone: "blue" as const,
           },
           {
             title: "Quizzes",
             copy: "Short practice moments help children build steady confidence over time.",
+            tone: "green" as const,
           },
           {
             title: "Rewards",
             copy: "Stars, streaks, and celebration moments make progress feel visible.",
+            tone: "pink" as const,
           },
         ].map((item) => (
-          <article key={item.title} className="rounded-lg bg-white p-6 shadow-sm">
-            <h2 className="text-2xl font-black text-ink">{item.title}</h2>
-            <p className="mt-3 leading-7 text-ink/70">{item.copy}</p>
-          </article>
+          <Card key={item.title} tone={item.tone}>
+            <h2 className={typography.h3}>{item.title}</h2>
+            <p className={`mt-3 ${typography.small}`}>{item.copy}</p>
+          </Card>
         ))}
-      </section>
-    </main>
+      </PageSection>
+    </PageLayout>
   );
 }
