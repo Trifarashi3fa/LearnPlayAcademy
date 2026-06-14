@@ -3,12 +3,19 @@ type GameCardProps = {
   description: string;
   badge: string;
   accent: string;
+  href?: string;
 };
 
-export function GameCard({ title, description, badge, accent }: GameCardProps) {
+export function GameCard({
+  title,
+  description,
+  badge,
+  accent,
+  href = "#",
+}: GameCardProps) {
   return (
     <a
-      href="#"
+      href={href}
       className="block rounded-lg border border-ink/10 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-playful focus:outline-none focus:ring-4 focus:ring-sky/25"
       aria-label={`${title} demo card`}
     >

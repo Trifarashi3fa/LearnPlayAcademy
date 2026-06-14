@@ -6,6 +6,11 @@ import { Navbar } from "@/components/Navbar";
 export const metadata: Metadata = {
   title: "LearnPlay Academy",
   description: "Playful learning for children aged 7 to 12.",
+  icons: {
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
+  },
 };
 
 export default function RootLayout({

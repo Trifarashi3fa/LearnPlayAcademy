@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const links = [
   { href: "/", label: "Home" },
@@ -12,15 +13,20 @@ export function Navbar() {
     <header className="sticky top-0 z-50 border-b border-sky/10 bg-white/90 backdrop-blur">
       <nav className="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between lg:px-8">
         <Link href="/" className="flex items-center gap-3">
-          <span className="grid h-11 w-11 place-items-center rounded-2xl bg-sunshine text-xl font-black text-ink shadow-md">
-            LP
-          </span>
+          <Image
+            src="/learnplay-academy-logo.png"
+            alt="LearnPlay Academy logo"
+            width={56}
+            height={56}
+            className="h-14 w-14 rounded-2xl object-contain"
+            priority
+          />
           <span>
             <span className="block text-xl font-black text-ink">
               LearnPlay Academy
             </span>
-            <span className="block text-sm font-bold text-coral">
-              Play. Learn. Grow.
+            <span className="block text-sm font-bold text-sky">
+              Learn Through Play
             </span>
           </span>
         </Link>

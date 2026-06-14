@@ -8,14 +8,15 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        sunshine: "#FFD166",
-        coral: "#FF6B6B",
-        sky: "#4D96FF",
-        mint: "#62D2A2",
-        ink: "#243047",
+        sunshine: "#FFB703",
+        coral: "#FF2F76",
+        sky: "#0057D9",
+        mint: "#59C900",
+        purple: "#8B35D6",
+        ink: "#06154A",
       },
       boxShadow: {
-        playful: "0 18px 45px rgba(36, 48, 71, 0.14)",
+        playful: "0 18px 45px rgba(6, 21, 74, 0.14)",
       },
     },
   },
