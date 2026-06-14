@@ -2,7 +2,7 @@
 
 Phase 1B front-end prototype for LearnPlay Academy.
 
-LearnPlay Academy is a playful learning website for children aged 7 to 12 and their parents. This prototype uses local static frontend data only. It does not connect to Supabase, Vercel, payments, a database, authentication, APIs, or other external services.
+LearnPlay Academy is a playful learning website for children aged 7 to 12 and their parents. This prototype now includes Supabase Authentication wiring for login, registration, logout, and dashboard protection. Payments and deployment setup are still intentionally excluded.
 
 ## Tech Stack
 
@@ -21,6 +21,28 @@ LearnPlay Academy is a playful learning website for children aged 7 to 12 and th
 - Math Quiz Battle demo game
 - English Word Builder demo game
 
+## Phase 3 Includes
+
+- Supabase Authentication integration
+- Login page at `/login`
+- Register page at `/register`
+- Email signup and email/password login
+- Logout button on the protected dashboard
+- Dashboard protection with server-side auth checks
+- Supabase SSR client helpers in `lib/supabase`
+- User profile table SQL migration in `supabase/migrations/001_create_profiles.sql`
+- Environment variable example in `.env.example`
+
+### Supabase Setup
+
+Create `.env.local` in the project root:
+
+```bash
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_supabase_publishable_key
+```
+
+Run the SQL in `supabase/migrations/001_create_profiles.sql` in the Supabase SQL editor to create the `profiles` table and new-user trigger.
 ## Phase 2 Includes
 
 - Student Dashboard at `/dashboard`
@@ -115,7 +137,8 @@ Local XP progress is stored in the browser for now. User accounts, synced XP his
 
 - Math Quiz Battle is functional on the frontend only.
 - Science Explorer remains a placeholder card.
-- Backend services, payments, database, authentication, and deployment setup are intentionally excluded from Phase 1B.
+- Payments and deployment setup are intentionally excluded. Supabase Authentication is introduced in Phase 3.
+
 
 
 

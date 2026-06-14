@@ -24,7 +24,7 @@ const mockDashboard = {
   ],
 };
 
-export function StudentDashboard() {
+export function StudentDashboard({ userEmail }: { userEmail?: string }) {
   const [currentXP, setCurrentXP] = useState(mockDashboard.currentXP);
   const [gamesPlayed, setGamesPlayed] = useState(mockDashboard.gamesPlayed);
 
@@ -48,10 +48,15 @@ export function StudentDashboard() {
     <PageLayout
       eyebrow="Student Dashboard"
       title="Your LearnPlay progress"
-      description="A bright snapshot of XP, level, games, subjects, and recent activity. This dashboard uses local mock data for now and is ready for future account integration."
+      description="A bright snapshot of XP, level, games, subjects, and recent activity for the signed-in student. This dashboard uses local mock data for now and is ready for future account integration."
       heroTone="blue"
     >
       <PageSection>
+        {userEmail ? (
+          <p className="mb-5 rounded-3xl bg-white px-5 py-3 text-sm font-black text-ink shadow-sm">
+            Signed in as {userEmail}
+          </p>
+        ) : null}
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           <DashboardCard
             title="Current XP"
@@ -75,7 +80,12 @@ export function StudentDashboard() {
             helper="Includes local completed demos"
             tone="green"
           />
-          <DashboardCard title="Next Goal" value="Level Up" helper="Keep playing to grow" tone="blue" />
+          <DashboardCard
+            title="Next Goal"
+            value="Level Up"
+            helper="Keep playing to grow"
+            tone="blue"
+          />
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-[1.25fr_0.75fr]">
@@ -94,7 +104,10 @@ export function StudentDashboard() {
           <DashboardCard title="Recent Activity" tone="pink">
             <ul className="space-y-3">
               {mockDashboard.recentActivity.map((activity) => (
-                <li key={activity} className="rounded-3xl bg-white px-4 py-3 text-sm font-black text-ink">
+                <li
+                  key={activity}
+                  className="rounded-3xl bg-white px-4 py-3 text-sm font-black text-ink"
+                >
                   {activity}
                 </li>
               ))}
@@ -106,7 +119,10 @@ export function StudentDashboard() {
           <DashboardCard title="Subject Progress" tone="white">
             <div className="grid gap-5 md:grid-cols-2">
               {mockDashboard.subjectProgress.map((subject) => (
-                <div key={subject.subject} className="rounded-3xl border border-ink/10 bg-cloud p-4">
+                <div
+                  key={subject.subject}
+                  className="rounded-3xl border border-ink/10 bg-cloud p-4"
+                >
                   <ProgressBar
                     value={subject.progress}
                     label={subject.subject}

@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # Dependencies
 /node_modules
 /.pnp
@@ -24,6 +22,9 @@ pnpm-debug.log*
 # Local env files
 .env*.local
 .env
+
+# Local npm cache
+.npm-cache
 
 # Vercel
 .vercel
