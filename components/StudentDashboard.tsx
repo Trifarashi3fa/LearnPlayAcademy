@@ -158,7 +158,7 @@ export function StudentDashboard({
                   >
                     <span className="block">{activity.gameTitle}</span>
                     <span className="block text-xs font-bold text-ink/60">
-                      {activity.score}/{activity.totalQuestions} score • +{activity.xpEarned} XP • {formatDate(activity.playedAt)}
+                      {activity.score}/{activity.totalQuestions} score â€¢ +{activity.xpEarned} XP â€¢ {formatDate(activity.playedAt)}
                     </span>
                   </li>
                 ))}
@@ -185,7 +185,7 @@ export function StudentDashboard({
                     colorClass={subject.colorClass}
                   />
                   <p className="mt-3 text-sm font-bold text-ink/70">
-                    {subject.totalXP} XP • Level {subject.currentLevel} • {subject.gamesPlayed} games • Best score {subject.bestScore}
+                    {subject.totalXP} XP â€¢ Level {subject.currentLevel} â€¢ {subject.gamesPlayed} games â€¢ Best score {subject.bestScore}
                   </p>
                 </div>
               ))}
