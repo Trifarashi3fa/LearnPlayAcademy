@@ -17,9 +17,18 @@ LearnPlay Academy is a playful learning website for children aged 7 to 12 and th
 - Subjects
 - Games
 - About
+- Student Dashboard
 - Math Quiz Battle demo game
 - English Word Builder demo game
 
+## Phase 2 Includes
+
+- Student Dashboard at `/dashboard`
+- Reusable dashboard cards in `components/DashboardCard.tsx`
+- Mock subject progress and recent activity data
+- Current XP, current level, games played, level progress, subject progress, and recent activity sections
+- Local XP fallback from the Phase 1D browser storage system
+- No authentication or database yet
 ## Phase 1D Includes
 
 - Reusable XP utilities in `lib/xp.ts`
@@ -107,5 +116,6 @@ Local XP progress is stored in the browser for now. User accounts, synced XP his
 - Math Quiz Battle is functional on the frontend only.
 - Science Explorer remains a placeholder card.
 - Backend services, payments, database, authentication, and deployment setup are intentionally excluded from Phase 1B.
+
 
 
