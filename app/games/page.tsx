@@ -21,7 +21,7 @@ const games = [
     badge: "Playable",
     tone: "yellow" as const,
     href: "/games/math-quiz-battle",
-    actionLabel: "Start activity",
+    actionLabel: "Play Now",
   },
   {
     title: "English Word Builder",
@@ -30,7 +30,7 @@ const games = [
     badge: "Playable",
     tone: "green" as const,
     href: "/games/word-builder",
-    actionLabel: "Start activity",
+    actionLabel: "Play Now",
   },
   {
     title: "Science Explorer",
@@ -40,7 +40,7 @@ const games = [
     tone: "blue" as const,
     href: "/games#science-explorer",
     id: "science-explorer",
-    actionLabel: "Preview activity",
+    actionLabel: "Explore",
   },
   {
     title: "Bahasa Melayu Builder",
@@ -50,7 +50,7 @@ const games = [
     tone: "purple" as const,
     href: "/games#bahasa-melayu-builder",
     id: "bahasa-melayu-builder",
-    actionLabel: "Preview activity",
+    actionLabel: "Explore",
   },
 ];
 

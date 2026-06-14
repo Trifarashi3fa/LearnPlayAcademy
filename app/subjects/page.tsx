@@ -17,42 +17,42 @@ const subjects = [
   {
     title: "Mathematics",
     description:
-      "Build number confidence with addition, subtraction, patterns, and everyday problem solving.",
+      "Develop number sense, problem-solving skills, patterns, measurement, and logical reasoning through interactive activities.",
     icon: "123",
     tone: "yellow" as const,
   },
   {
     title: "English",
     description:
-      "Practice vocabulary, spelling, reading, and sentence skills through short activities.",
+      "Build reading comprehension, vocabulary, grammar, spelling, and communication skills through engaging exercises.",
     icon: "ABC",
     tone: "green" as const,
   },
   {
     title: "Science",
     description:
-      "Explore living things, space, materials, experiments, and the world around us.",
+      "Explore living things, Earth science, experiments, space, and scientific thinking through discovery-based learning.",
     icon: "SCI",
     tone: "blue" as const,
   },
   {
     title: "Bahasa Melayu",
     description:
-      "Strengthen word recognition, spelling, basic grammar, and everyday language confidence.",
+      "Improve vocabulary, reading, comprehension, grammar, and communication skills aligned with primary learning needs.",
     icon: "BM",
     tone: "purple" as const,
   },
   {
     title: "Critical Thinking",
     description:
-      "Strengthen logic, memory, planning, pattern spotting, and puzzle-solving habits.",
+      "Strengthen logic, memory, reasoning, creativity, and problem-solving skills through puzzles and challenges.",
     icon: "WHY",
     tone: "pink" as const,
   },
   {
     title: "Life Skills",
     description:
-      "Learn helpful habits, kindness, money basics, safety awareness, and practical choices.",
+      "Develop confidence, responsibility, communication, emotional awareness, safety knowledge, and financial literacy.",
     icon: "LIFE",
     tone: "purple" as const,
   },

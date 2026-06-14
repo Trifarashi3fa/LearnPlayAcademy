@@ -45,28 +45,62 @@ const stats = [
   "Ages 7-12",
 ];
 
+const platformSnapshot = [
+  { label: "50+ Activities", tone: "yellow" as const },
+  { label: "5 Learning Areas", tone: "green" as const },
+  { label: "100+ Questions", tone: "blue" as const },
+  { label: "Ages 7-12", tone: "purple" as const },
+];
+
 const parentBenefits = [
-  "Short Activities",
-  "Positive Motivation",
-  "School-Friendly Skills",
-  "Progress Tracking",
-  "Safe Learning Environment",
+  {
+    title: "Short Activities",
+    copy: "5-10 minute learning sessions that fit easily into daily routines.",
+  },
+  {
+    title: "Positive Motivation",
+    copy: "Rewards, stars, and achievements encourage consistent practice.",
+  },
+  {
+    title: "School-Friendly Skills",
+    copy: "Supports academic and everyday skills children use in school and daily life.",
+  },
+  {
+    title: "Progress Tracking",
+    copy: "Parents can view learning activity and celebrate growth.",
+  },
+  {
+    title: "Safe Learning Environment",
+    copy: "A child-friendly learning space designed without unnecessary distractions.",
+  },
 ];
 
 const plans = [
   {
     title: "Free Starter",
     copy: "Selected activities available now for families to explore LearnPlay at home.",
+    items: ["Selected activities", "Basic rewards", "Access to selected games"],
     tone: "blue" as const,
   },
   {
     title: "Premium Learning",
     copy: "More subjects, rewards, and guided practice paths planned for future release.",
+    items: [
+      "Full subject access",
+      "Progress reports",
+      "Achievement badges",
+      "Parent dashboard features",
+    ],
     tone: "yellow" as const,
   },
   {
     title: "Family Plan",
     copy: "Tools for multiple learners and parent-friendly progress views are coming soon.",
+    items: [
+      "Multiple child profiles",
+      "Shared parent dashboard",
+      "Extended learning access",
+    ],
     tone: "green" as const,
   },
 ];
@@ -92,7 +126,7 @@ export default function Home() {
               </Button>
             </div>
           </div>
-          <div className="relative min-h-[390px]" aria-label="LearnPlay progress preview">
+          <div className="relative min-h-[430px]" aria-label="LearnPlay platform snapshot">
             <div className="absolute left-2 top-4 h-24 w-24 rounded-full bg-coral/80" />
             <div className="absolute right-0 top-12 h-24 w-24 rounded-3xl bg-mint" />
             <div className="absolute bottom-4 left-8 h-20 w-20 rounded-3xl bg-purple" />
@@ -102,18 +136,15 @@ export default function Home() {
                 alt="LearnPlay Academy child-friendly learning logo"
                 width={280}
                 height={280}
-                className="mx-auto h-52 w-52 object-contain sm:h-64 sm:w-64"
+                className="mx-auto h-48 w-48 object-contain sm:h-56 sm:w-56"
                 priority
               />
               <div className="mt-4 grid grid-cols-2 gap-4 text-left">
-                <Card tone="yellow" className="p-4">
-                  <p className="text-sm font-black text-ink/60">Streak</p>
-                  <p className="text-3xl font-black text-ink">7 days</p>
-                </Card>
-                <Card tone="green" className="p-4">
-                  <p className="text-sm font-black text-ink/60">Stars</p>
-                  <p className="text-3xl font-black text-ink">42</p>
-                </Card>
+                {platformSnapshot.map((item) => (
+                  <Card key={item.label} tone={item.tone} className="p-4">
+                    <p className="text-lg font-black text-ink">{item.label}</p>
+                  </Card>
+                ))}
               </div>
             </Card>
           </div>
@@ -161,8 +192,9 @@ export default function Home() {
           </div>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
             {parentBenefits.map((benefit) => (
-              <Card key={benefit}>
-                <p className="text-xl font-black text-ink">{benefit}</p>
+              <Card key={benefit.title}>
+                <h3 className="text-xl font-black text-ink">{benefit.title}</h3>
+                <p className={`mt-3 ${typography.small}`}>{benefit.copy}</p>
               </Card>
             ))}
           </div>
@@ -183,6 +215,13 @@ export default function Home() {
             <Card key={plan.title} tone={plan.tone}>
               <h3 className={typography.h3}>{plan.title}</h3>
               <p className={`mt-3 ${typography.small}`}>{plan.copy}</p>
+              <ul className="mt-5 space-y-2 text-sm font-black text-ink/70">
+                {plan.items.map((item) => (
+                  <li key={item} className="rounded-2xl bg-white/70 px-3 py-2">
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </Card>
           ))}
         </div>

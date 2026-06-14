@@ -44,29 +44,28 @@ const benefits = [
 
 const faqs = [
   {
-    question: "What age range is LearnPlay Academy for?",
-    answer:
-      "LearnPlay Academy is designed for children aged 7 to 12, with short activities and friendly language for primary-school learners.",
+    question: "What age is LearnPlay Academy for?",
+    answer: "LearnPlay Academy is designed for children aged 7-12.",
   },
   {
-    question: "Does LearnPlay support school learning?",
+    question: "Is this aligned with school learning?",
     answer:
-      "Yes. Activities focus on school-friendly skills such as mathematics, English, science, Bahasa Melayu, critical thinking, and life skills. We do not claim official curriculum approval.",
+      "The activities support foundational academic and life skills commonly developed during primary education.",
   },
   {
-    question: "Do parents need to supervise every activity?",
+    question: "Do children need supervision?",
     answer:
-      "Younger children may benefit from help getting started, but activities are designed to be simple enough for children to use with light supervision.",
+      "Most activities are simple enough for children to complete independently, but parents can support younger learners when needed.",
   },
   {
     question: "How long are the activities?",
     answer:
-      "Activities are intentionally short so children can practice in focused sessions after school, on weekends, or during learning breaks.",
+      "Most activities are designed to be short and focused, usually around 5-10 minutes.",
   },
   {
-    question: "Will there be premium plans later?",
+    question: "Will there be premium plans?",
     answer:
-      "Yes. Future plans may include more activities, richer progress tools, and family features. Selected activities are available now while LearnPlay grows.",
+      "Yes. LearnPlay Academy can support free and premium learning access as the platform grows.",
   },
 ];
 
