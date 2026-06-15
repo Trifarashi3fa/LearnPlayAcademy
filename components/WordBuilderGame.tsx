@@ -170,7 +170,7 @@ export function WordBuilderGame({
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
         <Card className="shadow-playful" tone="green">
           <span className="inline-flex rounded-full bg-mint px-4 py-2 text-sm font-black text-ink">
-            English Demo Game
+            English Learning Game
           </span>
           <h1 className={`mt-5 ${typography.h1}`}>{title}</h1>
           <p className={`mt-4 ${typography.body}`}>{description}</p>
@@ -345,6 +345,12 @@ export function WordBuilderGame({
     </section>
   );
 }
+
+
+
+
+
+
 
 
 

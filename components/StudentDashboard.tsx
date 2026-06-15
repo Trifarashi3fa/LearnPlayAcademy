@@ -59,6 +59,28 @@ function getStudentDisplayName(profile: StudentProfileSummary, userEmail?: strin
   return userEmail?.split("@")[0] ?? "Student";
 }
 
+function getAchievements(dashboardData: StudentDashboardData) {
+  const achievements: string[] = [];
+
+  if (dashboardData.gamesPlayed > 0) {
+    achievements.push("First activity completed");
+  }
+
+  if (dashboardData.currentXP >= 100) {
+    achievements.push("100 XP milestone");
+  }
+
+  if (dashboardData.currentLevel >= 2) {
+    achievements.push("Level 2 reached");
+  }
+
+  if (dashboardData.subjectProgress.some((subject) => subject.gamesPlayed > 0)) {
+    achievements.push("Subject practice started");
+  }
+
+  return achievements;
+}
+
 export function StudentDashboard({
   userEmail,
   profile,
@@ -68,38 +90,10 @@ export function StudentDashboard({
   const levelProgress = calculateLevel(dashboardData.currentXP);
   const studentName = getStudentDisplayName(profile, userEmail);
   const activitiesCompleted = dashboardData.gamesPlayed;
-  const starsEarned = Math.max(activitiesCompleted * 12, Math.floor(dashboardData.currentXP / 10), 24);
-  const badgesCollected = Math.max(2, Math.min(8, activitiesCompleted + 2));
-  const currentStreak = activitiesCompleted > 0 ? "3 days" : "Ready";
-  const recentLearning =
-    dashboardData.recentActivity.length > 0
-      ? dashboardData.recentActivity
-      : [
-          {
-            id: "sample-math",
-            gameTitle: "Math Quiz Battle",
-            subject: "Mathematics",
-            score: 8,
-            totalQuestions: 10,
-            xpEarned: 100,
-            playedAt: new Date().toISOString(),
-          },
-          {
-            id: "sample-english",
-            gameTitle: "English Word Builder",
-            subject: "English",
-            score: 7,
-            totalQuestions: 10,
-            xpEarned: 90,
-            playedAt: new Date().toISOString(),
-          },
-        ];
-  const achievements = [
-    "First activity completed",
-    "Word practice started",
-    "Math confidence builder",
-    "Progress tracker unlocked",
-  ];
+  const starsEarned = Math.floor(dashboardData.currentXP / 10);
+  const achievements = getAchievements(dashboardData);
+  const badgesCollected = achievements.length;
+  const currentStreak = activitiesCompleted > 0 ? "Active" : "Not started";
 
   return (
     <PageLayout
@@ -153,13 +147,13 @@ export function StudentDashboard({
           <DashboardCard
             title="Stars Earned"
             value={starsEarned}
-            helper="Reward progress"
+            helper="Based on earned XP"
             tone="blue"
           />
           <DashboardCard
             title="Badges Collected"
             value={badgesCollected}
-            helper="Achievement moments"
+            helper="Unlocked by real activity"
             tone="purple"
           />
         </div>
@@ -178,34 +172,46 @@ export function StudentDashboard({
           </DashboardCard>
 
           <DashboardCard title="Achievements" tone="pink">
-            <ul className="space-y-3">
-              {achievements.map((achievement) => (
-                <li
-                  key={achievement}
-                  className="rounded-3xl bg-white px-4 py-3 text-sm font-black text-ink"
-                >
-                  {achievement}
-                </li>
-              ))}
-            </ul>
+            {achievements.length > 0 ? (
+              <ul className="space-y-3">
+                {achievements.map((achievement) => (
+                  <li
+                    key={achievement}
+                    className="rounded-3xl bg-white px-4 py-3 text-sm font-black text-ink"
+                  >
+                    {achievement}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="rounded-3xl bg-white px-4 py-3 text-sm font-black text-ink">
+                Achievements will appear after learning activities are completed.
+              </p>
+            )}
           </DashboardCard>
         </div>
 
         <div className="mt-6 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <DashboardCard title="Recent Learning" tone="white">
-            <ul className="space-y-3">
-              {recentLearning.map((activity) => (
-                <li
-                  key={activity.id}
-                  className="rounded-3xl bg-cloud px-4 py-3 text-sm font-black text-ink"
-                >
-                  <span className="block">{activity.gameTitle}</span>
-                  <span className="block text-xs font-bold text-ink/60">
-                    {activity.subject} - {activity.score}/{activity.totalQuestions} score - +{activity.xpEarned} XP - {formatDate(activity.playedAt)}
-                  </span>
-                </li>
-              ))}
-            </ul>
+            {dashboardData.recentActivity.length > 0 ? (
+              <ul className="space-y-3">
+                {dashboardData.recentActivity.map((activity) => (
+                  <li
+                    key={activity.id}
+                    className="rounded-3xl bg-cloud px-4 py-3 text-sm font-black text-ink"
+                  >
+                    <span className="block">{activity.gameTitle}</span>
+                    <span className="block text-xs font-bold text-ink/60">
+                      {activity.subject} - {activity.score}/{activity.totalQuestions} score - +{activity.xpEarned} XP - {formatDate(activity.playedAt)}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="rounded-3xl bg-cloud px-4 py-3 text-sm font-black text-ink">
+                No recent learning yet. Complete an activity to see it here.
+              </p>
+            )}
           </DashboardCard>
 
           <DashboardCard title="Subject Progress" tone="white">

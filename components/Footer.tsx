@@ -1,19 +1,5 @@
 import Link from "next/link";
-
-const quickLinks = [
-  { href: "/", label: "Home" },
-  { href: "/subjects", label: "Subjects" },
-  { href: "/games", label: "Games" },
-  { href: "/parents", label: "Parents" },
-  { href: "/about", label: "About" },
-];
-
-const supportLinks = [
-  { href: "/parents#faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
-  { href: "/privacy", label: "Privacy Policy" },
-  { href: "/terms", label: "Terms" },
-];
+import { footerQuickLinks, footerSupportLinks } from "@/data/navigation";
 
 export function Footer() {
   return (
@@ -33,7 +19,7 @@ export function Footer() {
         <nav aria-label="Quick links">
           <p className="font-black uppercase text-ink">Quick Links</p>
           <ul className="mt-3 space-y-2">
-            {quickLinks.map((link) => (
+            {footerQuickLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
@@ -49,7 +35,7 @@ export function Footer() {
         <nav aria-label="Support links">
           <p className="font-black uppercase text-ink">Support</p>
           <ul className="mt-3 space-y-2">
-            {supportLinks.map((link) => (
+            {footerSupportLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}

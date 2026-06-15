@@ -3,17 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
-const links = [
-  { href: "/", label: "Home" },
-  { href: "/subjects", label: "Subjects" },
-  { href: "/games", label: "Games" },
-  { href: "/life-skills", label: "Life Skills" },
-  { href: "/parents", label: "Parents" },
-  { href: "/about", label: "About" },
-  { href: "/login", label: "Login" },
-  { href: "/register", label: "Register" },
-];
+import { primaryNavigation } from "@/data/navigation";
 
 function isActive(pathname: string, href: string) {
   if (href === "/") {
@@ -54,7 +44,7 @@ export function Navbar() {
           </span>
         </Link>
         <div className="flex flex-wrap gap-2">
-          {links.map((link) => {
+          {primaryNavigation.map((link) => {
             const active = isActive(pathname, link.href);
 
             return (

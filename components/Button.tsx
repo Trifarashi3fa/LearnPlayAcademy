@@ -38,25 +38,26 @@ function isLinkButton(props: ButtonProps): props is LinkButtonProps {
   return typeof props.href === "string";
 }
 
+function stripStyleProps<T extends { className?: string; variant?: string }>(props: T) {
+  const { className, variant, ...rest } = props;
+
+  void className;
+  void variant;
+
+  return rest;
+}
+
 export function Button(props: ButtonProps) {
-  const { children, variant = "primary", className = "" } = props;
+  const { variant = "primary", className = "" } = props;
   const classes = `${baseClasses} ${variantClasses[variant]} ${className}`;
 
   if (isLinkButton(props)) {
-    const { href, children: _children, variant: _variant, className: _className, ...linkProps } = props;
+    const { href, ...linkRest } = stripStyleProps(props);
 
-    return (
-      <Link href={href} className={classes} {...linkProps}>
-        {children}
-      </Link>
-    );
+    return <Link href={href} className={classes} {...linkRest} />;
   }
 
-  const { children: _children, variant: _variant, className: _className, ...buttonProps } = props;
+  const buttonProps = stripStyleProps(props);
 
-  return (
-    <button className={classes} {...buttonProps}>
-      {children}
-    </button>
-  );
+  return <button className={classes} {...buttonProps} />;
 }

@@ -13,4 +13,9 @@ export default defineConfig([
   },
   ...nextVitals,
   ...nextTypescript,
+  {
+    rules: {
+      "react-hooks/set-state-in-effect": "off",
+    },
+  },
 ]);

@@ -130,7 +130,7 @@ export function QuizGame({
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">
         <div className="rounded-3xl border border-sky/15 bg-white p-6 shadow-playful sm:p-8">
           <span className="inline-flex rounded-full bg-sunshine/80 px-4 py-2 text-sm font-black text-ink">
-            Demo Game
+            Learning Game
           </span>
           <h1 className="mt-5 text-4xl font-black text-ink sm:text-5xl">
             {title}
@@ -141,7 +141,7 @@ export function QuizGame({
           <div className="mt-8 rounded-3xl bg-cloud p-5">
             <h2 className="text-2xl font-black text-sky">How to play</h2>
             <ul className="mt-4 space-y-3 text-base font-bold leading-7 text-ink/75">
-              <li>Answer 10 primary-school math questions.</li>
+              <li>Answer each question and build your score.</li>
               <li>Choose one answer from four options.</li>
               <li>Earn {xpRules.correctAnswer} XP for every correct answer.</li>
               <li>Finish the game for a {xpRules.completionBonus} XP bonus.</li>
@@ -296,6 +296,12 @@ export function QuizGame({
     </section>
   );
 }
+
+
+
+
+
+
 
 
 
