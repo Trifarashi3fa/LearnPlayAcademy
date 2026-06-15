@@ -380,19 +380,60 @@ function GameThumbnail({ game }: { game: MathGame }) {
       <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-black text-[#0B63F6]">
         {game.coverTitle}
       </div>
-      <div className="absolute bottom-4 left-4 flex h-16 w-16 items-center justify-center rounded-3xl bg-white text-4xl shadow-sm">
-        {game.coverIcon}
+      <GameCoverArt gameId={game.id} />
+      <div className="absolute bottom-5 left-4 rounded-2xl bg-white/95 px-3 py-2 text-xs font-black text-[#082B80] shadow-sm">
+        {game.coverLabel}
       </div>
-      <div className="absolute bottom-5 right-4 grid grid-cols-3 gap-2">
-        {game.coverItems.slice(0, 6).map((item, index) => (
-          <span
-            key={`${game.id}-${item}-${index}`}
-            className="flex h-9 min-w-9 items-center justify-center rounded-2xl bg-white/95 px-2 text-lg font-black text-[#082B80] shadow-sm"
-          >
-            {item}
-          </span>
-        ))}
+    </div>
+  );
+}
+
+function GameCoverArt({ gameId }: { gameId: string }) {
+  if (gameId === "add-it-up") {
+    return (
+      <div className="absolute bottom-5 right-4 flex items-end gap-2">
+        <CircleIcon className="bg-[#EF4444]" />
+        <span className="pb-3 text-2xl font-black text-[#082B80]">+</span>
+        <CircleIcon className="bg-[#22C55E]" />
       </div>
+    );
+  }
+
+  if (gameId === "subtraction-splash") {
+    return (
+      <div className="absolute bottom-5 right-4 flex items-center gap-2">
+        <FishIcon />
+        <span className="text-2xl font-black text-[#082B80]">-</span>
+        <SplashIcon />
+      </div>
+    );
+  }
+
+  if (gameId === "shape-match") {
+    return (
+      <div className="absolute bottom-5 right-4 flex items-end gap-2">
+        <TriangleIcon />
+        <CircleIcon className="bg-[#FFC83D]" />
+        <SquareIcon />
+      </div>
+    );
+  }
+
+  if (gameId === "count-collect") {
+    return (
+      <div className="absolute bottom-5 right-4 flex items-center gap-2">
+        <CoinIcon />
+        <GemIcon />
+        <StarIcon />
+      </div>
+    );
+  }
+
+  return (
+    <div className="absolute bottom-5 right-4 flex items-center gap-2">
+      <StarIcon />
+      <NumberToken value="7" />
+      <TreasureIcon />
     </div>
   );
 }
@@ -402,7 +443,7 @@ function StarRating({ value }: { value: number }) {
     <div className="flex gap-1 text-[#FFC83D]" aria-label={`${value} star rating`}>
       {[1, 2, 3, 4, 5].map((star) => (
         <span key={star} className={star <= value ? "opacity-100" : "opacity-25"}>
-          â˜…
+          *
         </span>
       ))}
     </div>
@@ -440,11 +481,11 @@ function GuestGameCard({ game }: { game: MathGame }) {
 
 function UnlockAdventureBanner() {
   const worlds = [
-    "ðŸŒ³ Forest World",
-    "â›° Mountain World",
-    "ðŸŒŠ Ocean World",
-    "ðŸš€ Space World",
-    "ðŸŒŒ Galaxy World",
+    "Forest World",
+    "Mountain World",
+    "Ocean World",
+    "Space World",
+    "Galaxy World",
   ];
   const benefits = [
     "5 Learning Worlds",
@@ -465,7 +506,7 @@ function UnlockAdventureBanner() {
               Premium Adventure
             </p>
             <h2 className="mt-2 text-3xl font-black text-[#082B80]">
-              ðŸš€ Unlock the Full Adventure
+              Unlock the Full Adventure
             </h2>
             <p className="mt-3 max-w-xl text-base font-bold leading-7 text-[#5B6B94]">
               Register to access all learning worlds and 20+ premium activities.
@@ -681,4 +722,51 @@ function QuestionFlowPreview() {
       </div>
     </article>
   );
+}
+
+function CircleIcon({ className }: { className: string }) {
+  return <span className={`block h-12 w-12 rounded-full ${className} shadow-sm`} />;
+}
+
+function SquareIcon() {
+  return <span className="block h-12 w-12 rounded-xl bg-[#0B63F6] shadow-sm" />;
+}
+
+function TriangleIcon() {
+  return (
+    <span className="block h-0 w-0 border-x-[24px] border-b-[42px] border-x-transparent border-b-[#FF9F1C]" />
+  );
+}
+
+function StarIcon() {
+  return <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FFC83D] text-xl font-black text-[#082B80] shadow-sm">*</span>;
+}
+
+function CoinIcon() {
+  return <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FFB300] text-xs font-black text-[#082B80] shadow-sm">coin</span>;
+}
+
+function GemIcon() {
+  return <span className="block h-12 w-12 rotate-45 rounded-lg bg-[#8B5CF6] shadow-sm" />;
+}
+
+function FishIcon() {
+  return (
+    <span className="relative block h-10 w-16 rounded-full bg-[#14B8A6] shadow-sm">
+      <span className="absolute -right-2 top-2 h-0 w-0 border-y-[12px] border-l-[18px] border-y-transparent border-l-[#14B8A6]" />
+      <span className="absolute left-3 top-3 h-2 w-2 rounded-full bg-white" />
+    </span>
+  );
+}
+
+function SplashIcon() {
+  return <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#BAE6FD] text-xs font-black text-[#0B63F6]">splash</span>;
+}
+
+function TreasureIcon() {
+  return <span className="flex h-12 w-16 items-center justify-center rounded-xl bg-[#92400E] text-xs font-black text-white shadow-sm">box</span>;
+}
+
+function NumberToken({ value }: { value: string }) {
+  return <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-xl font-black text-[#082B80] shadow-sm">{value}</span>;
 }

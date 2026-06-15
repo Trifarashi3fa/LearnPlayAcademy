@@ -97,7 +97,7 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
                     Demo Game
                   </span>
                   <h1 className="mt-5 text-4xl font-black leading-tight sm:text-5xl">
-                    {game.coverIcon} {game.title}
+                    {game.title}
                   </h1>
                   <p className="mt-3 text-lg font-black text-[#0B63F6]">{game.topic}</p>
                   <p className="mt-4 max-w-3xl text-lg font-bold leading-8 text-[#5B6B94]">
@@ -137,8 +137,8 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
     return (
       <main className="bg-[#FFFDF7] px-5 py-12 text-[#082B80] lg:px-8">
         <section className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-[#DDE8F5] bg-white p-6 text-center shadow-playful md:p-8">
-          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#FFC83D] text-4xl animate-bounce">
-            ðŸ†
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#FFC83D] text-4xl font-black text-[#082B80]">
+            WIN
           </div>
           <h1 className="mt-5 text-4xl font-black sm:text-5xl">You finished the demo!</h1>
           <p className="mt-4 text-lg font-bold text-[#5B6B94]">
@@ -152,7 +152,7 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
           </div>
 
           <div className="mt-8 rounded-[1.5rem] bg-gradient-to-br from-[#EAF6FF] to-[#FFF3C4] p-6">
-            <p className="text-2xl font-black">ðŸš€ Unlock the Full Adventure</p>
+            <p className="text-2xl font-black">Unlock the Full Adventure</p>
             <p className="mt-2 text-base font-bold text-[#5B6B94]">
               Register to unlock full learning, progress tracking and more activities.
             </p>
@@ -193,7 +193,7 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
               <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <p className="text-sm font-black uppercase tracking-wide text-[#FF4FB8]">
-                    {game.coverIcon} {game.title}
+                    {game.title}
                   </p>
                   <h1 className="mt-2 text-3xl font-black sm:text-4xl">
                     Mission {questionIndex + 1}
@@ -220,14 +220,9 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
 
           <section className="relative mt-8 overflow-hidden rounded-[1.75rem] bg-[#FFF3C4] p-6" aria-live="polite">
             {celebrating ? <Celebration /> : null}
-            <div className="flex flex-wrap gap-2 text-3xl leading-relaxed sm:text-4xl">
+            <div className="flex flex-wrap gap-2 text-lg leading-relaxed">
               {currentQuestion?.visualPrompt.map((item, index) => (
-                <span
-                  key={`${currentQuestion.id}-${item}-${index}`}
-                  className="flex min-h-14 min-w-14 items-center justify-center rounded-2xl bg-white px-3 text-center font-black shadow-sm"
-                >
-                  {item}
-                </span>
+                <VisualChip key={`${currentQuestion.id}-${item}-${index}`} label={item} />
               ))}
             </div>
             <p className="mt-5 text-2xl font-black leading-tight sm:text-3xl">
@@ -314,14 +309,60 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
   );
 }
 
+function VisualChip({ label }: { label: string }) {
+  const lower = label.toLowerCase();
+
+  if (lower.includes("bird")) {
+    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-full bg-[#BAE6FD] px-3 text-xs font-black text-[#0B63F6]">bird</span>;
+  }
+
+  if (lower.includes("apple")) {
+    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-full bg-[#EF4444] px-3 text-xs font-black text-white">apple</span>;
+  }
+
+  if (lower.includes("fish")) {
+    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-full bg-[#14B8A6] px-3 text-xs font-black text-white">fish</span>;
+  }
+
+  if (lower.includes("star")) {
+    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-full bg-[#FFC83D] px-3 text-xs font-black text-[#082B80]">star</span>;
+  }
+
+  if (lower.includes("coin")) {
+    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-full bg-[#FFB300] px-3 text-xs font-black text-[#082B80]">coin</span>;
+  }
+
+  if (lower.includes("circle")) {
+    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-full bg-[#FFC83D] px-3 text-xs font-black text-[#082B80]">circle</span>;
+  }
+
+  if (lower.includes("triangle")) {
+    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-2xl bg-[#FF9F1C] px-3 text-xs font-black text-white">triangle</span>;
+  }
+
+  if (lower.includes("square")) {
+    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-xl bg-[#0B63F6] px-3 text-xs font-black text-white">square</span>;
+  }
+
+  if (lower.includes("rectangle")) {
+    return <span className="flex min-h-12 min-w-20 items-center justify-center rounded-xl bg-[#8B5CF6] px-3 text-xs font-black text-white">rectangle</span>;
+  }
+
+  return (
+    <span className="flex min-h-12 min-w-14 items-center justify-center rounded-2xl bg-white px-3 text-center text-base font-black text-[#082B80] shadow-sm">
+      {label}
+    </span>
+  );
+}
+
 function GameCover({ game }: { game: MathDemoGame }) {
   return (
     <div className={`relative min-h-64 overflow-hidden rounded-[2rem] bg-gradient-to-br ${game.worldClass} p-5 shadow-inner`}>
       <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/60" />
       <div className="absolute bottom-0 left-0 h-16 w-full rounded-t-[80%] bg-[#22C55E]/25" />
       <div className="relative">
-        <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-white text-5xl shadow-sm">
-          {game.coverIcon}
+        <div className="flex h-20 w-24 items-center justify-center rounded-3xl bg-white text-lg font-black text-[#082B80] shadow-sm">
+          {game.coverLabel}
         </div>
         <h2 className="mt-5 text-3xl font-black">{game.title}</h2>
         <p className="mt-2 text-base font-bold text-[#5B6B94]">{game.mascotMood}</p>
@@ -334,8 +375,8 @@ function MascotHelper({ mood }: { mood: string }) {
   return (
     <aside className="rounded-[1.5rem] bg-[#EEF7FF] p-5">
       <div className="flex items-center gap-4">
-        <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-white text-4xl shadow-sm">
-          ðŸ¤–
+        <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-white text-sm font-black text-[#0B63F6] shadow-sm">
+          BOT
         </div>
         <div>
           <p className="text-sm font-black uppercase text-[#5B6B94]">LearnBot Helper</p>
@@ -352,9 +393,9 @@ function MascotHelper({ mood }: { mood: string }) {
 function Celebration() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-      <span className="absolute left-8 top-4 animate-bounce text-3xl">â­</span>
-      <span className="absolute right-12 top-8 animate-ping text-2xl">âœ¨</span>
-      <span className="absolute bottom-6 left-1/2 animate-bounce text-3xl">ðŸŽ‰</span>
+      <span className="absolute left-8 top-4 animate-bounce rounded-full bg-[#FFC83D] px-3 py-2 text-sm font-black text-[#082B80]">STAR</span>
+      <span className="absolute right-12 top-8 animate-ping rounded-full bg-[#FF4FB8] px-3 py-2 text-sm font-black text-white">YES</span>
+      <span className="absolute bottom-6 left-1/2 animate-bounce rounded-full bg-[#22C55E] px-3 py-2 text-sm font-black text-white">WIN</span>
     </div>
   );
 }

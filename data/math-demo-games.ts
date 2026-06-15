@@ -18,7 +18,7 @@ export type MathDemoGame = {
   topic: string;
   description: string;
   yearLabel: string;
-  coverIcon: string;
+  coverLabel: string;
   mascotMood: string;
   accentClass: string;
   worldClass: string;
@@ -33,7 +33,7 @@ export const mathDemoGames: MathDemoGame[] = [
     topic: "Number recognition",
     description: "Find hidden numbers, compare values, and spot number patterns.",
     yearLabel: "Year 1 - 3",
-    coverIcon: "ðŸŒŸ",
+    coverLabel: "STAR",
     mascotMood: "Treasure Tracker",
     accentClass: "bg-[#0B63F6]",
     worldClass: "from-[#BEE8FF] via-[#EAF6FF] to-[#FFF3C4]",
@@ -52,7 +52,7 @@ export const mathDemoGames: MathDemoGame[] = [
         correctAnswer: "15",
         hint: "Count one step forward from 14.",
         stepByStep: ["Start at 14.", "Count one more.", "The next number is 15."],
-        visualExplanation: "14 â†’ 15",
+        visualExplanation: "14 -> 15",
         learnBotTip: "Counting forward means moving to the next number.",
         voiceLine: "What number comes after fourteen?",
         difficulty: "Level 1: Very Easy",
@@ -86,12 +86,12 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "number-hunt-4",
         question: "Count the fruit treasures. How many are there?",
-        visualPrompt: ["ðŸŽ", "ðŸŽ", "ðŸŽ", "ðŸŽ", "ðŸŒ", "ðŸŒ", "ðŸŒ"],
+        visualPrompt: ["apple", "apple", "apple", "apple", "+", "banana", "banana", "banana"],
         choices: ["5", "6", "7", "8"],
         correctAnswer: "7",
         hint: "Count every fruit, not only one kind.",
         stepByStep: ["There are 4 apples.", "There are 3 bananas.", "4 + 3 = 7."],
-        visualExplanation: "ðŸŽðŸŽðŸŽðŸŽ + ðŸŒðŸŒðŸŒ = 7 fruits",
+        visualExplanation: "4 apples + 3 bananas = 7 fruits",
         learnBotTip: "Counting all means putting every object together.",
         voiceLine: "How many fruits are there altogether?",
         difficulty: "Level 2: Easy",
@@ -117,7 +117,7 @@ export const mathDemoGames: MathDemoGame[] = [
     topic: "Addition",
     description: "Practice simple addition, counting on, and story sums.",
     yearLabel: "Year 1 - 3",
-    coverIcon: "ðŸŽ",
+    coverLabel: "APPLE",
     mascotMood: "Fruit Star Helper",
     accentClass: "bg-[#22C55E]",
     worldClass: "from-[#DCFCE7] via-[#EAF6FF] to-[#FFE7B8]",
@@ -131,12 +131,12 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "add-it-up-1",
         question: "How many birds altogether?",
-        visualPrompt: ["ðŸ¦", "ðŸ¦", "ðŸ¦", "ðŸ¦", "ðŸ¦", "+", "ðŸ¦", "ðŸ¦", "ðŸ¦"],
+        visualPrompt: ["bird", "bird", "bird", "bird", "bird", "+", "bird", "bird", "bird"],
         choices: ["6", "7", "8", "9"],
         correctAnswer: "8",
         hint: "Put the two bird groups together.",
         stepByStep: ["Count the first group: 5 birds.", "Count the second group: 3 birds.", "5 + 3 = 8."],
-        visualExplanation: "ðŸ¦ðŸ¦ðŸ¦ðŸ¦ðŸ¦ + ðŸ¦ðŸ¦ðŸ¦ = 8 birds",
+        visualExplanation: "5 birds + 3 birds = 8 birds",
         learnBotTip: "Adding means putting groups together.",
         voiceLine: "Five birds plus three birds. How many birds altogether?",
         difficulty: "Level 1: Very Easy",
@@ -144,7 +144,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "add-it-up-2",
         question: "Lina has 6 stickers. She gets 2 more. How many stickers now?",
-        visualPrompt: ["â­", "â­", "â­", "â­", "â­", "â­", "+", "â­", "â­"],
+        visualPrompt: ["star", "star", "star", "star", "star", "star", "+", "star", "star"],
         choices: ["7", "8", "9", "10"],
         correctAnswer: "8",
         hint: "Add 2 to 6.",
@@ -157,7 +157,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "add-it-up-3",
         question: "How many apples are there altogether?",
-        visualPrompt: ["ðŸŽ", "ðŸŽ", "ðŸŽ", "ðŸŽ", "ðŸŽ", "ðŸŽ", "ðŸŽ", "ðŸŽ", "ðŸŽ", "+", "ðŸ", "ðŸ", "ðŸ", "ðŸ", "ðŸ"],
+        visualPrompt: ["apple", "apple", "apple", "apple", "apple", "apple", "apple", "apple", "apple", "+", "apple", "apple", "apple", "apple", "apple"],
         choices: ["12", "13", "14", "15"],
         correctAnswer: "14",
         hint: "Count on 5 from 9.",
@@ -170,7 +170,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "add-it-up-4",
         question: "10 birds are in a tree. 4 more land. How many birds are there?",
-        visualPrompt: ["ðŸŒ³", "ðŸ¦", "ðŸ¦", "ðŸ¦", "ðŸ¦", "ðŸ¦", "ðŸ¦", "ðŸ¦", "ðŸ¦", "ðŸ¦", "ðŸ¦", "+", "ðŸ¦", "ðŸ¦", "ðŸ¦", "ðŸ¦"],
+        visualPrompt: ["tree", "bird 10", "+", "bird", "bird", "bird", "bird"],
         choices: ["12", "13", "14", "15"],
         correctAnswer: "14",
         hint: "Combine 10 and 4.",
@@ -183,7 +183,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "add-it-up-5",
         question: "Collect 15 coins, then collect 3 more. How many coins now?",
-        visualPrompt: ["ðŸª™", "15", "+", "ðŸª™", "3"],
+        visualPrompt: ["coin 15", "+", "coin", "coin", "coin"],
         choices: ["16", "17", "18", "19"],
         correctAnswer: "18",
         hint: "Count 3 steps after 15.",
@@ -201,7 +201,7 @@ export const mathDemoGames: MathDemoGame[] = [
     topic: "Subtraction",
     description: "Take away, count backwards, and solve subtraction stories.",
     yearLabel: "Year 1 - 3",
-    coverIcon: "ðŸŸ",
+    coverLabel: "FISH",
     mascotMood: "Ocean Number Guide",
     accentClass: "bg-[#14B8A6]",
     worldClass: "from-[#A7F3D0] via-[#BAE6FD] to-[#EAF6FF]",
@@ -215,7 +215,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "subtraction-splash-1",
         question: "8 fish are swimming. 3 splash away. How many are left?",
-        visualPrompt: ["ðŸŸ", "ðŸŸ", "ðŸŸ", "ðŸŸ", "ðŸŸ", "ðŸŸ", "ðŸŸ", "ðŸŸ", "-", "ðŸ’¦", "ðŸ’¦", "ðŸ’¦"],
+        visualPrompt: ["fish", "fish", "fish", "fish", "fish", "fish", "fish", "fish", "-", "splash 3"],
         choices: ["4", "5", "6", "7"],
         correctAnswer: "5",
         hint: "Start at 8 and take away 3.",
@@ -228,7 +228,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "subtraction-splash-2",
         question: "There are 10 fish. 4 swim away. How many are left?",
-        visualPrompt: ["ðŸ ", "10", "-", "ðŸ ", "4"],
+        visualPrompt: ["fish 10", "-", "fish 4"],
         choices: ["4", "5", "6", "7"],
         correctAnswer: "6",
         hint: "Take 4 away from 10.",
@@ -241,7 +241,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "subtraction-splash-3",
         question: "What is 15 - 5?",
-        visualPrompt: ["ðŸ«§", "15", "-", "5"],
+        visualPrompt: ["bubble 15", "-", "5"],
         choices: ["8", "9", "10", "11"],
         correctAnswer: "10",
         hint: "Take away 5 from 15.",
@@ -267,7 +267,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "subtraction-splash-5",
         question: "Sara has 18 shells. She gives away 6. How many shells remain?",
-        visualPrompt: ["ðŸš", "18", "-", "ðŸš", "6"],
+        visualPrompt: ["shell 18", "-", "shell 6"],
         choices: ["10", "11", "12", "13"],
         correctAnswer: "12",
         hint: "Subtract 6 from 18.",
@@ -285,7 +285,7 @@ export const mathDemoGames: MathDemoGame[] = [
     topic: "Shapes",
     description: "Recognize shapes, sides, corners, and simple shape patterns.",
     yearLabel: "Year 1 - 3",
-    coverIcon: "ðŸ”º",
+    coverLabel: "SHAPE",
     mascotMood: "Pattern Pal",
     accentClass: "bg-[#8B5CF6]",
     worldClass: "from-[#EDE9FE] via-[#FCE7F3] to-[#EAF6FF]",
@@ -299,7 +299,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "shape-match-1",
         question: "Which shape has 3 sides?",
-        visualPrompt: ["ðŸ”º", "ðŸŸ¦", "ðŸŸ¡", "â–­"],
+        visualPrompt: ["triangle", "square", "circle", "rectangle"],
         choices: ["Circle", "Square", "Triangle", "Rectangle"],
         correctAnswer: "Triangle",
         hint: "Tri means three.",
@@ -312,7 +312,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "shape-match-2",
         question: "How many corners does a square have?",
-        visualPrompt: ["ðŸŸ¦", "corner", "corner", "corner", "corner"],
+        visualPrompt: ["square", "corner", "corner", "corner", "corner"],
         choices: ["2", "3", "4", "5"],
         correctAnswer: "4",
         hint: "A square has four equal sides.",
@@ -325,7 +325,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "shape-match-3",
         question: "Which shape has no corners?",
-        visualPrompt: ["ðŸ”º", "ðŸŸ¡", "ðŸŸ¦", "â–­"],
+        visualPrompt: ["triangle", "circle", "square", "rectangle"],
         choices: ["Triangle", "Circle", "Square", "Rectangle"],
         correctAnswer: "Circle",
         hint: "Look for the round shape.",
@@ -338,7 +338,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "shape-match-4",
         question: "What comes next? Circle, Square, Circle, Square, __",
-        visualPrompt: ["ðŸŸ¡", "ðŸŸ¦", "ðŸŸ¡", "ðŸŸ¦", "?"],
+        visualPrompt: ["circle", "square", "circle", "square", "?"],
         choices: ["Circle", "Triangle", "Rectangle", "Star"],
         correctAnswer: "Circle",
         hint: "The pattern repeats circle then square.",
@@ -351,7 +351,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "shape-match-5",
         question: "Which shape usually has 2 long sides and 2 short sides?",
-        visualPrompt: ["ðŸŸ¡", "ðŸ”º", "â–­", "â­"],
+        visualPrompt: ["circle", "triangle", "rectangle", "star"],
         choices: ["Circle", "Triangle", "Rectangle", "Oval"],
         correctAnswer: "Rectangle",
         hint: "It has 4 corners like a square, but not all sides are equal.",
@@ -369,7 +369,7 @@ export const mathDemoGames: MathDemoGame[] = [
     topic: "Counting",
     description: "Count objects, compare groups, skip count, and find simple totals.",
     yearLabel: "Year 1 - 3",
-    coverIcon: "â­",
+    coverLabel: "COINS",
     mascotMood: "Reward Ranger",
     accentClass: "bg-[#FF9F1C]",
     worldClass: "from-[#FFE8B5] via-[#FFF3C4] to-[#EAF6FF]",
@@ -383,7 +383,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "count-and-collect-1",
         question: "How many balls are there altogether?",
-        visualPrompt: ["ðŸ”´", "ðŸ”´", "ðŸ”´", "ðŸ”´", "ðŸ”´", "ðŸ”´", "+", "ðŸ”µ", "ðŸ”µ"],
+        visualPrompt: ["red ball", "red ball", "red ball", "red ball", "red ball", "red ball", "+", "blue ball", "blue ball"],
         choices: ["6", "7", "8", "9"],
         correctAnswer: "8",
         hint: "Count both colors together.",
@@ -396,7 +396,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "count-and-collect-2",
         question: "Which group has more coins?",
-        visualPrompt: ["ðŸª™ 9", "ðŸª™ 12"],
+        visualPrompt: ["9 coins", "12 coins"],
         choices: ["9 coins", "12 coins", "They are equal", "None"],
         correctAnswer: "12 coins",
         hint: "The bigger number means more objects.",
@@ -422,7 +422,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "count-and-collect-4",
         question: "There are 3 boxes with 5 pencils in each box. How many pencils?",
-        visualPrompt: ["ðŸ“¦ 5", "ðŸ“¦ 5", "ðŸ“¦ 5"],
+        visualPrompt: ["box 5", "box 5", "box 5"],
         choices: ["10", "12", "15", "20"],
         correctAnswer: "15",
         hint: "Count 5 three times.",
@@ -435,7 +435,7 @@ export const mathDemoGames: MathDemoGame[] = [
       {
         id: "count-and-collect-5",
         question: "Which is less: 14 stars or 11 stars?",
-        visualPrompt: ["â­ 14", "â­ 11"],
+        visualPrompt: ["14 stars", "11 stars"],
         choices: ["14 stars", "11 stars", "Both", "Neither"],
         correctAnswer: "11 stars",
         hint: "Less means the smaller group.",

@@ -8,9 +8,8 @@ export type MathGame = {
   rating: number;
   accentClass: string;
   thumbnailClass: string;
-  coverIcon: string;
+  coverLabel: string;
   coverTitle: string;
-  coverItems: string[];
   href: string;
 };
 
@@ -42,9 +41,8 @@ export const mathGames: MathGame[] = [
     rating: 4,
     accentClass: "bg-[#0B63F6]",
     thumbnailClass: "from-[#BEE8FF] via-[#EAF6FF] to-[#FFF3C4]",
-    coverIcon: "ðŸŒŸ",
+    coverLabel: "STAR",
     coverTitle: "Treasure Number Hunt",
-    coverItems: ["7", "12", "â­", "ðŸ’Ž", "3"],
     href: "/games/demo/number-hunt",
   },
   {
@@ -57,9 +55,8 @@ export const mathGames: MathGame[] = [
     rating: 5,
     accentClass: "bg-[#22C55E]",
     thumbnailClass: "from-[#DCFCE7] via-[#EAF6FF] to-[#FFE7B8]",
-    coverIcon: "ðŸŽ",
+    coverLabel: "APPLE",
     coverTitle: "Fruit Addition",
-    coverItems: ["ðŸŽ", "+", "ðŸ", "=", "â­"],
     href: "/games/demo/add-it-up",
   },
   {
@@ -72,9 +69,8 @@ export const mathGames: MathGame[] = [
     rating: 4,
     accentClass: "bg-[#14B8A6]",
     thumbnailClass: "from-[#A7F3D0] via-[#BAE6FD] to-[#EAF6FF]",
-    coverIcon: "ðŸŸ",
+    coverLabel: "FISH",
     coverTitle: "Ocean Splash",
-    coverItems: ["ðŸŸ", "ðŸ’§", "-", "ðŸ ", "â­"],
     href: "/games/demo/subtraction-splash",
   },
   {
@@ -87,9 +83,8 @@ export const mathGames: MathGame[] = [
     rating: 4,
     accentClass: "bg-[#8B5CF6]",
     thumbnailClass: "from-[#EDE9FE] via-[#FCE7F3] to-[#EAF6FF]",
-    coverIcon: "ðŸ”º",
+    coverLabel: "SHAPE",
     coverTitle: "Shape Explorer",
-    coverItems: ["ðŸ”º", "ðŸŸ¦", "ðŸŸ¡", "ðŸŸ©", "â­"],
     href: "/games/demo/shape-match",
   },
   {
@@ -102,9 +97,8 @@ export const mathGames: MathGame[] = [
     rating: 5,
     accentClass: "bg-[#FF9F1C]",
     thumbnailClass: "from-[#FFE8B5] via-[#FFF3C4] to-[#EAF6FF]",
-    coverIcon: "â­",
+    coverLabel: "COINS",
     coverTitle: "Reward Collector",
-    coverItems: ["ðŸª™", "ðŸ’Ž", "â­", "ðŸª™", "ðŸ†"],
     href: "/games/demo/count-and-collect",
   },
 ];
