@@ -53,13 +53,13 @@ export async function generateMetadata({
 
   if (subject.slug === "mathematics") {
     return {
-      title: "Mathematics",
+      title: "LearnPlay Mathematics | LearnPlay Academy",
       description:
-        "A playful LearnPlay Academy mathematics adventure for Year 1 to Year 6 learners, with demo games, levels, rewards, and progress previews.",
+        "LearnPlay Mathematics premium learning adventure for Year 1 to Year 6 students, with learning worlds, activities, stars, badges, progress, and explanation notes.",
       openGraph: {
-        title: "Learn Math. Play. Grow. Shine!",
+        title: "LearnPlay Mathematics",
         description:
-          "Fun math games for Year 1 to Year 6. Start your learning adventure today.",
+          "Learn, play, and master mathematics through worlds, activities, games, progress, stars, and badges.",
       },
     };
   }
