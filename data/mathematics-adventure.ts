@@ -8,8 +8,8 @@ export type MathGame = {
   rating: number;
   accentClass: string;
   thumbnailClass: string;
-  coverLabel: string;
-  coverTitle: string;
+  imageSrc: string;
+  imageAlt: string;
   href: string;
 };
 
@@ -41,8 +41,8 @@ export const mathGames: MathGame[] = [
     rating: 4,
     accentClass: "bg-[#0B63F6]",
     thumbnailClass: "from-[#BEE8FF] via-[#EAF6FF] to-[#FFF3C4]",
-    coverLabel: "STAR",
-    coverTitle: "Treasure Number Hunt",
+    imageSrc: "/assets/math/number-hunt.png",
+    imageAlt: "Number Hunt treasure chest game cover",
     href: "/games/demo/number-hunt",
   },
   {
@@ -55,8 +55,8 @@ export const mathGames: MathGame[] = [
     rating: 5,
     accentClass: "bg-[#22C55E]",
     thumbnailClass: "from-[#DCFCE7] via-[#EAF6FF] to-[#FFE7B8]",
-    coverLabel: "APPLE",
-    coverTitle: "Fruit Addition",
+    imageSrc: "/assets/math/add-it-up.png",
+    imageAlt: "Add It Up apple addition game cover",
     href: "/games/demo/add-it-up",
   },
   {
@@ -69,8 +69,8 @@ export const mathGames: MathGame[] = [
     rating: 4,
     accentClass: "bg-[#14B8A6]",
     thumbnailClass: "from-[#A7F3D0] via-[#BAE6FD] to-[#EAF6FF]",
-    coverLabel: "FISH",
-    coverTitle: "Ocean Splash",
+    imageSrc: "/assets/math/subtraction-splash.png",
+    imageAlt: "Subtraction Splash fish subtraction game cover",
     href: "/games/demo/subtraction-splash",
   },
   {
@@ -83,8 +83,8 @@ export const mathGames: MathGame[] = [
     rating: 4,
     accentClass: "bg-[#8B5CF6]",
     thumbnailClass: "from-[#EDE9FE] via-[#FCE7F3] to-[#EAF6FF]",
-    coverLabel: "SHAPE",
-    coverTitle: "Shape Explorer",
+    imageSrc: "/assets/math/shape-match.png",
+    imageAlt: "Shape Match colorful shape game cover",
     href: "/games/demo/shape-match",
   },
   {
@@ -97,8 +97,8 @@ export const mathGames: MathGame[] = [
     rating: 5,
     accentClass: "bg-[#FF9F1C]",
     thumbnailClass: "from-[#FFE8B5] via-[#FFF3C4] to-[#EAF6FF]",
-    coverLabel: "COINS",
-    coverTitle: "Reward Collector",
+    imageSrc: "/assets/math/count-and-collect.png",
+    imageAlt: "Count and Collect coin and star game cover",
     href: "/games/demo/count-and-collect",
   },
 ];

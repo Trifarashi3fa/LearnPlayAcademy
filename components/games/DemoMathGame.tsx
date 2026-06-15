@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useMemo, useState } from "react";
 import { Button } from "@/components/Button";
 import type { MathDemoGame } from "@/data/math-demo-games";
@@ -357,20 +358,18 @@ function VisualChip({ label }: { label: string }) {
 
 function GameCover({ game }: { game: MathDemoGame }) {
   return (
-    <div className={`relative min-h-64 overflow-hidden rounded-[2rem] bg-gradient-to-br ${game.worldClass} p-5 shadow-inner`}>
-      <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/60" />
-      <div className="absolute bottom-0 left-0 h-16 w-full rounded-t-[80%] bg-[#22C55E]/25" />
-      <div className="relative">
-        <div className="flex h-20 w-24 items-center justify-center rounded-3xl bg-white text-lg font-black text-[#082B80] shadow-sm">
-          {game.coverLabel}
-        </div>
-        <h2 className="mt-5 text-3xl font-black">{game.title}</h2>
-        <p className="mt-2 text-base font-bold text-[#5B6B94]">{game.mascotMood}</p>
-      </div>
+    <div className="relative min-h-72 overflow-hidden rounded-[2rem] bg-white shadow-inner">
+      <Image
+        src={game.imageSrc}
+        alt={game.imageAlt}
+        fill
+        sizes="(min-width: 1024px) 420px, 90vw"
+        className="object-cover"
+        priority
+      />
     </div>
   );
 }
-
 function MascotHelper({ mood }: { mood: string }) {
   return (
     <aside className="rounded-[1.5rem] bg-[#EEF7FF] p-5">

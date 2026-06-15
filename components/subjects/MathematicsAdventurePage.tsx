@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Button } from "@/components/Button";
 import {
   guestHowItWorks,
@@ -370,74 +371,17 @@ function HeroCharacter({ label, colorClass }: { label: string; colorClass: strin
 
 function GameThumbnail({ game }: { game: MathGame }) {
   return (
-    <div
-      role="img"
-      aria-label={`${game.title} mini game cover`}
-      className={`relative h-40 overflow-hidden rounded-[1.5rem] bg-gradient-to-br ${game.thumbnailClass} p-4 shadow-inner`}
-    >
-      <div className="absolute inset-x-0 bottom-0 h-14 rounded-t-[80%] bg-[#22C55E]/25" />
-      <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/60" />
-      <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-black text-[#0B63F6]">
-        {game.coverTitle}
-      </div>
-      <GameCoverArt gameId={game.id} />
-      <div className="absolute bottom-5 left-4 rounded-2xl bg-white/95 px-3 py-2 text-xs font-black text-[#082B80] shadow-sm">
-        {game.coverLabel}
-      </div>
+    <div className="relative h-44 overflow-hidden rounded-[1.5rem] bg-white shadow-inner">
+      <Image
+        src={game.imageSrc}
+        alt={game.imageAlt}
+        fill
+        sizes="(min-width: 1024px) 220px, (min-width: 640px) 45vw, 90vw"
+        className="object-cover"
+      />
     </div>
   );
 }
-
-function GameCoverArt({ gameId }: { gameId: string }) {
-  if (gameId === "add-it-up") {
-    return (
-      <div className="absolute bottom-5 right-4 flex items-end gap-2">
-        <CircleIcon className="bg-[#EF4444]" />
-        <span className="pb-3 text-2xl font-black text-[#082B80]">+</span>
-        <CircleIcon className="bg-[#22C55E]" />
-      </div>
-    );
-  }
-
-  if (gameId === "subtraction-splash") {
-    return (
-      <div className="absolute bottom-5 right-4 flex items-center gap-2">
-        <FishIcon />
-        <span className="text-2xl font-black text-[#082B80]">-</span>
-        <SplashIcon />
-      </div>
-    );
-  }
-
-  if (gameId === "shape-match") {
-    return (
-      <div className="absolute bottom-5 right-4 flex items-end gap-2">
-        <TriangleIcon />
-        <CircleIcon className="bg-[#FFC83D]" />
-        <SquareIcon />
-      </div>
-    );
-  }
-
-  if (gameId === "count-collect") {
-    return (
-      <div className="absolute bottom-5 right-4 flex items-center gap-2">
-        <CoinIcon />
-        <GemIcon />
-        <StarIcon />
-      </div>
-    );
-  }
-
-  return (
-    <div className="absolute bottom-5 right-4 flex items-center gap-2">
-      <StarIcon />
-      <NumberToken value="7" />
-      <TreasureIcon />
-    </div>
-  );
-}
-
 function StarRating({ value }: { value: number }) {
   return (
     <div className="flex gap-1 text-[#FFC83D]" aria-label={`${value} star rating`}>
@@ -724,49 +668,3 @@ function QuestionFlowPreview() {
   );
 }
 
-function CircleIcon({ className }: { className: string }) {
-  return <span className={`block h-12 w-12 rounded-full ${className} shadow-sm`} />;
-}
-
-function SquareIcon() {
-  return <span className="block h-12 w-12 rounded-xl bg-[#0B63F6] shadow-sm" />;
-}
-
-function TriangleIcon() {
-  return (
-    <span className="block h-0 w-0 border-x-[24px] border-b-[42px] border-x-transparent border-b-[#FF9F1C]" />
-  );
-}
-
-function StarIcon() {
-  return <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FFC83D] text-xl font-black text-[#082B80] shadow-sm">*</span>;
-}
-
-function CoinIcon() {
-  return <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#FFB300] text-xs font-black text-[#082B80] shadow-sm">coin</span>;
-}
-
-function GemIcon() {
-  return <span className="block h-12 w-12 rotate-45 rounded-lg bg-[#8B5CF6] shadow-sm" />;
-}
-
-function FishIcon() {
-  return (
-    <span className="relative block h-10 w-16 rounded-full bg-[#14B8A6] shadow-sm">
-      <span className="absolute -right-2 top-2 h-0 w-0 border-y-[12px] border-l-[18px] border-y-transparent border-l-[#14B8A6]" />
-      <span className="absolute left-3 top-3 h-2 w-2 rounded-full bg-white" />
-    </span>
-  );
-}
-
-function SplashIcon() {
-  return <span className="flex h-12 w-12 items-center justify-center rounded-full bg-[#BAE6FD] text-xs font-black text-[#0B63F6]">splash</span>;
-}
-
-function TreasureIcon() {
-  return <span className="flex h-12 w-16 items-center justify-center rounded-xl bg-[#92400E] text-xs font-black text-white shadow-sm">box</span>;
-}
-
-function NumberToken({ value }: { value: string }) {
-  return <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-xl font-black text-[#082B80] shadow-sm">{value}</span>;
-}

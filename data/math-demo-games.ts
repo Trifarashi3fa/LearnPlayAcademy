@@ -19,6 +19,8 @@ export type MathDemoGame = {
   description: string;
   yearLabel: string;
   coverLabel: string;
+  imageSrc: string;
+  imageAlt: string;
   mascotMood: string;
   accentClass: string;
   worldClass: string;
@@ -34,6 +36,8 @@ export const mathDemoGames: MathDemoGame[] = [
     description: "Find hidden numbers, compare values, and spot number patterns.",
     yearLabel: "Year 1 - 3",
     coverLabel: "STAR",
+    imageSrc: "/assets/math/number-hunt.png",
+    imageAlt: "Number Hunt treasure chest game cover",
     mascotMood: "Treasure Tracker",
     accentClass: "bg-[#0B63F6]",
     worldClass: "from-[#BEE8FF] via-[#EAF6FF] to-[#FFF3C4]",
@@ -118,6 +122,8 @@ export const mathDemoGames: MathDemoGame[] = [
     description: "Practice simple addition, counting on, and story sums.",
     yearLabel: "Year 1 - 3",
     coverLabel: "APPLE",
+    imageSrc: "/assets/math/add-it-up.png",
+    imageAlt: "Add It Up apple addition game cover",
     mascotMood: "Fruit Star Helper",
     accentClass: "bg-[#22C55E]",
     worldClass: "from-[#DCFCE7] via-[#EAF6FF] to-[#FFE7B8]",
@@ -202,6 +208,8 @@ export const mathDemoGames: MathDemoGame[] = [
     description: "Take away, count backwards, and solve subtraction stories.",
     yearLabel: "Year 1 - 3",
     coverLabel: "FISH",
+    imageSrc: "/assets/math/subtraction-splash.png",
+    imageAlt: "Subtraction Splash fish subtraction game cover",
     mascotMood: "Ocean Number Guide",
     accentClass: "bg-[#14B8A6]",
     worldClass: "from-[#A7F3D0] via-[#BAE6FD] to-[#EAF6FF]",
@@ -286,6 +294,8 @@ export const mathDemoGames: MathDemoGame[] = [
     description: "Recognize shapes, sides, corners, and simple shape patterns.",
     yearLabel: "Year 1 - 3",
     coverLabel: "SHAPE",
+    imageSrc: "/assets/math/shape-match.png",
+    imageAlt: "Shape Match colorful shape game cover",
     mascotMood: "Pattern Pal",
     accentClass: "bg-[#8B5CF6]",
     worldClass: "from-[#EDE9FE] via-[#FCE7F3] to-[#EAF6FF]",
@@ -370,6 +380,8 @@ export const mathDemoGames: MathDemoGame[] = [
     description: "Count objects, compare groups, skip count, and find simple totals.",
     yearLabel: "Year 1 - 3",
     coverLabel: "COINS",
+    imageSrc: "/assets/math/count-and-collect.png",
+    imageAlt: "Count and Collect coin and star game cover",
     mascotMood: "Reward Ranger",
     accentClass: "bg-[#FF9F1C]",
     worldClass: "from-[#FFE8B5] via-[#FFF3C4] to-[#EAF6FF]",
