@@ -10,7 +10,7 @@ export function SiteShell({ children }: SiteShellProps) {
   return (
     <>
       <Navbar />
-      <main>{children}</main>
+      {children}
       <Footer />
     </>
   );

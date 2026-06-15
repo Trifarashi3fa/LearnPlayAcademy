@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
 import { PageLayout, PageSection } from "@/components/PageLayout";
+import { MathematicsAdventurePage } from "@/components/subjects/MathematicsAdventurePage";
 import { typography } from "@/components/theme";
 import {
   difficultyLevels,
@@ -11,9 +12,21 @@ import {
   type DifficultyLevel,
   type SubjectTopic,
 } from "@/data/subject-pathways";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
+import { createClient } from "@/lib/supabase/server";
 
 type SubjectDetailPageProps = {
   params: Promise<{ subject: string }>;
+};
+
+type MathViewer = {
+  isRegistered: boolean;
+  studentName: string;
+};
+
+type ProfileRow = {
+  display_name: string | null;
+  student_name: string | null;
 };
 
 const levelTone: Record<DifficultyLevel, "blue" | "yellow" | "purple"> = {
@@ -38,6 +51,19 @@ export async function generateMetadata({
     return { title: "Subject" };
   }
 
+  if (subject.slug === "mathematics") {
+    return {
+      title: "Mathematics",
+      description:
+        "A playful LearnPlay Academy mathematics adventure for Year 1 to Year 6 learners, with demo games, levels, rewards, and progress previews.",
+      openGraph: {
+        title: "Learn Math. Play. Grow. Shine!",
+        description:
+          "Fun math games for Year 1 to Year 6. Start your learning adventure today.",
+      },
+    };
+  }
+
   return {
     title: subject.title,
     description: `${subject.title} pathway with Beginner, Intermediate, and Advanced topics, games, quizzes, and assessments.`,
@@ -48,12 +74,57 @@ export async function generateMetadata({
   };
 }
 
+async function getMathViewer(): Promise<MathViewer> {
+  if (!isSupabaseConfigured()) {
+    return { isRegistered: false, studentName: "Alex" };
+  }
+
+  try {
+    const supabase = await createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      return { isRegistered: false, studentName: "Alex" };
+    }
+
+    const { data: profile } = await supabase
+      .from("profiles")
+      .select("display_name,student_name")
+      .eq("id", user.id)
+      .maybeSingle<ProfileRow>();
+
+    return {
+      isRegistered: true,
+      studentName:
+        profile?.student_name ??
+        profile?.display_name ??
+        user.email?.split("@")[0] ??
+        "Alex",
+    };
+  } catch {
+    return { isRegistered: false, studentName: "Alex" };
+  }
+}
+
 export default async function SubjectDetailPage({ params }: SubjectDetailPageProps) {
   const { subject: subjectSlug } = await params;
   const subject = getSubjectPathway(subjectSlug);
 
   if (!subject) {
     notFound();
+  }
+
+  if (subject.slug === "mathematics") {
+    const mathViewer = await getMathViewer();
+
+    return (
+      <MathematicsAdventurePage
+        isRegistered={mathViewer.isRegistered}
+        studentName={mathViewer.studentName}
+      />
+    );
   }
 
   return (
@@ -130,7 +201,7 @@ function TopicCard({
       }`}>
         {topic.level}
       </span>
-      <h3 className={`${typography.h3} mt-4`}>{topic.name}</h3>
+      <h2 className={`${typography.h3} mt-4`}>{topic.name}</h2>
 
       <div className="mt-5 grid grid-cols-3 gap-3 text-center">
         <Stat label="Games" value={topic.games} />
