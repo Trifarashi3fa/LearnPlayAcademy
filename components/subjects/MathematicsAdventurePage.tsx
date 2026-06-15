@@ -256,7 +256,7 @@ function RegisteredMathExperience({ studentName }: { studentName: string }) {
               Practice addition facts and earn more stars.
             </p>
             <div className="mt-5">
-              <Button href="/games/math-quiz-battle" variant="blue">
+              <Button href="/games/demo/add-it-up" variant="blue">
                 Continue Learning
               </Button>
             </div>
@@ -361,7 +361,7 @@ function MathHeroScene() {
           <HeroCharacter label="Helper" colorClass="bg-[#8B5CF6]" />
         </div>
         <div className="mt-5 grid grid-cols-4 gap-3">
-          {["â˜…", "7", "+", "="].map((symbol) => (
+          {["Ã¢Ëœâ€¦", "7", "+", "="].map((symbol) => (
             <span
               key={symbol}
               className="flex h-12 items-center justify-center rounded-2xl bg-white text-2xl font-black text-[#082B80] shadow-sm"
@@ -501,7 +501,7 @@ function RegisteredLevelCard({ level }: { level: MathLevel }) {
       <div className="mt-4 flex gap-1 text-[#FFC83D]" aria-label={`${level.stars} stars`}>
         {[1, 2, 3].map((star) => (
           <span key={star} className={star <= level.stars ? "opacity-100" : "opacity-25"}>
-            â˜…
+            Ã¢Ëœâ€¦
           </span>
         ))}
       </div>

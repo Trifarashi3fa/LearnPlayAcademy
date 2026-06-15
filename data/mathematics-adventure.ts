@@ -37,7 +37,7 @@ export const mathGames: MathGame[] = [
     accentClass: "bg-[#0B63F6]",
     thumbnailClass: "from-[#EAF6FF] via-[#D7F0FF] to-[#FFF3C4]",
     symbols: ["1", "2", "3", "+"],
-    href: "/games/math-quiz-battle",
+    href: "/games/demo/number-hunt",
   },
   {
     id: "add-it-up",
@@ -48,7 +48,7 @@ export const mathGames: MathGame[] = [
     accentClass: "bg-[#22C55E]",
     thumbnailClass: "from-[#ECFDF5] via-[#D9F99D] to-[#EAF6FF]",
     symbols: ["+", "5", "8", "="],
-    href: "/games/math-quiz-battle",
+    href: "/games/demo/add-it-up",
   },
   {
     id: "subtraction-splash",
@@ -59,7 +59,7 @@ export const mathGames: MathGame[] = [
     accentClass: "bg-[#14B8A6]",
     thumbnailClass: "from-[#CCFBF1] via-[#EAF6FF] to-[#DBEAFE]",
     symbols: ["-", "9", "4", "="],
-    href: "/games/math-quiz-battle",
+    href: "/games/demo/subtraction-splash",
   },
   {
     id: "shape-match",
@@ -69,8 +69,8 @@ export const mathGames: MathGame[] = [
     badge: "DEMO",
     accentClass: "bg-[#8B5CF6]",
     thumbnailClass: "from-[#F3E8FF] via-[#EDE9FE] to-[#EAF6FF]",
-    symbols: ["â–³", "â–¡", "â—‹", "="],
-    href: "/games/math-quiz-battle",
+    symbols: ["Ã¢â€“Â³", "Ã¢â€“Â¡", "Ã¢â€”â€¹", "="],
+    href: "/games/demo/shape-match",
   },
   {
     id: "count-collect",
@@ -80,8 +80,8 @@ export const mathGames: MathGame[] = [
     badge: "DEMO",
     accentClass: "bg-[#FF9F1C]",
     thumbnailClass: "from-[#FFF7ED] via-[#FFE8B5] to-[#EAF6FF]",
-    symbols: ["10", "â˜…", "=", "+"],
-    href: "/games/math-quiz-battle",
+    symbols: ["10", "Ã¢Ëœâ€¦", "=", "+"],
+    href: "/games/demo/count-and-collect",
   },
 ];
 
