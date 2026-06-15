@@ -4,9 +4,13 @@ export type MathGame = {
   description: string;
   yearLabel: string;
   badge: string;
+  difficulty: string;
+  rating: number;
   accentClass: string;
   thumbnailClass: string;
-  symbols: string[];
+  coverIcon: string;
+  coverTitle: string;
+  coverItems: string[];
   href: string;
 };
 
@@ -31,56 +35,76 @@ export const mathGames: MathGame[] = [
   {
     id: "number-hunt",
     title: "Number Hunt",
-    description: "Find hidden numbers, compare values, and build early number confidence.",
+    description: "Find hidden numbers and complete number missions.",
     yearLabel: "Year 1 - 3",
     badge: "DEMO",
+    difficulty: "Very Easy",
+    rating: 4,
     accentClass: "bg-[#0B63F6]",
-    thumbnailClass: "from-[#EAF6FF] via-[#D7F0FF] to-[#FFF3C4]",
-    symbols: ["1", "2", "3", "+"],
+    thumbnailClass: "from-[#BEE8FF] via-[#EAF6FF] to-[#FFF3C4]",
+    coverIcon: "ðŸŒŸ",
+    coverTitle: "Treasure Number Hunt",
+    coverItems: ["7", "12", "â­", "ðŸ’Ž", "3"],
     href: "/games/demo/number-hunt",
   },
   {
     id: "add-it-up",
     title: "Add It Up",
-    description: "Solve bright addition rounds and collect stars for quick thinking.",
+    description: "Solve fun additions and earn stars.",
     yearLabel: "Year 1 - 3",
     badge: "DEMO",
+    difficulty: "Easy",
+    rating: 5,
     accentClass: "bg-[#22C55E]",
-    thumbnailClass: "from-[#ECFDF5] via-[#D9F99D] to-[#EAF6FF]",
-    symbols: ["+", "5", "8", "="],
+    thumbnailClass: "from-[#DCFCE7] via-[#EAF6FF] to-[#FFE7B8]",
+    coverIcon: "ðŸŽ",
+    coverTitle: "Fruit Addition",
+    coverItems: ["ðŸŽ", "+", "ðŸ", "=", "â­"],
     href: "/games/demo/add-it-up",
   },
   {
     id: "subtraction-splash",
     title: "Subtraction Splash",
-    description: "Splash away numbers and practice taking away with friendly feedback.",
+    description: "Splash away numbers and practice subtraction.",
     yearLabel: "Year 1 - 3",
     badge: "DEMO",
+    difficulty: "Easy",
+    rating: 4,
     accentClass: "bg-[#14B8A6]",
-    thumbnailClass: "from-[#CCFBF1] via-[#EAF6FF] to-[#DBEAFE]",
-    symbols: ["-", "9", "4", "="],
+    thumbnailClass: "from-[#A7F3D0] via-[#BAE6FD] to-[#EAF6FF]",
+    coverIcon: "ðŸŸ",
+    coverTitle: "Ocean Splash",
+    coverItems: ["ðŸŸ", "ðŸ’§", "-", "ðŸ ", "â­"],
     href: "/games/demo/subtraction-splash",
   },
   {
     id: "shape-match",
     title: "Shape Match",
-    description: "Match shapes, names, and patterns through a colourful visual challenge.",
+    description: "Match shapes and discover patterns.",
     yearLabel: "Year 1 - 3",
     badge: "DEMO",
+    difficulty: "Very Easy",
+    rating: 4,
     accentClass: "bg-[#8B5CF6]",
-    thumbnailClass: "from-[#F3E8FF] via-[#EDE9FE] to-[#EAF6FF]",
-    symbols: ["Ã¢â€“Â³", "Ã¢â€“Â¡", "Ã¢â€”â€¹", "="],
+    thumbnailClass: "from-[#EDE9FE] via-[#FCE7F3] to-[#EAF6FF]",
+    coverIcon: "ðŸ”º",
+    coverTitle: "Shape Explorer",
+    coverItems: ["ðŸ”º", "ðŸŸ¦", "ðŸŸ¡", "ðŸŸ©", "â­"],
     href: "/games/demo/shape-match",
   },
   {
     id: "count-collect",
     title: "Count & Collect",
-    description: "Count coins, stars, and objects while moving through playful math scenes.",
+    description: "Count objects and collect rewards.",
     yearLabel: "Year 1 - 3",
     badge: "DEMO",
+    difficulty: "Medium",
+    rating: 5,
     accentClass: "bg-[#FF9F1C]",
-    thumbnailClass: "from-[#FFF7ED] via-[#FFE8B5] to-[#EAF6FF]",
-    symbols: ["10", "Ã¢Ëœâ€¦", "=", "+"],
+    thumbnailClass: "from-[#FFE8B5] via-[#FFF3C4] to-[#EAF6FF]",
+    coverIcon: "â­",
+    coverTitle: "Reward Collector",
+    coverItems: ["ðŸª™", "ðŸ’Ž", "â­", "ðŸª™", "ðŸ†"],
     href: "/games/demo/count-and-collect",
   },
 ];

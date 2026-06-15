@@ -16,7 +16,9 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [showHint, setShowHint] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
+  const [showVoice, setShowVoice] = useState(false);
   const [correctAnswers, setCorrectAnswers] = useState(0);
+  const [celebrating, setCelebrating] = useState(false);
 
   const currentQuestion = game?.questions[questionIndex];
   const progressPercent = game ? Math.round(((questionIndex + 1) / game.questions.length) * 100) : 0;
@@ -47,7 +49,9 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
     setSelectedAnswer(null);
     setShowHint(false);
     setShowExplanation(false);
+    setShowVoice(false);
     setCorrectAnswers(0);
+    setCelebrating(false);
   }
 
   function chooseAnswer(answer: string) {
@@ -60,6 +64,7 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
 
     if (answer === currentQuestion.correctAnswer) {
       setCorrectAnswers((current) => current + 1);
+      setCelebrating(true);
     }
   }
 
@@ -73,27 +78,34 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
     setSelectedAnswer(null);
     setShowHint(false);
     setShowExplanation(false);
+    setShowVoice(false);
+    setCelebrating(false);
   }
 
   if (status === "start") {
     return (
       <main className="bg-[#FFFDF7] text-[#082B80]">
-        <section className="bg-[#EAF6FF]">
+        <section className={`bg-gradient-to-br ${game.worldClass}`}>
           <div className="mx-auto max-w-5xl px-5 py-12 lg:px-8">
             <Button href="/subjects/mathematics" variant="secondary">
               Back to Mathematics
             </Button>
-            <div className="mt-6 rounded-[2rem] border border-[#DDE8F5] bg-white p-6 shadow-playful md:p-8">
-              <span className={`inline-flex rounded-full px-4 py-2 text-sm font-black text-white ${game.accentClass}`}>
-                Demo Game
-              </span>
-              <h1 className="mt-5 text-4xl font-black leading-tight sm:text-5xl">
-                {game.title}
-              </h1>
-              <p className="mt-3 text-lg font-black text-[#0B63F6]">{game.topic}</p>
-              <p className="mt-4 max-w-3xl text-lg font-bold leading-8 text-[#5B6B94]">
-                {game.description}
-              </p>
+            <div className="mt-6 overflow-hidden rounded-[2rem] border border-[#DDE8F5] bg-white p-6 shadow-playful md:p-8">
+              <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+                <div>
+                  <span className={`inline-flex rounded-full px-4 py-2 text-sm font-black text-white ${game.accentClass}`}>
+                    Demo Game
+                  </span>
+                  <h1 className="mt-5 text-4xl font-black leading-tight sm:text-5xl">
+                    {game.coverIcon} {game.title}
+                  </h1>
+                  <p className="mt-3 text-lg font-black text-[#0B63F6]">{game.topic}</p>
+                  <p className="mt-4 max-w-3xl text-lg font-bold leading-8 text-[#5B6B94]">
+                    {game.description}
+                  </p>
+                </div>
+                <GameCover game={game} />
+              </div>
 
               <section className="mt-8 rounded-[1.5rem] bg-[#EEF7FF] p-5" aria-labelledby="how-to-play">
                 <h2 id="how-to-play" className="text-2xl font-black">How to Play</h2>
@@ -108,7 +120,7 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button onClick={startGame} variant="blue">
-                  Start Demo
+                  Start Mission
                 </Button>
                 <Button href="/subjects/mathematics" variant="secondary">
                   Back
@@ -124,13 +136,13 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
   if (status === "complete") {
     return (
       <main className="bg-[#FFFDF7] px-5 py-12 text-[#082B80] lg:px-8">
-        <section className="mx-auto max-w-4xl rounded-[2rem] border border-[#DDE8F5] bg-white p-6 text-center shadow-playful md:p-8">
-          <span className="inline-flex rounded-full bg-[#22C55E]/15 px-4 py-2 text-sm font-black text-[#15803D]">
-            Demo complete
-          </span>
+        <section className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-[#DDE8F5] bg-white p-6 text-center shadow-playful md:p-8">
+          <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-[#FFC83D] text-4xl animate-bounce">
+            ðŸ†
+          </div>
           <h1 className="mt-5 text-4xl font-black sm:text-5xl">You finished the demo!</h1>
           <p className="mt-4 text-lg font-bold text-[#5B6B94]">
-            Great effort. Register to keep learning with full progress tracking.
+            Great mission. Register to keep learning with full progress tracking.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -139,8 +151,9 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
             <ResultTile label="Correct answers" value={`${correctAnswers}`} />
           </div>
 
-          <div className="mt-8 rounded-[1.5rem] bg-[#EAF6FF] p-6">
-            <p className="text-xl font-black">
+          <div className="mt-8 rounded-[1.5rem] bg-gradient-to-br from-[#EAF6FF] to-[#FFF3C4] p-6">
+            <p className="text-2xl font-black">ðŸš€ Unlock the Full Adventure</p>
+            <p className="mt-2 text-base font-bold text-[#5B6B94]">
               Register to unlock full learning, progress tracking and more activities.
             </p>
             <div className="mt-5 flex flex-col justify-center gap-3 sm:flex-row">
@@ -161,45 +174,63 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
   }
 
   return (
-    <main className="bg-[#FFFDF7] text-[#082B80]">
-      <section className="mx-auto max-w-5xl px-5 py-10 lg:px-8">
+    <main className={`min-h-screen bg-gradient-to-br ${game.worldClass} text-[#082B80]`}>
+      <section className="mx-auto max-w-6xl px-5 py-8 lg:px-8">
         <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <Button href="/subjects/mathematics" variant="secondary">
             Back
           </Button>
           <div className="flex flex-wrap gap-3">
+            <StatusPill label="Mission" value={`${questionIndex + 1}/${game.questions.length}`} />
             <StatusPill label="Score" value={`${correctAnswers}`} />
             <StatusPill label="Stars" value={`${starsEarned}`} />
           </div>
         </div>
 
-        <article className="rounded-[2rem] border border-[#DDE8F5] bg-white p-6 shadow-playful md:p-8">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+        <article className="overflow-hidden rounded-[2rem] border border-[#DDE8F5] bg-white p-5 shadow-playful md:p-7">
+          <div className="grid gap-5 lg:grid-cols-[1fr_280px]">
             <div>
-              <p className="text-sm font-black uppercase tracking-wide text-[#FF4FB8]">
-                {game.title}
-              </p>
-              <h1 className="mt-2 text-3xl font-black sm:text-4xl">
-                Question {questionIndex + 1} of {game.questions.length}
-              </h1>
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <p className="text-sm font-black uppercase tracking-wide text-[#FF4FB8]">
+                    {game.coverIcon} {game.title}
+                  </p>
+                  <h1 className="mt-2 text-3xl font-black sm:text-4xl">
+                    Mission {questionIndex + 1}
+                  </h1>
+                </div>
+                <span className="rounded-full bg-[#EEF7FF] px-4 py-2 text-sm font-black text-[#0B63F6]">
+                  {currentQuestion?.difficulty}
+                </span>
+              </div>
+
+              <div className="mt-6">
+                <div className="flex items-center justify-between text-xs font-black uppercase text-[#5B6B94]">
+                  <span>Progress</span>
+                  <span>{progressPercent}%</span>
+                </div>
+                <div className="mt-2 h-4 overflow-hidden rounded-full bg-[#EEF7FF]">
+                  <div className="h-full rounded-full bg-[#0B63F6]" style={{ width: `${progressPercent}%` }} />
+                </div>
+              </div>
             </div>
-            <span className="rounded-full bg-[#EEF7FF] px-4 py-2 text-sm font-black text-[#0B63F6]">
-              {currentQuestion?.difficulty}
-            </span>
+
+            <MascotHelper mood={game.mascotMood} />
           </div>
 
-          <div className="mt-6">
-            <div className="flex items-center justify-between text-xs font-black uppercase text-[#5B6B94]">
-              <span>Progress</span>
-              <span>{progressPercent}%</span>
+          <section className="relative mt-8 overflow-hidden rounded-[1.75rem] bg-[#FFF3C4] p-6" aria-live="polite">
+            {celebrating ? <Celebration /> : null}
+            <div className="flex flex-wrap gap-2 text-3xl leading-relaxed sm:text-4xl">
+              {currentQuestion?.visualPrompt.map((item, index) => (
+                <span
+                  key={`${currentQuestion.id}-${item}-${index}`}
+                  className="flex min-h-14 min-w-14 items-center justify-center rounded-2xl bg-white px-3 text-center font-black shadow-sm"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
-            <div className="mt-2 h-3 overflow-hidden rounded-full bg-[#EEF7FF]">
-              <div className="h-full rounded-full bg-[#0B63F6]" style={{ width: `${progressPercent}%` }} />
-            </div>
-          </div>
-
-          <section className="mt-8 rounded-[1.5rem] bg-[#FFF3C4] p-6" aria-live="polite">
-            <p className="text-2xl font-black leading-tight sm:text-3xl">
+            <p className="mt-5 text-2xl font-black leading-tight sm:text-3xl">
               {currentQuestion?.question}
             </p>
           </section>
@@ -230,7 +261,7 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
             })}
           </div>
 
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button onClick={() => setShowHint((current) => !current)} variant="secondary">
               Hint
             </Button>
@@ -241,10 +272,17 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
             >
               Explanation
             </Button>
+            <Button onClick={() => setShowVoice((current) => !current)} variant="secondary">
+              Voice
+            </Button>
             <Button onClick={nextQuestion} disabled={!selectedAnswer} variant="blue">
-              {questionIndex === game.questions.length - 1 ? "Finish Demo" : "Next Question"}
+              {questionIndex === game.questions.length - 1 ? "Finish Demo" : "Next Mission"}
             </Button>
           </div>
+
+          {showVoice && currentQuestion ? (
+            <InfoCard title="Voice button" body={currentQuestion.voiceLine} tone="blue" />
+          ) : null}
 
           {showHint && currentQuestion ? (
             <InfoCard title="Hint" body={currentQuestion.hint} tone="blue" />
@@ -252,22 +290,72 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
 
           {selectedAnswer && currentQuestion ? (
             <InfoCard
-              title={answeredCorrectly ? "Correct!" : "Try this idea"}
+              title={answeredCorrectly ? "Celebration!" : "Keep trying"}
               body={
                 answeredCorrectly
-                  ? "Nice work. You chose the correct answer."
-                  : `The correct answer is ${currentQuestion.correctAnswer}.`
+                  ? `You earned 1 star. ${currentQuestion.correctAnswer} is correct.`
+                  : `The correct answer is ${currentQuestion.correctAnswer}. Read the steps below and try the next mission.`
               }
               tone={answeredCorrectly ? "green" : "pink"}
             />
           ) : null}
 
           {showExplanation && currentQuestion ? (
-            <InfoCard title="Simple explanation" body={currentQuestion.explanation} tone="yellow" />
+            <ExplanationCard
+              hint={currentQuestion.hint}
+              steps={currentQuestion.stepByStep}
+              visual={currentQuestion.visualExplanation}
+              tip={currentQuestion.learnBotTip}
+            />
           ) : null}
         </article>
       </section>
     </main>
+  );
+}
+
+function GameCover({ game }: { game: MathDemoGame }) {
+  return (
+    <div className={`relative min-h-64 overflow-hidden rounded-[2rem] bg-gradient-to-br ${game.worldClass} p-5 shadow-inner`}>
+      <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/60" />
+      <div className="absolute bottom-0 left-0 h-16 w-full rounded-t-[80%] bg-[#22C55E]/25" />
+      <div className="relative">
+        <div className="flex h-20 w-20 items-center justify-center rounded-3xl bg-white text-5xl shadow-sm">
+          {game.coverIcon}
+        </div>
+        <h2 className="mt-5 text-3xl font-black">{game.title}</h2>
+        <p className="mt-2 text-base font-bold text-[#5B6B94]">{game.mascotMood}</p>
+      </div>
+    </div>
+  );
+}
+
+function MascotHelper({ mood }: { mood: string }) {
+  return (
+    <aside className="rounded-[1.5rem] bg-[#EEF7FF] p-5">
+      <div className="flex items-center gap-4">
+        <div className="flex h-16 w-16 items-center justify-center rounded-3xl bg-white text-4xl shadow-sm">
+          ðŸ¤–
+        </div>
+        <div>
+          <p className="text-sm font-black uppercase text-[#5B6B94]">LearnBot Helper</p>
+          <p className="text-lg font-black">{mood}</p>
+        </div>
+      </div>
+      <p className="mt-4 text-sm font-bold leading-6 text-[#5B6B94]">
+        I can give hints, explain each step, and read the mission voice line.
+      </p>
+    </aside>
+  );
+}
+
+function Celebration() {
+  return (
+    <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+      <span className="absolute left-8 top-4 animate-bounce text-3xl">â­</span>
+      <span className="absolute right-12 top-8 animate-ping text-2xl">âœ¨</span>
+      <span className="absolute bottom-6 left-1/2 animate-bounce text-3xl">ðŸŽ‰</span>
+    </div>
   );
 }
 
@@ -301,6 +389,45 @@ function InfoCard({
       <p className="text-sm font-black uppercase">{title}</p>
       <p className="mt-2 text-base font-bold leading-7">{body}</p>
     </div>
+  );
+}
+
+function ExplanationCard({
+  hint,
+  steps,
+  visual,
+  tip,
+}: {
+  hint: string;
+  steps: string[];
+  visual: string;
+  tip: string;
+}) {
+  return (
+    <section className="mt-5 overflow-hidden rounded-[1.5rem] border border-[#DDE8F5] bg-white" aria-label="Explanation note">
+      <div className="grid gap-0 md:grid-cols-4">
+        <div className="border-b border-[#DDE8F5] p-5 md:border-b-0 md:border-r">
+          <p className="text-sm font-black uppercase text-[#0B63F6]">Hint</p>
+          <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">{hint}</p>
+        </div>
+        <div className="border-b border-[#DDE8F5] p-5 md:border-b-0 md:border-r">
+          <p className="text-sm font-black uppercase text-[#0B63F6]">Step-by-step</p>
+          <ol className="mt-2 space-y-2 text-sm font-bold leading-6 text-[#5B6B94]">
+            {steps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+        </div>
+        <div className="border-b border-[#DDE8F5] p-5 md:border-b-0 md:border-r">
+          <p className="text-sm font-black uppercase text-[#0B63F6]">Visual</p>
+          <p className="mt-2 text-lg font-black leading-7 text-[#082B80]">{visual}</p>
+        </div>
+        <div className="bg-[#EAFBF0] p-5">
+          <p className="text-sm font-black uppercase text-[#15803D]">LearnBot says</p>
+          <p className="mt-2 text-sm font-bold leading-6 text-[#14532D]">{tip}</p>
+        </div>
+      </div>
+    </section>
   );
 }
 

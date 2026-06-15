@@ -67,11 +67,14 @@ function GuestMathExperience() {
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p className="text-sm font-black uppercase tracking-wide text-[#FF4FB8]">
-              Free demo content
+              Demo Mathematics Page Reference
             </p>
             <h2 className="mt-2 text-3xl font-black text-[#082B80] sm:text-4xl">
-              Try 5 Year 1 to Year 3 Math Games
+              Try 5 Free Math Adventures
             </h2>
+            <p className="mt-2 text-base font-bold text-[#5B6B94]">
+              Year 1 - Year 3
+            </p>
           </div>
           <span className="rounded-full bg-[#EEF7FF] px-4 py-2 text-sm font-black text-[#0B63F6]">
             Limited demo access
@@ -85,28 +88,7 @@ function GuestMathExperience() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 pb-14 lg:px-8">
-        <div className="rounded-[2rem] border border-[#DDE8F5] bg-white p-6 shadow-playful md:p-8">
-          <div className="grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div>
-              <p className="text-sm font-black uppercase tracking-wide text-[#14B8A6]">
-                Unlock the full journey
-              </p>
-              <h2 className="mt-2 text-3xl font-black text-[#082B80]">
-                Register to unlock more games, track your progress and get full access!
-              </h2>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row lg:justify-end">
-              <Button href="/register" variant="green">
-                Register Now
-              </Button>
-              <Button href="/login" variant="secondary">
-                I Already Have an Account
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
+      <UnlockAdventureBanner />
 
       <section className="bg-[#EEF7FF]">
         <div className="mx-auto max-w-6xl px-5 py-14 lg:px-8">
@@ -361,7 +343,7 @@ function MathHeroScene() {
           <HeroCharacter label="Helper" colorClass="bg-[#8B5CF6]" />
         </div>
         <div className="mt-5 grid grid-cols-4 gap-3">
-          {["Ã¢Ëœâ€¦", "7", "+", "="].map((symbol) => (
+          {["*", "7", "+", "="].map((symbol) => (
             <span
               key={symbol}
               className="flex h-12 items-center justify-center rounded-2xl bg-white text-2xl font-black text-[#082B80] shadow-sm"
@@ -390,18 +372,24 @@ function GameThumbnail({ game }: { game: MathGame }) {
   return (
     <div
       role="img"
-      aria-label={`${game.title} colourful math thumbnail`}
-      className={`relative h-36 overflow-hidden rounded-[1.5rem] bg-gradient-to-br ${game.thumbnailClass} p-4`}
+      aria-label={`${game.title} mini game cover`}
+      className={`relative h-40 overflow-hidden rounded-[1.5rem] bg-gradient-to-br ${game.thumbnailClass} p-4 shadow-inner`}
     >
-      <div className="absolute -right-5 -top-5 h-20 w-20 rounded-full bg-white/60" />
-      <div className="absolute -bottom-6 left-6 h-20 w-28 rounded-t-full bg-[#22C55E]/30" />
-      <div className="grid grid-cols-2 gap-3">
-        {game.symbols.map((symbol) => (
+      <div className="absolute inset-x-0 bottom-0 h-14 rounded-t-[80%] bg-[#22C55E]/25" />
+      <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-white/60" />
+      <div className="absolute left-4 top-4 rounded-full bg-white/90 px-3 py-1 text-xs font-black text-[#0B63F6]">
+        {game.coverTitle}
+      </div>
+      <div className="absolute bottom-4 left-4 flex h-16 w-16 items-center justify-center rounded-3xl bg-white text-4xl shadow-sm">
+        {game.coverIcon}
+      </div>
+      <div className="absolute bottom-5 right-4 grid grid-cols-3 gap-2">
+        {game.coverItems.slice(0, 6).map((item, index) => (
           <span
-            key={`${game.id}-${symbol}`}
-            className="flex h-12 items-center justify-center rounded-2xl bg-white text-xl font-black text-[#082B80] shadow-sm"
+            key={`${game.id}-${item}-${index}`}
+            className="flex h-9 min-w-9 items-center justify-center rounded-2xl bg-white/95 px-2 text-lg font-black text-[#082B80] shadow-sm"
           >
-            {symbol}
+            {item}
           </span>
         ))}
       </div>
@@ -409,26 +397,107 @@ function GameThumbnail({ game }: { game: MathGame }) {
   );
 }
 
+function StarRating({ value }: { value: number }) {
+  return (
+    <div className="flex gap-1 text-[#FFC83D]" aria-label={`${value} star rating`}>
+      {[1, 2, 3, 4, 5].map((star) => (
+        <span key={star} className={star <= value ? "opacity-100" : "opacity-25"}>
+          â˜…
+        </span>
+      ))}
+    </div>
+  );
+}
+
 function GuestGameCard({ game }: { game: MathGame }) {
   return (
-    <article className="flex h-full flex-col rounded-[2rem] border border-[#DDE8F5] bg-white p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-playful">
+    <article className="group flex h-full flex-col overflow-hidden rounded-[2rem] border border-[#DDE8F5] bg-white p-3 shadow-sm transition hover:-translate-y-1 hover:shadow-playful">
       <GameThumbnail game={game} />
-      <div className="mt-4 flex items-center justify-between gap-2">
-        <span className="rounded-full bg-[#FFC83D] px-3 py-1 text-xs font-black text-[#082B80]">
+      <div className="mt-4 flex flex-wrap gap-2 px-1">
+        <span className="rounded-full bg-[#FF4FB8] px-3 py-1 text-xs font-black text-white">
           {game.badge}
         </span>
         <span className="rounded-full bg-[#EEF7FF] px-3 py-1 text-xs font-black text-[#0B63F6]">
           {game.yearLabel}
         </span>
+        <span className="rounded-full bg-[#FFF3C4] px-3 py-1 text-xs font-black text-[#082B80]">
+          {game.difficulty}
+        </span>
       </div>
-      <h3 className="mt-4 text-xl font-black text-[#082B80]">{game.title}</h3>
-      <p className="mt-2 flex-1 text-sm font-bold leading-6 text-[#5B6B94]">
+      <h3 className="mt-4 px-1 text-xl font-black text-[#082B80]">{game.title}</h3>
+      <p className="mt-2 flex-1 px-1 text-sm font-bold leading-6 text-[#5B6B94]">
         {game.description}
       </p>
+      <div className="mt-4 px-1">
+        <StarRating value={game.rating} />
+      </div>
       <Button href={game.href} variant="blue" className="mt-5 w-full">
         Try Demo
       </Button>
     </article>
+  );
+}
+
+function UnlockAdventureBanner() {
+  const worlds = [
+    "ðŸŒ³ Forest World",
+    "â›° Mountain World",
+    "ðŸŒŠ Ocean World",
+    "ðŸš€ Space World",
+    "ðŸŒŒ Galaxy World",
+  ];
+  const benefits = [
+    "5 Learning Worlds",
+    "20+ Premium Activities",
+    "Progress Tracking",
+    "Badges & Rewards",
+    "Explanation Notes",
+    "Fun Learning Adventures",
+  ];
+
+  return (
+    <section className="mx-auto max-w-6xl px-5 pb-14 lg:px-8">
+      <div className="relative overflow-hidden rounded-[2rem] border border-[#FAD1E5] bg-gradient-to-br from-[#FFF7ED] via-white to-[#FFE8F4] p-6 shadow-playful md:p-8">
+        <div className="absolute -right-10 -top-10 h-36 w-36 rounded-full bg-[#FFC83D]/30" />
+        <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
+          <div>
+            <p className="text-sm font-black uppercase tracking-wide text-[#FF4FB8]">
+              Premium Adventure
+            </p>
+            <h2 className="mt-2 text-3xl font-black text-[#082B80]">
+              ðŸš€ Unlock the Full Adventure
+            </h2>
+            <p className="mt-3 max-w-xl text-base font-bold leading-7 text-[#5B6B94]">
+              Register to access all learning worlds and 20+ premium activities.
+            </p>
+            <div className="mt-5 grid gap-2 sm:grid-cols-2">
+              {worlds.map((world) => (
+                <span key={world} className="rounded-2xl bg-white px-4 py-3 text-sm font-black text-[#082B80] shadow-sm">
+                  {world}
+                </span>
+              ))}
+            </div>
+          </div>
+          <div className="rounded-[1.75rem] bg-white/80 p-5 shadow-sm">
+            <div className="grid gap-3 sm:grid-cols-2">
+              {benefits.map((benefit) => (
+                <span key={benefit} className="rounded-2xl bg-[#EEF7FF] px-4 py-3 text-sm font-black text-[#082B80]">
+                  + {benefit}
+                </span>
+              ))}
+            </div>
+            <div className="mt-6">
+              <Button href="/register" variant="primary" className="w-full">
+                Register Now
+              </Button>
+              <p className="mt-3 text-center text-sm font-bold text-[#5B6B94]">
+                Already have an account? <a href="/login" className="font-black text-[#0B63F6] underline-offset-4 hover:underline">Login</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -459,9 +528,9 @@ function RegisteredGameCard({
   progress?: { currentLevel: string; progressStatus: string; progress: number };
 }) {
   return (
-    <article className="flex h-full flex-col rounded-[2rem] border border-[#DDE8F5] bg-white p-4 shadow-sm">
+    <article className="flex h-full flex-col rounded-[2rem] border border-[#DDE8F5] bg-white p-3 shadow-sm">
       <GameThumbnail game={game} />
-      <div className="mt-4 flex items-center justify-between gap-2">
+      <div className="mt-4 flex items-center justify-between gap-2 px-1">
         <span className="rounded-full bg-[#22C55E]/15 px-3 py-1 text-xs font-black text-[#15803D]">
           Unlocked
         </span>
@@ -469,11 +538,11 @@ function RegisteredGameCard({
           {progress?.currentLevel ?? "Level 1"}
         </span>
       </div>
-      <h3 className="mt-4 text-xl font-black text-[#082B80]">{game.title}</h3>
-      <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">
+      <h3 className="mt-4 px-1 text-xl font-black text-[#082B80]">{game.title}</h3>
+      <p className="mt-2 px-1 text-sm font-bold leading-6 text-[#5B6B94]">
         {progress?.progressStatus ?? "Ready to play"}
       </p>
-      <div className="mt-4">
+      <div className="mt-4 px-1">
         <ProgressBar label="Progress status" value={progress?.progress ?? 0} colorClass="bg-[#22C55E]" />
       </div>
       <Button href={game.href} variant="green" className="mt-5 w-full">
@@ -498,12 +567,8 @@ function RegisteredLevelCard({ level }: { level: MathLevel }) {
       <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">
         {level.description}
       </p>
-      <div className="mt-4 flex gap-1 text-[#FFC83D]" aria-label={`${level.stars} stars`}>
-        {[1, 2, 3].map((star) => (
-          <span key={star} className={star <= level.stars ? "opacity-100" : "opacity-25"}>
-            Ã¢Ëœâ€¦
-          </span>
-        ))}
+      <div className="mt-4">
+        <StarRating value={level.stars} />
       </div>
       <div className="mt-4">
         <ProgressBar label="Progress" value={level.progress} colorClass={level.colorClass} />
