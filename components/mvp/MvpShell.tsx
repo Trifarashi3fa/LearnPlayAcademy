@@ -54,7 +54,7 @@ export function MvpTopBar() {
         {[
           ["Home", "/"],
           ["Subjects", "/subjects"],
-          ["Mathematics", "/subjects/mathematics"],
+          ["Mathematics", "/mvp/world-map"],
           ["Forest World", "/mvp/world-map"],
           ["Rewards", "/mvp/rewards"],
           ["Parent Dashboard", "/mvp/parent-dashboard"],

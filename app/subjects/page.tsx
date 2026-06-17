@@ -18,7 +18,7 @@ const subjects = [
     title: "Mathematics",
     description: "Enter Forest World and play 10 guided math levels.",
     image: "/subjects/math.png",
-    href: "/subjects/mathematics",
+    href: "/mvp/world-map",
     active: true,
   },
   {
@@ -108,7 +108,7 @@ export default function SubjectsPage() {
               <div className={`mt-5 inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-base font-black ${
                 subject.active ? "bg-[#0B63F6] text-white" : "bg-[#EAF6FF] text-[#5B6B94]"
               }`}>
-                {subject.active ? "Start Mathematics" : "Coming Soon"}
+                {subject.active ? "Enter Forest World" : "Coming Soon"}
               </div>
             </Link>
           ))}

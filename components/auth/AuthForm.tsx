@@ -42,7 +42,7 @@ export function AuthForm({ mode }: AuthFormProps) {
         email: trimmedEmail,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/dashboard`,
+          emailRedirectTo: `${window.location.origin}/mvp/parent-dashboard`,
         },
       });
 
@@ -53,7 +53,7 @@ export function AuthForm({ mode }: AuthFormProps) {
       }
 
       if (data.session) {
-        router.push("/dashboard");
+        router.push("/mvp/parent-dashboard");
         router.refresh();
         return;
       }
@@ -74,7 +74,7 @@ export function AuthForm({ mode }: AuthFormProps) {
       return;
     }
 
-    router.push("/dashboard");
+    router.push("/mvp/parent-dashboard");
     router.refresh();
   }
 

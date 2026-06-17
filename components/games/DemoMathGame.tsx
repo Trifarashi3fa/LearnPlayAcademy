@@ -33,10 +33,10 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
       <main className="bg-[#FFFDF7] px-5 py-16 text-center text-[#082B80]">
         <div className="mx-auto max-w-2xl rounded-[2rem] border border-[#DDE8F5] bg-white p-8 shadow-playful">
           <p className="text-sm font-black uppercase text-[#FF4FB8]">Game not found</p>
-          <h1 className="mt-3 text-4xl font-black">Game not found. Please return to Mathematics.</h1>
+          <h1 className="mt-3 text-4xl font-black">Game not found. Please return to Forest World.</h1>
           <div className="mt-8 flex justify-center">
-            <Button href="/subjects/mathematics" variant="blue">
-              Back to Mathematics
+            <Button href="/mvp/world-map" variant="blue">
+              Back to Forest World
             </Button>
           </div>
         </div>
@@ -88,8 +88,8 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
       <main className="bg-[#FFFDF7] text-[#082B80]">
         <section className={`bg-gradient-to-br ${game.worldClass}`}>
           <div className="mx-auto max-w-5xl px-5 py-12 lg:px-8">
-            <Button href="/subjects/mathematics" variant="secondary">
-              Back to Mathematics
+            <Button href="/mvp/world-map" variant="secondary">
+              Back to Forest World
             </Button>
             <div className="mt-6 overflow-hidden rounded-[2rem] border border-[#DDE8F5] bg-white p-6 shadow-playful md:p-8">
               <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -123,7 +123,7 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
                 <Button onClick={startGame} variant="blue">
                   Start Mission
                 </Button>
-                <Button href="/subjects/mathematics" variant="secondary">
+                <Button href="/mvp/world-map" variant="secondary">
                   Back
                 </Button>
               </div>
@@ -164,8 +164,8 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
               <Button href="/register" variant="green">
                 Register Now
               </Button>
-              <Button href="/subjects/mathematics" variant="blue">
-                Back to Mathematics
+              <Button href="/mvp/world-map" variant="blue">
+                Back to Forest World
               </Button>
             </div>
           </div>
@@ -178,7 +178,7 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
     <main className={`min-h-screen bg-gradient-to-br ${game.worldClass} text-[#082B80]`}>
       <section className="mx-auto max-w-6xl px-5 py-8 lg:px-8">
         <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <Button href="/subjects/mathematics" variant="secondary">
+          <Button href="/mvp/world-map" variant="secondary">
             Back
           </Button>
           <div className="flex flex-wrap gap-3">

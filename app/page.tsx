@@ -50,7 +50,7 @@ export default function Home() {
               {subjectButtons.map((subject) => (
                 <Link
                   key={subject}
-                  href={subject === "Mathematics" ? "/subjects/mathematics" : "/subjects"}
+                  href={subject === "Mathematics" ? "/mvp/world-map" : "/subjects"}
                   className="rounded-3xl border border-[#DDE8F5] bg-white px-4 py-3 text-center text-sm font-black text-[#082B80] shadow-sm transition hover:-translate-y-0.5 hover:text-[#0B63F6] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25"
                 >
                   {subject}

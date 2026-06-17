@@ -121,7 +121,7 @@ export function WorldMapClient() {
       </section>
 
       <div className="flex flex-wrap gap-3">
-        <PrimaryLink href="/subjects/mathematics" tone="white">Back to Mathematics</PrimaryLink>
+        <PrimaryLink href="/subjects" tone="white">Back to Subjects</PrimaryLink>
         <PrimaryLink href="/mvp/rewards" tone="white">Rewards</PrimaryLink>
         <PrimaryLink href="/mvp/parent-dashboard" tone="blue">Parent Dashboard</PrimaryLink>
       </div>

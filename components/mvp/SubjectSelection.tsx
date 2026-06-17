@@ -17,7 +17,7 @@ export function SubjectSelection() {
         return (
           <Link
             key={subject.id}
-            href={subject.enabled ? "/mvp/world-map" : "/mvp/subjects"}
+            href={subject.enabled ? "/mvp/world-map" : "/subjects"}
             className="group block rounded-[2rem] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25"
           >
             <MvpCard className="h-full transition group-hover:-translate-y-1 group-hover:shadow-playful">

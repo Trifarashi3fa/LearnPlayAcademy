@@ -92,10 +92,10 @@ export default async function SubjectDetailPage({ params }: SubjectDetailPagePro
         </p>
         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
           <Link
-            href="/subjects/mathematics"
+            href="/mvp/world-map"
             className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#0B63F6] px-6 py-3 text-base font-black text-white shadow-sm transition hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25"
           >
-            Open Mathematics
+            Open Forest World
           </Link>
           <Link
             href="/subjects"
