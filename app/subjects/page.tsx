@@ -5,56 +5,68 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Subject Selection | LearnPlay Academy",
   description:
-    "Choose a LearnPlay Academy subject. Mathematics Forest World is active for the MVP, with other subjects coming soon.",
+    "Choose a LearnPlay Academy subject. Mathematics Forest World is playable now, with other learning areas prepared for future content.",
   openGraph: {
     title: "Subject Selection | LearnPlay Academy",
     description:
-      "Mathematics is active for the MVP. Other subjects are prepared for future content packs.",
+      "Start with Mathematics Forest World and preview future LearnPlay subject areas.",
   },
 };
 
 const subjects = [
   {
     title: "Mathematics",
-    description: "Enter Forest World and play 10 guided math levels.",
+    description: "Play the free Forest World starter path with levels, questions, stars, and rewards.",
     image: "/subjects/math.png",
     href: "/mvp/world-map",
     active: true,
+    meta: "Playable now",
+    action: "Enter Forest World",
   },
   {
     title: "English",
-    description: "Reading and word activities are coming soon.",
+    description: "Reading, spelling, and word-building adventures are planned for a future release.",
     image: "/subjects/english.png",
     href: "/subjects",
     active: false,
+    meta: "Preview",
+    action: "Coming Soon",
   },
   {
     title: "Science",
-    description: "Discovery activities are coming soon.",
+    description: "Discovery quests, facts, experiments, and science challenges can be added next.",
     image: "/subjects/science.png",
     href: "/subjects",
     active: false,
+    meta: "Preview",
+    action: "Coming Soon",
   },
   {
     title: "Bahasa Melayu",
-    description: "Vocabulary activities are coming soon.",
+    description: "Vocabulary, spelling, and sentence practice can become a language adventure.",
     image: "/subjects/bahasa-melayu.png",
     href: "/subjects",
     active: false,
+    meta: "Preview",
+    action: "Coming Soon",
   },
   {
     title: "Life Skills",
-    description: "Safety, habits, and life skills activities are coming soon.",
+    description: "Healthy habits, safety, emotions, money basics, and responsibility can grow here.",
     image: "/subjects/life-skills.png",
     href: "/subjects",
     active: false,
+    meta: "Preview",
+    action: "Coming Soon",
   },
   {
     title: "General Knowledge",
-    description: "Mixed knowledge quizzes are coming soon.",
+    description: "Fun knowledge quests can help children explore the world around them.",
     image: "/subjects/general-knowledge.png",
     href: "/subjects",
     active: false,
+    meta: "Preview",
+    action: "Coming Soon",
   },
 ];
 
@@ -67,10 +79,10 @@ export default function SubjectsPage() {
             Subject Selection
           </p>
           <h1 className="mt-3 max-w-4xl text-5xl font-black leading-tight md:text-6xl">
-            Choose your learning path
+            Choose a learning adventure
           </h1>
           <p className="mt-4 max-w-3xl text-lg font-bold leading-8 text-[#5B6B94]">
-            Mathematics is active for this MVP. Other subjects stay visible so the full LearnPlay structure is clear.
+            Subjects are guided learning paths. Start with Mathematics Forest World, then return here as new subjects are added.
           </p>
         </div>
       </section>
@@ -84,31 +96,34 @@ export default function SubjectsPage() {
               className={`group block rounded-[2rem] border bg-white p-5 shadow-sm transition focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 ${
                 subject.active
                   ? "border-[#0B63F6] hover:-translate-y-1 hover:shadow-playful"
-                  : "border-[#DDE8F5] opacity-85"
+                  : "border-[#DDE8F5] opacity-90"
               }`}
+              aria-label={`${subject.title}: ${subject.action}`}
             >
               <div className="flex items-start justify-between gap-4">
-                <Image
-                  src={subject.image}
-                  alt={`${subject.title} subject icon`}
-                  width={80}
-                  height={80}
-                  className="h-20 w-20 object-contain"
-                />
+                <div className="flex h-24 w-24 items-center justify-center overflow-hidden rounded-3xl bg-[#EAF6FF] p-2">
+                  <Image
+                    src={subject.image}
+                    alt={`${subject.title} learning adventure cover`}
+                    width={96}
+                    height={96}
+                    className="h-full w-full rounded-2xl object-cover"
+                  />
+                </div>
                 <span className={`rounded-full px-3 py-1 text-xs font-black ${
                   subject.active ? "bg-[#22C55E]/15 text-[#15803D]" : "bg-[#FFF3C4] text-[#082B80]"
                 }`}>
-                  {subject.active ? "Active MVP" : "Coming Soon"}
+                  {subject.meta}
                 </span>
               </div>
               <h2 className="mt-5 text-2xl font-black">{subject.title}</h2>
-              <p className="mt-2 min-h-14 text-sm font-bold leading-6 text-[#5B6B94]">
+              <p className="mt-2 min-h-20 text-sm font-bold leading-6 text-[#5B6B94]">
                 {subject.description}
               </p>
               <div className={`mt-5 inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-base font-black ${
                 subject.active ? "bg-[#0B63F6] text-white" : "bg-[#EAF6FF] text-[#5B6B94]"
               }`}>
-                {subject.active ? "Enter Forest World" : "Coming Soon"}
+                {subject.action}
               </div>
             </Link>
           ))}

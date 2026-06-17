@@ -1,9 +1,13 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { primaryNavigation } from "@/data/navigation";
+import { LogoutButton } from "@/components/auth/LogoutButton";
+import { primaryNavigation, type NavigationLink } from "@/data/navigation";
+import { createClient } from "@/lib/supabase/client";
+import { isSupabaseConfigured } from "@/lib/supabase/config";
 
 function isActive(pathname: string, href: string) {
   if (href === "/") {
@@ -13,8 +17,53 @@ function isActive(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+function getVisibleNavigation(isSignedIn: boolean): NavigationLink[] {
+  if (!isSignedIn) {
+    return primaryNavigation;
+  }
+
+  return [
+    ...primaryNavigation.filter(
+      (link) => link.href !== "/login" && link.href !== "/register",
+    ),
+    { href: "/mvp/parent-dashboard", label: "Progress" },
+  ];
+}
+
 export function Navbar() {
   const pathname = usePathname();
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    if (!isSupabaseConfigured()) {
+      setReady(true);
+      return;
+    }
+
+    const supabase = createClient();
+    let mounted = true;
+
+    supabase.auth.getSession().then(({ data }) => {
+      if (!mounted) return;
+      setIsSignedIn(Boolean(data.session));
+      setReady(true);
+    });
+
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setIsSignedIn(Boolean(session));
+      setReady(true);
+    });
+
+    return () => {
+      mounted = false;
+      subscription.unsubscribe();
+    };
+  }, []);
+
+  const visibleNavigation = getVisibleNavigation(isSignedIn);
 
   return (
     <header className="sticky top-0 z-50 border-b border-sky/10 bg-white/95 backdrop-blur">
@@ -43,8 +92,8 @@ export function Navbar() {
             </span>
           </span>
         </Link>
-        <div className="flex flex-wrap gap-2">
-          {primaryNavigation.map((link) => {
+        <div className="flex flex-wrap items-center gap-2">
+          {visibleNavigation.map((link) => {
             const active = isActive(pathname, link.href);
 
             return (
@@ -62,6 +111,7 @@ export function Navbar() {
               </Link>
             );
           })}
+          {ready && isSignedIn ? <LogoutButton /> : null}
         </div>
       </nav>
     </header>

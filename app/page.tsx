@@ -4,74 +4,93 @@ import Link from "next/link";
 import { Button } from "@/components/Button";
 
 export const metadata: Metadata = {
-  title: "LearnPlay Academy | Start Learning",
+  title: "LearnPlay Academy | Learning Adventure",
   description:
-    "Start the LearnPlay Academy MVP with Mathematics, Forest World, 10 guided levels, local questions, XP, stars, rewards, and a parent dashboard.",
+    "Start LearnPlay Academy with a child-friendly subject selection screen and the free Mathematics Forest World starter path.",
   openGraph: {
-    title: "LearnPlay Academy | Start Learning",
+    title: "LearnPlay Academy | Learning Adventure",
     description:
-      "A child-friendly learning adventure that starts with Mathematics Forest World.",
+      "A playful learning adventure for children with subjects, games, rewards, and parent progress views.",
   },
 };
 
 const subjectButtons = [
-  "Mathematics",
-  "English",
-  "Science",
-  "Bahasa Melayu",
-  "Life Skills",
-  "General Knowledge",
+  { label: "Mathematics", href: "/subjects" },
+  { label: "English", href: "/subjects" },
+  { label: "Science", href: "/subjects" },
+  { label: "Bahasa Melayu", href: "/subjects" },
+  { label: "Life Skills", href: "/subjects" },
+  { label: "General Knowledge", href: "/subjects" },
+];
+
+const highlights = [
+  "Free Math Starter World",
+  "10 guided levels",
+  "100 child-friendly questions",
+  "Stars, XP, and rewards",
 ];
 
 export default function Home() {
   return (
     <main className="bg-[#FFFDF7] text-[#082B80]">
       <section className="overflow-hidden bg-[#EAF6FF]">
-        <div className="mx-auto grid min-h-[calc(100vh-92px)] max-w-6xl items-center gap-10 px-5 py-12 lg:grid-cols-[1fr_420px] lg:px-8">
+        <div className="mx-auto grid min-h-[calc(100vh-92px)] max-w-6xl items-center gap-10 px-5 py-12 lg:grid-cols-[1fr_440px] lg:px-8">
           <div>
             <p className="text-sm font-black uppercase tracking-wide text-[#FF4FA0]">
-              LearnPlay Academy MVP
+              LearnPlay Academy
             </p>
             <h1 className="mt-4 max-w-3xl text-5xl font-black leading-tight md:text-7xl">
-              Start your learning adventure.
+              Learn through a playful adventure.
             </h1>
             <p className="mt-5 max-w-2xl text-lg font-bold leading-8 text-[#5B6B94]">
-              Begin with Mathematics Forest World. Children answer local questions, earn XP, collect stars, unlock levels, and let parents view progress on this device.
+              Choose a subject, enter a learning world, complete levels, answer questions, and collect stars as skills grow step by step.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="/subjects" variant="blue">
                 Start Learning
               </Button>
-              <Button href="/mvp/parent-dashboard" variant="secondary">
-                Parent Dashboard
+              <Button href="/parents" variant="secondary">
+                For Parents
               </Button>
             </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {subjectButtons.map((subject) => (
                 <Link
-                  key={subject}
-                  href={subject === "Mathematics" ? "/mvp/world-map" : "/subjects"}
+                  key={subject.label}
+                  href={subject.href}
                   className="rounded-3xl border border-[#DDE8F5] bg-white px-4 py-3 text-center text-sm font-black text-[#082B80] shadow-sm transition hover:-translate-y-0.5 hover:text-[#0B63F6] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25"
                 >
-                  {subject}
+                  {subject.label}
                 </Link>
               ))}
             </div>
           </div>
 
-          <div className="relative rounded-[2rem] border border-[#DDE8F5] bg-white p-6 text-center shadow-playful">
-            <Image
-              src="/mascots/learnbot-front.png"
-              alt="LearnBot mascot welcoming children to LearnPlay Academy"
-              width={320}
-              height={320}
-              className="mx-auto h-72 w-72 object-contain"
-              priority
-            />
-            <h2 className="mt-3 text-3xl font-black">LearnBot is ready</h2>
+          <div className="relative rounded-[2rem] border border-[#DDE8F5] bg-white p-5 shadow-playful">
+            <div className="overflow-hidden rounded-[1.5rem] bg-[#EAF6FF]">
+              <Image
+                src="/design-system/learnbot-reference.png"
+                alt="LearnBot mascot waving to welcome children"
+                width={520}
+                height={420}
+                className="h-72 w-full object-cover object-top"
+                priority
+              />
+            </div>
+            <h2 className="mt-5 text-3xl font-black">Ready for Forest World?</h2>
             <p className="mt-2 text-base font-bold leading-7 text-[#5B6B94]">
-              Follow the path: Subjects, Mathematics, Forest World, Levels, Questions, Rewards, Parent Dashboard.
+              Mathematics is open first. More subjects can join the adventure as the platform grows.
             </p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+              {highlights.map((item) => (
+                <div
+                  key={item}
+                  className="rounded-2xl border border-[#DDE8F5] bg-[#FFFDF7] px-4 py-3 text-sm font-black"
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
