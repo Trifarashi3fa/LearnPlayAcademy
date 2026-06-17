@@ -2,8 +2,9 @@ import { MvpPage } from "@/components/mvp/MvpShell";
 import { SubjectSelection } from "@/components/mvp/SubjectSelection";
 
 export const metadata = {
-  title: "MVP Subject Selection",
-  description: "Choose a LearnPlay MVP subject and view local progress.",
+  title: "Free Math Starter World Subjects | LearnPlay Academy",
+  description:
+    "Choose Mathematics to play the free Forest World starter path. Premium subject paths can be added later.",
 };
 
 export default function MvpSubjectsPage() {
@@ -11,7 +12,7 @@ export default function MvpSubjectsPage() {
     <MvpPage
       eyebrow="Subject Selection"
       title="Choose Your Learning Adventure"
-      description="Mathematics Forest World is playable now. Other subject paths are ready to expand later."
+      description="Mathematics opens the Free Math Starter World: Forest World. Other subjects remain ready for future content packs."
     >
       <SubjectSelection />
     </MvpPage>
