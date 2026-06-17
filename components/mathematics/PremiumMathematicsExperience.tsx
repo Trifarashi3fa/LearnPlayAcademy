@@ -21,7 +21,6 @@ export function PremiumMathematicsExperience({
   return (
     <main className="bg-[#FFFDF7] text-[#082B80]">
       <section className="mx-auto max-w-7xl px-5 py-8 lg:px-8">
-        <DashboardHeader />
         <HeroDashboard studentName={studentName} />
       </section>
 
@@ -65,6 +64,13 @@ export function PremiumMathematicsExperience({
         </div>
       </section>
 
+      <section id="game-preview" className="mx-auto max-w-7xl px-5 py-8 lg:px-8">
+        <div className="grid gap-6 xl:grid-cols-[1fr_0.9fr]">
+          <GameQuestionCard />
+          <ExplanationNotesPanel />
+        </div>
+      </section>
+
       <section id="benefits" className="mx-auto max-w-7xl px-5 py-8 lg:px-8">
         <div className="grid gap-4 rounded-[2rem] bg-[#EAF6FF] p-5 md:grid-cols-2 lg:grid-cols-4">
           {premiumBenefits.map((benefit) => (
@@ -78,11 +84,6 @@ export function PremiumMathematicsExperience({
         </div>
       </section>
 
-      <section id="game-preview" className="mx-auto grid max-w-7xl gap-6 px-5 py-8 lg:grid-cols-[1fr_0.95fr] lg:px-8">
-        <GameQuestionCard />
-        <ExplanationNotesPanel />
-      </section>
-
       <section className="mx-auto max-w-7xl px-5 pb-12 lg:px-8">
         <CurriculumAlignmentCard />
       </section>
@@ -90,73 +91,10 @@ export function PremiumMathematicsExperience({
   );
 }
 
-export function DashboardHeader() {
-  const navItems = [
-    { label: "Worlds", href: "#worlds" },
-    { label: "Activities", href: "#activities" },
-    { label: "Game Preview", href: "#game-preview" },
-    { label: "Rewards", href: "#benefits" },
-    { label: "Parents", href: "#parents" },
-  ];
-
-  return (
-    <header className="mb-5 rounded-[2rem] border border-[#DDE8F5] bg-white p-4 shadow-sm">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex items-center gap-3">
-          <Image
-            src="/learnplay-academy-logo.png"
-            alt="LearnPlay Academy logo"
-            width={58}
-            height={58}
-            className="h-14 w-14 rounded-2xl object-contain"
-            priority
-          />
-          <div>
-            <p className="text-xl font-black">
-              LearnPlay Mathematics<span aria-hidden="true">&trade;</span>
-            </p>
-            <p className="text-sm font-black text-[#0B63F6]">
-              Learn &bull; Play &bull; Master
-            </p>
-          </div>
-        </div>
-
-        <nav className="flex flex-wrap gap-2" aria-label="Mathematics page navigation">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-4 py-2 text-sm font-black text-[#082B80] transition hover:bg-[#EEF7FF] hover:text-[#0B63F6] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25"
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="rounded-full bg-[#FFF3C4] px-4 py-2 text-sm font-black">
-            1250 stars
-          </span>
-          <span className="rounded-full bg-[#EEF7FF] px-4 py-2 text-sm font-black text-[#0B63F6]">
-            Notifications
-          </span>
-          <Image
-            src="/assets/math-premium/dashboard-hero.png"
-            alt="Student avatar"
-            width={48}
-            height={48}
-            className="h-12 w-12 rounded-full border-2 border-white object-cover shadow-sm"
-          />
-        </div>
-      </div>
-    </header>
-  );
-}
-
 function HeroDashboard({ studentName }: { studentName: string }) {
   return (
     <section className="overflow-hidden rounded-[2rem] border border-[#DDE8F5] bg-white shadow-playful">
-      <div className="grid gap-0 lg:grid-cols-[1.3fr_0.9fr]">
+      <div className="grid gap-0 lg:grid-cols-[1.25fr_0.9fr]">
         <ProgressCard studentName={studentName} />
         <MissionCard />
       </div>
@@ -166,20 +104,25 @@ function HeroDashboard({ studentName }: { studentName: string }) {
 
 export function ProgressCard({ studentName }: { studentName: string }) {
   return (
-    <article className="relative overflow-hidden bg-gradient-to-br from-[#0B63F6] via-[#3B5BFF] to-[#8B5CF6] p-6 text-white md:p-8">
-      <div className="absolute bottom-0 left-0 h-24 w-full rounded-t-[70%] bg-[#22C55E]/20" />
-      <div className="relative grid gap-6 md:grid-cols-[180px_1fr] md:items-center">
-        <Image
-          src="/assets/math-premium/dashboard-hero.png"
-          alt="Happy student mascot"
-          width={180}
-          height={210}
-          className="mx-auto h-52 w-44 object-contain"
-          priority
-        />
+    <article className="relative min-h-[390px] overflow-hidden bg-gradient-to-br from-[#0B63F6] via-[#3558FF] to-[#8B5CF6] p-6 text-white md:p-8">
+      <div className="absolute inset-x-0 bottom-0 h-28 rounded-t-[70%] bg-[#22C55E]/20" />
+      <div className="absolute right-8 top-8 rounded-full bg-white/15 px-4 py-2 text-sm font-black">
+        LearnPlay Mathematics
+      </div>
+      <div className="relative grid h-full gap-6 md:grid-cols-[220px_1fr] md:items-center">
+        <div className="relative mx-auto h-64 w-56">
+          <Image
+            src="/assets/math-premium/dashboard-hero.png"
+            alt="Happy LearnPlay student"
+            fill
+            sizes="224px"
+            className="object-contain"
+            priority
+          />
+        </div>
         <div>
           <p className="text-lg font-black">Welcome back,</p>
-          <h1 className="text-5xl font-black leading-tight md:text-6xl">
+          <h1 className="break-words text-5xl font-black leading-tight md:text-6xl">
             {studentName || "Alex"}!
           </h1>
           <div className="mt-4 flex flex-wrap gap-2">
@@ -212,7 +155,7 @@ export function ProgressCard({ studentName }: { studentName: string }) {
 
 function StatBadge({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl bg-white/95 px-4 py-4 text-center text-[#082B80]">
+    <div className="rounded-2xl bg-white/95 px-4 py-4 text-center text-[#082B80] shadow-sm">
       <p className="text-2xl font-black">{value}</p>
       <p className="text-xs font-black uppercase text-[#5B6B94]">{label}</p>
     </div>
@@ -227,7 +170,7 @@ export function MissionCard() {
         <div className="mt-4 space-y-3">
           {missionChecklist.map((item) => (
             <div key={item.label} className="flex items-center gap-3 rounded-2xl bg-[#F8FBFF] px-4 py-3">
-              <span className={`flex h-7 w-7 items-center justify-center rounded-lg text-xs font-black ${
+              <span className={`flex h-8 w-8 items-center justify-center rounded-lg text-xs font-black ${
                 item.complete ? "bg-[#22C55E] text-white" : "bg-white text-[#5B6B94] ring-1 ring-[#DDE8F5]"
               }`}>
                 {item.complete ? "OK" : ""}
@@ -278,15 +221,15 @@ export function LearningWorldCard({ world }: { world: LearningWorld }) {
       className="group block overflow-hidden rounded-[1.5rem] bg-white shadow-sm ring-1 ring-[#DDE8F5] transition hover:-translate-y-1 hover:shadow-playful focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25"
     >
       <div className="relative aspect-[4/3]">
-        <Image src={world.imageSrc} alt={world.imageAlt} fill sizes="240px" className="object-cover" />
+        <Image src={world.imageSrc} alt={world.imageAlt} fill sizes="260px" className="object-cover" />
+        <span className={`absolute right-3 top-3 rounded-full px-3 py-1 text-xs font-black shadow-sm ${
+          world.locked ? "bg-[#EEF7FF] text-[#5B6B94]" : "bg-[#22C55E] text-white"
+        }`}>
+          {world.locked ? "Locked" : "Open"}
+        </span>
       </div>
       <div className="p-4">
-        <div className="flex items-center justify-between gap-2">
-          <p className="text-xs font-black uppercase text-[#5B6B94]">{world.level}</p>
-          <span className={`rounded-full px-3 py-1 text-xs font-black ${world.locked ? "bg-[#EEF7FF] text-[#5B6B94]" : "bg-[#22C55E] text-white"}`}>
-            {world.locked ? "Locked" : "Open"}
-          </span>
-        </div>
+        <p className="text-xs font-black uppercase text-[#5B6B94]">{world.level}</p>
         <h3 className="mt-2 text-xl font-black">{world.name}</h3>
         <p className="mt-1 text-sm font-bold text-[#5B6B94]">{world.year}</p>
         <p className="mt-2 min-h-12 text-sm font-bold leading-6 text-[#5B6B94]">
@@ -332,15 +275,15 @@ export function ActivityCard({ activity }: { activity: PremiumActivity }) {
   return (
     <Link
       href={href}
-      className={`group block overflow-hidden rounded-[1.5rem] border border-[#DDE8F5] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-playful focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 ${activity.locked ? "opacity-80" : ""}`}
+      className={`group flex min-h-[350px] flex-col overflow-hidden rounded-[1.5rem] border border-[#DDE8F5] bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-playful focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 ${activity.locked ? "opacity-85" : ""}`}
     >
-      <div className="relative aspect-[4/3]">
-        <Image src={activity.imageSrc} alt={activity.imageAlt} fill sizes="220px" className="object-cover" />
+      <div className="relative aspect-[4/3] overflow-hidden bg-[#EAF6FF]">
+        <Image src={activity.imageSrc} alt={activity.imageAlt} fill sizes="240px" className="object-cover" />
         <span className="absolute left-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-[#22C55E] text-sm font-black text-white shadow-sm">
           {activity.number}
         </span>
       </div>
-      <div className="p-4">
+      <div className="flex flex-1 flex-col p-4">
         <div className="mb-3 flex items-center justify-between gap-2">
           <span className="rounded-full bg-[#EEF7FF] px-3 py-2 text-xs font-black text-[#0B63F6]">
             Level {activity.level}
@@ -349,16 +292,16 @@ export function ActivityCard({ activity }: { activity: PremiumActivity }) {
             {activity.locked ? "Locked" : `${activity.progress}%`}
           </span>
         </div>
-        <h3 className="min-h-12 text-lg font-black leading-6">{activity.title}</h3>
+        <h3 className="text-lg font-black leading-6">{activity.title}</h3>
         <StarRating value={activity.rating} />
-        <div className="mt-4 flex items-center gap-3">
+        <div className="mt-auto flex items-center gap-3 pt-4">
           <div className="h-3 flex-1 overflow-hidden rounded-full bg-[#EAF6FF]">
             <div className="h-full rounded-full bg-[#22C55E]" style={{ width: `${activity.progress}%` }} />
           </div>
           <span className={`flex h-10 w-10 items-center justify-center rounded-full text-sm font-black ${
             activity.locked ? "bg-[#EEF7FF] text-[#5B6B94]" : "bg-[#22C55E] text-white"
           }`}>
-            {activity.locked ? "L" : "P"}
+            {activity.locked ? "L" : "Play"}
           </span>
         </div>
       </div>
@@ -391,12 +334,12 @@ export function GameQuestionCard() {
           <span>Score 20</span>
         </div>
       </div>
-      <div className="grid gap-5 p-5 lg:grid-cols-[1fr_1fr_180px]">
+      <div className="grid gap-5 p-5 lg:grid-cols-[0.9fr_1fr_150px]">
         <div className="relative min-h-72 overflow-hidden rounded-[1.5rem] bg-[#EAF6FF]">
-          <Image src="/assets/math-premium/addition-question.png" alt="Blue and yellow birds addition question" fill sizes="420px" className="object-cover" />
+          <Image src="/assets/math-premium/addition-question.png" alt="Bird addition question" fill sizes="420px" className="object-cover" />
         </div>
         <div className="rounded-[1.5rem] bg-white p-5 shadow-sm ring-1 ring-[#DDE8F5]">
-          <p className="text-2xl font-black leading-9">
+          <p className="text-xl font-black leading-8 md:text-2xl">
             If there are 7 blue birds and 5 yellow birds, how many birds are there altogether?
           </p>
           <div className="mt-5 grid gap-3">
@@ -453,7 +396,7 @@ export function ExplanationNotesPanel() {
           </a>
         ))}
       </div>
-      <div className="mt-5 grid gap-5 lg:grid-cols-[0.8fr_1fr_0.8fr]">
+      <div className="mt-5 grid gap-5 lg:grid-cols-[0.75fr_1fr_0.75fr]">
         <div className="rounded-[1.5rem] bg-[#EEF7FF] p-5">
           <p className="font-black">Hint</p>
           <p className="mt-2 text-sm font-bold text-[#5B6B94]">Think about counting forward.</p>
@@ -463,7 +406,7 @@ export function ExplanationNotesPanel() {
           </p>
           <p className="mt-4 rounded-xl bg-white px-3 py-2 text-sm font-black">Answer: 12</p>
         </div>
-        <div className="relative min-h-72 overflow-hidden rounded-[1.5rem] bg-white ring-1 ring-[#DDE8F5]">
+        <div className="relative min-h-64 overflow-hidden rounded-[1.5rem] bg-white ring-1 ring-[#DDE8F5]">
           <Image src="/assets/math-premium/explanation-visual.png" alt="Visual explanation showing 7 plus 5 equals 12" fill sizes="420px" className="object-cover" />
         </div>
         <div id="parents" className="rounded-[1.5rem] bg-[#FFF3C4] p-5">
