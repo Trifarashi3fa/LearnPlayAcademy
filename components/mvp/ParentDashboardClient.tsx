@@ -14,28 +14,61 @@ export function ParentDashboardClient() {
     mastery,
   } = useMvpProgress();
 
+  const completedTopics = forestLevels.filter((level) => progress.completedLevels.includes(level.level));
+  const strongTopics = completedTopics.length > 0
+    ? completedTopics.slice(-3).map((level) => level.title)
+    : ["Start Level 1 to discover strong topics"];
+  const weakTopics = forestLevels
+    .filter((level) => !progress.completedLevels.includes(level.level))
+    .slice(0, 3)
+    .map((level) => level.title);
+
   return (
     <div className="space-y-6">
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        <DashboardStat label="XP" value={String(progress.xp)} />
-        <DashboardStat label="Stars" value={String(progress.stars)} />
-        <DashboardStat label="Levels Completed" value={`${completedCount}/${totalLevels}`} />
+        <DashboardStat label="Total XP" value={String(progress.xp)} />
+        <DashboardStat label="Completed Levels" value={`${completedCount}/${totalLevels}`} />
         <DashboardStat label="Accuracy" value={`${accuracy}%`} />
+        <DashboardStat label="Mastery Level" value={mastery} />
       </div>
 
       <MvpCard>
         <h2 className="text-3xl font-black">Child Progress</h2>
         <p className="mt-2 text-base font-bold leading-7 text-[#5B6B94]">
-          Current subject: Mathematics. Current world: Forest World. Current level: {progress.currentLevel}.
+          Current subject: Mathematics. Current world: Forest World. Current unlocked level: {progress.currentLevel}.
         </p>
         <div className="mt-5">
           <div className="mb-2 flex justify-between text-sm font-black">
-            <span>World progress</span>
+            <span>Forest World progress</span>
             <span>{worldProgress}%</span>
           </div>
           <ProgressBar value={worldProgress} />
         </div>
       </MvpCard>
+
+      <div className="grid gap-5 lg:grid-cols-2">
+        <MvpCard>
+          <h2 className="text-2xl font-black">Strong Topics</h2>
+          <div className="mt-4 space-y-3">
+            {strongTopics.map((topic) => (
+              <p key={topic} className="rounded-[1.25rem] bg-[#22C55E]/15 px-4 py-3 text-sm font-black text-[#14532D]">
+                {topic}
+              </p>
+            ))}
+          </div>
+        </MvpCard>
+
+        <MvpCard>
+          <h2 className="text-2xl font-black">Topics To Practice Next</h2>
+          <div className="mt-4 space-y-3">
+            {weakTopics.map((topic) => (
+              <p key={topic} className="rounded-[1.25rem] bg-[#FFF3C4] px-4 py-3 text-sm font-black text-[#082B80]">
+                {topic}
+              </p>
+            ))}
+          </div>
+        </MvpCard>
+      </div>
 
       <div className="grid gap-5 lg:grid-cols-2">
         <MvpCard>
@@ -56,7 +89,7 @@ export function ParentDashboardClient() {
         </MvpCard>
 
         <MvpCard>
-          <h2 className="text-2xl font-black">World Progress</h2>
+          <h2 className="text-2xl font-black">Forest World Levels</h2>
           <div className="mt-4 space-y-3">
             {forestLevels.map((level) => {
               const complete = progress.completedLevels.includes(level.level);
@@ -81,12 +114,12 @@ export function ParentDashboardClient() {
         <div className="mt-4 grid gap-4 md:grid-cols-3">
           <DashboardStat label="Questions Answered" value={String(progress.questionsAnswered)} />
           <DashboardStat label="Correct Answers" value={String(progress.correctAnswers)} />
-          <DashboardStat label="Mastery Level" value={mastery} />
+          <DashboardStat label="Stars Earned" value={String(progress.stars)} />
         </div>
       </MvpCard>
 
       <div className="flex flex-wrap gap-3">
-        <PrimaryLink href="/mvp/world-map" tone="blue">Open World Map</PrimaryLink>
+        <PrimaryLink href="/mvp/world-map" tone="blue">Open Forest World Map</PrimaryLink>
         <PrimaryLink href="/mvp/rewards" tone="white">View Rewards</PrimaryLink>
       </div>
     </div>

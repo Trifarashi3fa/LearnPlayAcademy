@@ -1,231 +1,80 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/Button";
-import { Card } from "@/components/Card";
-import { PageSection } from "@/components/PageLayout";
-import { SubjectCard } from "@/components/SubjectCard";
-import { typography } from "@/components/theme";
 
 export const metadata: Metadata = {
-  title: "Learning Made Fun. Progress Made Visible.",
+  title: "LearnPlay Academy | Start Learning",
   description:
-    "LearnPlay Academy offers interactive games, quizzes, rewards, and progress visibility for children aged 7 to 12.",
+    "Start the LearnPlay Academy MVP with Mathematics, Forest World, 10 guided levels, local questions, XP, stars, rewards, and a parent dashboard.",
   openGraph: {
-    title: "Learning Made Fun. Progress Made Visible.",
+    title: "LearnPlay Academy | Start Learning",
     description:
-      "Interactive games, quizzes, rewards, and progress visibility for children aged 7 to 12.",
+      "A child-friendly learning adventure that starts with Mathematics Forest World.",
   },
 };
 
-const subjects = [
-  {
-    title: "Mathematics",
-    description: "Number fluency, patterns, and everyday problem solving.",
-    icon: "123",
-    tone: "yellow" as const,
-  },
-  {
-    title: "English",
-    description: "Vocabulary, spelling, reading, and sentence practice.",
-    icon: "ABC",
-    tone: "green" as const,
-  },
-  {
-    title: "Science",
-    description: "Discovery activities that encourage observation and curiosity.",
-    icon: "SCI",
-    tone: "blue" as const,
-  },
-];
-
-const stats = [
-  "50+ Activities",
-  "5 Learning Areas",
-  "100+ Questions",
-  "Ages 7-12",
-];
-
-const platformSnapshot = [
-  { label: "50+ Activities", tone: "yellow" as const },
-  { label: "5 Learning Areas", tone: "green" as const },
-  { label: "100+ Questions", tone: "blue" as const },
-  { label: "Ages 7-12", tone: "purple" as const },
-];
-
-const parentBenefits = [
-  {
-    title: "Short Activities",
-    copy: "5-10 minute learning sessions that fit easily into daily routines.",
-  },
-  {
-    title: "Positive Motivation",
-    copy: "Rewards, stars, and achievements encourage consistent practice.",
-  },
-  {
-    title: "School-Friendly Skills",
-    copy: "Supports academic and everyday skills children use in school and daily life.",
-  },
-  {
-    title: "Progress Tracking",
-    copy: "Parents can view learning activity and celebrate growth.",
-  },
-  {
-    title: "Safe Learning Environment",
-    copy: "A child-friendly learning space designed without unnecessary distractions.",
-  },
-];
-
-const plans = [
-  {
-    title: "Free Starter",
-    copy: "Selected activities available now for families to explore LearnPlay at home.",
-    items: ["Selected activities", "Basic rewards", "Access to selected games"],
-    tone: "blue" as const,
-  },
-  {
-    title: "Premium Learning",
-    copy: "More subjects, rewards, and guided practice paths planned for future release.",
-    items: [
-      "Full subject access",
-      "Progress reports",
-      "Achievement badges",
-      "Parent dashboard features",
-    ],
-    tone: "yellow" as const,
-  },
-  {
-    title: "Family Plan",
-    copy: "Tools for multiple learners and parent-friendly progress views are coming soon.",
-    items: [
-      "Multiple child profiles",
-      "Shared parent dashboard",
-      "Extended learning access",
-    ],
-    tone: "green" as const,
-  },
+const subjectButtons = [
+  "Mathematics",
+  "English",
+  "Science",
+  "Bahasa Melayu",
+  "Life Skills",
+  "General Knowledge",
 ];
 
 export default function Home() {
   return (
-    <main>
-      <section className="overflow-hidden bg-[#FFF6D8]">
-        <div className="mx-auto grid min-h-[calc(100vh-92px)] max-w-6xl items-center gap-10 px-5 py-14 sm:min-h-[620px] lg:grid-cols-[1.05fr_0.95fr] lg:px-8">
+    <main className="bg-[#FFFDF7] text-[#082B80]">
+      <section className="overflow-hidden bg-[#EAF6FF]">
+        <div className="mx-auto grid min-h-[calc(100vh-92px)] max-w-6xl items-center gap-10 px-5 py-12 lg:grid-cols-[1fr_420px] lg:px-8">
           <div>
-            <p className={typography.eyebrow}>For curious children aged 7-12</p>
-            <h1 className={`mt-4 max-w-3xl ${typography.display}`}>
-              Learning Made Fun. Progress Made Visible.
+            <p className="text-sm font-black uppercase tracking-wide text-[#FF4FA0]">
+              LearnPlay Academy MVP
+            </p>
+            <h1 className="mt-4 max-w-3xl text-5xl font-black leading-tight md:text-7xl">
+              Start your learning adventure.
             </h1>
-            <p className={`mt-6 max-w-2xl ${typography.body}`}>
-              LearnPlay Academy blends interactive games, quick quizzes, rewards,
-              and clear progress moments so children can practice skills with confidence.
+            <p className="mt-5 max-w-2xl text-lg font-bold leading-8 text-[#5B6B94]">
+              Begin with Mathematics Forest World. Children answer local questions, earn XP, collect stars, unlock levels, and let parents view progress on this device.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button href="/register">Start Free Learning</Button>
-              <Button href="/games" variant="secondary">
-                Explore Activities
+              <Button href="/subjects" variant="blue">
+                Start Learning
+              </Button>
+              <Button href="/mvp/parent-dashboard" variant="secondary">
+                Parent Dashboard
               </Button>
             </div>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {subjectButtons.map((subject) => (
+                <Link
+                  key={subject}
+                  href={subject === "Mathematics" ? "/subjects/mathematics" : "/subjects"}
+                  className="rounded-3xl border border-[#DDE8F5] bg-white px-4 py-3 text-center text-sm font-black text-[#082B80] shadow-sm transition hover:-translate-y-0.5 hover:text-[#0B63F6] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25"
+                >
+                  {subject}
+                </Link>
+              ))}
+            </div>
           </div>
-          <div className="relative min-h-[430px]" aria-label="LearnPlay platform snapshot">
-            <div className="absolute left-2 top-4 h-24 w-24 rounded-full bg-coral/80" />
-            <div className="absolute right-0 top-12 h-24 w-24 rounded-3xl bg-mint" />
-            <div className="absolute bottom-4 left-8 h-20 w-20 rounded-3xl bg-purple" />
-            <Card className="absolute inset-x-4 top-10 text-center shadow-playful" tone="white">
-              <Image
-                src="/learnplay-academy-logo.png"
-                alt="LearnPlay Academy child-friendly learning logo"
-                width={280}
-                height={280}
-                className="mx-auto h-48 w-48 object-contain sm:h-56 sm:w-56"
-                priority
-              />
-              <div className="mt-4 grid grid-cols-2 gap-4 text-left">
-                {platformSnapshot.map((item) => (
-                  <Card key={item.label} tone={item.tone} className="p-4">
-                    <p className="text-lg font-black text-ink">{item.label}</p>
-                  </Card>
-                ))}
-              </div>
-            </Card>
-          </div>
-        </div>
-      </section>
 
-      <PageSection>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {stats.map((stat) => (
-            <Card key={stat} tone="white" className="text-center">
-              <p className="text-2xl font-black text-ink">{stat}</p>
-            </Card>
-          ))}
-        </div>
-      </PageSection>
-
-      <PageSection className="pt-0">
-        <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <p className={typography.eyebrow}>Learning areas</p>
-            <h2 className={typography.h2}>Practice that feels active</h2>
-          </div>
-          <Button href="/subjects" variant="secondary" className="sm:self-center">
-            See all subjects
-          </Button>
-        </div>
-        <div className="grid gap-5 md:grid-cols-3">
-          {subjects.map((subject) => (
-            <SubjectCard key={subject.title} {...subject} />
-          ))}
-        </div>
-      </PageSection>
-
-      <section className="bg-cloud">
-        <PageSection>
-          <div className="max-w-3xl">
-            <p className="font-black text-sky">For parents</p>
-            <h2 className={`mt-2 ${typography.h2}`}>
-              Support daily practice without the pressure
-            </h2>
-            <p className={`mt-4 ${typography.body}`}>
-              LearnPlay is designed to feel welcoming for children while giving
-              parents a clearer view of learning habits and progress.
+          <div className="relative rounded-[2rem] border border-[#DDE8F5] bg-white p-6 text-center shadow-playful">
+            <Image
+              src="/mascots/learnbot-front.png"
+              alt="LearnBot mascot welcoming children to LearnPlay Academy"
+              width={320}
+              height={320}
+              className="mx-auto h-72 w-72 object-contain"
+              priority
+            />
+            <h2 className="mt-3 text-3xl font-black">LearnBot is ready</h2>
+            <p className="mt-2 text-base font-bold leading-7 text-[#5B6B94]">
+              Follow the path: Subjects, Mathematics, Forest World, Levels, Questions, Rewards, Parent Dashboard.
             </p>
           </div>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {parentBenefits.map((benefit) => (
-              <Card key={benefit.title}>
-                <h3 className="text-xl font-black text-ink">{benefit.title}</h3>
-                <p className={`mt-3 ${typography.small}`}>{benefit.copy}</p>
-              </Card>
-            ))}
-          </div>
-        </PageSection>
+        </div>
       </section>
-
-      <PageSection>
-        <div className="mb-8 max-w-3xl">
-          <p className={typography.eyebrow}>Coming soon</p>
-          <h2 className={typography.h2}>Plans for every learning stage</h2>
-          <p className={`mt-4 ${typography.body}`}>
-            LearnPlay is growing step by step, with selected activities available now
-            and new activities added regularly.
-          </p>
-        </div>
-        <div className="grid gap-5 md:grid-cols-3">
-          {plans.map((plan) => (
-            <Card key={plan.title} tone={plan.tone}>
-              <h3 className={typography.h3}>{plan.title}</h3>
-              <p className={`mt-3 ${typography.small}`}>{plan.copy}</p>
-              <ul className="mt-5 space-y-2 text-sm font-black text-ink/70">
-                {plan.items.map((item) => (
-                  <li key={item} className="rounded-2xl bg-white/70 px-3 py-2">
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </Card>
-          ))}
-        </div>
-      </PageSection>
     </main>
   );
 }

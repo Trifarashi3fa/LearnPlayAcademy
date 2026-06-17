@@ -17,8 +17,7 @@ export function MvpPage({
     <main className="bg-[#FFFDF7] text-[#082B80]">
       <section className="bg-[#EAF6FF]">
         <div className="mx-auto max-w-6xl px-5 py-10 lg:px-8">
-          <MvpTopBar />
-          <p className="mt-8 text-sm font-black uppercase tracking-wide text-[#FF4FA0]">
+          <p className="text-sm font-black uppercase tracking-wide text-[#FF4FA0]">
             {eyebrow}
           </p>
           <h1 className="mt-2 max-w-4xl text-4xl font-black leading-tight md:text-6xl">
@@ -37,7 +36,7 @@ export function MvpPage({
 export function MvpTopBar() {
   return (
     <div className="flex flex-col gap-4 rounded-[2rem] border border-[#DDE8F5] bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
-      <Link href="/mvp" className="flex items-center gap-3 rounded-3xl focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25">
+      <Link href="/" className="flex items-center gap-3 rounded-3xl focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25">
         <Image
           src="/learnplay-academy-logo.png"
           alt="LearnPlay Academy logo"
@@ -47,15 +46,16 @@ export function MvpTopBar() {
           priority
         />
         <span>
-          <span className="block text-xl font-black">LearnPlay MVP</span>
-          <span className="block text-sm font-bold text-[#0B63F6]">Local learning game</span>
+          <span className="block text-xl font-black">LearnPlay Academy</span>
+          <span className="block text-sm font-bold text-[#0B63F6]">Forest World MVP</span>
         </span>
       </Link>
       <nav className="flex flex-wrap gap-2" aria-label="MVP navigation">
         {[
-          ["Home", "/mvp"],
-          ["Subjects", "/mvp/subjects"],
-          ["World Map", "/mvp/world-map"],
+          ["Home", "/"],
+          ["Subjects", "/subjects"],
+          ["Mathematics", "/subjects/mathematics"],
+          ["Forest World", "/mvp/world-map"],
           ["Rewards", "/mvp/rewards"],
           ["Parent Dashboard", "/mvp/parent-dashboard"],
         ].map(([label, href]) => (
