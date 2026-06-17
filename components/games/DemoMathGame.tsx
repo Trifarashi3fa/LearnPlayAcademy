@@ -310,52 +310,64 @@ export function DemoMathGame({ game }: DemoMathGameProps) {
   );
 }
 
+const iconMap = [
+  { match: "apple", src: "/assets/math-icons/apple.png", alt: "Apple" },
+  { match: "bird", src: "/assets/math-icons/bird.png", alt: "Bird" },
+  { match: "fish", src: "/assets/math-icons/fish.png", alt: "Fish" },
+  { match: "star", src: "/assets/math-icons/star.png", alt: "Star reward" },
+  { match: "coin", src: "/assets/math-icons/coin.png", alt: "Coin reward" },
+  { match: "gem", src: "/assets/math-icons/gem.png", alt: "Gem reward" },
+  { match: "shell", src: "/assets/math-icons/gem.png", alt: "Shell treasure" },
+  { match: "bubble", src: "/assets/math-icons/gem.png", alt: "Bubble treasure" },
+  { match: "box", src: "/assets/math-icons/box.png", alt: "Box" },
+  { match: "pencil", src: "/assets/math-icons/pencil.png", alt: "Pencil" },
+  { match: "splash", src: "/assets/math-icons/splash.png", alt: "Splash" },
+  { match: "triangle", src: "/assets/math-icons/triangle.png", alt: "Triangle" },
+  { match: "square", src: "/assets/math-icons/square.png", alt: "Square" },
+  { match: "rectangle", src: "/assets/math-icons/square.png", alt: "Rectangle" },
+  { match: "circle", src: "/assets/math-icons/circle.png", alt: "Circle" },
+  { match: "ball", src: "/assets/math-icons/gem.png", alt: "Ball" },
+  { match: "tree", src: "/worlds/level 1-forest-world.png", alt: "Tree" },
+];
+
 function VisualChip({ label }: { label: string }) {
   const lower = label.toLowerCase();
+  const icon = iconMap.find((item) => lower.includes(item.match));
+  const count = label.match(/\d+/)?.[0];
 
-  if (lower.includes("bird")) {
-    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-full bg-[#BAE6FD] px-3 text-xs font-black text-[#0B63F6]">bird</span>;
+  if (label === "+" || label === "-" || label === "=" || label === "?") {
+    return (
+      <span className="flex h-14 min-w-14 items-center justify-center rounded-2xl bg-white px-4 text-2xl font-black text-[#0B63F6] shadow-sm">
+        {label}
+      </span>
+    );
   }
 
-  if (lower.includes("apple")) {
-    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-full bg-[#EF4444] px-3 text-xs font-black text-white">apple</span>;
-  }
-
-  if (lower.includes("fish")) {
-    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-full bg-[#14B8A6] px-3 text-xs font-black text-white">fish</span>;
-  }
-
-  if (lower.includes("star")) {
-    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-full bg-[#FFC83D] px-3 text-xs font-black text-[#082B80]">star</span>;
-  }
-
-  if (lower.includes("coin")) {
-    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-full bg-[#FFB300] px-3 text-xs font-black text-[#082B80]">coin</span>;
-  }
-
-  if (lower.includes("circle")) {
-    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-full bg-[#FFC83D] px-3 text-xs font-black text-[#082B80]">circle</span>;
-  }
-
-  if (lower.includes("triangle")) {
-    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-2xl bg-[#FF9F1C] px-3 text-xs font-black text-white">triangle</span>;
-  }
-
-  if (lower.includes("square")) {
-    return <span className="flex min-h-12 min-w-14 items-center justify-center rounded-xl bg-[#0B63F6] px-3 text-xs font-black text-white">square</span>;
-  }
-
-  if (lower.includes("rectangle")) {
-    return <span className="flex min-h-12 min-w-20 items-center justify-center rounded-xl bg-[#8B5CF6] px-3 text-xs font-black text-white">rectangle</span>;
+  if (icon) {
+    return (
+      <span className="relative flex h-16 min-w-16 items-center justify-center rounded-2xl bg-white px-3 shadow-sm ring-1 ring-[#DDE8F5]">
+        <Image
+          src={icon.src}
+          alt={count ? `${icon.alt} group of ${count}` : icon.alt}
+          width={48}
+          height={48}
+          className="h-12 w-12 object-contain"
+        />
+        {count ? (
+          <span className="absolute -right-2 -top-2 flex h-7 min-w-7 items-center justify-center rounded-full bg-[#0B63F6] px-2 text-xs font-black text-white">
+            {count}
+          </span>
+        ) : null}
+      </span>
+    );
   }
 
   return (
-    <span className="flex min-h-12 min-w-14 items-center justify-center rounded-2xl bg-white px-3 text-center text-base font-black text-[#082B80] shadow-sm">
+    <span className="flex h-14 min-w-14 items-center justify-center rounded-2xl bg-white px-4 text-center text-base font-black text-[#082B80] shadow-sm">
       {label}
     </span>
   );
 }
-
 function GameCover({ game }: { game: MathDemoGame }) {
   return (
     <div className="relative min-h-72 overflow-hidden rounded-[2rem] bg-white shadow-inner">
@@ -392,9 +404,9 @@ function MascotHelper({ mood }: { mood: string }) {
 function Celebration() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-      <span className="absolute left-8 top-4 animate-bounce rounded-full bg-[#FFC83D] px-3 py-2 text-sm font-black text-[#082B80]">STAR</span>
-      <span className="absolute right-12 top-8 animate-ping rounded-full bg-[#FF4FB8] px-3 py-2 text-sm font-black text-white">YES</span>
-      <span className="absolute bottom-6 left-1/2 animate-bounce rounded-full bg-[#22C55E] px-3 py-2 text-sm font-black text-white">WIN</span>
+      <span className="absolute left-8 top-4 animate-bounce rounded-full bg-white p-2 shadow-sm"><Image src="/rewards/star.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" /></span>
+      <span className="absolute right-12 top-8 animate-ping rounded-full bg-white p-2 shadow-sm"><Image src="/rewards/badge.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" /></span>
+      <span className="absolute bottom-6 left-1/2 animate-bounce rounded-full bg-white p-2 shadow-sm"><Image src="/rewards/certificate.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" /></span>
     </div>
   );
 }
