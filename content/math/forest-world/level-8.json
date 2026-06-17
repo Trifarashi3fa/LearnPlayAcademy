@@ -1,0 +1,172 @@
+[
+    {
+        "id":  "math-forest-8-001",
+        "level":  8,
+        "nodeType":  "Review",
+        "topic":  "Review numbers and operations",
+        "difficulty":  "easy",
+        "question":  "What number comes after 6?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "After 6 comes 7.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-8-002",
+        "level":  8,
+        "nodeType":  "Review",
+        "topic":  "Review numbers and operations",
+        "difficulty":  "easy",
+        "question":  "What is 3 + 2?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "3 + 2 = 5.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-8-003",
+        "level":  8,
+        "nodeType":  "Review",
+        "topic":  "Review numbers and operations",
+        "difficulty":  "easy",
+        "question":  "What is 7 - 2?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "7 - 2 = 5.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-8-004",
+        "level":  8,
+        "nodeType":  "Review",
+        "topic":  "Review numbers and operations",
+        "difficulty":  "easy",
+        "question":  "Which number is bigger: 4 or 9?",
+        "options":  [
+                        "4",
+                        "9",
+                        "Both",
+                        "None"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "9 is bigger than 4.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-8-005",
+        "level":  8,
+        "nodeType":  "Review",
+        "topic":  "Review numbers and operations",
+        "difficulty":  "easy",
+        "question":  "Which number is smaller: 8 or 2?",
+        "options":  [
+                        "8",
+                        "2",
+                        "Both",
+                        "None"
+                    ],
+        "correctAnswer":  "2",
+        "explanation":  "2 is smaller than 8.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-8-006",
+        "level":  8,
+        "nodeType":  "Review",
+        "topic":  "Review numbers and operations",
+        "difficulty":  "easy",
+        "question":  "What is 5 + 4?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "5 + 4 = 9.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-8-007",
+        "level":  8,
+        "nodeType":  "Review",
+        "topic":  "Review numbers and operations",
+        "difficulty":  "easy",
+        "question":  "What is 9 - 1?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "9 - 1 = 8.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-8-008",
+        "level":  8,
+        "nodeType":  "Review",
+        "topic":  "Review numbers and operations",
+        "difficulty":  "easy",
+        "question":  "What number is missing: 2, 3, __, 5?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "The missing number is 4.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-8-009",
+        "level":  8,
+        "nodeType":  "Review",
+        "topic":  "Review numbers and operations",
+        "difficulty":  "easy",
+        "question":  "Count backward: 5, 4, 3, __",
+        "options":  [
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+        "correctAnswer":  "2",
+        "explanation":  "After 3 when counting backward comes 2.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-8-010",
+        "level":  8,
+        "nodeType":  "Review",
+        "topic":  "Review numbers and operations",
+        "difficulty":  "easy",
+        "question":  "What is 6 + 3?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "6 + 3 = 9.",
+        "xpReward":  10
+    }
+]

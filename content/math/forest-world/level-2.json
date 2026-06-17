@@ -1,0 +1,172 @@
+[
+    {
+        "id":  "math-forest-2-001",
+        "level":  2,
+        "nodeType":  "Practice",
+        "topic":  "Counting objects",
+        "difficulty":  "easy",
+        "question":  "There are 3 apples and 1 more apple. How many apples are there?",
+        "options":  [
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "3 apples and 1 apple make 4 apples.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-2-002",
+        "level":  2,
+        "nodeType":  "Practice",
+        "topic":  "Counting objects",
+        "difficulty":  "easy",
+        "question":  "Count the birds: 1, 2, 3, 4, 5. How many birds?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "There are 5 birds.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-2-003",
+        "level":  2,
+        "nodeType":  "Practice",
+        "topic":  "Counting objects",
+        "difficulty":  "easy",
+        "question":  "A basket has 6 oranges. How many oranges are in the basket?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "6",
+        "explanation":  "The basket has 6 oranges.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-2-004",
+        "level":  2,
+        "nodeType":  "Practice",
+        "topic":  "Counting objects",
+        "difficulty":  "easy",
+        "question":  "There are 2 flowers and 2 more flowers. How many flowers?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "2 flowers and 2 flowers make 4 flowers.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-2-005",
+        "level":  2,
+        "nodeType":  "Practice",
+        "topic":  "Counting objects",
+        "difficulty":  "easy",
+        "question":  "Count 7 stars. Which number shows the total?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "7 stars means the total is 7.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-2-006",
+        "level":  2,
+        "nodeType":  "Practice",
+        "topic":  "Counting objects",
+        "difficulty":  "easy",
+        "question":  "There are 8 leaves. One leaf falls away. How many leaves are counted at the start?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "The starting count is 8 leaves.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-2-007",
+        "level":  2,
+        "nodeType":  "Practice",
+        "topic":  "Counting objects",
+        "difficulty":  "easy",
+        "question":  "Which group has more: 4 shells or 6 shells?",
+        "options":  [
+                        "4 shells",
+                        "6 shells",
+                        "Both equal",
+                        "No shells"
+                    ],
+        "correctAnswer":  "6 shells",
+        "explanation":  "6 is more than 4.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-2-008",
+        "level":  2,
+        "nodeType":  "Practice",
+        "topic":  "Counting objects",
+        "difficulty":  "easy",
+        "question":  "Which group has fewer: 5 pencils or 2 pencils?",
+        "options":  [
+                        "5 pencils",
+                        "2 pencils",
+                        "Both equal",
+                        "7 pencils"
+                    ],
+        "correctAnswer":  "2 pencils",
+        "explanation":  "2 is fewer than 5.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-2-009",
+        "level":  2,
+        "nodeType":  "Practice",
+        "topic":  "Counting objects",
+        "difficulty":  "easy",
+        "question":  "There are 9 coins. Which number matches the coins?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "9 coins match the number 9.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-2-010",
+        "level":  2,
+        "nodeType":  "Practice",
+        "topic":  "Counting objects",
+        "difficulty":  "easy",
+        "question":  "Count the trees: 1, 2, 3. How many trees?",
+        "options":  [
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                    ],
+        "correctAnswer":  "3",
+        "explanation":  "There are 3 trees.",
+        "xpReward":  10
+    }
+]

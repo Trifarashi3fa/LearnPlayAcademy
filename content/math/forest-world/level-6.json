@@ -1,0 +1,172 @@
+[
+    {
+        "id":  "math-forest-6-001",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "topic":  "Addition mini game",
+        "difficulty":  "easy",
+        "question":  "Collect 3 stars and then 2 stars. How many stars collected?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "3 + 2 = 5.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-6-002",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "topic":  "Addition mini game",
+        "difficulty":  "easy",
+        "question":  "Pick 4 berries and then 3 berries. How many berries?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "4 + 3 = 7.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-6-003",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "topic":  "Addition mini game",
+        "difficulty":  "easy",
+        "question":  "Win 5 coins and then 2 coins. How many coins?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "5 + 2 = 7.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-6-004",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "topic":  "Addition mini game",
+        "difficulty":  "easy",
+        "question":  "Find 6 gems and then 3 gems. How many gems?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "6 + 3 = 9.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-6-005",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "topic":  "Addition mini game",
+        "difficulty":  "easy",
+        "question":  "Collect 1 leaf and then 8 leaves. How many leaves?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "1 + 8 = 9.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-6-006",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "topic":  "Addition mini game",
+        "difficulty":  "easy",
+        "question":  "Get 2 badges and then 5 badges. How many badges?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "2 + 5 = 7.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-6-007",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "topic":  "Addition mini game",
+        "difficulty":  "easy",
+        "question":  "Gather 3 shells and then 6 shells. How many shells?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "3 + 6 = 9.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-6-008",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "topic":  "Addition mini game",
+        "difficulty":  "easy",
+        "question":  "Earn 4 points and then 5 points. How many points?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "4 + 5 = 9.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-6-009",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "topic":  "Addition mini game",
+        "difficulty":  "easy",
+        "question":  "Catch 2 fireflies and then 7 fireflies. How many fireflies?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "2 + 7 = 9.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-6-010",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "topic":  "Addition mini game",
+        "difficulty":  "easy",
+        "question":  "Open 5 boxes and then 4 boxes. How many boxes?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "5 + 4 = 9.",
+        "xpReward":  10
+    }
+]

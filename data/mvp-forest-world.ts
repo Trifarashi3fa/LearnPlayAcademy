@@ -1,14 +1,14 @@
-import forestConfigJson from "@/content/math/forest-world/forest-world-config.json";
-import level1 from "@/content/math/forest-world/level-1.json";
-import level2 from "@/content/math/forest-world/level-2.json";
-import level3 from "@/content/math/forest-world/level-3.json";
-import level4 from "@/content/math/forest-world/level-4.json";
-import level5 from "@/content/math/forest-world/level-5.json";
-import level6 from "@/content/math/forest-world/level-6.json";
-import level7 from "@/content/math/forest-world/level-7.json";
-import level8 from "@/content/math/forest-world/level-8.json";
-import level9 from "@/content/math/forest-world/level-9.json";
-import level10 from "@/content/math/forest-world/level-10.json";
+import forestConfigJson from "../content/math/forest-world/forest-world-config.json";
+import level1 from "../content/math/forest-world/level-1.json";
+import level2 from "../content/math/forest-world/level-2.json";
+import level3 from "../content/math/forest-world/level-3.json";
+import level4 from "../content/math/forest-world/level-4.json";
+import level5 from "../content/math/forest-world/level-5.json";
+import level6 from "../content/math/forest-world/level-6.json";
+import level7 from "../content/math/forest-world/level-7.json";
+import level8 from "../content/math/forest-world/level-8.json";
+import level9 from "../content/math/forest-world/level-9.json";
+import level10 from "../content/math/forest-world/level-10.json";
 
 export type MvpQuestion = {
   id: string;

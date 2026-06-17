@@ -1,0 +1,172 @@
+[
+    {
+        "id":  "math-forest-7-001",
+        "level":  7,
+        "nodeType":  "Learn",
+        "topic":  "Simple subtraction",
+        "difficulty":  "easy",
+        "question":  "What is 5 - 1?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "5 - 1 = 4.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-7-002",
+        "level":  7,
+        "nodeType":  "Learn",
+        "topic":  "Simple subtraction",
+        "difficulty":  "easy",
+        "question":  "What is 6 - 2?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "6 - 2 = 4.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-7-003",
+        "level":  7,
+        "nodeType":  "Learn",
+        "topic":  "Simple subtraction",
+        "difficulty":  "easy",
+        "question":  "What is 7 - 3?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "7 - 3 = 4.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-7-004",
+        "level":  7,
+        "nodeType":  "Learn",
+        "topic":  "Simple subtraction",
+        "difficulty":  "easy",
+        "question":  "What is 8 - 2?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "6",
+        "explanation":  "8 - 2 = 6.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-7-005",
+        "level":  7,
+        "nodeType":  "Learn",
+        "topic":  "Simple subtraction",
+        "difficulty":  "easy",
+        "question":  "What is 9 - 4?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "9 - 4 = 5.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-7-006",
+        "level":  7,
+        "nodeType":  "Learn",
+        "topic":  "Simple subtraction",
+        "difficulty":  "easy",
+        "question":  "What is 10 - 5?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "10 - 5 = 5.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-7-007",
+        "level":  7,
+        "nodeType":  "Learn",
+        "topic":  "Simple subtraction",
+        "difficulty":  "easy",
+        "question":  "There are 6 apples. 1 is eaten. How many are left?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "6 - 1 = 5.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-7-008",
+        "level":  7,
+        "nodeType":  "Learn",
+        "topic":  "Simple subtraction",
+        "difficulty":  "easy",
+        "question":  "There are 8 birds. 3 fly away. How many are left?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "8 - 3 = 5.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-7-009",
+        "level":  7,
+        "nodeType":  "Learn",
+        "topic":  "Simple subtraction",
+        "difficulty":  "easy",
+        "question":  "There are 9 balloons. 2 pop. How many are left?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "9 - 2 = 7.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-7-010",
+        "level":  7,
+        "nodeType":  "Learn",
+        "topic":  "Simple subtraction",
+        "difficulty":  "easy",
+        "question":  "There are 10 coins. 4 are spent. How many are left?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "6",
+        "explanation":  "10 - 4 = 6.",
+        "xpReward":  10
+    }
+]

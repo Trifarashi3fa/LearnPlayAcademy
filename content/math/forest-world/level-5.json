@@ -1,0 +1,172 @@
+[
+    {
+        "id":  "math-forest-5-001",
+        "level":  5,
+        "nodeType":  "Practice",
+        "topic":  "Addition practice",
+        "difficulty":  "easy",
+        "question":  "A squirrel has 2 nuts and finds 3 more. How many nuts?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "2 nuts plus 3 nuts equals 5 nuts.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-5-002",
+        "level":  5,
+        "nodeType":  "Practice",
+        "topic":  "Addition practice",
+        "difficulty":  "easy",
+        "question":  "There are 4 birds on a branch and 2 more land. How many birds?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "6",
+        "explanation":  "4 birds plus 2 birds equals 6 birds.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-5-003",
+        "level":  5,
+        "nodeType":  "Practice",
+        "topic":  "Addition practice",
+        "difficulty":  "easy",
+        "question":  "Lina has 5 stickers and gets 1 more. How many stickers?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "6",
+        "explanation":  "5 + 1 = 6.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-5-004",
+        "level":  5,
+        "nodeType":  "Practice",
+        "topic":  "Addition practice",
+        "difficulty":  "easy",
+        "question":  "There are 3 flowers and 4 butterflies. How many things altogether?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "3 + 4 = 7.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-5-005",
+        "level":  5,
+        "nodeType":  "Practice",
+        "topic":  "Addition practice",
+        "difficulty":  "easy",
+        "question":  "A box has 6 crayons and you add 2 more. How many crayons?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "6 + 2 = 8.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-5-006",
+        "level":  5,
+        "nodeType":  "Practice",
+        "topic":  "Addition practice",
+        "difficulty":  "easy",
+        "question":  "There are 1 red apple and 6 green apples. How many apples?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "1 + 6 = 7.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-5-007",
+        "level":  5,
+        "nodeType":  "Practice",
+        "topic":  "Addition practice",
+        "difficulty":  "easy",
+        "question":  "A child collects 4 stars, then 4 more. How many stars?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "4 + 4 = 8.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-5-008",
+        "level":  5,
+        "nodeType":  "Practice",
+        "topic":  "Addition practice",
+        "difficulty":  "easy",
+        "question":  "There are 7 fish and 1 more fish. How many fish?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "7 + 1 = 8.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-5-009",
+        "level":  5,
+        "nodeType":  "Practice",
+        "topic":  "Addition practice",
+        "difficulty":  "easy",
+        "question":  "A bag has 5 marbles and 5 more are added. How many marbles?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "10",
+        "explanation":  "5 + 5 = 10.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-5-010",
+        "level":  5,
+        "nodeType":  "Practice",
+        "topic":  "Addition practice",
+        "difficulty":  "easy",
+        "question":  "There are 2 rabbits and 6 rabbits. How many rabbits altogether?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "2 + 6 = 8.",
+        "xpReward":  10
+    }
+]

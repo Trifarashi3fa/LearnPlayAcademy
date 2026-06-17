@@ -1,0 +1,172 @@
+[
+    {
+        "id":  "math-forest-10-001",
+        "level":  10,
+        "nodeType":  "Boss",
+        "topic":  "Forest Guardian boss quiz",
+        "difficulty":  "medium",
+        "question":  "Forest Guardian asks: What number comes after 8?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "After 8 comes 9.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-10-002",
+        "level":  10,
+        "nodeType":  "Boss",
+        "topic":  "Forest Guardian boss quiz",
+        "difficulty":  "medium",
+        "question":  "Forest Guardian asks: What is 5 + 5?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "10",
+        "explanation":  "5 + 5 = 10.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-10-003",
+        "level":  10,
+        "nodeType":  "Boss",
+        "topic":  "Forest Guardian boss quiz",
+        "difficulty":  "medium",
+        "question":  "Forest Guardian asks: What is 10 - 2?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "10 - 2 = 8.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-10-004",
+        "level":  10,
+        "nodeType":  "Boss",
+        "topic":  "Forest Guardian boss quiz",
+        "difficulty":  "medium",
+        "question":  "Which number is smaller: 3 or 7?",
+        "options":  [
+                        "3",
+                        "7",
+                        "Both",
+                        "None"
+                    ],
+        "correctAnswer":  "3",
+        "explanation":  "3 is smaller than 7.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-10-005",
+        "level":  10,
+        "nodeType":  "Boss",
+        "topic":  "Forest Guardian boss quiz",
+        "difficulty":  "medium",
+        "question":  "Which number is bigger: 6 or 9?",
+        "options":  [
+                        "6",
+                        "9",
+                        "Both",
+                        "None"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "9 is bigger than 6.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-10-006",
+        "level":  10,
+        "nodeType":  "Boss",
+        "topic":  "Forest Guardian boss quiz",
+        "difficulty":  "medium",
+        "question":  "What is missing: 4, 5, __, 7?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "6",
+        "explanation":  "The missing number is 6.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-10-007",
+        "level":  10,
+        "nodeType":  "Boss",
+        "topic":  "Forest Guardian boss quiz",
+        "difficulty":  "medium",
+        "question":  "A forest chest has 7 coins. You add 2. How many coins?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "7 + 2 = 9.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-10-008",
+        "level":  10,
+        "nodeType":  "Boss",
+        "topic":  "Forest Guardian boss quiz",
+        "difficulty":  "medium",
+        "question":  "There are 9 flowers. 4 are picked. How many flowers remain?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "9 - 4 = 5.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-10-009",
+        "level":  10,
+        "nodeType":  "Boss",
+        "topic":  "Forest Guardian boss quiz",
+        "difficulty":  "medium",
+        "question":  "Count by 2: 2, 4, 6, __",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "Counting by 2 gives 2, 4, 6, 8.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-10-010",
+        "level":  10,
+        "nodeType":  "Boss",
+        "topic":  "Forest Guardian boss quiz",
+        "difficulty":  "medium",
+        "question":  "Final boss question: What is 3 + 4 + 1?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "3 + 4 = 7, and 7 + 1 = 8.",
+        "xpReward":  10
+    }
+]

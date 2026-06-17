@@ -1,0 +1,50 @@
+{
+    "worldId":  "math-forest-world",
+    "worldName":  "Forest World",
+    "theme":  "Friendly forest adventure for early math foundations",
+    "totalLevels":  10,
+    "totalQuestions":  100,
+    "miniGames":  [
+                      "Number Matching Mini Game",
+                      "Addition Orchard Mini Game",
+                      "Counting Trail Mini Game",
+                      "Shape Path Mini Game",
+                      "Forest Treasure Mini Game"
+                  ],
+    "bossLevel":  10,
+    "completionBadge":  "Forest Guardian Badge",
+    "levelOrder":  [
+                       1,
+                       2,
+                       3,
+                       4,
+                       5,
+                       6,
+                       7,
+                       8,
+                       9,
+                       10
+                   ],
+    "nodeTypes":  {
+                      "level1":  "Learn",
+                      "level2":  "Practice",
+                      "level3":  "Mini Game",
+                      "level4":  "Learn",
+                      "level5":  "Practice",
+                      "level6":  "Mini Game",
+                      "level7":  "Learn",
+                      "level8":  "Review",
+                      "level9":  "Challenge",
+                      "level10":  "Boss"
+                  },
+    "recommendedAssetFilenames":  {
+                                      "worldBackground":  "forest-world-background.png",
+                                      "worldMap":  "forest-world-map.png",
+                                      "mascot":  "forest-guide-mascot.png",
+                                      "boss":  "forest-guardian-boss.png",
+                                      "completionBadge":  "forest-guardian-badge.png",
+                                      "miniGameIcon":  "forest-mini-game-icon.png",
+                                      "rewardStar":  "star.png",
+                                      "rewardCoin":  "coin.png"
+                                  }
+}

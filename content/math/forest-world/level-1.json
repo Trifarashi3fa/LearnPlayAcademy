@@ -1,0 +1,172 @@
+[
+    {
+        "id":  "math-forest-1-001",
+        "level":  1,
+        "nodeType":  "Learn",
+        "topic":  "Numbers 1-10",
+        "difficulty":  "easy",
+        "question":  "What number comes after 3?",
+        "options":  [
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "After 3 comes 4.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-1-002",
+        "level":  1,
+        "nodeType":  "Learn",
+        "topic":  "Numbers 1-10",
+        "difficulty":  "easy",
+        "question":  "What number comes before 6?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "The number before 6 is 5.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-1-003",
+        "level":  1,
+        "nodeType":  "Learn",
+        "topic":  "Numbers 1-10",
+        "difficulty":  "easy",
+        "question":  "Which number is 8?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "The number 8 is written as 8.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-1-004",
+        "level":  1,
+        "nodeType":  "Learn",
+        "topic":  "Numbers 1-10",
+        "difficulty":  "easy",
+        "question":  "What number comes after 9?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "10",
+        "explanation":  "After 9 comes 10.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-1-005",
+        "level":  1,
+        "nodeType":  "Learn",
+        "topic":  "Numbers 1-10",
+        "difficulty":  "easy",
+        "question":  "Which number is smaller than 4?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "3",
+        "explanation":  "3 is smaller than 4.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-1-006",
+        "level":  1,
+        "nodeType":  "Learn",
+        "topic":  "Numbers 1-10",
+        "difficulty":  "easy",
+        "question":  "Which number is bigger than 7?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "8 is bigger than 7.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-1-007",
+        "level":  1,
+        "nodeType":  "Learn",
+        "topic":  "Numbers 1-10",
+        "difficulty":  "easy",
+        "question":  "What is the missing number: 1, 2, __, 4?",
+        "options":  [
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                    ],
+        "correctAnswer":  "3",
+        "explanation":  "The numbers count up by 1, so the missing number is 3.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-1-008",
+        "level":  1,
+        "nodeType":  "Learn",
+        "topic":  "Numbers 1-10",
+        "difficulty":  "easy",
+        "question":  "What is the missing number: 6, 7, __, 9?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "After 7 comes 8.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-1-009",
+        "level":  1,
+        "nodeType":  "Learn",
+        "topic":  "Numbers 1-10",
+        "difficulty":  "easy",
+        "question":  "Which number shows ten?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "10",
+        "explanation":  "Ten is written as 10.",
+        "xpReward":  10
+    },
+    {
+        "id":  "math-forest-1-010",
+        "level":  1,
+        "nodeType":  "Learn",
+        "topic":  "Numbers 1-10",
+        "difficulty":  "easy",
+        "question":  "Count forward: 4, 5, 6, __",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "After 6 comes 7.",
+        "xpReward":  10
+    }
+]
