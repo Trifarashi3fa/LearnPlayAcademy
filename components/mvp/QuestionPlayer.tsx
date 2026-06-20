@@ -155,6 +155,7 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
         <div className="space-y-5">
           <QuestionCard
             question={currentQuestion}
+            visual={learningContent.visual}
             selectedAnswer={selectedAnswer}
             onSelectAnswer={chooseAnswer}
           />

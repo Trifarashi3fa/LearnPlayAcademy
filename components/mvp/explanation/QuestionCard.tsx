@@ -1,7 +1,12 @@
-import type { MvpQuestion } from "@/data/mvp-forest-world";
+import { VisualMath } from "@/components/mvp/explanation/VisualMath";
+import type {
+  MvpQuestion,
+  VisualLearningModel,
+} from "@/data/mvp-forest-world";
 
 type QuestionCardProps = {
   question: MvpQuestion;
+  visual: VisualLearningModel;
   selectedAnswer: string | null;
   onSelectAnswer: (answer: string) => void;
 };
@@ -10,6 +15,7 @@ const answerLabels = ["A", "B", "C", "D"];
 
 export function QuestionCard({
   question,
+  visual,
   selectedAnswer,
   onSelectAnswer,
 }: QuestionCardProps) {
@@ -35,6 +41,10 @@ export function QuestionCard({
       >
         {question.question}
       </h2>
+
+      <div className="mt-5">
+        <VisualMath visual={visual} revealAnswer={false} compact />
+      </div>
 
       <fieldset className="mt-6">
         <legend className="sr-only">Choose one answer</legend>

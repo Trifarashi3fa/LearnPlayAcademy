@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { VisualMath } from "@/components/mvp/explanation/VisualMath";
 import type { QuestionLearningContent } from "@/data/mvp-forest-world";
 
 type TabId = "steps" | "visual" | "voice" | "tip";
@@ -93,15 +94,16 @@ export function ExplanationTabs({ content, correctAnswer }: ExplanationTabsProps
 
         {activeTab === "visual" ? (
           <div>
-            <h3 className="text-xl font-black text-[#082B80]">Picture the idea</h3>
-            <div className="mt-5 rounded-[1.5rem] bg-[#FFF3C4] p-6 text-center">
-              <p className="text-lg font-black leading-8 text-[#082B80]">
-                {content.visualExplanation}
-              </p>
-              <div className="mx-auto mt-6 inline-flex min-h-20 min-w-20 items-center justify-center rounded-3xl bg-white px-6 text-4xl font-black text-[#0B63F6] shadow-sm">
-                {correctAnswer}
-              </div>
+            <h3 className="text-xl font-black text-[#082B80]">See the mathematics</h3>
+            <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">
+              Use the objects and groups to check how the answer is built.
+            </p>
+            <div className="mt-5">
+              <VisualMath visual={content.visual} revealAnswer />
             </div>
+            <p className="mt-4 rounded-2xl bg-[#EAF6FF] p-4 text-sm font-bold leading-6 text-[#5B6B94]">
+              {content.visualExplanation}
+            </p>
           </div>
         ) : null}
 
