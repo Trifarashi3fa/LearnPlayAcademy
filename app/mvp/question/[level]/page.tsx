@@ -35,7 +35,7 @@ export default async function MvpQuestionPage({ params }: QuestionPageProps) {
     <MvpPage
       eyebrow={`Question Game - Level ${levelData.level}`}
       title={levelData.title}
-      description="Answer each question, earn XP, read the explanation, and unlock your next level."
+      description="Answer each question, then explore Steps, Visual, Voice, and LearnBot Tip explanations before continuing."
     >
       <QuestionPlayer level={levelData} />
     </MvpPage>

@@ -1,13 +1,22 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { MvpCard, PrimaryLink, ProgressBar } from "@/components/mvp/MvpShell";
+import { MvpCard, PrimaryLink } from "@/components/mvp/MvpShell";
+import { ExplanationTabs } from "@/components/mvp/explanation/ExplanationTabs";
+import { LearnBotPanel } from "@/components/mvp/explanation/LearnBotPanel";
+import { ProgressTracker } from "@/components/mvp/explanation/ProgressTracker";
+import { QuestionCard } from "@/components/mvp/explanation/QuestionCard";
+import { XPRewardCard } from "@/components/mvp/explanation/XPRewardCard";
 import {
   calculateStars,
   useMvpProgress,
   type MvpProgress,
 } from "@/components/mvp/useMvpProgress";
-import { getLevelBonusXp, type MvpLevel } from "@/data/mvp-forest-world";
+import {
+  getLevelBonusXp,
+  getQuestionLearningContent,
+  type MvpLevel,
+} from "@/data/mvp-forest-world";
 
 export function QuestionPlayer({ level }: { level: MvpLevel }) {
   const { progress, updateProgress } = useMvpProgress();
@@ -18,8 +27,11 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
   const [saved, setSaved] = useState(false);
 
   const currentQuestion = level.questions[questionIndex];
+  const learningContent = useMemo(
+    () => getQuestionLearningContent(currentQuestion),
+    [currentQuestion],
+  );
   const answeredCorrectly = selectedAnswer === currentQuestion.correctAnswer;
-  const percent = Math.round(((questionIndex + 1) / level.questions.length) * 100);
   const starsEarned = useMemo(
     () => calculateStars(correctCount, level.questions.length),
     [correctCount, level.questions.length],
@@ -105,7 +117,10 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             <Result label="Stars earned" value={String(starsEarned)} />
             <Result label="XP earned" value={String(totalXpEarned)} />
-            <Result label="Badge earned" value={worldComplete ? "Forest Explorer Badge" : `Level ${level.level} Badge`} />
+            <Result
+              label="Badge earned"
+              value={worldComplete ? "Forest Explorer Badge" : `Level ${level.level} Badge`}
+            />
           </div>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             {level.level < 10 ? (
@@ -126,86 +141,80 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
   }
 
   return (
-    <div className="space-y-6">
-      <MvpCard>
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-sm font-black uppercase text-[#FF4FA0]">
-              Level {level.level} - {level.nodeType}
-            </p>
-            <h2 className="mt-1 text-3xl font-black">{level.title}</h2>
-          </div>
-          <div className="rounded-full bg-[#FFF3C4] px-4 py-2 text-sm font-black">
-            Score {correctCount}/{level.questions.length}
-          </div>
-        </div>
-        <div className="mt-5">
-          <div className="mb-2 flex justify-between text-sm font-black text-[#5B6B94]">
-            <span>Question {questionIndex + 1} of {level.questions.length}</span>
-            <span>{percent}%</span>
-          </div>
-          <ProgressBar value={percent} />
-        </div>
-      </MvpCard>
+    <div className="space-y-5">
+      <ProgressTracker
+        level={level.level}
+        nodeType={level.nodeType}
+        questionNumber={questionIndex + 1}
+        totalQuestions={level.questions.length}
+        score={correctCount}
+        xp={answerXp}
+      />
 
-      <MvpCard>
-        <p className="rounded-full bg-[#EAF6FF] px-4 py-2 text-sm font-black text-[#0B63F6]">
-          {currentQuestion.topic} - {currentQuestion.difficulty}
-        </p>
-        <h1 className="mt-5 text-3xl font-black leading-tight">
-          {currentQuestion.question}
-        </h1>
-
-        <div className="mt-6 grid gap-3 sm:grid-cols-2">
-          {currentQuestion.options.map((option) => {
-            const selected = selectedAnswer === option;
-            const correct = option === currentQuestion.correctAnswer;
-            const className = !selectedAnswer
-              ? "border-[#DDE8F5] bg-white hover:border-[#0B63F6] hover:bg-[#EAF6FF]"
-              : correct
-                ? "border-[#22C55E] bg-[#22C55E]/15 text-[#14532D]"
-                : selected
-                  ? "border-[#EF4444] bg-[#EF4444]/10 text-[#7F1D1D]"
-                  : "border-[#DDE8F5] bg-white text-[#5B6B94]";
-
-            return (
-              <button
-                key={option}
-                type="button"
-                onClick={() => chooseAnswer(option)}
-                disabled={Boolean(selectedAnswer)}
-                className={`min-h-16 rounded-[1.25rem] border px-5 py-4 text-left text-lg font-black transition focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 ${className}`}
-              >
-                {option}
-              </button>
-            );
-          })}
+      <div className="grid gap-5 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.25fr)_260px] lg:items-start">
+        <div className="space-y-5">
+          <QuestionCard
+            question={currentQuestion}
+            selectedAnswer={selectedAnswer}
+            onSelectAnswer={chooseAnswer}
+          />
+          {selectedAnswer ? (
+            <XPRewardCard
+              correct={answeredCorrectly}
+              xpGained={answeredCorrectly ? currentQuestion.xpReward : 0}
+              levelXp={answerXp}
+            />
+          ) : (
+            <section className="rounded-[1.5rem] border border-dashed border-[#B8CDED] bg-[#F8FBFF] p-4">
+              <p className="text-sm font-black text-[#082B80]">Choose an answer to unlock the learning notes.</p>
+              <p className="mt-1 text-sm font-bold text-[#5B6B94]">
+                You will see feedback, XP, steps, a visual explanation, voice, and a LearnBot tip.
+              </p>
+            </section>
+          )}
         </div>
 
         {selectedAnswer ? (
-          <div className="mt-6 rounded-[1.5rem] bg-[#EAF6FF] p-5">
-            <p className={`text-lg font-black ${answeredCorrectly ? "text-[#15803D]" : "text-[#B91C1C]"}`}>
-              {answeredCorrectly ? "Correct! +10 XP" : "Not quite yet."}
-            </p>
-            <p className="mt-2 text-base font-bold leading-7 text-[#5B6B94]">
-              {currentQuestion.explanation}
-            </p>
-          </div>
-        ) : null}
+          <ExplanationTabs
+            key={currentQuestion.id}
+            content={learningContent}
+            correctAnswer={currentQuestion.correctAnswer}
+          />
+        ) : (
+          <section className="flex min-h-96 items-center justify-center rounded-[2rem] border border-[#DDE8F5] bg-white p-8 text-center shadow-sm">
+            <div className="max-w-sm">
+              <p className="text-sm font-black uppercase tracking-wide text-[#FF4FA0]">
+                Explanation Notes
+              </p>
+              <h2 className="mt-3 text-3xl font-black text-[#082B80]">Answer, then learn why</h2>
+              <p className="mt-3 text-base font-bold leading-7 text-[#5B6B94]">
+                Steps, Visual, Voice, and LearnBot Tip will open here after an answer is selected.
+              </p>
+            </div>
+          </section>
+        )}
 
-        <div className="mt-6 flex flex-wrap gap-3">
-          <PrimaryLink href="/mvp/world-map" tone="white">Back</PrimaryLink>
-          {selectedAnswer ? (
-            <button
-              type="button"
-              onClick={nextQuestion}
-              className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#0B63F6] px-6 py-3 text-base font-black text-white shadow-sm transition hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25"
-            >
-              {questionIndex === level.questions.length - 1 ? "Finish Level" : "Next Question"}
-            </button>
-          ) : null}
-        </div>
-      </MvpCard>
+        <LearnBotPanel
+          answered={Boolean(selectedAnswer)}
+          correct={answeredCorrectly}
+          tip={learningContent.learnBotTip}
+        />
+      </div>
+
+      <nav className="flex flex-col gap-3 rounded-[1.5rem] border border-[#DDE8F5] bg-white p-4 sm:flex-row sm:items-center sm:justify-between" aria-label="Question controls">
+        <PrimaryLink href="/mvp/world-map" tone="white">Back to World Map</PrimaryLink>
+        {selectedAnswer ? (
+          <button
+            type="button"
+            onClick={nextQuestion}
+            className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#0B63F6] px-7 py-3 text-base font-black text-white shadow-sm transition hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25"
+          >
+            {questionIndex === level.questions.length - 1 ? "Finish Level" : "Next Question"}
+          </button>
+        ) : (
+          <p className="text-center text-sm font-bold text-[#5B6B94]">Select one answer to continue.</p>
+        )}
+      </nav>
     </div>
   );
 }

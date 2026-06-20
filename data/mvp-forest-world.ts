@@ -21,7 +21,60 @@ export type MvpQuestion = {
   correctAnswer: string;
   explanation: string;
   xpReward: number;
+  steps?: string[];
+  visualPrompt?: string | string[];
+  visualExplanation?: string;
+  voiceScript?: string;
+  learnBotTip?: string;
+  levelId?: string;
+  worldId?: string;
 };
+
+export type QuestionLearningContent = {
+  steps: string[];
+  visualExplanation: string;
+  voiceScript: string;
+  learnBotTip: string;
+  levelId: string;
+  worldId: string;
+};
+
+function prepareQuestions(questions: MvpQuestion[], level: number): MvpQuestion[] {
+  return questions.map((question) => ({
+    ...question,
+    levelId: question.levelId ?? `forest-level-${level}`,
+    worldId: question.worldId ?? "forest-world",
+  }));
+}
+
+export function getQuestionLearningContent(question: MvpQuestion): QuestionLearningContent {
+  const visualPrompt = Array.isArray(question.visualPrompt)
+    ? question.visualPrompt.join(" ")
+    : question.visualPrompt;
+
+  return {
+    steps:
+      question.steps && question.steps.length > 0
+        ? question.steps
+        : [
+            "Read the question slowly and find the important numbers or clues.",
+            "Check each answer choice and solve one small step at a time.",
+            question.explanation,
+          ],
+    visualExplanation:
+      question.visualExplanation ??
+      visualPrompt ??
+      `Picture the numbers or objects in the question. ${question.explanation}`,
+    voiceScript:
+      question.voiceScript ??
+      `${question.question} The correct answer is ${question.correctAnswer}. ${question.explanation}`,
+    learnBotTip:
+      question.learnBotTip ??
+      `Take your time and use the clue in the question. ${question.explanation}`,
+    levelId: question.levelId ?? `forest-level-${question.level}`,
+    worldId: question.worldId ?? "forest-world",
+  };
+}
 
 export type MvpLevel = {
   level: number;
@@ -92,70 +145,70 @@ export const forestLevels: MvpLevel[] = [
     nodeType: "Learn",
     title: "Numbers 1-10",
     description: "Meet numbers, count forward, and learn first number patterns.",
-    questions: level1 as MvpQuestion[],
+    questions: prepareQuestions(level1 as MvpQuestion[], 1),
   },
   {
     level: 2,
     nodeType: "Practice",
     title: "Counting Objects",
     description: "Practice counting everyday objects and comparing groups.",
-    questions: level2 as MvpQuestion[],
+    questions: prepareQuestions(level2 as MvpQuestion[], 2),
   },
   {
     level: 3,
     nodeType: "Mini Game",
     title: "Number Matching",
     description: "Match numbers, words, and small groups in a quick game.",
-    questions: level3 as MvpQuestion[],
+    questions: prepareQuestions(level3 as MvpQuestion[], 3),
   },
   {
     level: 4,
     nodeType: "Learn",
     title: "Simple Addition",
     description: "Learn how adding puts groups together.",
-    questions: level4 as MvpQuestion[],
+    questions: prepareQuestions(level4 as MvpQuestion[], 4),
   },
   {
     level: 5,
     nodeType: "Practice",
     title: "Addition Practice",
     description: "Use addition in small story problems.",
-    questions: level5 as MvpQuestion[],
+    questions: prepareQuestions(level5 as MvpQuestion[], 5),
   },
   {
     level: 6,
     nodeType: "Mini Game",
     title: "Addition Mini Game",
     description: "Collect rewards while solving addition missions.",
-    questions: level6 as MvpQuestion[],
+    questions: prepareQuestions(level6 as MvpQuestion[], 6),
   },
   {
     level: 7,
     nodeType: "Learn",
     title: "Simple Subtraction",
     description: "Learn how subtraction shows what is left.",
-    questions: level7 as MvpQuestion[],
+    questions: prepareQuestions(level7 as MvpQuestion[], 7),
   },
   {
     level: 8,
     nodeType: "Review",
     title: "Review Numbers and Operations",
     description: "Review numbers, addition, and subtraction.",
-    questions: level8 as MvpQuestion[],
+    questions: prepareQuestions(level8 as MvpQuestion[], 8),
   },
   {
     level: 9,
     nodeType: "Challenge",
     title: "Mixed Challenge",
     description: "Solve mixed number, addition, and subtraction challenges.",
-    questions: level9 as MvpQuestion[],
+    questions: prepareQuestions(level9 as MvpQuestion[], 9),
   },
   {
     level: 10,
     nodeType: "Boss",
     title: "Forest Guardian Boss Quiz",
     description: "Complete the Forest Guardian boss quiz and earn a badge.",
-    questions: level10 as MvpQuestion[],
+    questions: prepareQuestions(level10 as MvpQuestion[], 10),
   },
 ];
 
