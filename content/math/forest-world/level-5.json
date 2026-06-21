@@ -90,7 +90,7 @@
         "nodeType":  "Practice",
         "topic":  "Addition practice",
         "difficulty":  "easy",
-        "question":  "There are 1 red apple and 6 green apples. How many apples?",
+        "question":  "There is 1 red apple and there are 6 green apples. How many apples are there altogether?",
         "options":  [
                         "6",
                         "7",
@@ -98,7 +98,7 @@
                         "9"
                     ],
         "correctAnswer":  "7",
-        "explanation":  "1 + 6 = 7.",
+        "explanation":  "1 apple plus 6 apples equals 7 apples. 1 + 6 = 7.",
         "xpReward":  10
     },
     {
@@ -158,7 +158,7 @@
         "nodeType":  "Practice",
         "topic":  "Addition practice",
         "difficulty":  "easy",
-        "question":  "There are 2 rabbits and 6 rabbits. How many rabbits altogether?",
+        "question":  "There are 2 rabbits in one group and 6 rabbits in another group. How many rabbits are there altogether?",
         "options":  [
                         "7",
                         "8",
@@ -166,7 +166,7 @@
                         "10"
                     ],
         "correctAnswer":  "8",
-        "explanation":  "2 + 6 = 8.",
+        "explanation":  "2 rabbits plus 6 rabbits equals 8 rabbits. 2 + 6 = 8.",
         "xpReward":  10
     }
 ]

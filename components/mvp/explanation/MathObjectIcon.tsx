@@ -1,123 +1,34 @@
-import type { VisualObjectName } from "@/data/mvp-forest-world";
+import { getObjectVisual, type VisualObjectName } from "@/data/object-visual-map";
 
-export function MathObjectIcon({
-  object,
-  className = "h-12 w-12",
-}: {
-  object: VisualObjectName;
-  className?: string;
-}) {
-  const common = {
-    viewBox: "0 0 64 64",
-    className,
-    "aria-hidden": true,
-    focusable: false,
-  } as const;
-
-  switch (object) {
-    case "apple":
-      return (
-        <svg {...common}>
-          <path d="M33 17c-2-7 2-11 7-13" fill="none" stroke="#6B3F18" strokeWidth="4" strokeLinecap="round" />
-          <path d="M35 12c5-5 11-3 14 1-5 3-10 4-14-1Z" fill="#66CC00" />
-          <path d="M32 18c-14-8-24 4-21 20 3 17 13 22 21 15 8 7 18 2 21-15 3-16-7-28-21-20Z" fill="#EF4444" stroke="#B91C1C" strokeWidth="2" />
-          <circle cx="23" cy="29" r="5" fill="#FF8A8A" opacity=".7" />
-        </svg>
-      );
-    case "orange":
-      return (
-        <svg {...common}>
-          <circle cx="32" cy="35" r="21" fill="#FF9F1C" stroke="#E8790B" strokeWidth="3" />
-          <path d="M32 14c2-6 7-9 13-8-1 6-6 10-13 8Z" fill="#66CC00" />
-          <path d="M32 16v-6" stroke="#6B3F18" strokeWidth="3" strokeLinecap="round" />
-          <circle cx="24" cy="27" r="5" fill="#FFD084" opacity=".8" />
-        </svg>
-      );
-    case "star":
-    case "sticker":
-      return (
-        <svg {...common}>
-          <path d="m32 5 8 17 19 2-14 13 4 19-17-10-17 10 4-19L5 24l19-2 8-17Z" fill="#FFC83D" stroke="#EAA900" strokeWidth="3" strokeLinejoin="round" />
-        </svg>
-      );
-    case "bird":
-      return (
-        <svg {...common}>
-          <ellipse cx="31" cy="36" rx="20" ry="16" fill="#3B82F6" />
-          <circle cx="43" cy="25" r="11" fill="#60A5FA" />
-          <path d="m53 25 9 5-9 4Z" fill="#FF9F1C" />
-          <path d="M27 33c-8 2-11 9-7 15 9-1 15-6 16-13Z" fill="#0B63F6" />
-          <circle cx="46" cy="23" r="2.5" fill="#082B80" />
-          <path d="M19 51h10M37 51h9" stroke="#E8790B" strokeWidth="3" strokeLinecap="round" />
-        </svg>
-      );
-    case "shell":
-      return (
-        <svg {...common}>
-          <path d="M8 50C7 28 16 10 32 10s25 18 24 40c-13 7-35 7-48 0Z" fill="#FFB4D5" stroke="#D9468D" strokeWidth="3" />
-          <path d="M32 12v41M18 17l8 36M46 17l-8 36M10 39h44" fill="none" stroke="#D9468D" strokeWidth="2.5" />
-        </svg>
-      );
-    case "berry":
-      return (
-        <svg {...common}>
-          <path d="M32 19c-4-7-10-8-15-5 2 5 7 8 15 5Zm0 0c4-7 10-8 15-5-2 5-7 8-15 5Z" fill="#66CC00" />
-          <circle cx="23" cy="32" r="10" fill="#7C3AED" />
-          <circle cx="41" cy="32" r="10" fill="#8B5CF6" />
-          <circle cx="32" cy="45" r="11" fill="#6D28D9" />
-          <circle cx="20" cy="29" r="3" fill="#C4B5FD" />
-        </svg>
-      );
-    case "nut":
-      return (
-        <svg {...common}>
-          <path d="M18 27c0-12 7-19 14-19s14 7 14 19" fill="#8B5A2B" stroke="#6B3F18" strokeWidth="3" />
-          <path d="M14 27h36c-1 20-8 29-18 29s-17-9-18-29Z" fill="#C87931" stroke="#6B3F18" strokeWidth="3" />
-          <path d="M15 30h34" stroke="#F0B56B" strokeWidth="4" />
-        </svg>
-      );
-    case "coin":
-      return (
-        <svg {...common}>
-          <circle cx="32" cy="32" r="25" fill="#FFC83D" stroke="#EAA900" strokeWidth="4" />
-          <circle cx="32" cy="32" r="18" fill="#FFE485" stroke="#EAA900" strokeWidth="2" />
-          <path d="m32 18 4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1 4-9Z" fill="#FF9F1C" />
-        </svg>
-      );
-    case "flower":
-      return (
-        <svg {...common}>
-          <path d="M32 36v21M31 47c-7-5-12-3-15 1 5 5 10 6 15 3M33 47c7-5 12-3 15 1-5 5-10 6-15 3" fill="#66CC00" stroke="#3F9D00" strokeWidth="2" />
-          {[0, 60, 120, 180, 240, 300].map((angle) => (
-            <ellipse key={angle} cx="32" cy="17" rx="7" ry="12" fill="#FF70B7" transform={`rotate(${angle} 32 30)`} />
-          ))}
-          <circle cx="32" cy="30" r="9" fill="#FFC83D" />
-        </svg>
-      );
-    case "duck":
-      return (
-        <svg {...common}>
-          <ellipse cx="30" cy="41" rx="23" ry="14" fill="#FFC83D" />
-          <circle cx="42" cy="24" r="13" fill="#FFD95F" />
-          <path d="m53 25 10 5-10 5Z" fill="#FF9F1C" />
-          <path d="M21 37c8-6 16-3 18 5-6 7-14 7-21 2Z" fill="#F4B400" />
-          <circle cx="45" cy="21" r="2.5" fill="#082B80" />
-        </svg>
-      );
-    case "ball":
-      return (
-        <svg {...common}>
-          <circle cx="32" cy="32" r="26" fill="#FFFFFF" stroke="#0B63F6" strokeWidth="4" />
-          <path d="m32 18 9 7-4 11H27l-4-11 9-7Zm-9 7-12 3m26 8 8 12m-18-12-8 12m22-23 12 3M19 48l-1 7m27-7 1 7" fill="none" stroke="#0B63F6" strokeWidth="3" strokeLinejoin="round" />
-        </svg>
-      );
-    default:
-      return (
-        <svg {...common}>
-          <circle cx="32" cy="32" r="24" fill="#DCEEFF" stroke="#0B63F6" strokeWidth="3" />
-          <circle cx="25" cy="25" r="6" fill="#8B5CF6" />
-          <circle cx="40" cy="39" r="8" fill="#22C55E" />
-        </svg>
-      );
+export function MathObjectIcon({ object, className = "h-12 w-12" }: { object: VisualObjectName; className?: string }) {
+  const kind = getObjectVisual(object).kind;
+  const props = { viewBox: "0 0 64 64", className, "aria-hidden": true, focusable: false } as const;
+  switch (kind) {
+    case "apple": return <svg {...props}><path d="M33 17c-2-7 2-11 7-13" fill="none" stroke="#6B3F18" strokeWidth="4" strokeLinecap="round"/><path d="M35 12c5-5 11-3 14 1-5 3-10 4-14-1Z" fill="#66CC00"/><path d="M32 18c-14-8-24 4-21 20 3 17 13 22 21 15 8 7 18 2 21-15 3-16-7-28-21-20Z" fill="#EF4444" stroke="#B91C1C" strokeWidth="2"/></svg>;
+    case "orange": return <svg {...props}><circle cx="32" cy="35" r="21" fill="#FF9F1C" stroke="#E8790B" strokeWidth="3"/><path d="M32 14c2-6 7-9 13-8-1 6-6 10-13 8Z" fill="#66CC00"/><path d="M32 16v-6" stroke="#6B3F18" strokeWidth="3"/></svg>;
+    case "star": case "sticker": return <svg {...props}><path d="m32 5 8 17 19 2-14 13 4 19-17-10-17 10 4-19L5 24l19-2 8-17Z" fill="#FFC83D" stroke="#EAA900" strokeWidth="3" strokeLinejoin="round"/></svg>;
+    case "bird": return <svg {...props}><ellipse cx="31" cy="38" rx="20" ry="15" fill="#3B82F6"/><circle cx="43" cy="25" r="11" fill="#60A5FA"/><path d="m53 25 10 5-10 5Z" fill="#FF9F1C"/><circle cx="46" cy="22" r="2.5" fill="#082B80"/><path d="M23 36c8-6 14-2 16 6-7 6-14 6-20 1Z" fill="#0B63F6"/></svg>;
+    case "shell": return <svg {...props}><path d="M8 50C7 28 16 10 32 10s25 18 24 40c-13 7-35 7-48 0Z" fill="#FFB4D5" stroke="#D9468D" strokeWidth="3"/><path d="M32 12v41M18 17l8 36M46 17l-8 36M10 39h44" fill="none" stroke="#D9468D" strokeWidth="2.5"/></svg>;
+    case "berry": return <svg {...props}><path d="M32 19c-4-7-10-8-15-5 2 5 7 8 15 5Zm0 0c4-7 10-8 15-5-2 5-7 8-15 5Z" fill="#66CC00"/><circle cx="23" cy="32" r="10" fill="#7C3AED"/><circle cx="41" cy="32" r="10" fill="#8B5CF6"/><circle cx="32" cy="45" r="11" fill="#6D28D9"/></svg>;
+    case "nut": return <svg {...props}><path d="M18 27c0-12 7-19 14-19s14 7 14 19" fill="#8B5A2B" stroke="#6B3F18" strokeWidth="3"/><path d="M14 27h36c-1 20-8 29-18 29s-17-9-18-29Z" fill="#C87931" stroke="#6B3F18" strokeWidth="3"/></svg>;
+    case "coin": return <svg {...props}><circle cx="32" cy="32" r="25" fill="#FFC83D" stroke="#EAA900" strokeWidth="4"/><circle cx="32" cy="32" r="17" fill="#FFE485"/><path d="m32 18 4 9 10 1-7 7 2 10-9-5-9 5 2-10-7-7 10-1 4-9Z" fill="#FF9F1C"/></svg>;
+    case "flower": return <svg {...props}><path d="M32 36v23" stroke="#3F9D00" strokeWidth="4"/><g fill="#FF70B7"><circle cx="32" cy="15" r="10"/><circle cx="47" cy="25" r="10"/><circle cx="42" cy="42" r="10"/><circle cx="22" cy="42" r="10"/><circle cx="17" cy="25" r="10"/></g><circle cx="32" cy="30" r="9" fill="#FFC83D"/></svg>;
+    case "duck": return <svg {...props}><ellipse cx="29" cy="41" rx="23" ry="14" fill="#FFC83D"/><circle cx="43" cy="24" r="13" fill="#FFD95F"/><path d="m53 25 10 5-10 5Z" fill="#FF9F1C"/><circle cx="46" cy="21" r="2.5" fill="#082B80"/></svg>;
+    case "ball": return <svg {...props}><circle cx="32" cy="32" r="26" fill="#FFF" stroke="#0B63F6" strokeWidth="4"/><path d="m32 18 9 7-4 11H27l-4-11 9-7Zm-9 7-12 3m26 8 8 12m-18-12-8 12m22-23 12 3" fill="none" stroke="#0B63F6" strokeWidth="3"/></svg>;
+    case "leaf": return <svg {...props}><path d="M54 10C29 9 10 23 10 42c13 8 35 2 44-32Z" fill="#66CC00" stroke="#3F9D00" strokeWidth="3"/><path d="M14 49C25 35 36 25 49 16M27 35l-9-2M36 27l1-9" fill="none" stroke="#267500" strokeWidth="3" strokeLinecap="round"/></svg>;
+    case "tree": return <svg {...props}><path d="M27 39h10v21H27Z" fill="#8B5A2B"/><circle cx="20" cy="31" r="15" fill="#66CC00"/><circle cx="40" cy="28" r="17" fill="#4DB800"/><circle cx="31" cy="17" r="15" fill="#7CDB25"/></svg>;
+    case "pencil": return <svg {...props}><path d="m12 48 6-17L44 5l15 15-26 26-17 6Z" fill="#FFC83D" stroke="#B66A00" strokeWidth="3"/><path d="m44 5 15 15 3-12-6-6Z" fill="#FF70B7"/><path d="m12 48 4 4-7 3Z" fill="#082B80"/></svg>;
+    case "butterfly": return <svg {...props}><ellipse cx="20" cy="23" rx="14" ry="18" fill="#FF70B7" transform="rotate(-25 20 23)"/><ellipse cx="44" cy="23" rx="14" ry="18" fill="#8B5CF6" transform="rotate(25 44 23)"/><ellipse cx="21" cy="44" rx="11" ry="14" fill="#FFC83D"/><ellipse cx="43" cy="44" rx="11" ry="14" fill="#22C55E"/><path d="M32 18v34M32 20c-7-10-12-9-15-6M32 20c7-10 12-9 15-6" stroke="#082B80" strokeWidth="4" fill="none"/></svg>;
+    case "crayon": return <svg {...props}><path d="M20 8h24l7 12v36H13V20Z" fill="#FF4FA0" stroke="#9D174D" strokeWidth="3"/><path d="m20 8-7 12h38L44 8ZM14 42h36" fill="#FFF3C4" stroke="#9D174D" strokeWidth="3"/></svg>;
+    case "fish": return <svg {...props}><ellipse cx="29" cy="33" rx="22" ry="15" fill="#38BDF8"/><path d="m48 32 14-13v27Z" fill="#0B63F6"/><path d="M22 20c7-8 15-7 20 1" fill="#8B5CF6"/><circle cx="18" cy="29" r="3" fill="#082B80"/></svg>;
+    case "marble": return <svg {...props}><defs><radialGradient id="marble"><stop offset="0" stopColor="#93C5FD"/><stop offset=".45" stopColor="#3B82F6"/><stop offset="1" stopColor="#082B80"/></radialGradient></defs><circle cx="32" cy="32" r="25" fill="url(#marble)"/><path d="M18 40c10-2 15-12 27-14" fill="none" stroke="#FFF" strokeWidth="5" opacity=".7"/></svg>;
+    case "rabbit": return <svg {...props}><ellipse cx="24" cy="16" rx="7" ry="15" fill="#FFF" stroke="#B8C5D9" strokeWidth="2"/><ellipse cx="40" cy="16" rx="7" ry="15" fill="#FFF" stroke="#B8C5D9" strokeWidth="2"/><circle cx="32" cy="39" r="21" fill="#FFF" stroke="#B8C5D9" strokeWidth="2"/><circle cx="24" cy="36" r="3" fill="#082B80"/><circle cx="40" cy="36" r="3" fill="#082B80"/><path d="m32 41-4 4 4 3 4-3Z" fill="#FF70B7"/></svg>;
+    case "gem": return <svg {...props}><path d="m12 22 10-13h20l10 13-20 34Z" fill="#14B8A6" stroke="#087F75" strokeWidth="3"/><path d="M12 22h40M22 9l10 13L42 9M22 22l10 34 10-34" fill="none" stroke="#99F6E4" strokeWidth="2"/></svg>;
+    case "badge": return <svg {...props}><path d="M32 5 53 14v17c0 13-9 23-21 28C20 54 11 44 11 31V14Z" fill="#8B5CF6" stroke="#FFC83D" strokeWidth="4"/><path d="m32 17 4 8 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1Z" fill="#FFC83D"/></svg>;
+    case "firefly": return <svg {...props}><ellipse cx="32" cy="36" rx="9" ry="18" fill="#082B80"/><ellipse cx="19" cy="29" rx="12" ry="8" fill="#DCEEFF" stroke="#0B63F6"/><ellipse cx="45" cy="29" rx="12" ry="8" fill="#DCEEFF" stroke="#0B63F6"/><circle cx="32" cy="48" r="10" fill="#FFC83D" opacity=".9"/><path d="M29 16 22 8M35 16l7-8" stroke="#082B80" strokeWidth="3"/></svg>;
+    case "box": return <svg {...props}><path d="M8 22 32 8l24 14v32H8Z" fill="#C87931" stroke="#6B3F18" strokeWidth="3"/><path d="m8 22 24 14 24-14M32 36v26" fill="none" stroke="#F5D39B" strokeWidth="3"/></svg>;
+    case "balloon": return <svg {...props}><ellipse cx="32" cy="25" rx="19" ry="22" fill="#FF4FA0" stroke="#BE185D" strokeWidth="3"/><path d="m28 48 4-5 4 5ZM32 48c-8 7 8 8 0 14" fill="none" stroke="#5B6B94" strokeWidth="2"/></svg>;
+    case "stone": return <svg {...props}><path d="M8 48 15 24 32 10l18 9 7 29Z" fill="#9CA3AF" stroke="#5B6B94" strokeWidth="3"/><path d="m15 24 17 9 18-14M32 33v15" fill="none" stroke="#D1D5DB" strokeWidth="2"/></svg>;
+    default: return <svg {...props}><circle cx="32" cy="32" r="24" fill="#DCEEFF" stroke="#0B63F6" strokeWidth="3"/><circle cx="32" cy="32" r="9" fill="#8B5CF6"/></svg>;
   }
 }

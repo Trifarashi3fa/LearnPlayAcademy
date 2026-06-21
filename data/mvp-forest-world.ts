@@ -9,26 +9,16 @@ import level7 from "../content/math/forest-world/level-7.json";
 import level8 from "../content/math/forest-world/level-8.json";
 import level9 from "../content/math/forest-world/level-9.json";
 import level10 from "../content/math/forest-world/level-10.json";
+import { objectVisualMap, type VisualObjectName } from "@/data/object-visual-map";
 
-export type VisualLearningType =
-  | "counting"
-  | "addition"
-  | "subtraction"
-  | "comparison"
-  | "matching"
-  | "none";
+export type { VisualObjectName } from "@/data/object-visual-map";
 
+export type VisualLearningType = "counting" | "addition" | "subtraction" | "comparison" | "matching" | "none";
 export type VisualSceneContext = "basket" | "branch" | "forest" | "box" | "bag" | "path" | "water" | "none";
-
-export type VisualObjectName =
-  | "apple" | "orange" | "star" | "bird" | "ball" | "flower" | "duck"
-  | "shell" | "berry" | "nut" | "coin" | "leaf" | "pencil" | "tree"
-  | "butterfly" | "crayon" | "sticker" | "fish" | "marble" | "rabbit"
-  | "gem" | "badge" | "firefly" | "box" | "balloon" | "stone" | "number" | "object";
-
 export type VisualLearningModel = {
   type: VisualLearningType;
   object: VisualObjectName;
+  objects?: VisualObjectName[];
   groups: number[];
   equation?: string;
   answerVisual?: string;
@@ -66,18 +56,9 @@ const visualObjectMatchers: Array<{ object: VisualObjectName; pattern: RegExp }>
   { object: "box", pattern: /\bboxes?\b/i }, { object: "stone", pattern: /\bstones?\b/i },
 ];
 
-const objectNames: Record<VisualObjectName, string> = {
-  apple: "apples", orange: "oranges", star: "stars", bird: "birds", ball: "balls",
-  flower: "flowers", duck: "ducks", shell: "shells", berry: "berries", nut: "nuts",
-  coin: "coins", leaf: "leaves", pencil: "pencils", tree: "trees", butterfly: "butterflies",
-  crayon: "crayons", sticker: "stickers", fish: "fish", marble: "marbles", rabbit: "rabbits",
-  gem: "gems", badge: "badges", firefly: "fireflies", box: "boxes", balloon: "balloons",
-  stone: "stones", number: "counters", object: "objects",
-};
-
-function findVisualObject(text: string): VisualObjectName {
+function findVisualObjects(text: string): VisualObjectName[] {
   const unique = [...new Set(visualObjectMatchers.filter((item) => item.pattern.test(text)).map((item) => item.object))];
-  return unique.length === 1 ? unique[0] : unique.length > 1 ? "object" : "number";
+  return unique.length > 1 && unique.includes("box") ? unique.filter((item) => item !== "box") : unique;
 }
 function getNumbers(text: string): number[] { return (text.match(/\d+/g) ?? []).map(Number).filter(Number.isFinite); }
 function inferContext(text: string): VisualSceneContext {
@@ -89,7 +70,9 @@ function inferContext(text: string): VisualSceneContext {
 
 function inferQuestionVisual(question: MvpQuestion): VisualLearningModel {
   const text = `${question.question} ${question.explanation}`;
-  const object = findVisualObject(text); const context = inferContext(text);
+  const detectedObjects = findVisualObjects(text);
+  const object = detectedObjects.length === 1 ? detectedObjects[0] : detectedObjects.length > 1 ? "object" : "number";
+  const context = inferContext(text);
   const answerNumber = Number(question.correctAnswer.match(/\d+/)?.[0]);
   const questionNumbers = getNumbers(question.question);
   const explicitAddition = text.match(/(\d+)\s*\+\s*(\d+)(?:\s*\+\s*(\d+))?\s*=\s*(\d+)/);
@@ -103,31 +86,31 @@ function inferQuestionVisual(question: MvpQuestion): VisualLearningModel {
   if (explicitAddition) {
     const groups = [Number(explicitAddition[1]), Number(explicitAddition[2])];
     if (explicitAddition[3]) groups.push(Number(explicitAddition[3]));
-    return { type: "addition", object, groups, equation: explicitAddition[0], answerVisual: question.correctAnswer, context, accessibleLabel: `${groups.join(" plus ")} equals ${question.correctAnswer}` };
+    return { type: "addition", object, objects: groups.map((_, index) => detectedObjects[index] ?? detectedObjects[0] ?? object), groups, equation: explicitAddition[0], answerVisual: question.correctAnswer, context, accessibleLabel: `${groups.join(" plus ")} equals ${question.correctAnswer}` };
   }
   if (explicitSubtraction) {
     const groups = [Number(explicitSubtraction[1]), Number(explicitSubtraction[2])];
-    return { type: "subtraction", object, groups, equation: explicitSubtraction[0], answerVisual: question.correctAnswer, context, accessibleLabel: `${groups[0]} take away ${groups[1]} equals ${question.correctAnswer}` };
+    return { type: "subtraction", object, objects: groups.map((_, index) => detectedObjects[index] ?? detectedObjects[0] ?? object), groups, equation: explicitSubtraction[0], answerVisual: question.correctAnswer, context, accessibleLabel: `${groups[0]} take away ${groups[1]} equals ${question.correctAnswer}` };
   }
   if (comparison) {
     const groups = questionNumbers.slice(0, 2); const symbol = groups.length === 2 ? (groups[0] > groups[1] ? ">" : "<") : undefined;
-    return { type: "comparison", object, groups, comparisonSymbol: symbol, equation: symbol ? `${groups[0]} ${symbol} ${groups[1]}` : undefined, answerVisual: question.correctAnswer, context, accessibleLabel: `Compare ${groups.join(" and ")}. The answer is ${question.correctAnswer}` };
+    return { type: "comparison", object, objects: groups.map(() => detectedObjects[0] ?? object), groups, comparisonSymbol: symbol, equation: symbol ? `${groups[0]} ${symbol} ${groups[1]}` : undefined, answerVisual: question.correctAnswer, context, accessibleLabel: `Compare ${groups.join(" and ")}. The answer is ${question.correctAnswer}` };
   }
   if (matching) {
     const count = object !== "number" ? answerNumber : (questionNumbers[0] ?? answerNumber);
-    return { type: "matching", object, groups: Number.isFinite(count) ? [count] : [], answerVisual: question.correctAnswer, context, accessibleLabel: `Match the visual amount to ${question.correctAnswer}` };
+    return { type: "matching", object, objects: [detectedObjects[0] ?? object], groups: Number.isFinite(count) ? [count] : [], answerVisual: question.correctAnswer, context, accessibleLabel: `Match the visual amount to ${question.correctAnswer}` };
   }
   if (asksStart && object !== "number" && Number.isFinite(answerNumber)) {
-    return { type: "counting", object, groups: [answerNumber], answerVisual: question.correctAnswer, context, accessibleLabel: `Count ${answerNumber} ${objectNames[object]} at the start` };
+    return { type: "counting", object, objects: [detectedObjects[0] ?? object], groups: [answerNumber], answerVisual: question.correctAnswer, context, accessibleLabel: `Count ${answerNumber} ${objectVisualMap[object].plural} at the start` };
   }
   if (subtractionStory && questionNumbers.length >= 2) {
-    const groups = questionNumbers.slice(0, 2); return { type: "subtraction", object, groups, equation: `${groups[0]} - ${groups[1]} = ${question.correctAnswer}`, answerVisual: question.correctAnswer, context, accessibleLabel: `${groups[0]} take away ${groups[1]} equals ${question.correctAnswer}` };
+    const groups = questionNumbers.slice(0, 2); return { type: "subtraction", object, objects: groups.map((_, index) => detectedObjects[index] ?? detectedObjects[0] ?? object), groups, equation: `${groups[0]} - ${groups[1]} = ${question.correctAnswer}`, answerVisual: question.correctAnswer, context, accessibleLabel: `${groups[0]} take away ${groups[1]} equals ${question.correctAnswer}` };
   }
   if (additionStory && questionNumbers.length >= 2) {
-    const groups = questionNumbers.slice(0, 3); return { type: "addition", object, groups, equation: `${groups.join(" + ")} = ${question.correctAnswer}`, answerVisual: question.correctAnswer, context, accessibleLabel: `${groups.join(" plus ")} equals ${question.correctAnswer}` };
+    const groups = questionNumbers.slice(0, 3); return { type: "addition", object, objects: groups.map((_, index) => detectedObjects[index] ?? detectedObjects[0] ?? object), groups, equation: `${groups.join(" + ")} = ${question.correctAnswer}`, answerVisual: question.correctAnswer, context, accessibleLabel: `${groups.join(" plus ")} equals ${question.correctAnswer}` };
   }
   if (object !== "number" && Number.isFinite(answerNumber)) {
-    return { type: "counting", object, groups: [answerNumber], answerVisual: question.correctAnswer, context, accessibleLabel: `Count ${answerNumber} ${objectNames[object]}` };
+    return { type: "counting", object, objects: [detectedObjects[0] ?? object], groups: [answerNumber], answerVisual: question.correctAnswer, context, accessibleLabel: `Count ${answerNumber} ${objectVisualMap[object].plural}` };
   }
   const sequence = question.question.match(/(?:missing[^:]*:|count forward:|count backward:|count by 2:)\s*([^?]+)/i);
   const after = question.question.match(/comes after (\d+)/i); const before = question.question.match(/comes before (\d+)/i);
@@ -146,7 +129,7 @@ function prepareQuestions(questions: MvpQuestion[], level: number): MvpQuestion[
 
 export function getQuestionLearningContent(question: MvpQuestion): QuestionLearningContent {
   const visual = question.visual ?? inferQuestionVisual(question);
-  const label = objectNames[visual.object];
+  const label = objectVisualMap[visual.object].plural;
   const [first = 0, second = 0] = visual.groups;
   const generated = buildTutorContent(visual, label, first, second, question.correctAnswer, question.explanation);
   return {

@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
+import { objectVisualMap, type VisualObjectName } from "@/data/object-visual-map";
 import { MathObjectIcon } from "@/components/mvp/explanation/MathObjectIcon";
 import type {
   VisualLearningModel,
-  VisualObjectName,
   VisualSceneContext,
 } from "@/data/mvp-forest-world";
 
@@ -10,17 +10,6 @@ type MathVisualRendererProps = {
   visual: VisualLearningModel;
   revealAnswer: boolean;
   compact?: boolean;
-};
-
-const labels: Record<VisualObjectName, string> = {
-  apple: "apples", orange: "oranges", star: "stars", bird: "birds",
-  ball: "balls", flower: "flowers", duck: "ducks", shell: "shells",
-  berry: "berries", nut: "nuts", coin: "coins", leaf: "leaves",
-  pencil: "pencils", tree: "trees", butterfly: "butterflies",
-  crayon: "crayons", sticker: "stickers", fish: "fish", marble: "marbles",
-  rabbit: "rabbits", gem: "gems", badge: "badges", firefly: "fireflies",
-  box: "boxes", balloon: "balloons", stone: "stones", number: "counters",
-  object: "objects",
 };
 
 export function MathVisualRenderer({
@@ -57,7 +46,7 @@ export function MathVisualRenderer({
               {index > 0 && operator ? <Operator value={operator} /> : null}
               <ObjectGroup
                 count={count}
-                object={visual.object}
+                object={visual.objects?.[index] ?? visual.object}
                 context={visual.context}
                 compact={compact}
               />
@@ -94,7 +83,7 @@ function SubtractionVisual({ visual, revealAnswer, compact = false }: MathVisual
         </p>
         <ObjectGroup
           count={total}
-          object={visual.object}
+          object={visual.objects?.[0] ?? visual.object}
           context={visual.context}
           compact={compact}
           crossOutCount={removed}
@@ -109,7 +98,7 @@ function SubtractionVisual({ visual, revealAnswer, compact = false }: MathVisual
         {revealAnswer ? (
           <div className="mt-5">
             <p className="mb-2 text-xs font-black uppercase text-[#15803D]">{remaining} left</p>
-            <ObjectGroup count={remaining} object={visual.object} context="none" compact />
+            <ObjectGroup count={remaining} object={visual.objects?.[0] ?? visual.object} context="none" compact />
           </div>
         ) : null}
       </div>
@@ -120,21 +109,24 @@ function SubtractionVisual({ visual, revealAnswer, compact = false }: MathVisual
 function ComparisonVisual({ visual, revealAnswer, compact = false }: MathVisualRendererProps) {
   const [first, second] = visual.groups;
   const symbol = visual.comparisonSymbol ?? (first > second ? ">" : "<");
-
+  const firstObject = visual.objects?.[0] ?? visual.object;
+  const secondObject = visual.objects?.[1] ?? visual.object;
+  const answerNumber = Number(visual.answerVisual?.match(/\d+/)?.[0]);
   return (
     <VisualFrame visual={visual} compact={compact}>
-      <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5">
-        <ObjectGroup count={first} object={visual.object} context={visual.context} compact={compact} />
+      <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
+        <ComparisonGroup label={`Group A: ${first} ${objectVisualMap[firstObject].plural}`} correct={revealAnswer && answerNumber === first}><ObjectGroup count={first} object={firstObject} context={visual.context} compact={compact} /></ComparisonGroup>
         <Operator value={symbol} />
-        <ObjectGroup count={second} object={visual.object} context={visual.context} compact={compact} />
+        <ComparisonGroup label={`Group B: ${second} ${objectVisualMap[secondObject].plural}`} correct={revealAnswer && answerNumber === second}><ObjectGroup count={second} object={secondObject} context={visual.context} compact={compact} /></ComparisonGroup>
       </div>
-      {revealAnswer && visual.answerVisual ? (
-        <div className="mt-5 text-center"><Answer value={visual.answerVisual} prefix="Answer: " /></div>
-      ) : null}
+      {revealAnswer && visual.answerVisual ? <div className="mt-5 text-center"><Answer value={visual.answerVisual} prefix="Correct group: " /></div> : null}
     </VisualFrame>
   );
 }
 
+function ComparisonGroup({ label, correct, children }: { label: string; correct: boolean; children: ReactNode }) {
+  return <div className={`rounded-[1.5rem] border-2 p-3 ${correct ? "border-[#22C55E] bg-[#DCFCE7]" : "border-transparent bg-white"}`}><p className="mb-3 text-center text-sm font-black text-[#082B80]">{label}</p>{children}</div>;
+}
 function VisualFrame({
   visual,
   compact,
@@ -174,7 +166,7 @@ function ObjectGroup({
 
   return (
     <ContextScene context={context}>
-      <div className="flex max-w-full flex-wrap justify-center gap-1.5" aria-label={`${count} ${labels[object]}`}>
+      <div className="flex max-w-full flex-wrap justify-center gap-1.5" aria-label={`${count} ${objectVisualMap[object].plural}`}>
         {items.map((index) => {
           const crossed = crossOutCount > 0 && index >= firstCrossedIndex;
           return (

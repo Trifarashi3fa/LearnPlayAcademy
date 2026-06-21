@@ -90,15 +90,15 @@
         "nodeType":  "Practice",
         "topic":  "Counting objects",
         "difficulty":  "easy",
-        "question":  "There are 8 leaves. One leaf falls away. How many leaves are counted at the start?",
+        "question":  "There are 8 leaves. One leaf falls away. How many leaves are left?",
         "options":  [
                         "6",
                         "7",
                         "8",
                         "9"
                     ],
-        "correctAnswer":  "8",
-        "explanation":  "The starting count is 8 leaves.",
+        "correctAnswer":  "7",
+        "explanation":  "Start with 8 leaves and take away 1 leaf. 8 - 1 = 7 leaves left.",
         "xpReward":  10
     },
     {

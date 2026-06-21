@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { MvpCard, PrimaryLink } from "@/components/mvp/MvpShell";
+import { PrimaryLink } from "@/components/mvp/MvpShell";
 import { useMvpProgress } from "@/components/mvp/useMvpProgress";
 import type { MvpLevel } from "@/data/mvp-forest-world";
 
@@ -9,48 +10,30 @@ export function LevelIntroClient({ level }: { level: MvpLevel }) {
   const router = useRouter();
   const { nextUnlockedLevel, progress } = useMvpProgress();
   const unlocked = level.level === 1 || level.level <= nextUnlockedLevel || progress.completedLevels.includes(level.level);
-
   return (
-    <MvpCard>
-      <span className="rounded-full bg-[#FFF3C4] px-4 py-2 text-sm font-black text-[#082B80]">
-        {level.nodeType}
-      </span>
-      <h2 className="mt-5 text-4xl font-black">
-        Level {level.level}: {level.title}
-      </h2>
-      <p className="mt-3 max-w-2xl text-lg font-bold leading-8 text-[#5B6B94]">
-        {level.description}
-      </p>
-      <div className="mt-6 grid gap-4 sm:grid-cols-3">
-        <Info label="Questions" value={String(level.questions.length)} />
-        <Info label="XP per correct answer" value="10" />
-        <Info label="Node type" value={level.nodeType} />
+    <section className="overflow-hidden rounded-[2rem] border border-[#BDE7D0] bg-white shadow-playful">
+      <div className="relative grid min-h-64 gap-6 overflow-hidden bg-[#EAFBF0] p-6 sm:p-8 lg:grid-cols-[280px_1fr] lg:items-center">
+        <span className="absolute -right-12 -top-12 h-52 w-52 rounded-full bg-[#66CC00]/15" />
+        <div className="relative overflow-hidden rounded-[1.5rem] border-4 border-white shadow-sm"><Image src="/worlds/level 1-forest-world.png" alt="Forest World mission" width={420} height={300} className="h-56 w-full object-cover" priority /></div>
+        <div className="relative">
+          <div className="flex flex-wrap items-center gap-3"><span className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#0B63F6] text-2xl font-black text-white shadow-sm">{level.level}</span><div><p className="text-xs font-black uppercase text-[#FF4FA0]">Forest World Mission</p><p className="mt-1 inline-flex rounded-full bg-[#FFF3C4] px-3 py-1 text-sm font-black text-[#082B80]">{level.nodeType}</p></div></div>
+          <h2 className="mt-5 text-4xl font-black leading-tight text-[#082B80]">Level {level.level}: {level.title}</h2>
+          <p className="mt-3 max-w-2xl text-lg font-bold leading-8 text-[#5B6B94]">{level.description}</p>
+        </div>
       </div>
-      <div className="mt-8 flex flex-wrap gap-3">
-        {unlocked ? (
-          <PrimaryLink href={`/mvp/question/${level.level}`} tone="blue">
-            Start
-          </PrimaryLink>
-        ) : (
-          <button
-            type="button"
-            onClick={() => router.push("/mvp/world-map")}
-            className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#EAF6FF] px-6 py-3 text-base font-black text-[#5B6B94]"
-          >
-            Locked until previous level is complete
-          </button>
-        )}
-        <PrimaryLink href="/mvp/world-map" tone="white">Back to World Map</PrimaryLink>
+      <div className="grid gap-5 p-6 sm:p-8 lg:grid-cols-[1fr_1fr_220px]">
+        <MissionSection title="What you will learn" body={level.description} />
+        <MissionSection title="Mission goal" body={`Complete ${level.questions.length} questions, learn from every explanation, and earn stars for careful answers.`} />
+        <aside className="rounded-[1.5rem] bg-[#EAF6FF] p-4 text-center"><div className="relative mx-auto h-28 w-28"><Image src="/mascots/learnbot-thinking.png" alt="LearnBot mission helper" fill sizes="112px" className="object-contain" /></div><p className="mt-2 text-sm font-black text-[#082B80]">LearnBot is ready to help.</p></aside>
       </div>
-    </MvpCard>
+      <div className="flex flex-col gap-3 border-t border-[#DDE8F5] bg-[#F8FBFF] p-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div className="flex gap-3 text-sm font-black text-[#5B6B94]"><span>{level.questions.length} questions</span><span>10 XP each</span></div>
+        <div className="flex flex-col gap-3 sm:flex-row">{unlocked ? <PrimaryLink href={`/mvp/question/${level.level}`} tone="green">Start Mission</PrimaryLink> : <button type="button" onClick={() => router.push("/mvp/world-map")} className="min-h-12 rounded-full bg-[#EAF6FF] px-6 font-black text-[#5B6B94]">Complete the previous level first</button>}<PrimaryLink href="/mvp/world-map" tone="white">Back to World Map</PrimaryLink></div>
+      </div>
+    </section>
   );
 }
 
-function Info({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="rounded-[1.5rem] bg-[#EAF6FF] p-4">
-      <p className="text-sm font-black uppercase text-[#5B6B94]">{label}</p>
-      <p className="mt-2 text-2xl font-black">{value}</p>
-    </div>
-  );
+function MissionSection({ title, body }: { title: string; body: string }) {
+  return <div className="rounded-[1.5rem] border border-[#DDE8F5] bg-white p-5"><p className="text-xs font-black uppercase text-[#0B63F6]">{title}</p><p className="mt-3 text-base font-bold leading-7 text-[#5B6B94]">{body}</p></div>;
 }
