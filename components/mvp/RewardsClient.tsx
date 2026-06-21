@@ -10,7 +10,7 @@ export function RewardsClient() {
   const badges = progress.badges.length > 0 ? progress.badges : ["Complete a level to unlock your first badge"];
   return (
     <div className="space-y-6">
-      <div className="grid gap-5 md:grid-cols-3"><MvpCard><Stat label="XP" value={progress.xp} /></MvpCard><MvpCard><Stat label="Stars" value={progress.stars} /></MvpCard><MvpCard><Stat label="Badges" value={progress.badges.length} /></MvpCard></div>
+      <div className="grid gap-5 md:grid-cols-3"><MvpCard><Stat label="XP" value={progress.totalXp} /></MvpCard><MvpCard><Stat label="Stars" value={progress.totalStars} /></MvpCard><MvpCard><Stat label="Badges" value={progress.badges.length} /></MvpCard></div>
       <section className="overflow-hidden rounded-[2rem] border border-[#BDE7D0] bg-gradient-to-br from-[#EAFBF0] via-white to-[#FFF3C4] p-6 shadow-playful sm:p-8">
         <div className="grid gap-7 md:grid-cols-[240px_1fr] md:items-center">
           <div className="overflow-hidden rounded-[1.5rem] border-8 border-white bg-[#FFF3C4] p-2 shadow-sm"><Image src="/rewards/badge.png" alt="LearnPlay achievement badge" width={320} height={320} className="aspect-square w-full rounded-xl object-cover" priority /></div>

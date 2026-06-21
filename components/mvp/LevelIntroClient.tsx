@@ -8,8 +8,8 @@ import type { MvpLevel } from "@/data/mvp-forest-world";
 
 export function LevelIntroClient({ level }: { level: MvpLevel }) {
   const router = useRouter();
-  const { nextUnlockedLevel, progress } = useMvpProgress();
-  const unlocked = level.level === 1 || level.level <= nextUnlockedLevel || progress.completedLevels.includes(level.level);
+  const { nextUnlockedLevel, worldProgressRecord } = useMvpProgress();
+  const unlocked = level.level === 1 || level.level <= nextUnlockedLevel || worldProgressRecord.completedLevels.includes(level.level);
   return (
     <section className="overflow-hidden rounded-[2rem] border border-[#BDE7D0] bg-white shadow-playful">
       <div className="relative grid min-h-64 gap-6 overflow-hidden bg-[#EAFBF0] p-6 sm:p-8 lg:grid-cols-[280px_1fr] lg:items-center">

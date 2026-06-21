@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { PrimaryLink } from "@/components/mvp/MvpShell";
 import { ExplanationTabs } from "@/components/mvp/explanation/ExplanationTabs";
 import { ForestRewardScreen } from "@/components/mvp/explanation/ForestRewardScreen";
@@ -9,44 +9,83 @@ import { LearnBotPanel } from "@/components/mvp/explanation/LearnBotPanel";
 import { ProgressTracker } from "@/components/mvp/explanation/ProgressTracker";
 import { QuestionCard } from "@/components/mvp/explanation/QuestionCard";
 import { XPRewardCard } from "@/components/mvp/explanation/XPRewardCard";
-import { calculateStars, useMvpProgress, type MvpProgress } from "@/components/mvp/useMvpProgress";
-import { getLevelBonusXp, getQuestionLearningContent, type MvpLevel } from "@/data/mvp-forest-world";
+import { calculateStars, useMvpProgress } from "@/components/mvp/useMvpProgress";
 import { forestWorldIdentity } from "@/data/forest-world-identity";
+import { getLevelBonusXp, getQuestionLearningContent, type MvpLevel } from "@/data/mvp-forest-world";
+import type { NodeType } from "@/data/curriculum-types";
+import type { LevelQuestionAttemptInput } from "@/data/progress-types";
 
 export function QuestionPlayer({ level }: { level: MvpLevel }) {
-  const { progress, updateProgress } = useMvpProgress();
+  const { worldProgressRecord, worldCompleted, completeLevel } = useMvpProgress();
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
+  const [attempts, setAttempts] = useState<LevelQuestionAttemptInput[]>([]);
   const [completed, setCompleted] = useState(false);
-  const [saved, setSaved] = useState(false);
+  const [rewardXp, setRewardXp] = useState(0);
+  const finishingRef = useRef(false);
   const currentQuestion = level.questions[questionIndex];
   const learningContent = useMemo(() => getQuestionLearningContent(currentQuestion), [currentQuestion]);
   const answeredCorrectly = selectedAnswer === currentQuestion.correctAnswer;
   const starsEarned = useMemo(() => calculateStars(correctCount, level.questions.length), [correctCount, level.questions.length]);
-  const answerXp = correctCount * 10;
-  const levelBonusXp = getLevelBonusXp(level.level);
-  const worldComplete = level.level === 10 && completed;
-  const totalXpEarned = answerXp + levelBonusXp + (worldComplete ? 500 : 0);
+  const answerXp = attempts.reduce((total, attempt) => total + (attempt.correct ? attempt.xpReward : 0), 0);
+  const completesWorld = level.level === 10;
 
-  function chooseAnswer(answer: string) { if (selectedAnswer) return; setSelectedAnswer(answer); if (answer === currentQuestion.correctAnswer) setCorrectCount((current) => current + 1); }
-  function nextQuestion() { if (questionIndex === level.questions.length - 1) { setCompleted(true); return; } setQuestionIndex((current) => current + 1); setSelectedAnswer(null); }
-  function saveCompletion() {
-    if (saved) return;
-    const alreadyCompleted = progress.completedLevels.includes(level.level);
-    const completedLevels = alreadyCompleted ? progress.completedLevels : [...progress.completedLevels, level.level].sort((a, b) => a - b);
-    const existingStars = progress.levelStars[String(level.level)] ?? 0;
-    const levelStars = Math.max(existingStars, starsEarned);
-    const badges = [...progress.badges];
-    if (level.level === 10 && !badges.includes(forestWorldIdentity.completionBadge)) badges.push(forestWorldIdentity.completionBadge);
-    else if (!badges.includes(`Level ${level.level} Badge`)) badges.push(`Level ${level.level} Badge`);
-    const next: MvpProgress = { ...progress, currentLevel: Math.min(10, Math.max(progress.currentLevel, level.level + 1)), xp: progress.xp + (alreadyCompleted ? answerXp : totalXpEarned), stars: progress.stars + Math.max(0, levelStars - existingStars), badges, completedLevels, levelStars: { ...progress.levelStars, [String(level.level)]: levelStars }, questionsAnswered: progress.questionsAnswered + level.questions.length, correctAnswers: progress.correctAnswers + correctCount };
-    updateProgress(next); setSaved(true);
+  function chooseAnswer(answer: string) {
+    if (selectedAnswer) return;
+    const correct = answer === currentQuestion.correctAnswer;
+    setSelectedAnswer(answer);
+    setAttempts((current) => [...current, {
+      questionId: currentQuestion.id,
+      selectedAnswer: answer,
+      correct,
+      xpReward: currentQuestion.xpReward,
+    }]);
+    if (correct) setCorrectCount((current) => current + 1);
+  }
+
+  function nextQuestion() {
+    if (questionIndex < level.questions.length - 1) {
+      setQuestionIndex((current) => current + 1);
+      setSelectedAnswer(null);
+      return;
+    }
+    if (finishingRef.current) return;
+    finishingRef.current = true;
+    const firstLevelCompletion = !worldProgressRecord.completedLevels.includes(level.level);
+    const completionBonus = firstLevelCompletion ? getLevelBonusXp(level.level) : 0;
+    const worldBonus = completesWorld && !worldCompleted ? 500 : 0;
+    setRewardXp(answerXp + completionBonus + worldBonus);
+    completeLevel({
+      subject: forestWorldIdentity.subject,
+      year: forestWorldIdentity.year,
+      worldId: forestWorldIdentity.worldId,
+      level: level.level,
+      nodeType: level.nodeType as NodeType,
+      totalLevels: 10,
+      totalQuestions: level.questions.length,
+      correctAnswers: correctCount,
+      starsEarned,
+      completionBonusXp: getLevelBonusXp(level.level),
+      worldCompletionXp: 500,
+      completesWorld,
+      completionBadge: forestWorldIdentity.completionBadge,
+      questionAttempts: attempts,
+    });
+    setCompleted(true);
   }
 
   if (completed) {
-    if (!saved) saveCompletion();
-    return <ForestRewardScreen level={level.level} worldComplete={worldComplete} correctCount={correctCount} totalQuestions={level.questions.length} starsEarned={starsEarned} xpEarned={totalXpEarned} />;
+    return (
+      <ForestRewardScreen
+        level={level.level}
+        worldComplete={completesWorld}
+        correctCount={correctCount}
+        totalQuestions={level.questions.length}
+        starsEarned={starsEarned}
+        xpEarned={rewardXp}
+      />
+    );
   }
 
   return (

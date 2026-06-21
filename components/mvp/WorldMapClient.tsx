@@ -25,7 +25,7 @@ const nodeMessages: Record<string, string> = {
 };
 
 export function WorldMapClient() {
-  const { progress, worldProgress, nextUnlockedLevel, completedCount } = useMvpProgress();
+  const { progress, worldProgressRecord, worldProgress, nextUnlockedLevel, completedCount } = useMvpProgress();
 
   return (
     <div className="space-y-8">
@@ -69,7 +69,7 @@ export function WorldMapClient() {
               </div>
               <ProgressBar value={worldProgress} />
               <p className="mt-3 text-sm font-black text-[#5B6B94]">
-                {completedCount} of {forestLevels.length} levels complete. Total XP: {progress.xp}
+                {completedCount} of {forestLevels.length} levels complete. Total XP: {progress.totalXp}
               </p>
             </div>
             <div className="mt-6 rounded-[1.5rem] bg-[#F0FDF4] p-4">
@@ -94,9 +94,9 @@ export function WorldMapClient() {
 
         <div className="relative space-y-4 before:absolute before:left-9 before:top-4 before:hidden before:h-[calc(100%-2rem)] before:w-2 before:rounded-full before:bg-[#DDE8F5] sm:before:block">
           {forestLevels.map((level, index) => {
-            const completed = progress.completedLevels.includes(level.level);
+            const completed = worldProgressRecord.completedLevels.includes(level.level);
             const unlocked = level.level === 1 || level.level <= nextUnlockedLevel || completed;
-            const stars = progress.levelStars[String(level.level)] ?? 0;
+            const stars = worldProgressRecord.levelStars[String(level.level)] ?? 0;
             const nodeClass = nodeColors[level.nodeType] ?? "bg-[#0B63F6] text-white";
 
             const content = (

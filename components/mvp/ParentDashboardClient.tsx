@@ -8,6 +8,7 @@ import { useMvpProgress } from "@/components/mvp/useMvpProgress";
 export function ParentDashboardClient() {
   const {
     progress,
+    worldProgressRecord,
     completedCount,
     totalLevels,
     worldProgress,
@@ -15,19 +16,19 @@ export function ParentDashboardClient() {
     mastery,
   } = useMvpProgress();
 
-  const completedTopics = forestLevels.filter((level) => progress.completedLevels.includes(level.level));
+  const completedTopics = forestLevels.filter((level) => worldProgressRecord.completedLevels.includes(level.level));
   const strongTopics = completedTopics.length > 0
     ? completedTopics.slice(-3).map((level) => level.title)
     : ["Start Level 1 to discover strong topics"];
   const weakTopics = forestLevels
-    .filter((level) => !progress.completedLevels.includes(level.level))
+    .filter((level) => !worldProgressRecord.completedLevels.includes(level.level))
     .slice(0, 3)
     .map((level) => level.title);
 
   return (
     <div className="space-y-6">
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        <DashboardStat label="Total XP" value={String(progress.xp)} />
+        <DashboardStat label="Total XP" value={String(progress.totalXp)} />
         <DashboardStat label="Completed Levels" value={`${completedCount}/${totalLevels}`} />
         <DashboardStat label="Accuracy" value={`${accuracy}%`} />
         <DashboardStat label="Mastery Level" value={mastery} />
@@ -36,7 +37,7 @@ export function ParentDashboardClient() {
       <MvpCard>
         <h2 className="text-3xl font-black">Child Progress</h2>
         <p className="mt-2 text-base font-bold leading-7 text-[#5B6B94]">
-          Current subject: Mathematics Year {forestWorldIdentity.year}. Current world: Forest World. Current unlocked level: {progress.currentLevel}.
+          Current subject: Mathematics Year {forestWorldIdentity.year}. Current world: Forest World. Current unlocked level: {worldProgressRecord.currentLevel}.
         </p>
         <div className="mt-5">
           <div className="mb-2 flex justify-between text-sm font-black">
@@ -93,7 +94,7 @@ export function ParentDashboardClient() {
           <h2 className="text-2xl font-black">Forest World Levels</h2>
           <div className="mt-4 space-y-3">
             {forestLevels.map((level) => {
-              const complete = progress.completedLevels.includes(level.level);
+              const complete = worldProgressRecord.completedLevels.includes(level.level);
               return (
                 <div key={level.level} className="flex items-center justify-between rounded-[1.25rem] bg-[#F8FBFF] px-4 py-3">
                   <div>
@@ -113,9 +114,9 @@ export function ParentDashboardClient() {
       <MvpCard>
         <h2 className="text-2xl font-black">Learning Summary</h2>
         <div className="mt-4 grid gap-4 md:grid-cols-3">
-          <DashboardStat label="Questions Answered" value={String(progress.questionsAnswered)} />
-          <DashboardStat label="Correct Answers" value={String(progress.correctAnswers)} />
-          <DashboardStat label="Stars Earned" value={String(progress.stars)} />
+          <DashboardStat label="Questions Answered" value={String(worldProgressRecord.questionsAnswered)} />
+          <DashboardStat label="Correct Answers" value={String(worldProgressRecord.correctAnswers)} />
+          <DashboardStat label="Stars Earned" value={String(progress.totalStars)} />
         </div>
       </MvpCard>
 

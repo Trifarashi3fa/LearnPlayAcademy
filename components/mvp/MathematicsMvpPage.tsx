@@ -16,7 +16,7 @@ const levelTone: Record<string, string> = {
 };
 
 export function MathematicsMvpPage() {
-  const { completedCount, totalLevels, worldProgress, progress, nextUnlockedLevel } = useMvpProgress();
+  const { completedCount, totalLevels, worldProgress, progress, worldProgressRecord, nextUnlockedLevel } = useMvpProgress();
 
   return (
     <main className="bg-[#FFFDF7] text-[#082B80]">
@@ -63,7 +63,7 @@ export function MathematicsMvpPage() {
               </div>
               <ProgressBar value={worldProgress} />
               <p className="mt-3 text-sm font-black text-[#5B6B94]">
-                {completedCount} of {totalLevels} levels complete. Total XP: {progress.xp}
+                {completedCount} of {totalLevels} levels complete. Total XP: {progress.totalXp}
               </p>
             </div>
           </div>
@@ -90,7 +90,7 @@ export function MathematicsMvpPage() {
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {forestLevels.map((level) => {
-            const unlocked = level.level === 1 || level.level <= nextUnlockedLevel || progress.completedLevels.includes(level.level);
+            const unlocked = level.level === 1 || level.level <= nextUnlockedLevel || worldProgressRecord.completedLevels.includes(level.level);
             const content = (
               <article className={`h-full rounded-[1.5rem] border bg-white p-4 shadow-sm transition ${
                 unlocked ? "border-[#0B63F6] hover:-translate-y-1 hover:shadow-playful" : "border-[#DDE8F5] opacity-75"
