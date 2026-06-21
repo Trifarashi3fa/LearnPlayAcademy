@@ -1,3 +1,5 @@
+import { FeatureUnavailablePage } from "@/components/FeatureUnavailablePage";
+import { isFeatureActive } from "@/data/feature-flags";
 import {
   WordBuilderGame,
   type WordChallenge,
@@ -57,6 +59,9 @@ const challenges: WordChallenge[] = [
 ];
 
 export default function WordBuilderPage() {
+  if (!isFeatureActive("englishWordBuilder")) {
+    return <FeatureUnavailablePage featureId="englishWordBuilder" />;
+  }
   return (
     <main className="bg-cream">
       <WordBuilderGame
@@ -67,3 +72,4 @@ export default function WordBuilderPage() {
     </main>
   );
 }
+

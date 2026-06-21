@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { PrimaryLink } from "@/components/mvp/MvpShell";
+import { forestWorldIdentity } from "@/data/forest-world-identity";
 
 export function ForestRewardScreen({
   level,
@@ -16,7 +17,7 @@ export function ForestRewardScreen({
   starsEarned: number;
   xpEarned: number;
 }) {
-  const badgeName = worldComplete ? "Forest Explorer Badge" : `Level ${level} Badge`;
+  const badgeName = worldComplete ? forestWorldIdentity.completionBadge : `Level ${level} Badge`;
 
   return (
     <section className="relative overflow-hidden rounded-[2rem] border border-[#BDE7D0] bg-gradient-to-br from-[#EAFBF0] via-white to-[#FFF3C4] p-6 shadow-playful sm:p-8">

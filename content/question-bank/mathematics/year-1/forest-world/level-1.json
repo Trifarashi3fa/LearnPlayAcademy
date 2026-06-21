@@ -1,0 +1,550 @@
+[
+    {
+        "questionId":  "math-y1-forest-01-001",
+        "legacyId":  "math-forest-1-001",
+        "curriculumTopicId":  "math-y1-numbers-1-10",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Numbers 1-10",
+        "subtopic":  "Number order and recognition",
+        "worldId":  "forest-world",
+        "level":  1,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What number comes after 3?",
+        "options":  [
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "After 3 comes 4.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "number-sequence",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              3
+                                          ],
+                               "total":  4,
+                               "operation":  "sequence",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-01-002",
+        "legacyId":  "math-forest-1-002",
+        "curriculumTopicId":  "math-y1-numbers-1-10",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Numbers 1-10",
+        "subtopic":  "Number order and recognition",
+        "worldId":  "forest-world",
+        "level":  1,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What number comes before 6?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "The number before 6 is 5.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "number-sequence",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              6
+                                          ],
+                               "total":  5,
+                               "operation":  "sequence",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-01-003",
+        "legacyId":  "math-forest-1-003",
+        "curriculumTopicId":  "math-y1-numbers-1-10",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Numbers 1-10",
+        "subtopic":  "Number order and recognition",
+        "worldId":  "forest-world",
+        "level":  1,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which number is 8?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "The number 8 is written as 8.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+
+                                          ],
+                               "total":  8,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-01-004",
+        "legacyId":  "math-forest-1-004",
+        "curriculumTopicId":  "math-y1-numbers-1-10",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Numbers 1-10",
+        "subtopic":  "Number order and recognition",
+        "worldId":  "forest-world",
+        "level":  1,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What number comes after 9?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "10",
+        "explanation":  "After 9 comes 10.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "number-sequence",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              9
+                                          ],
+                               "total":  10,
+                               "operation":  "sequence",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-01-005",
+        "legacyId":  "math-forest-1-005",
+        "curriculumTopicId":  "math-y1-numbers-1-10",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Numbers 1-10",
+        "subtopic":  "Number order and recognition",
+        "worldId":  "forest-world",
+        "level":  1,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which number is smaller than 4?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "3",
+        "explanation":  "3 is smaller than 4.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "comparison",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              3,
+                                              4
+                                          ],
+                               "total":  3,
+                               "operation":  "compare",
+                               "equation":  "3 \u003c 4",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-01-006",
+        "legacyId":  "math-forest-1-006",
+        "curriculumTopicId":  "math-y1-numbers-1-10",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Numbers 1-10",
+        "subtopic":  "Number order and recognition",
+        "worldId":  "forest-world",
+        "level":  1,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which number is bigger than 7?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "8 is bigger than 7.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "comparison",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              8,
+                                              7
+                                          ],
+                               "total":  8,
+                               "operation":  "compare",
+                               "equation":  "8 \u003e 7",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-01-007",
+        "legacyId":  "math-forest-1-007",
+        "curriculumTopicId":  "math-y1-numbers-1-10",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Numbers 1-10",
+        "subtopic":  "Number order and recognition",
+        "worldId":  "forest-world",
+        "level":  1,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is the missing number: 1, 2, __, 4?",
+        "options":  [
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                    ],
+        "correctAnswer":  "3",
+        "explanation":  "The numbers count up by 1, so the missing number is 3.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "number-sequence",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              1,
+                                              2,
+                                              4
+                                          ],
+                               "total":  3,
+                               "operation":  "sequence",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-01-008",
+        "legacyId":  "math-forest-1-008",
+        "curriculumTopicId":  "math-y1-numbers-1-10",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Numbers 1-10",
+        "subtopic":  "Number order and recognition",
+        "worldId":  "forest-world",
+        "level":  1,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is the missing number: 6, 7, __, 9?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "After 7 comes 8.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "number-sequence",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              6,
+                                              7,
+                                              9
+                                          ],
+                               "total":  8,
+                               "operation":  "sequence",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-01-009",
+        "legacyId":  "math-forest-1-009",
+        "curriculumTopicId":  "math-y1-numbers-1-10",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Numbers 1-10",
+        "subtopic":  "Number order and recognition",
+        "worldId":  "forest-world",
+        "level":  1,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which number shows ten?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "10",
+        "explanation":  "Ten is written as 10.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+
+                                          ],
+                               "total":  10,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-01-010",
+        "legacyId":  "math-forest-1-010",
+        "curriculumTopicId":  "math-y1-numbers-1-10",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Numbers 1-10",
+        "subtopic":  "Number order and recognition",
+        "worldId":  "forest-world",
+        "level":  1,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Count forward: 4, 5, 6, __",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "After 6 comes 7.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "number-sequence",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              4,
+                                              5,
+                                              6
+                                          ],
+                               "total":  7,
+                               "operation":  "sequence",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    }
+]

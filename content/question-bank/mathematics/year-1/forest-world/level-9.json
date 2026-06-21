@@ -1,0 +1,553 @@
+[
+    {
+        "questionId":  "math-y1-forest-09-001",
+        "legacyId":  "math-forest-9-001",
+        "curriculumTopicId":  "math-y1-mixed-challenge",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Mixed challenge",
+        "subtopic":  "Mixed number reasoning",
+        "worldId":  "forest-world",
+        "level":  9,
+        "nodeType":  "Challenge",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "medium",
+        "question":  "A fox sees 4 trees and then 3 more trees. How many trees?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "4 + 3 = 7.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "tree",
+                               "objects":  [
+                                               "tree"
+                                           ],
+                               "groups":  [
+                                              4,
+                                              3
+                                          ],
+                               "total":  7,
+                               "operation":  "add",
+                               "equation":  "4 + 3 = 7",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly tree icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-09-002",
+        "legacyId":  "math-forest-9-002",
+        "curriculumTopicId":  "math-y1-mixed-challenge",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Mixed challenge",
+        "subtopic":  "Mixed number reasoning",
+        "worldId":  "forest-world",
+        "level":  9,
+        "nodeType":  "Challenge",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "medium",
+        "question":  "There are 10 berries. 3 are eaten. How many remain?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "10 - 3 = 7.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "berry",
+                               "objects":  [
+                                               "berry"
+                                           ],
+                               "groups":  [
+                                              10,
+                                              3
+                                          ],
+                               "total":  7,
+                               "operation":  "subtract",
+                               "equation":  "10 - 3 = 7",
+                               "startingAmount":  10,
+                               "removedAmount":  3,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly berry icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-09-003",
+        "legacyId":  "math-forest-9-003",
+        "curriculumTopicId":  "math-y1-mixed-challenge",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Mixed challenge",
+        "subtopic":  "Mixed number reasoning",
+        "worldId":  "forest-world",
+        "level":  9,
+        "nodeType":  "Challenge",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "medium",
+        "question":  "What is missing: 3, 5, 7, __?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "The pattern counts by 2, so the next number is 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "number-sequence",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              3,
+                                              5,
+                                              7
+                                          ],
+                               "total":  9,
+                               "operation":  "sequence",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-09-004",
+        "legacyId":  "math-forest-9-004",
+        "curriculumTopicId":  "math-y1-mixed-challenge",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Mixed challenge",
+        "subtopic":  "Mixed number reasoning",
+        "worldId":  "forest-world",
+        "level":  9,
+        "nodeType":  "Challenge",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "medium",
+        "question":  "Which is more: 8 leaves or 6 leaves?",
+        "options":  [
+                        "8 leaves",
+                        "6 leaves",
+                        "Both equal",
+                        "No leaves"
+                    ],
+        "correctAnswer":  "8 leaves",
+        "explanation":  "8 is more than 6.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "comparison",
+                               "object":  "leaf",
+                               "objects":  [
+                                               "leaf"
+                                           ],
+                               "groups":  [
+                                              8,
+                                              6
+                                          ],
+                               "total":  8,
+                               "operation":  "compare",
+                               "equation":  "8 \u003e 6",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly leaf icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-09-005",
+        "legacyId":  "math-forest-9-005",
+        "curriculumTopicId":  "math-y1-mixed-challenge",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Mixed challenge",
+        "subtopic":  "Mixed number reasoning",
+        "worldId":  "forest-world",
+        "level":  9,
+        "nodeType":  "Challenge",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "medium",
+        "question":  "What is 4 + 5?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "4 + 5 = 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              4,
+                                              5
+                                          ],
+                               "total":  9,
+                               "operation":  "add",
+                               "equation":  "4 + 5 = 9",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-09-006",
+        "legacyId":  "math-forest-9-006",
+        "curriculumTopicId":  "math-y1-mixed-challenge",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Mixed challenge",
+        "subtopic":  "Mixed number reasoning",
+        "worldId":  "forest-world",
+        "level":  9,
+        "nodeType":  "Challenge",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "medium",
+        "question":  "What is 9 - 5?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "9 - 5 = 4.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              9,
+                                              5
+                                          ],
+                               "total":  4,
+                               "operation":  "subtract",
+                               "equation":  "9 - 5 = 4",
+                               "startingAmount":  9,
+                               "removedAmount":  5,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-09-007",
+        "legacyId":  "math-forest-9-007",
+        "curriculumTopicId":  "math-y1-mixed-challenge",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Mixed challenge",
+        "subtopic":  "Mixed number reasoning",
+        "worldId":  "forest-world",
+        "level":  9,
+        "nodeType":  "Challenge",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "medium",
+        "question":  "A path has 2 stones, then 2 more, then 2 more. How many stones?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "6",
+        "explanation":  "2 + 2 + 2 = 6.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "stone",
+                               "objects":  [
+                                               "stone"
+                                           ],
+                               "groups":  [
+                                              2,
+                                              2,
+                                              2
+                                          ],
+                               "total":  6,
+                               "operation":  "add",
+                               "equation":  "2 + 2 + 2 = 6",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "path",
+                               "assetHint":  "stone objects in a child-friendly path scene",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-09-008",
+        "legacyId":  "math-forest-9-008",
+        "curriculumTopicId":  "math-y1-mixed-challenge",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Mixed challenge",
+        "subtopic":  "Mixed number reasoning",
+        "worldId":  "forest-world",
+        "level":  9,
+        "nodeType":  "Challenge",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "medium",
+        "question":  "What number comes before 10?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "The number before 10 is 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "number-sequence",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              10
+                                          ],
+                               "total":  9,
+                               "operation":  "sequence",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-09-009",
+        "legacyId":  "math-forest-9-009",
+        "curriculumTopicId":  "math-y1-mixed-challenge",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Mixed challenge",
+        "subtopic":  "Mixed number reasoning",
+        "worldId":  "forest-world",
+        "level":  9,
+        "nodeType":  "Challenge",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "medium",
+        "question":  "What is 8 - 4?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "8 - 4 = 4.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              8,
+                                              4
+                                          ],
+                               "total":  4,
+                               "operation":  "subtract",
+                               "equation":  "8 - 4 = 4",
+                               "startingAmount":  8,
+                               "removedAmount":  4,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-09-010",
+        "legacyId":  "math-forest-9-010",
+        "curriculumTopicId":  "math-y1-mixed-challenge",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Mixed challenge",
+        "subtopic":  "Mixed number reasoning",
+        "worldId":  "forest-world",
+        "level":  9,
+        "nodeType":  "Challenge",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "medium",
+        "question":  "What is 6 + 4?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "10",
+        "explanation":  "6 + 4 = 10.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              6,
+                                              4
+                                          ],
+                               "total":  10,
+                               "operation":  "add",
+                               "equation":  "6 + 4 = 10",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    }
+]

@@ -1,15 +1,7 @@
 import forestConfigJson from "../content/math/forest-world/forest-world-config.json";
-import level1 from "../content/math/forest-world/level-1.json";
-import level2 from "../content/math/forest-world/level-2.json";
-import level3 from "../content/math/forest-world/level-3.json";
-import level4 from "../content/math/forest-world/level-4.json";
-import level5 from "../content/math/forest-world/level-5.json";
-import level6 from "../content/math/forest-world/level-6.json";
-import level7 from "../content/math/forest-world/level-7.json";
-import level8 from "../content/math/forest-world/level-8.json";
-import level9 from "../content/math/forest-world/level-9.json";
-import level10 from "../content/math/forest-world/level-10.json";
+import { getApprovedForestQuestionsForLevel } from "@/lib/curriculum/active-content";
 import { objectVisualMap, type VisualObjectName } from "@/data/object-visual-map";
+import { forestWorldIdentity } from "@/data/forest-world-identity";
 
 export type { VisualObjectName } from "@/data/object-visual-map";
 
@@ -122,7 +114,7 @@ function prepareQuestions(questions: MvpQuestion[], level: number): MvpQuestion[
   return questions.map((question) => ({
     ...question,
     levelId: question.levelId ?? `forest-level-${level}`,
-    worldId: question.worldId ?? "forest-world",
+    worldId: question.worldId ?? forestWorldIdentity.worldId,
     visual: question.visual ?? inferQuestionVisual(question),
   }));
 }
@@ -140,7 +132,7 @@ export function getQuestionLearningContent(question: MvpQuestion): QuestionLearn
     voiceScript: question.voiceScript ?? `${question.question} ${generated.voiceScript}`,
     learnBotTip: question.learnBotTip ?? generated.tip,
     levelId: question.levelId ?? `forest-level-${question.level}`,
-    worldId: question.worldId ?? "forest-world",
+    worldId: question.worldId ?? forestWorldIdentity.worldId,
   };
 }
 
@@ -224,70 +216,70 @@ export const forestLevels: MvpLevel[] = [
     nodeType: "Learn",
     title: "Numbers 1-10",
     description: "Meet numbers, count forward, and learn first number patterns.",
-    questions: prepareQuestions(level1 as MvpQuestion[], 1),
+    questions: prepareQuestions(getApprovedForestQuestionsForLevel(1) as MvpQuestion[], 1),
   },
   {
     level: 2,
     nodeType: "Practice",
     title: "Counting Objects",
     description: "Practice counting everyday objects and comparing groups.",
-    questions: prepareQuestions(level2 as MvpQuestion[], 2),
+    questions: prepareQuestions(getApprovedForestQuestionsForLevel(2) as MvpQuestion[], 2),
   },
   {
     level: 3,
     nodeType: "Mini Game",
     title: "Number Matching",
     description: "Match numbers, words, and small groups in a quick game.",
-    questions: prepareQuestions(level3 as MvpQuestion[], 3),
+    questions: prepareQuestions(getApprovedForestQuestionsForLevel(3) as MvpQuestion[], 3),
   },
   {
     level: 4,
     nodeType: "Learn",
     title: "Simple Addition",
     description: "Learn how adding puts groups together.",
-    questions: prepareQuestions(level4 as MvpQuestion[], 4),
+    questions: prepareQuestions(getApprovedForestQuestionsForLevel(4) as MvpQuestion[], 4),
   },
   {
     level: 5,
     nodeType: "Practice",
     title: "Addition Practice",
     description: "Use addition in small story problems.",
-    questions: prepareQuestions(level5 as MvpQuestion[], 5),
+    questions: prepareQuestions(getApprovedForestQuestionsForLevel(5) as MvpQuestion[], 5),
   },
   {
     level: 6,
     nodeType: "Mini Game",
     title: "Addition Mini Game",
     description: "Collect rewards while solving addition missions.",
-    questions: prepareQuestions(level6 as MvpQuestion[], 6),
+    questions: prepareQuestions(getApprovedForestQuestionsForLevel(6) as MvpQuestion[], 6),
   },
   {
     level: 7,
     nodeType: "Learn",
     title: "Simple Subtraction",
     description: "Learn how subtraction shows what is left.",
-    questions: prepareQuestions(level7 as MvpQuestion[], 7),
+    questions: prepareQuestions(getApprovedForestQuestionsForLevel(7) as MvpQuestion[], 7),
   },
   {
     level: 8,
     nodeType: "Review",
     title: "Review Numbers and Operations",
     description: "Review numbers, addition, and subtraction.",
-    questions: prepareQuestions(level8 as MvpQuestion[], 8),
+    questions: prepareQuestions(getApprovedForestQuestionsForLevel(8) as MvpQuestion[], 8),
   },
   {
     level: 9,
     nodeType: "Challenge",
     title: "Mixed Challenge",
     description: "Solve mixed number, addition, and subtraction challenges.",
-    questions: prepareQuestions(level9 as MvpQuestion[], 9),
+    questions: prepareQuestions(getApprovedForestQuestionsForLevel(9) as MvpQuestion[], 9),
   },
   {
     level: 10,
     nodeType: "Boss",
-    title: "Forest Guardian Boss Quiz",
-    description: "Complete the Forest Guardian boss quiz and earn a badge.",
-    questions: prepareQuestions(level10 as MvpQuestion[], 10),
+    title: `${forestWorldIdentity.bossName} Boss Quiz`,
+    description: `Complete the ${forestWorldIdentity.bossName} boss quiz and earn the ${forestWorldIdentity.completionBadge}.`,
+    questions: prepareQuestions(getApprovedForestQuestionsForLevel(10) as MvpQuestion[], 10),
   },
 ];
 

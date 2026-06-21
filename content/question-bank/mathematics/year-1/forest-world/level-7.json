@@ -1,0 +1,552 @@
+[
+    {
+        "questionId":  "math-y1-forest-07-001",
+        "legacyId":  "math-forest-7-001",
+        "curriculumTopicId":  "math-y1-simple-subtraction",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Simple subtraction",
+        "subtopic":  "Subtraction within 10",
+        "worldId":  "forest-world",
+        "level":  7,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is 5 - 1?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "5 - 1 = 4.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              5,
+                                              1
+                                          ],
+                               "total":  4,
+                               "operation":  "subtract",
+                               "equation":  "5 - 1 = 4",
+                               "startingAmount":  5,
+                               "removedAmount":  1,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-07-002",
+        "legacyId":  "math-forest-7-002",
+        "curriculumTopicId":  "math-y1-simple-subtraction",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Simple subtraction",
+        "subtopic":  "Subtraction within 10",
+        "worldId":  "forest-world",
+        "level":  7,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is 6 - 2?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "6 - 2 = 4.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              6,
+                                              2
+                                          ],
+                               "total":  4,
+                               "operation":  "subtract",
+                               "equation":  "6 - 2 = 4",
+                               "startingAmount":  6,
+                               "removedAmount":  2,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-07-003",
+        "legacyId":  "math-forest-7-003",
+        "curriculumTopicId":  "math-y1-simple-subtraction",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Simple subtraction",
+        "subtopic":  "Subtraction within 10",
+        "worldId":  "forest-world",
+        "level":  7,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is 7 - 3?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "7 - 3 = 4.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              7,
+                                              3
+                                          ],
+                               "total":  4,
+                               "operation":  "subtract",
+                               "equation":  "7 - 3 = 4",
+                               "startingAmount":  7,
+                               "removedAmount":  3,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-07-004",
+        "legacyId":  "math-forest-7-004",
+        "curriculumTopicId":  "math-y1-simple-subtraction",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Simple subtraction",
+        "subtopic":  "Subtraction within 10",
+        "worldId":  "forest-world",
+        "level":  7,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is 8 - 2?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "6",
+        "explanation":  "8 - 2 = 6.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              8,
+                                              2
+                                          ],
+                               "total":  6,
+                               "operation":  "subtract",
+                               "equation":  "8 - 2 = 6",
+                               "startingAmount":  8,
+                               "removedAmount":  2,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-07-005",
+        "legacyId":  "math-forest-7-005",
+        "curriculumTopicId":  "math-y1-simple-subtraction",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Simple subtraction",
+        "subtopic":  "Subtraction within 10",
+        "worldId":  "forest-world",
+        "level":  7,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is 9 - 4?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "9 - 4 = 5.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              9,
+                                              4
+                                          ],
+                               "total":  5,
+                               "operation":  "subtract",
+                               "equation":  "9 - 4 = 5",
+                               "startingAmount":  9,
+                               "removedAmount":  4,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-07-006",
+        "legacyId":  "math-forest-7-006",
+        "curriculumTopicId":  "math-y1-simple-subtraction",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Simple subtraction",
+        "subtopic":  "Subtraction within 10",
+        "worldId":  "forest-world",
+        "level":  7,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is 10 - 5?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "10 - 5 = 5.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              10,
+                                              5
+                                          ],
+                               "total":  5,
+                               "operation":  "subtract",
+                               "equation":  "10 - 5 = 5",
+                               "startingAmount":  10,
+                               "removedAmount":  5,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-07-007",
+        "legacyId":  "math-forest-7-007",
+        "curriculumTopicId":  "math-y1-simple-subtraction",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Simple subtraction",
+        "subtopic":  "Subtraction within 10",
+        "worldId":  "forest-world",
+        "level":  7,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There are 6 apples. 1 is eaten. How many are left?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "6 - 1 = 5.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "apple",
+                               "objects":  [
+                                               "apple"
+                                           ],
+                               "groups":  [
+                                              6,
+                                              1
+                                          ],
+                               "total":  5,
+                               "operation":  "subtract",
+                               "equation":  "6 - 1 = 5",
+                               "startingAmount":  6,
+                               "removedAmount":  1,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly apple icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-07-008",
+        "legacyId":  "math-forest-7-008",
+        "curriculumTopicId":  "math-y1-simple-subtraction",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Simple subtraction",
+        "subtopic":  "Subtraction within 10",
+        "worldId":  "forest-world",
+        "level":  7,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There are 8 birds. 3 fly away. How many are left?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "8 - 3 = 5.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "bird",
+                               "objects":  [
+                                               "bird"
+                                           ],
+                               "groups":  [
+                                              8,
+                                              3
+                                          ],
+                               "total":  5,
+                               "operation":  "subtract",
+                               "equation":  "8 - 3 = 5",
+                               "startingAmount":  8,
+                               "removedAmount":  3,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly bird icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-07-009",
+        "legacyId":  "math-forest-7-009",
+        "curriculumTopicId":  "math-y1-simple-subtraction",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Simple subtraction",
+        "subtopic":  "Subtraction within 10",
+        "worldId":  "forest-world",
+        "level":  7,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There are 9 balloons. 2 pop. How many are left?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "9 - 2 = 7.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "balloon",
+                               "objects":  [
+                                               "balloon"
+                                           ],
+                               "groups":  [
+                                              9,
+                                              2
+                                          ],
+                               "total":  7,
+                               "operation":  "subtract",
+                               "equation":  "9 - 2 = 7",
+                               "startingAmount":  9,
+                               "removedAmount":  2,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly balloon icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-07-010",
+        "legacyId":  "math-forest-7-010",
+        "curriculumTopicId":  "math-y1-simple-subtraction",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Simple subtraction",
+        "subtopic":  "Subtraction within 10",
+        "worldId":  "forest-world",
+        "level":  7,
+        "nodeType":  "Learn",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There are 10 coins. 4 are spent. How many are left?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "6",
+        "explanation":  "10 - 4 = 6.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "coin",
+                               "objects":  [
+                                               "coin"
+                                           ],
+                               "groups":  [
+                                              10,
+                                              4
+                                          ],
+                               "total":  6,
+                               "operation":  "subtract",
+                               "equation":  "10 - 4 = 6",
+                               "startingAmount":  10,
+                               "removedAmount":  4,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly coin icons",
+                               "reviewStatus":  "ready"
+                           }
+    }
+]

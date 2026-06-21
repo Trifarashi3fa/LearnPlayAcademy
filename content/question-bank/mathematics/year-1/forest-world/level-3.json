@@ -1,0 +1,542 @@
+[
+    {
+        "questionId":  "math-y1-forest-03-001",
+        "legacyId":  "math-forest-3-001",
+        "curriculumTopicId":  "math-y1-number-matching",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Number matching mini game",
+        "subtopic":  "Matching numerals, number words, and quantities",
+        "worldId":  "forest-world",
+        "level":  3,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which number matches the word five?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "The word five matches the number 5.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+
+                                          ],
+                               "total":  5,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-03-002",
+        "legacyId":  "math-forest-3-002",
+        "curriculumTopicId":  "math-y1-number-matching",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Number matching mini game",
+        "subtopic":  "Matching numerals, number words, and quantities",
+        "worldId":  "forest-world",
+        "level":  3,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which word matches the number 2?",
+        "options":  [
+                        "one",
+                        "two",
+                        "three",
+                        "four"
+                    ],
+        "correctAnswer":  "two",
+        "explanation":  "The number 2 is written as two.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+
+                                          ],
+                               "total":  null,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-03-003",
+        "legacyId":  "math-forest-3-003",
+        "curriculumTopicId":  "math-y1-number-matching",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Number matching mini game",
+        "subtopic":  "Matching numerals, number words, and quantities",
+        "worldId":  "forest-world",
+        "level":  3,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Match the number 7.",
+        "options":  [
+                        "six",
+                        "seven",
+                        "eight",
+                        "nine"
+                    ],
+        "correctAnswer":  "seven",
+        "explanation":  "7 matches seven.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+
+                                          ],
+                               "total":  null,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-03-004",
+        "legacyId":  "math-forest-3-004",
+        "curriculumTopicId":  "math-y1-number-matching",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Number matching mini game",
+        "subtopic":  "Matching numerals, number words, and quantities",
+        "worldId":  "forest-world",
+        "level":  3,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which number matches the word nine?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "Nine is 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+
+                                          ],
+                               "total":  9,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-03-005",
+        "legacyId":  "math-forest-3-005",
+        "curriculumTopicId":  "math-y1-number-matching",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Number matching mini game",
+        "subtopic":  "Matching numerals, number words, and quantities",
+        "worldId":  "forest-world",
+        "level":  3,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which word matches the number 10?",
+        "options":  [
+                        "seven",
+                        "eight",
+                        "nine",
+                        "ten"
+                    ],
+        "correctAnswer":  "ten",
+        "explanation":  "10 matches ten.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+
+                                          ],
+                               "total":  null,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-03-006",
+        "legacyId":  "math-forest-3-006",
+        "curriculumTopicId":  "math-y1-number-matching",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Number matching mini game",
+        "subtopic":  "Matching numerals, number words, and quantities",
+        "worldId":  "forest-world",
+        "level":  3,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Match 4 forest berries to the correct number.",
+        "options":  [
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "4 berries match the number 4.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "berry",
+                               "objects":  [
+                                               "berry"
+                                           ],
+                               "groups":  [
+                                              4
+                                          ],
+                               "total":  4,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "forest",
+                               "assetHint":  "berry objects in a child-friendly forest scene",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-03-007",
+        "legacyId":  "math-forest-3-007",
+        "curriculumTopicId":  "math-y1-number-matching",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Number matching mini game",
+        "subtopic":  "Matching numerals, number words, and quantities",
+        "worldId":  "forest-world",
+        "level":  3,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which number matches the word one?",
+        "options":  [
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+        "correctAnswer":  "1",
+        "explanation":  "One is 1.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+
+                                          ],
+                               "total":  1,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-03-008",
+        "legacyId":  "math-forest-3-008",
+        "curriculumTopicId":  "math-y1-number-matching",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Number matching mini game",
+        "subtopic":  "Matching numerals, number words, and quantities",
+        "worldId":  "forest-world",
+        "level":  3,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which word matches the number 6?",
+        "options":  [
+                        "four",
+                        "five",
+                        "six",
+                        "seven"
+                    ],
+        "correctAnswer":  "six",
+        "explanation":  "6 matches six.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+
+                                          ],
+                               "total":  null,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-03-009",
+        "legacyId":  "math-forest-3-009",
+        "curriculumTopicId":  "math-y1-number-matching",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Number matching mini game",
+        "subtopic":  "Matching numerals, number words, and quantities",
+        "worldId":  "forest-world",
+        "level":  3,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Match 8 leaves to the correct number.",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "8 leaves match the number 8.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "leaf",
+                               "objects":  [
+                                               "leaf"
+                                           ],
+                               "groups":  [
+                                              8
+                                          ],
+                               "total":  8,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly leaf icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-03-010",
+        "legacyId":  "math-forest-3-010",
+        "curriculumTopicId":  "math-y1-number-matching",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Number matching mini game",
+        "subtopic":  "Matching numerals, number words, and quantities",
+        "worldId":  "forest-world",
+        "level":  3,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which number matches the word three?",
+        "options":  [
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+        "correctAnswer":  "3",
+        "explanation":  "Three is 3.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+
+                                          ],
+                               "total":  3,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    }
+]

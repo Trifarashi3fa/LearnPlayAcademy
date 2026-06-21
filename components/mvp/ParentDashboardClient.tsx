@@ -1,6 +1,7 @@
 "use client";
 
 import { forestLevels, mvpSubjects } from "@/data/mvp-forest-world";
+import { forestWorldIdentity } from "@/data/forest-world-identity";
 import { MvpCard, PrimaryLink, ProgressBar } from "@/components/mvp/MvpShell";
 import { useMvpProgress } from "@/components/mvp/useMvpProgress";
 
@@ -35,7 +36,7 @@ export function ParentDashboardClient() {
       <MvpCard>
         <h2 className="text-3xl font-black">Child Progress</h2>
         <p className="mt-2 text-base font-bold leading-7 text-[#5B6B94]">
-          Current subject: Mathematics. Current world: Forest World. Current unlocked level: {progress.currentLevel}.
+          Current subject: Mathematics Year {forestWorldIdentity.year}. Current world: Forest World. Current unlocked level: {progress.currentLevel}.
         </p>
         <div className="mt-5">
           <div className="mb-2 flex justify-between text-sm font-black">

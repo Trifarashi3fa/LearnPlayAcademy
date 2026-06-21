@@ -1,0 +1,552 @@
+[
+    {
+        "questionId":  "math-y1-forest-06-001",
+        "legacyId":  "math-forest-6-001",
+        "curriculumTopicId":  "math-y1-addition-mini-game",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition mini game",
+        "subtopic":  "Addition fluency through collection missions",
+        "worldId":  "forest-world",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Collect 3 stars and then 2 stars. How many stars collected?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "3 + 2 = 5.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "star",
+                               "objects":  [
+                                               "star"
+                                           ],
+                               "groups":  [
+                                              3,
+                                              2
+                                          ],
+                               "total":  5,
+                               "operation":  "add",
+                               "equation":  "3 + 2 = 5",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly star icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-06-002",
+        "legacyId":  "math-forest-6-002",
+        "curriculumTopicId":  "math-y1-addition-mini-game",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition mini game",
+        "subtopic":  "Addition fluency through collection missions",
+        "worldId":  "forest-world",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Pick 4 berries and then 3 berries. How many berries?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "4 + 3 = 7.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "berry",
+                               "objects":  [
+                                               "berry"
+                                           ],
+                               "groups":  [
+                                              4,
+                                              3
+                                          ],
+                               "total":  7,
+                               "operation":  "add",
+                               "equation":  "4 + 3 = 7",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly berry icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-06-003",
+        "legacyId":  "math-forest-6-003",
+        "curriculumTopicId":  "math-y1-addition-mini-game",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition mini game",
+        "subtopic":  "Addition fluency through collection missions",
+        "worldId":  "forest-world",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Win 5 coins and then 2 coins. How many coins?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "5 + 2 = 7.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "coin",
+                               "objects":  [
+                                               "coin"
+                                           ],
+                               "groups":  [
+                                              5,
+                                              2
+                                          ],
+                               "total":  7,
+                               "operation":  "add",
+                               "equation":  "5 + 2 = 7",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly coin icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-06-004",
+        "legacyId":  "math-forest-6-004",
+        "curriculumTopicId":  "math-y1-addition-mini-game",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition mini game",
+        "subtopic":  "Addition fluency through collection missions",
+        "worldId":  "forest-world",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Find 6 gems and then 3 gems. How many gems?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "6 + 3 = 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "gem",
+                               "objects":  [
+                                               "gem"
+                                           ],
+                               "groups":  [
+                                              6,
+                                              3
+                                          ],
+                               "total":  9,
+                               "operation":  "add",
+                               "equation":  "6 + 3 = 9",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly gem icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-06-005",
+        "legacyId":  "math-forest-6-005",
+        "curriculumTopicId":  "math-y1-addition-mini-game",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition mini game",
+        "subtopic":  "Addition fluency through collection missions",
+        "worldId":  "forest-world",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Collect 1 leaf and then 8 leaves. How many leaves?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "1 + 8 = 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "leaf",
+                               "objects":  [
+                                               "leaf"
+                                           ],
+                               "groups":  [
+                                              1,
+                                              8
+                                          ],
+                               "total":  9,
+                               "operation":  "add",
+                               "equation":  "1 + 8 = 9",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly leaf icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-06-006",
+        "legacyId":  "math-forest-6-006",
+        "curriculumTopicId":  "math-y1-addition-mini-game",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition mini game",
+        "subtopic":  "Addition fluency through collection missions",
+        "worldId":  "forest-world",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Get 2 badges and then 5 badges. How many badges?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "2 + 5 = 7.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "badge",
+                               "objects":  [
+                                               "badge"
+                                           ],
+                               "groups":  [
+                                              2,
+                                              5
+                                          ],
+                               "total":  7,
+                               "operation":  "add",
+                               "equation":  "2 + 5 = 7",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly badge icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-06-007",
+        "legacyId":  "math-forest-6-007",
+        "curriculumTopicId":  "math-y1-addition-mini-game",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition mini game",
+        "subtopic":  "Addition fluency through collection missions",
+        "worldId":  "forest-world",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Gather 3 shells and then 6 shells. How many shells?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "3 + 6 = 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "shell",
+                               "objects":  [
+                                               "shell"
+                                           ],
+                               "groups":  [
+                                              3,
+                                              6
+                                          ],
+                               "total":  9,
+                               "operation":  "add",
+                               "equation":  "3 + 6 = 9",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "water",
+                               "assetHint":  "shell objects in a child-friendly water scene",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-06-008",
+        "legacyId":  "math-forest-6-008",
+        "curriculumTopicId":  "math-y1-addition-mini-game",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition mini game",
+        "subtopic":  "Addition fluency through collection missions",
+        "worldId":  "forest-world",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Earn 4 points and then 5 points. How many points?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "4 + 5 = 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "point",
+                               "objects":  [
+                                               "point"
+                                           ],
+                               "groups":  [
+                                              4,
+                                              5
+                                          ],
+                               "total":  9,
+                               "operation":  "add",
+                               "equation":  "4 + 5 = 9",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly point icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-06-009",
+        "legacyId":  "math-forest-6-009",
+        "curriculumTopicId":  "math-y1-addition-mini-game",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition mini game",
+        "subtopic":  "Addition fluency through collection missions",
+        "worldId":  "forest-world",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Catch 2 fireflies and then 7 fireflies. How many fireflies?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "2 + 7 = 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "firefly",
+                               "objects":  [
+                                               "firefly"
+                                           ],
+                               "groups":  [
+                                              2,
+                                              7
+                                          ],
+                               "total":  9,
+                               "operation":  "add",
+                               "equation":  "2 + 7 = 9",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly firefly icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-06-010",
+        "legacyId":  "math-forest-6-010",
+        "curriculumTopicId":  "math-y1-addition-mini-game",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition mini game",
+        "subtopic":  "Addition fluency through collection missions",
+        "worldId":  "forest-world",
+        "level":  6,
+        "nodeType":  "Mini Game",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Open 5 boxes and then 4 boxes. How many boxes?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "5 + 4 = 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "box",
+                               "objects":  [
+                                               "box"
+                                           ],
+                               "groups":  [
+                                              5,
+                                              4
+                                          ],
+                               "total":  9,
+                               "operation":  "add",
+                               "equation":  "5 + 4 = 9",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly box icons",
+                               "reviewStatus":  "ready"
+                           }
+    }
+]

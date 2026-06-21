@@ -1,3 +1,5 @@
+import { FeatureUnavailablePage } from "@/components/FeatureUnavailablePage";
+import { isFeatureActive } from "@/data/feature-flags";
 import type { Metadata } from "next";
 import { PageLayout } from "@/components/PageLayout";
 import { ScienceContentFactory } from "@/components/ScienceContentFactory";
@@ -14,6 +16,9 @@ export const metadata: Metadata = {
 };
 
 export default function SciencePage() {
+  if (!isFeatureActive("science")) {
+    return <FeatureUnavailablePage featureId="science" />;
+  }
   return (
     <PageLayout
       eyebrow="Science Explorer"

@@ -30,4 +30,4 @@ Each world should have one completion badge. A child earns the badge after compl
 
 Example:
 
-- Forest World completion badge: Forest Guardian Badge
+- Forest World completion badge: Forest Explorer Badge

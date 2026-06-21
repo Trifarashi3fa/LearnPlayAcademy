@@ -1,0 +1,547 @@
+[
+    {
+        "questionId":  "math-y1-forest-02-001",
+        "legacyId":  "math-forest-2-001",
+        "curriculumTopicId":  "math-y1-counting-objects",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Counting objects",
+        "subtopic":  "Counting and comparing object groups",
+        "worldId":  "forest-world",
+        "level":  2,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There are 3 apples and 1 more apple. How many apples are there?",
+        "options":  [
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "3 apples and 1 apple make 4 apples.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "apple",
+                               "objects":  [
+                                               "apple"
+                                           ],
+                               "groups":  [
+                                              3,
+                                              1
+                                          ],
+                               "total":  4,
+                               "operation":  "add",
+                               "equation":  "3 + 1 = 4",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly apple icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-02-002",
+        "legacyId":  "math-forest-2-002",
+        "curriculumTopicId":  "math-y1-counting-objects",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Counting objects",
+        "subtopic":  "Counting and comparing object groups",
+        "worldId":  "forest-world",
+        "level":  2,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Count the birds: 1, 2, 3, 4, 5. How many birds?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "There are 5 birds.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "counting",
+                               "object":  "bird",
+                               "objects":  [
+                                               "bird"
+                                           ],
+                               "groups":  [
+                                              5
+                                          ],
+                               "total":  5,
+                               "operation":  "count",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly bird icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-02-003",
+        "legacyId":  "math-forest-2-003",
+        "curriculumTopicId":  "math-y1-counting-objects",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Counting objects",
+        "subtopic":  "Counting and comparing object groups",
+        "worldId":  "forest-world",
+        "level":  2,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "A basket has 6 oranges. How many oranges are in the basket?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "6",
+        "explanation":  "The basket has 6 oranges.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "counting",
+                               "object":  "orange",
+                               "objects":  [
+                                               "orange"
+                                           ],
+                               "groups":  [
+                                              6
+                                          ],
+                               "total":  6,
+                               "operation":  "count",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "basket",
+                               "assetHint":  "orange objects in a child-friendly basket scene",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-02-004",
+        "legacyId":  "math-forest-2-004",
+        "curriculumTopicId":  "math-y1-counting-objects",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Counting objects",
+        "subtopic":  "Counting and comparing object groups",
+        "worldId":  "forest-world",
+        "level":  2,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There are 2 flowers and 2 more flowers. How many flowers?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "2 flowers and 2 flowers make 4 flowers.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "flower",
+                               "objects":  [
+                                               "flower"
+                                           ],
+                               "groups":  [
+                                              2,
+                                              2
+                                          ],
+                               "total":  4,
+                               "operation":  "add",
+                               "equation":  "2 + 2 = 4",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly flower icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-02-005",
+        "legacyId":  "math-forest-2-005",
+        "curriculumTopicId":  "math-y1-counting-objects",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Counting objects",
+        "subtopic":  "Counting and comparing object groups",
+        "worldId":  "forest-world",
+        "level":  2,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Count 7 stars. Which number shows the total?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "7 stars means the total is 7.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "star",
+                               "objects":  [
+                                               "star"
+                                           ],
+                               "groups":  [
+                                              7
+                                          ],
+                               "total":  7,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly star icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-02-006",
+        "legacyId":  "math-forest-2-006",
+        "curriculumTopicId":  "math-y1-counting-objects",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Counting objects",
+        "subtopic":  "Counting and comparing object groups",
+        "worldId":  "forest-world",
+        "level":  2,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There are 8 leaves. One leaf falls away. How many leaves are left?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "Start with 8 leaves and take away 1 leaf. 8 - 1 = 7 leaves left.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "leaf",
+                               "objects":  [
+                                               "leaf"
+                                           ],
+                               "groups":  [
+                                              8,
+                                              1
+                                          ],
+                               "total":  7,
+                               "operation":  "subtract",
+                               "equation":  "8 - 1 = 7",
+                               "startingAmount":  8,
+                               "removedAmount":  1,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly leaf icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-02-007",
+        "legacyId":  "math-forest-2-007",
+        "curriculumTopicId":  "math-y1-counting-objects",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Counting objects",
+        "subtopic":  "Counting and comparing object groups",
+        "worldId":  "forest-world",
+        "level":  2,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which group has more: 4 shells or 6 shells?",
+        "options":  [
+                        "4 shells",
+                        "6 shells",
+                        "Both equal",
+                        "No shells"
+                    ],
+        "correctAnswer":  "6 shells",
+        "explanation":  "6 is more than 4.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "comparison",
+                               "object":  "shell",
+                               "objects":  [
+                                               "shell"
+                                           ],
+                               "groups":  [
+                                              4,
+                                              6
+                                          ],
+                               "total":  6,
+                               "operation":  "compare",
+                               "equation":  "4 \u003c 6",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "water",
+                               "assetHint":  "shell objects in a child-friendly water scene",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-02-008",
+        "legacyId":  "math-forest-2-008",
+        "curriculumTopicId":  "math-y1-counting-objects",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Counting objects",
+        "subtopic":  "Counting and comparing object groups",
+        "worldId":  "forest-world",
+        "level":  2,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which group has fewer: 5 pencils or 2 pencils?",
+        "options":  [
+                        "5 pencils",
+                        "2 pencils",
+                        "Both equal",
+                        "7 pencils"
+                    ],
+        "correctAnswer":  "2 pencils",
+        "explanation":  "2 is fewer than 5.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "comparison",
+                               "object":  "pencil",
+                               "objects":  [
+                                               "pencil"
+                                           ],
+                               "groups":  [
+                                              5,
+                                              2
+                                          ],
+                               "total":  2,
+                               "operation":  "compare",
+                               "equation":  "5 \u003e 2",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly pencil icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-02-009",
+        "legacyId":  "math-forest-2-009",
+        "curriculumTopicId":  "math-y1-counting-objects",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Counting objects",
+        "subtopic":  "Counting and comparing object groups",
+        "worldId":  "forest-world",
+        "level":  2,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There are 9 coins. Which number matches the coins?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "9 coins match the number 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "matching",
+                               "object":  "coin",
+                               "objects":  [
+                                               "coin"
+                                           ],
+                               "groups":  [
+                                              9
+                                          ],
+                               "total":  9,
+                               "operation":  "match",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly coin icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-02-010",
+        "legacyId":  "math-forest-2-010",
+        "curriculumTopicId":  "math-y1-counting-objects",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Counting objects",
+        "subtopic":  "Counting and comparing object groups",
+        "worldId":  "forest-world",
+        "level":  2,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Count the trees: 1, 2, 3. How many trees?",
+        "options":  [
+                        "2",
+                        "3",
+                        "4",
+                        "5"
+                    ],
+        "correctAnswer":  "3",
+        "explanation":  "There are 3 trees.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "counting",
+                               "object":  "tree",
+                               "objects":  [
+                                               "tree"
+                                           ],
+                               "groups":  [
+                                              3
+                                          ],
+                               "total":  3,
+                               "operation":  "count",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly tree icons",
+                               "reviewStatus":  "ready"
+                           }
+    }
+]

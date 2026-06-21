@@ -1,3 +1,5 @@
+import { FeatureUnavailablePage } from "@/components/FeatureUnavailablePage";
+import { isFeatureActive } from "@/data/feature-flags";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -40,6 +42,9 @@ export async function generateMetadata({ params }: ActivityPageProps): Promise<M
 }
 
 export default async function LifeSkillsActivityPage({ params }: ActivityPageProps) {
+  if (!isFeatureActive("lifeSkills")) {
+    return <FeatureUnavailablePage featureId="lifeSkills" />;
+  }
   const { category: categoryId, activity } = await params;
   const category = getLifeSkillsCategory(categoryId);
   const game = getLifeSkillsGame(categoryId, activity);

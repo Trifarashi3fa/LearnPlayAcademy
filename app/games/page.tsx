@@ -1,3 +1,5 @@
+import { FeatureUnavailablePage } from "@/components/FeatureUnavailablePage";
+import { isFeatureActive } from "@/data/feature-flags";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { GameCard } from "@/components/GameCard";
@@ -55,6 +57,9 @@ const games = [
 ];
 
 export default function GamesPage() {
+  if (!isFeatureActive("games")) {
+    return <FeatureUnavailablePage featureId="games" />;
+  }
   return (
     <PageLayout
       eyebrow="Quick practice"

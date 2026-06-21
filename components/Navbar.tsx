@@ -18,16 +18,10 @@ function isActive(pathname: string, href: string) {
 }
 
 function getVisibleNavigation(isSignedIn: boolean): NavigationLink[] {
-  if (!isSignedIn) {
-    return primaryNavigation;
-  }
-
-  return [
-    ...primaryNavigation.filter(
-      (link) => link.href !== "/login" && link.href !== "/register",
-    ),
-    { href: "/mvp/parent-dashboard", label: "Progress" },
-  ];
+  if (!isSignedIn) return primaryNavigation;
+  return primaryNavigation.filter(
+    (link) => link.href !== "/login" && link.href !== "/register",
+  );
 }
 
 export function Navbar() {

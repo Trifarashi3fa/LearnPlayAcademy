@@ -11,6 +11,7 @@ import { QuestionCard } from "@/components/mvp/explanation/QuestionCard";
 import { XPRewardCard } from "@/components/mvp/explanation/XPRewardCard";
 import { calculateStars, useMvpProgress, type MvpProgress } from "@/components/mvp/useMvpProgress";
 import { getLevelBonusXp, getQuestionLearningContent, type MvpLevel } from "@/data/mvp-forest-world";
+import { forestWorldIdentity } from "@/data/forest-world-identity";
 
 export function QuestionPlayer({ level }: { level: MvpLevel }) {
   const { progress, updateProgress } = useMvpProgress();
@@ -37,7 +38,7 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
     const existingStars = progress.levelStars[String(level.level)] ?? 0;
     const levelStars = Math.max(existingStars, starsEarned);
     const badges = [...progress.badges];
-    if (level.level === 10 && !badges.includes("Forest Explorer Badge")) badges.push("Forest Explorer Badge");
+    if (level.level === 10 && !badges.includes(forestWorldIdentity.completionBadge)) badges.push(forestWorldIdentity.completionBadge);
     else if (!badges.includes(`Level ${level.level} Badge`)) badges.push(`Level ${level.level} Badge`);
     const next: MvpProgress = { ...progress, currentLevel: Math.min(10, Math.max(progress.currentLevel, level.level + 1)), xp: progress.xp + (alreadyCompleted ? answerXp : totalXpEarned), stars: progress.stars + Math.max(0, levelStars - existingStars), badges, completedLevels, levelStars: { ...progress.levelStars, [String(level.level)]: levelStars }, questionsAnswered: progress.questionsAnswered + level.questions.length, correctAnswers: progress.correctAnswers + correctCount };
     updateProgress(next); setSaved(true);

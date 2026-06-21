@@ -1,3 +1,5 @@
+import { FeatureUnavailablePage } from "@/components/FeatureUnavailablePage";
+import { isFeatureActive } from "@/data/feature-flags";
 import type { Metadata } from "next";
 import Image from "next/image";
 import { Button } from "@/components/Button";
@@ -23,6 +25,9 @@ const highlights = [
 ];
 
 export default function ScienceExplorerGamePage() {
+  if (!isFeatureActive("science")) {
+    return <FeatureUnavailablePage featureId="science" />;
+  }
   return (
     <main>
       <section className="mx-auto max-w-4xl px-5 py-12 lg:px-8">

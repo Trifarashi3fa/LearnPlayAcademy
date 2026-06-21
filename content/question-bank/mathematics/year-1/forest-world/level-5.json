@@ -1,0 +1,554 @@
+[
+    {
+        "questionId":  "math-y1-forest-05-001",
+        "legacyId":  "math-forest-5-001",
+        "curriculumTopicId":  "math-y1-addition-practice",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition practice",
+        "subtopic":  "Addition story problems",
+        "worldId":  "forest-world",
+        "level":  5,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "A squirrel has 2 nuts and finds 3 more. How many nuts?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "2 nuts plus 3 nuts equals 5 nuts.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "nut",
+                               "objects":  [
+                                               "nut"
+                                           ],
+                               "groups":  [
+                                              2,
+                                              3
+                                          ],
+                               "total":  5,
+                               "operation":  "add",
+                               "equation":  "2 + 3 = 5",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly nut icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-05-002",
+        "legacyId":  "math-forest-5-002",
+        "curriculumTopicId":  "math-y1-addition-practice",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition practice",
+        "subtopic":  "Addition story problems",
+        "worldId":  "forest-world",
+        "level":  5,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There are 4 birds on a branch and 2 more land. How many birds?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "6",
+        "explanation":  "4 birds plus 2 birds equals 6 birds.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "bird",
+                               "objects":  [
+                                               "bird"
+                                           ],
+                               "groups":  [
+                                              4,
+                                              2
+                                          ],
+                               "total":  6,
+                               "operation":  "add",
+                               "equation":  "4 + 2 = 6",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "branch",
+                               "assetHint":  "bird objects in a child-friendly branch scene",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-05-003",
+        "legacyId":  "math-forest-5-003",
+        "curriculumTopicId":  "math-y1-addition-practice",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition practice",
+        "subtopic":  "Addition story problems",
+        "worldId":  "forest-world",
+        "level":  5,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Lina has 5 stickers and gets 1 more. How many stickers?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "6",
+        "explanation":  "5 + 1 = 6.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "sticker",
+                               "objects":  [
+                                               "sticker"
+                                           ],
+                               "groups":  [
+                                              5,
+                                              1
+                                          ],
+                               "total":  6,
+                               "operation":  "add",
+                               "equation":  "5 + 1 = 6",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly sticker icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-05-004",
+        "legacyId":  "math-forest-5-004",
+        "curriculumTopicId":  "math-y1-addition-practice",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition practice",
+        "subtopic":  "Addition story problems",
+        "worldId":  "forest-world",
+        "level":  5,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There are 3 flowers and 4 butterflies. How many things altogether?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "3 + 4 = 7.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "flower",
+                               "objects":  [
+                                               "flower",
+                                               "butterfly"
+                                           ],
+                               "groups":  [
+                                              3,
+                                              4
+                                          ],
+                               "total":  7,
+                               "operation":  "add",
+                               "equation":  "3 + 4 = 7",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly flower icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-05-005",
+        "legacyId":  "math-forest-5-005",
+        "curriculumTopicId":  "math-y1-addition-practice",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition practice",
+        "subtopic":  "Addition story problems",
+        "worldId":  "forest-world",
+        "level":  5,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "A box has 6 crayons and you add 2 more. How many crayons?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "6 + 2 = 8.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "crayon",
+                               "objects":  [
+                                               "crayon"
+                                           ],
+                               "groups":  [
+                                              6,
+                                              2
+                                          ],
+                               "total":  8,
+                               "operation":  "add",
+                               "equation":  "6 + 2 = 8",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "box",
+                               "assetHint":  "crayon objects in a child-friendly box scene",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-05-006",
+        "legacyId":  "math-forest-5-006",
+        "curriculumTopicId":  "math-y1-addition-practice",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition practice",
+        "subtopic":  "Addition story problems",
+        "worldId":  "forest-world",
+        "level":  5,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There is 1 red apple and there are 6 green apples. How many apples are there altogether?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "1 apple plus 6 apples equals 7 apples. 1 + 6 = 7.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "apple",
+                               "objects":  [
+                                               "apple"
+                                           ],
+                               "groups":  [
+                                              1,
+                                              6
+                                          ],
+                               "total":  7,
+                               "operation":  "add",
+                               "equation":  "1 + 6 = 7",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly apple icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-05-007",
+        "legacyId":  "math-forest-5-007",
+        "curriculumTopicId":  "math-y1-addition-practice",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition practice",
+        "subtopic":  "Addition story problems",
+        "worldId":  "forest-world",
+        "level":  5,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "A child collects 4 stars, then 4 more. How many stars?",
+        "options":  [
+                        "6",
+                        "7",
+                        "8",
+                        "9"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "4 + 4 = 8.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "star",
+                               "objects":  [
+                                               "star"
+                                           ],
+                               "groups":  [
+                                              4,
+                                              4
+                                          ],
+                               "total":  8,
+                               "operation":  "add",
+                               "equation":  "4 + 4 = 8",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly star icons",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-05-008",
+        "legacyId":  "math-forest-5-008",
+        "curriculumTopicId":  "math-y1-addition-practice",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition practice",
+        "subtopic":  "Addition story problems",
+        "worldId":  "forest-world",
+        "level":  5,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There are 7 fish and 1 more fish. How many fish?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "7 + 1 = 8.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "fish",
+                               "objects":  [
+                                               "fish"
+                                           ],
+                               "groups":  [
+                                              7,
+                                              1
+                                          ],
+                               "total":  8,
+                               "operation":  "add",
+                               "equation":  "7 + 1 = 8",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "water",
+                               "assetHint":  "fish objects in a child-friendly water scene",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-05-009",
+        "legacyId":  "math-forest-5-009",
+        "curriculumTopicId":  "math-y1-addition-practice",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition practice",
+        "subtopic":  "Addition story problems",
+        "worldId":  "forest-world",
+        "level":  5,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "A bag has 5 marbles and 5 more are added. How many marbles?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "10",
+        "explanation":  "5 + 5 = 10.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "marble",
+                               "objects":  [
+                                               "marble"
+                                           ],
+                               "groups":  [
+                                              5,
+                                              5
+                                          ],
+                               "total":  10,
+                               "operation":  "add",
+                               "equation":  "5 + 5 = 10",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "bag",
+                               "assetHint":  "marble objects in a child-friendly bag scene",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-05-010",
+        "legacyId":  "math-forest-5-010",
+        "curriculumTopicId":  "math-y1-addition-practice",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Addition practice",
+        "subtopic":  "Addition story problems",
+        "worldId":  "forest-world",
+        "level":  5,
+        "nodeType":  "Practice",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "There are 2 rabbits in one group and 6 rabbits in another group. How many rabbits are there altogether?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "2 rabbits plus 6 rabbits equals 8 rabbits. 2 + 6 = 8.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "rabbit",
+                               "objects":  [
+                                               "rabbit"
+                                           ],
+                               "groups":  [
+                                              2,
+                                              1,
+                                              6
+                                          ],
+                               "total":  8,
+                               "operation":  "add",
+                               "equation":  "2 + 1 + 6 = 8",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large child-friendly rabbit icons",
+                               "reviewStatus":  "ready"
+                           }
+    }
+]

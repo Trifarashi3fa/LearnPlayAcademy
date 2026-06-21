@@ -3,12 +3,12 @@ export type NavigationLink = {
   label: string;
 };
 
+// Phase 1 exposes only the approved Foundation MVP learning flow.
 export const primaryNavigation: NavigationLink[] = [
   { href: "/", label: "Home" },
   { href: "/subjects", label: "Subjects" },
-  { href: "/games", label: "Games" },
-  { href: "/parents", label: "Parents" },
-  { href: "/about", label: "About" },
+  { href: "/mvp/world-map", label: "Forest World" },
+  { href: "/mvp/parent-dashboard", label: "Parent Dashboard" },
   { href: "/login", label: "Login" },
   { href: "/register", label: "Register" },
 ];
@@ -16,13 +16,11 @@ export const primaryNavigation: NavigationLink[] = [
 export const footerQuickLinks: NavigationLink[] = [
   { href: "/", label: "Home" },
   { href: "/subjects", label: "Subjects" },
-  { href: "/games", label: "Games" },
-  { href: "/parents", label: "Parents" },
-  { href: "/about", label: "About" },
+  { href: "/mvp/world-map", label: "Forest World" },
+  { href: "/mvp/parent-dashboard", label: "Parent Dashboard" },
 ];
 
 export const footerSupportLinks: NavigationLink[] = [
-  { href: "/parents#faq", label: "FAQ" },
   { href: "/contact", label: "Contact" },
   { href: "/privacy", label: "Privacy Policy" },
   { href: "/terms", label: "Terms" },

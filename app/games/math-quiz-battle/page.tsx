@@ -1,3 +1,5 @@
+import { FeatureUnavailablePage } from "@/components/FeatureUnavailablePage";
+import { isFeatureActive } from "@/data/feature-flags";
 import { QuizGame, type QuizQuestion } from "@/components/QuizGame";
 
 const questions: QuizQuestion[] = [
@@ -54,6 +56,9 @@ const questions: QuizQuestion[] = [
 ];
 
 export default function MathQuizBattlePage() {
+  if (!isFeatureActive("mathQuickGames")) {
+    return <FeatureUnavailablePage featureId="mathQuickGames" />;
+  }
   return (
     <main className="bg-[#fffdf8]">
       <QuizGame
@@ -69,3 +74,4 @@ export default function MathQuizBattlePage() {
     </main>
   );
 }
+

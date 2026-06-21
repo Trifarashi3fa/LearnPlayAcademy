@@ -1,0 +1,553 @@
+[
+    {
+        "questionId":  "math-y1-forest-08-001",
+        "legacyId":  "math-forest-8-001",
+        "curriculumTopicId":  "math-y1-numbers-operations-review",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Review numbers and operations",
+        "subtopic":  "Review of number order, addition, and subtraction",
+        "worldId":  "forest-world",
+        "level":  8,
+        "nodeType":  "Review",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What number comes after 6?",
+        "options":  [
+                        "5",
+                        "6",
+                        "7",
+                        "8"
+                    ],
+        "correctAnswer":  "7",
+        "explanation":  "After 6 comes 7.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "number-sequence",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              6
+                                          ],
+                               "total":  7,
+                               "operation":  "sequence",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-08-002",
+        "legacyId":  "math-forest-8-002",
+        "curriculumTopicId":  "math-y1-numbers-operations-review",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Review numbers and operations",
+        "subtopic":  "Review of number order, addition, and subtraction",
+        "worldId":  "forest-world",
+        "level":  8,
+        "nodeType":  "Review",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is 3 + 2?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "3 + 2 = 5.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              3,
+                                              2
+                                          ],
+                               "total":  5,
+                               "operation":  "add",
+                               "equation":  "3 + 2 = 5",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-08-003",
+        "legacyId":  "math-forest-8-003",
+        "curriculumTopicId":  "math-y1-numbers-operations-review",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Review numbers and operations",
+        "subtopic":  "Review of number order, addition, and subtraction",
+        "worldId":  "forest-world",
+        "level":  8,
+        "nodeType":  "Review",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is 7 - 2?",
+        "options":  [
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+        "correctAnswer":  "5",
+        "explanation":  "7 - 2 = 5.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              7,
+                                              2
+                                          ],
+                               "total":  5,
+                               "operation":  "subtract",
+                               "equation":  "7 - 2 = 5",
+                               "startingAmount":  7,
+                               "removedAmount":  2,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-08-004",
+        "legacyId":  "math-forest-8-004",
+        "curriculumTopicId":  "math-y1-numbers-operations-review",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Review numbers and operations",
+        "subtopic":  "Review of number order, addition, and subtraction",
+        "worldId":  "forest-world",
+        "level":  8,
+        "nodeType":  "Review",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which number is bigger: 4 or 9?",
+        "options":  [
+                        "4",
+                        "9",
+                        "Both",
+                        "None"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "9 is bigger than 4.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "comparison",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              4,
+                                              9
+                                          ],
+                               "total":  9,
+                               "operation":  "compare",
+                               "equation":  "4 \u003c 9",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-08-005",
+        "legacyId":  "math-forest-8-005",
+        "curriculumTopicId":  "math-y1-numbers-operations-review",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Review numbers and operations",
+        "subtopic":  "Review of number order, addition, and subtraction",
+        "worldId":  "forest-world",
+        "level":  8,
+        "nodeType":  "Review",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Which number is smaller: 8 or 2?",
+        "options":  [
+                        "8",
+                        "2",
+                        "Both",
+                        "None"
+                    ],
+        "correctAnswer":  "2",
+        "explanation":  "2 is smaller than 8.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "comparison",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              8,
+                                              2
+                                          ],
+                               "total":  2,
+                               "operation":  "compare",
+                               "equation":  "8 \u003e 2",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-08-006",
+        "legacyId":  "math-forest-8-006",
+        "curriculumTopicId":  "math-y1-numbers-operations-review",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Review numbers and operations",
+        "subtopic":  "Review of number order, addition, and subtraction",
+        "worldId":  "forest-world",
+        "level":  8,
+        "nodeType":  "Review",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is 5 + 4?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "5 + 4 = 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              5,
+                                              4
+                                          ],
+                               "total":  9,
+                               "operation":  "add",
+                               "equation":  "5 + 4 = 9",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-08-007",
+        "legacyId":  "math-forest-8-007",
+        "curriculumTopicId":  "math-y1-numbers-operations-review",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Review numbers and operations",
+        "subtopic":  "Review of number order, addition, and subtraction",
+        "worldId":  "forest-world",
+        "level":  8,
+        "nodeType":  "Review",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is 9 - 1?",
+        "options":  [
+                        "7",
+                        "8",
+                        "9",
+                        "10"
+                    ],
+        "correctAnswer":  "8",
+        "explanation":  "9 - 1 = 8.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "subtraction",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              9,
+                                              1
+                                          ],
+                               "total":  8,
+                               "operation":  "subtract",
+                               "equation":  "9 - 1 = 8",
+                               "startingAmount":  9,
+                               "removedAmount":  1,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-08-008",
+        "legacyId":  "math-forest-8-008",
+        "curriculumTopicId":  "math-y1-numbers-operations-review",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Review numbers and operations",
+        "subtopic":  "Review of number order, addition, and subtraction",
+        "worldId":  "forest-world",
+        "level":  8,
+        "nodeType":  "Review",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What number is missing: 2, 3, __, 5?",
+        "options":  [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+        "correctAnswer":  "4",
+        "explanation":  "The missing number is 4.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "number-sequence",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              2,
+                                              3,
+                                              5
+                                          ],
+                               "total":  4,
+                               "operation":  "sequence",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-08-009",
+        "legacyId":  "math-forest-8-009",
+        "curriculumTopicId":  "math-y1-numbers-operations-review",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Review numbers and operations",
+        "subtopic":  "Review of number order, addition, and subtraction",
+        "worldId":  "forest-world",
+        "level":  8,
+        "nodeType":  "Review",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "Count backward: 5, 4, 3, __",
+        "options":  [
+                        "1",
+                        "2",
+                        "3",
+                        "4"
+                    ],
+        "correctAnswer":  "2",
+        "explanation":  "After 3 when counting backward comes 2.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "number-sequence",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              5,
+                                              4,
+                                              3
+                                          ],
+                               "total":  2,
+                               "operation":  "sequence",
+                               "equation":  null,
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    },
+    {
+        "questionId":  "math-y1-forest-08-010",
+        "legacyId":  "math-forest-8-010",
+        "curriculumTopicId":  "math-y1-numbers-operations-review",
+        "subject":  "mathematics",
+        "year":  1,
+        "curriculumSource":  [
+                                 "learnplay",
+                                 "malaysian-kssr",
+                                 "cambridge-primary",
+                                 "international-best-practices"
+                             ],
+        "topic":  "Review numbers and operations",
+        "subtopic":  "Review of number order, addition, and subtraction",
+        "worldId":  "forest-world",
+        "level":  8,
+        "nodeType":  "Review",
+        "packageType":  "mvp-free",
+        "mvpStatus":  "active-pilot",
+        "status":  "active",
+        "approvedBy":  "Fara",
+        "approvalDate":  "2026-06-21",
+        "version":  "1.0.0",
+        "effectiveDate":  "2026-06-21",
+        "difficulty":  "easy",
+        "question":  "What is 6 + 3?",
+        "options":  [
+                        "8",
+                        "9",
+                        "10",
+                        "11"
+                    ],
+        "correctAnswer":  "9",
+        "explanation":  "6 + 3 = 9.",
+        "xpReward":  10,
+        "visualMetadata":  {
+                               "visualType":  "addition",
+                               "object":  "number",
+                               "objects":  [
+                                               "number"
+                                           ],
+                               "groups":  [
+                                              6,
+                                              3
+                                          ],
+                               "total":  9,
+                               "operation":  "add",
+                               "equation":  "6 + 3 = 9",
+                               "startingAmount":  null,
+                               "removedAmount":  null,
+                               "context":  "none",
+                               "assetHint":  "large number tiles with clear mathematical symbols",
+                               "reviewStatus":  "ready"
+                           }
+    }
+]

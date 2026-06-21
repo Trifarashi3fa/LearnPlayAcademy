@@ -1,0 +1,5690 @@
+{
+  "generatedAt": "2026-06-21T03:11:11.722Z",
+  "subject": "mathematics",
+  "year": 1,
+  "worldId": "forest-world",
+  "questionCount": 100,
+  "levels": [
+    {
+      "level": 1,
+      "nodeType": "Learn",
+      "questionCount": 10,
+      "questionIds": [
+        "math-y1-forest-01-001",
+        "math-y1-forest-01-002",
+        "math-y1-forest-01-003",
+        "math-y1-forest-01-004",
+        "math-y1-forest-01-005",
+        "math-y1-forest-01-006",
+        "math-y1-forest-01-007",
+        "math-y1-forest-01-008",
+        "math-y1-forest-01-009",
+        "math-y1-forest-01-010"
+      ]
+    },
+    {
+      "level": 2,
+      "nodeType": "Practice",
+      "questionCount": 10,
+      "questionIds": [
+        "math-y1-forest-02-001",
+        "math-y1-forest-02-002",
+        "math-y1-forest-02-003",
+        "math-y1-forest-02-004",
+        "math-y1-forest-02-005",
+        "math-y1-forest-02-006",
+        "math-y1-forest-02-007",
+        "math-y1-forest-02-008",
+        "math-y1-forest-02-009",
+        "math-y1-forest-02-010"
+      ]
+    },
+    {
+      "level": 3,
+      "nodeType": "Mini Game",
+      "questionCount": 10,
+      "questionIds": [
+        "math-y1-forest-03-001",
+        "math-y1-forest-03-002",
+        "math-y1-forest-03-003",
+        "math-y1-forest-03-004",
+        "math-y1-forest-03-005",
+        "math-y1-forest-03-006",
+        "math-y1-forest-03-007",
+        "math-y1-forest-03-008",
+        "math-y1-forest-03-009",
+        "math-y1-forest-03-010"
+      ]
+    },
+    {
+      "level": 4,
+      "nodeType": "Learn",
+      "questionCount": 10,
+      "questionIds": [
+        "math-y1-forest-04-001",
+        "math-y1-forest-04-002",
+        "math-y1-forest-04-003",
+        "math-y1-forest-04-004",
+        "math-y1-forest-04-005",
+        "math-y1-forest-04-006",
+        "math-y1-forest-04-007",
+        "math-y1-forest-04-008",
+        "math-y1-forest-04-009",
+        "math-y1-forest-04-010"
+      ]
+    },
+    {
+      "level": 5,
+      "nodeType": "Practice",
+      "questionCount": 10,
+      "questionIds": [
+        "math-y1-forest-05-001",
+        "math-y1-forest-05-002",
+        "math-y1-forest-05-003",
+        "math-y1-forest-05-004",
+        "math-y1-forest-05-005",
+        "math-y1-forest-05-006",
+        "math-y1-forest-05-007",
+        "math-y1-forest-05-008",
+        "math-y1-forest-05-009",
+        "math-y1-forest-05-010"
+      ]
+    },
+    {
+      "level": 6,
+      "nodeType": "Mini Game",
+      "questionCount": 10,
+      "questionIds": [
+        "math-y1-forest-06-001",
+        "math-y1-forest-06-002",
+        "math-y1-forest-06-003",
+        "math-y1-forest-06-004",
+        "math-y1-forest-06-005",
+        "math-y1-forest-06-006",
+        "math-y1-forest-06-007",
+        "math-y1-forest-06-008",
+        "math-y1-forest-06-009",
+        "math-y1-forest-06-010"
+      ]
+    },
+    {
+      "level": 7,
+      "nodeType": "Learn",
+      "questionCount": 10,
+      "questionIds": [
+        "math-y1-forest-07-001",
+        "math-y1-forest-07-002",
+        "math-y1-forest-07-003",
+        "math-y1-forest-07-004",
+        "math-y1-forest-07-005",
+        "math-y1-forest-07-006",
+        "math-y1-forest-07-007",
+        "math-y1-forest-07-008",
+        "math-y1-forest-07-009",
+        "math-y1-forest-07-010"
+      ]
+    },
+    {
+      "level": 8,
+      "nodeType": "Review",
+      "questionCount": 10,
+      "questionIds": [
+        "math-y1-forest-08-001",
+        "math-y1-forest-08-002",
+        "math-y1-forest-08-003",
+        "math-y1-forest-08-004",
+        "math-y1-forest-08-005",
+        "math-y1-forest-08-006",
+        "math-y1-forest-08-007",
+        "math-y1-forest-08-008",
+        "math-y1-forest-08-009",
+        "math-y1-forest-08-010"
+      ]
+    },
+    {
+      "level": 9,
+      "nodeType": "Challenge",
+      "questionCount": 10,
+      "questionIds": [
+        "math-y1-forest-09-001",
+        "math-y1-forest-09-002",
+        "math-y1-forest-09-003",
+        "math-y1-forest-09-004",
+        "math-y1-forest-09-005",
+        "math-y1-forest-09-006",
+        "math-y1-forest-09-007",
+        "math-y1-forest-09-008",
+        "math-y1-forest-09-009",
+        "math-y1-forest-09-010"
+      ]
+    },
+    {
+      "level": 10,
+      "nodeType": "Boss",
+      "questionCount": 10,
+      "questionIds": [
+        "math-y1-forest-10-001",
+        "math-y1-forest-10-002",
+        "math-y1-forest-10-003",
+        "math-y1-forest-10-004",
+        "math-y1-forest-10-005",
+        "math-y1-forest-10-006",
+        "math-y1-forest-10-007",
+        "math-y1-forest-10-008",
+        "math-y1-forest-10-009",
+        "math-y1-forest-10-010"
+      ]
+    }
+  ],
+  "questionsByLevel": {
+    "1": [
+      {
+        "questionId": "math-y1-forest-01-001",
+        "legacyId": "math-forest-1-001",
+        "curriculumTopicId": "math-y1-numbers-1-10",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Numbers 1-10",
+        "subtopic": "Number order and recognition",
+        "worldId": "forest-world",
+        "level": 1,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What number comes after 3?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "correctAnswer": "4",
+        "explanation": "After 3 comes 4.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            3
+          ],
+          "total": 4,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-01-002",
+        "legacyId": "math-forest-1-002",
+        "curriculumTopicId": "math-y1-numbers-1-10",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Numbers 1-10",
+        "subtopic": "Number order and recognition",
+        "worldId": "forest-world",
+        "level": 1,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What number comes before 6?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "explanation": "The number before 6 is 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            6
+          ],
+          "total": 5,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-01-003",
+        "legacyId": "math-forest-1-003",
+        "curriculumTopicId": "math-y1-numbers-1-10",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Numbers 1-10",
+        "subtopic": "Number order and recognition",
+        "worldId": "forest-world",
+        "level": 1,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which number is 8?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "8",
+        "explanation": "The number 8 is written as 8.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [],
+          "total": 8,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-01-004",
+        "legacyId": "math-forest-1-004",
+        "curriculumTopicId": "math-y1-numbers-1-10",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Numbers 1-10",
+        "subtopic": "Number order and recognition",
+        "worldId": "forest-world",
+        "level": 1,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What number comes after 9?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "10",
+        "explanation": "After 9 comes 10.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            9
+          ],
+          "total": 10,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-01-005",
+        "legacyId": "math-forest-1-005",
+        "curriculumTopicId": "math-y1-numbers-1-10",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Numbers 1-10",
+        "subtopic": "Number order and recognition",
+        "worldId": "forest-world",
+        "level": 1,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which number is smaller than 4?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "3",
+        "explanation": "3 is smaller than 4.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "comparison",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            3,
+            4
+          ],
+          "total": 3,
+          "operation": "compare",
+          "equation": "3 < 4",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-01-006",
+        "legacyId": "math-forest-1-006",
+        "curriculumTopicId": "math-y1-numbers-1-10",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Numbers 1-10",
+        "subtopic": "Number order and recognition",
+        "worldId": "forest-world",
+        "level": 1,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which number is bigger than 7?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "8",
+        "explanation": "8 is bigger than 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "comparison",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            8,
+            7
+          ],
+          "total": 8,
+          "operation": "compare",
+          "equation": "8 > 7",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-01-007",
+        "legacyId": "math-forest-1-007",
+        "curriculumTopicId": "math-y1-numbers-1-10",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Numbers 1-10",
+        "subtopic": "Number order and recognition",
+        "worldId": "forest-world",
+        "level": 1,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is the missing number: 1, 2, __, 4?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "correctAnswer": "3",
+        "explanation": "The numbers count up by 1, so the missing number is 3.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            1,
+            2,
+            4
+          ],
+          "total": 3,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-01-008",
+        "legacyId": "math-forest-1-008",
+        "curriculumTopicId": "math-y1-numbers-1-10",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Numbers 1-10",
+        "subtopic": "Number order and recognition",
+        "worldId": "forest-world",
+        "level": 1,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is the missing number: 6, 7, __, 9?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "8",
+        "explanation": "After 7 comes 8.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            6,
+            7,
+            9
+          ],
+          "total": 8,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-01-009",
+        "legacyId": "math-forest-1-009",
+        "curriculumTopicId": "math-y1-numbers-1-10",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Numbers 1-10",
+        "subtopic": "Number order and recognition",
+        "worldId": "forest-world",
+        "level": 1,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which number shows ten?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "10",
+        "explanation": "Ten is written as 10.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [],
+          "total": 10,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-01-010",
+        "legacyId": "math-forest-1-010",
+        "curriculumTopicId": "math-y1-numbers-1-10",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Numbers 1-10",
+        "subtopic": "Number order and recognition",
+        "worldId": "forest-world",
+        "level": 1,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Count forward: 4, 5, 6, __",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "explanation": "After 6 comes 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            4,
+            5,
+            6
+          ],
+          "total": 7,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      }
+    ],
+    "2": [
+      {
+        "questionId": "math-y1-forest-02-001",
+        "legacyId": "math-forest-2-001",
+        "curriculumTopicId": "math-y1-counting-objects",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Counting objects",
+        "subtopic": "Counting and comparing object groups",
+        "worldId": "forest-world",
+        "level": 2,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There are 3 apples and 1 more apple. How many apples are there?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "correctAnswer": "4",
+        "explanation": "3 apples and 1 apple make 4 apples.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "apple",
+          "objects": [
+            "apple"
+          ],
+          "groups": [
+            3,
+            1
+          ],
+          "total": 4,
+          "operation": "add",
+          "equation": "3 + 1 = 4",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly apple icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-02-002",
+        "legacyId": "math-forest-2-002",
+        "curriculumTopicId": "math-y1-counting-objects",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Counting objects",
+        "subtopic": "Counting and comparing object groups",
+        "worldId": "forest-world",
+        "level": 2,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Count the birds: 1, 2, 3, 4, 5. How many birds?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "5",
+        "explanation": "There are 5 birds.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "counting",
+          "object": "bird",
+          "objects": [
+            "bird"
+          ],
+          "groups": [
+            5
+          ],
+          "total": 5,
+          "operation": "count",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly bird icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-02-003",
+        "legacyId": "math-forest-2-003",
+        "curriculumTopicId": "math-y1-counting-objects",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Counting objects",
+        "subtopic": "Counting and comparing object groups",
+        "worldId": "forest-world",
+        "level": 2,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "A basket has 6 oranges. How many oranges are in the basket?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "6",
+        "explanation": "The basket has 6 oranges.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "counting",
+          "object": "orange",
+          "objects": [
+            "orange"
+          ],
+          "groups": [
+            6
+          ],
+          "total": 6,
+          "operation": "count",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "basket",
+          "assetHint": "orange objects in a child-friendly basket scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-02-004",
+        "legacyId": "math-forest-2-004",
+        "curriculumTopicId": "math-y1-counting-objects",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Counting objects",
+        "subtopic": "Counting and comparing object groups",
+        "worldId": "forest-world",
+        "level": 2,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There are 2 flowers and 2 more flowers. How many flowers?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "4",
+        "explanation": "2 flowers and 2 flowers make 4 flowers.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "flower",
+          "objects": [
+            "flower"
+          ],
+          "groups": [
+            2,
+            2
+          ],
+          "total": 4,
+          "operation": "add",
+          "equation": "2 + 2 = 4",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly flower icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-02-005",
+        "legacyId": "math-forest-2-005",
+        "curriculumTopicId": "math-y1-counting-objects",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Counting objects",
+        "subtopic": "Counting and comparing object groups",
+        "worldId": "forest-world",
+        "level": 2,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Count 7 stars. Which number shows the total?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "7",
+        "explanation": "7 stars means the total is 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "star",
+          "objects": [
+            "star"
+          ],
+          "groups": [
+            7
+          ],
+          "total": 7,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly star icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-02-006",
+        "legacyId": "math-forest-2-006",
+        "curriculumTopicId": "math-y1-counting-objects",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Counting objects",
+        "subtopic": "Counting and comparing object groups",
+        "worldId": "forest-world",
+        "level": 2,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There are 8 leaves. One leaf falls away. How many leaves are left?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "explanation": "Start with 8 leaves and take away 1 leaf. 8 - 1 = 7 leaves left.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "leaf",
+          "objects": [
+            "leaf"
+          ],
+          "groups": [
+            8,
+            1
+          ],
+          "total": 7,
+          "operation": "subtract",
+          "equation": "8 - 1 = 7",
+          "startingAmount": 8,
+          "removedAmount": 1,
+          "context": "none",
+          "assetHint": "large child-friendly leaf icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-02-007",
+        "legacyId": "math-forest-2-007",
+        "curriculumTopicId": "math-y1-counting-objects",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Counting objects",
+        "subtopic": "Counting and comparing object groups",
+        "worldId": "forest-world",
+        "level": 2,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which group has more: 4 shells or 6 shells?",
+        "options": [
+          "4 shells",
+          "6 shells",
+          "Both equal",
+          "No shells"
+        ],
+        "correctAnswer": "6 shells",
+        "explanation": "6 is more than 4.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "comparison",
+          "object": "shell",
+          "objects": [
+            "shell"
+          ],
+          "groups": [
+            4,
+            6
+          ],
+          "total": 6,
+          "operation": "compare",
+          "equation": "4 < 6",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "water",
+          "assetHint": "shell objects in a child-friendly water scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-02-008",
+        "legacyId": "math-forest-2-008",
+        "curriculumTopicId": "math-y1-counting-objects",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Counting objects",
+        "subtopic": "Counting and comparing object groups",
+        "worldId": "forest-world",
+        "level": 2,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which group has fewer: 5 pencils or 2 pencils?",
+        "options": [
+          "5 pencils",
+          "2 pencils",
+          "Both equal",
+          "7 pencils"
+        ],
+        "correctAnswer": "2 pencils",
+        "explanation": "2 is fewer than 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "comparison",
+          "object": "pencil",
+          "objects": [
+            "pencil"
+          ],
+          "groups": [
+            5,
+            2
+          ],
+          "total": 2,
+          "operation": "compare",
+          "equation": "5 > 2",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly pencil icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-02-009",
+        "legacyId": "math-forest-2-009",
+        "curriculumTopicId": "math-y1-counting-objects",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Counting objects",
+        "subtopic": "Counting and comparing object groups",
+        "worldId": "forest-world",
+        "level": 2,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There are 9 coins. Which number matches the coins?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "9",
+        "explanation": "9 coins match the number 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "coin",
+          "objects": [
+            "coin"
+          ],
+          "groups": [
+            9
+          ],
+          "total": 9,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly coin icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-02-010",
+        "legacyId": "math-forest-2-010",
+        "curriculumTopicId": "math-y1-counting-objects",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Counting objects",
+        "subtopic": "Counting and comparing object groups",
+        "worldId": "forest-world",
+        "level": 2,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Count the trees: 1, 2, 3. How many trees?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "correctAnswer": "3",
+        "explanation": "There are 3 trees.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "counting",
+          "object": "tree",
+          "objects": [
+            "tree"
+          ],
+          "groups": [
+            3
+          ],
+          "total": 3,
+          "operation": "count",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly tree icons",
+          "reviewStatus": "ready"
+        }
+      }
+    ],
+    "3": [
+      {
+        "questionId": "math-y1-forest-03-001",
+        "legacyId": "math-forest-3-001",
+        "curriculumTopicId": "math-y1-number-matching",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Number matching mini game",
+        "subtopic": "Matching numerals, number words, and quantities",
+        "worldId": "forest-world",
+        "level": 3,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which number matches the word five?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "5",
+        "explanation": "The word five matches the number 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [],
+          "total": 5,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-03-002",
+        "legacyId": "math-forest-3-002",
+        "curriculumTopicId": "math-y1-number-matching",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Number matching mini game",
+        "subtopic": "Matching numerals, number words, and quantities",
+        "worldId": "forest-world",
+        "level": 3,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which word matches the number 2?",
+        "options": [
+          "one",
+          "two",
+          "three",
+          "four"
+        ],
+        "correctAnswer": "two",
+        "explanation": "The number 2 is written as two.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [],
+          "total": null,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-03-003",
+        "legacyId": "math-forest-3-003",
+        "curriculumTopicId": "math-y1-number-matching",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Number matching mini game",
+        "subtopic": "Matching numerals, number words, and quantities",
+        "worldId": "forest-world",
+        "level": 3,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Match the number 7.",
+        "options": [
+          "six",
+          "seven",
+          "eight",
+          "nine"
+        ],
+        "correctAnswer": "seven",
+        "explanation": "7 matches seven.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [],
+          "total": null,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-03-004",
+        "legacyId": "math-forest-3-004",
+        "curriculumTopicId": "math-y1-number-matching",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Number matching mini game",
+        "subtopic": "Matching numerals, number words, and quantities",
+        "worldId": "forest-world",
+        "level": 3,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which number matches the word nine?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "9",
+        "explanation": "Nine is 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [],
+          "total": 9,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-03-005",
+        "legacyId": "math-forest-3-005",
+        "curriculumTopicId": "math-y1-number-matching",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Number matching mini game",
+        "subtopic": "Matching numerals, number words, and quantities",
+        "worldId": "forest-world",
+        "level": 3,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which word matches the number 10?",
+        "options": [
+          "seven",
+          "eight",
+          "nine",
+          "ten"
+        ],
+        "correctAnswer": "ten",
+        "explanation": "10 matches ten.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [],
+          "total": null,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-03-006",
+        "legacyId": "math-forest-3-006",
+        "curriculumTopicId": "math-y1-number-matching",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Number matching mini game",
+        "subtopic": "Matching numerals, number words, and quantities",
+        "worldId": "forest-world",
+        "level": 3,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Match 4 forest berries to the correct number.",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "correctAnswer": "4",
+        "explanation": "4 berries match the number 4.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "berry",
+          "objects": [
+            "berry"
+          ],
+          "groups": [
+            4
+          ],
+          "total": 4,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "forest",
+          "assetHint": "berry objects in a child-friendly forest scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-03-007",
+        "legacyId": "math-forest-3-007",
+        "curriculumTopicId": "math-y1-number-matching",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Number matching mini game",
+        "subtopic": "Matching numerals, number words, and quantities",
+        "worldId": "forest-world",
+        "level": 3,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which number matches the word one?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correctAnswer": "1",
+        "explanation": "One is 1.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [],
+          "total": 1,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-03-008",
+        "legacyId": "math-forest-3-008",
+        "curriculumTopicId": "math-y1-number-matching",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Number matching mini game",
+        "subtopic": "Matching numerals, number words, and quantities",
+        "worldId": "forest-world",
+        "level": 3,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which word matches the number 6?",
+        "options": [
+          "four",
+          "five",
+          "six",
+          "seven"
+        ],
+        "correctAnswer": "six",
+        "explanation": "6 matches six.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [],
+          "total": null,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-03-009",
+        "legacyId": "math-forest-3-009",
+        "curriculumTopicId": "math-y1-number-matching",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Number matching mini game",
+        "subtopic": "Matching numerals, number words, and quantities",
+        "worldId": "forest-world",
+        "level": 3,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Match 8 leaves to the correct number.",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "8",
+        "explanation": "8 leaves match the number 8.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "leaf",
+          "objects": [
+            "leaf"
+          ],
+          "groups": [
+            8
+          ],
+          "total": 8,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly leaf icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-03-010",
+        "legacyId": "math-forest-3-010",
+        "curriculumTopicId": "math-y1-number-matching",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Number matching mini game",
+        "subtopic": "Matching numerals, number words, and quantities",
+        "worldId": "forest-world",
+        "level": 3,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which number matches the word three?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correctAnswer": "3",
+        "explanation": "Three is 3.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "matching",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [],
+          "total": 3,
+          "operation": "match",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      }
+    ],
+    "4": [
+      {
+        "questionId": "math-y1-forest-04-001",
+        "legacyId": "math-forest-4-001",
+        "curriculumTopicId": "math-y1-simple-addition",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple addition",
+        "subtopic": "Addition within 10",
+        "worldId": "forest-world",
+        "level": 4,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 1 + 1?",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correctAnswer": "2",
+        "explanation": "1 + 1 = 2.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            1,
+            1
+          ],
+          "total": 2,
+          "operation": "add",
+          "equation": "1 + 1 = 2",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-04-002",
+        "legacyId": "math-forest-4-002",
+        "curriculumTopicId": "math-y1-simple-addition",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple addition",
+        "subtopic": "Addition within 10",
+        "worldId": "forest-world",
+        "level": 4,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 2 + 1?",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "5"
+        ],
+        "correctAnswer": "3",
+        "explanation": "2 + 1 = 3.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            2,
+            1
+          ],
+          "total": 3,
+          "operation": "add",
+          "equation": "2 + 1 = 3",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-04-003",
+        "legacyId": "math-forest-4-003",
+        "curriculumTopicId": "math-y1-simple-addition",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple addition",
+        "subtopic": "Addition within 10",
+        "worldId": "forest-world",
+        "level": 4,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 3 + 2?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "explanation": "3 + 2 = 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            3,
+            2
+          ],
+          "total": 5,
+          "operation": "add",
+          "equation": "3 + 2 = 5",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-04-004",
+        "legacyId": "math-forest-4-004",
+        "curriculumTopicId": "math-y1-simple-addition",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple addition",
+        "subtopic": "Addition within 10",
+        "worldId": "forest-world",
+        "level": 4,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 4 + 1?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "explanation": "4 + 1 = 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            4,
+            1
+          ],
+          "total": 5,
+          "operation": "add",
+          "equation": "4 + 1 = 5",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-04-005",
+        "legacyId": "math-forest-4-005",
+        "curriculumTopicId": "math-y1-simple-addition",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple addition",
+        "subtopic": "Addition within 10",
+        "worldId": "forest-world",
+        "level": 4,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 5 + 2?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "explanation": "5 + 2 = 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            5,
+            2
+          ],
+          "total": 7,
+          "operation": "add",
+          "equation": "5 + 2 = 7",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-04-006",
+        "legacyId": "math-forest-4-006",
+        "curriculumTopicId": "math-y1-simple-addition",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple addition",
+        "subtopic": "Addition within 10",
+        "worldId": "forest-world",
+        "level": 4,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 6 + 1?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "explanation": "6 + 1 = 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            6,
+            1
+          ],
+          "total": 7,
+          "operation": "add",
+          "equation": "6 + 1 = 7",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-04-007",
+        "legacyId": "math-forest-4-007",
+        "curriculumTopicId": "math-y1-simple-addition",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple addition",
+        "subtopic": "Addition within 10",
+        "worldId": "forest-world",
+        "level": 4,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 2 + 4?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "6",
+        "explanation": "2 + 4 = 6.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            2,
+            4
+          ],
+          "total": 6,
+          "operation": "add",
+          "equation": "2 + 4 = 6",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-04-008",
+        "legacyId": "math-forest-4-008",
+        "curriculumTopicId": "math-y1-simple-addition",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple addition",
+        "subtopic": "Addition within 10",
+        "worldId": "forest-world",
+        "level": 4,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 3 + 3?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "6",
+        "explanation": "3 + 3 = 6.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            3,
+            3
+          ],
+          "total": 6,
+          "operation": "add",
+          "equation": "3 + 3 = 6",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-04-009",
+        "legacyId": "math-forest-4-009",
+        "curriculumTopicId": "math-y1-simple-addition",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple addition",
+        "subtopic": "Addition within 10",
+        "worldId": "forest-world",
+        "level": 4,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 7 + 2?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "9",
+        "explanation": "7 + 2 = 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            7,
+            2
+          ],
+          "total": 9,
+          "operation": "add",
+          "equation": "7 + 2 = 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-04-010",
+        "legacyId": "math-forest-4-010",
+        "curriculumTopicId": "math-y1-simple-addition",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple addition",
+        "subtopic": "Addition within 10",
+        "worldId": "forest-world",
+        "level": 4,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 8 + 1?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "9",
+        "explanation": "8 + 1 = 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            8,
+            1
+          ],
+          "total": 9,
+          "operation": "add",
+          "equation": "8 + 1 = 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      }
+    ],
+    "5": [
+      {
+        "questionId": "math-y1-forest-05-001",
+        "legacyId": "math-forest-5-001",
+        "curriculumTopicId": "math-y1-addition-practice",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition practice",
+        "subtopic": "Addition story problems",
+        "worldId": "forest-world",
+        "level": 5,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "A squirrel has 2 nuts and finds 3 more. How many nuts?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "explanation": "2 nuts plus 3 nuts equals 5 nuts.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "nut",
+          "objects": [
+            "nut"
+          ],
+          "groups": [
+            2,
+            3
+          ],
+          "total": 5,
+          "operation": "add",
+          "equation": "2 + 3 = 5",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly nut icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-05-002",
+        "legacyId": "math-forest-5-002",
+        "curriculumTopicId": "math-y1-addition-practice",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition practice",
+        "subtopic": "Addition story problems",
+        "worldId": "forest-world",
+        "level": 5,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There are 4 birds on a branch and 2 more land. How many birds?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "6",
+        "explanation": "4 birds plus 2 birds equals 6 birds.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "bird",
+          "objects": [
+            "bird"
+          ],
+          "groups": [
+            4,
+            2
+          ],
+          "total": 6,
+          "operation": "add",
+          "equation": "4 + 2 = 6",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "branch",
+          "assetHint": "bird objects in a child-friendly branch scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-05-003",
+        "legacyId": "math-forest-5-003",
+        "curriculumTopicId": "math-y1-addition-practice",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition practice",
+        "subtopic": "Addition story problems",
+        "worldId": "forest-world",
+        "level": 5,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Lina has 5 stickers and gets 1 more. How many stickers?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "6",
+        "explanation": "5 + 1 = 6.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "sticker",
+          "objects": [
+            "sticker"
+          ],
+          "groups": [
+            5,
+            1
+          ],
+          "total": 6,
+          "operation": "add",
+          "equation": "5 + 1 = 6",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly sticker icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-05-004",
+        "legacyId": "math-forest-5-004",
+        "curriculumTopicId": "math-y1-addition-practice",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition practice",
+        "subtopic": "Addition story problems",
+        "worldId": "forest-world",
+        "level": 5,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There are 3 flowers and 4 butterflies. How many things altogether?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "explanation": "3 + 4 = 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "flower",
+          "objects": [
+            "flower",
+            "butterfly"
+          ],
+          "groups": [
+            3,
+            4
+          ],
+          "total": 7,
+          "operation": "add",
+          "equation": "3 + 4 = 7",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly flower icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-05-005",
+        "legacyId": "math-forest-5-005",
+        "curriculumTopicId": "math-y1-addition-practice",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition practice",
+        "subtopic": "Addition story problems",
+        "worldId": "forest-world",
+        "level": 5,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "A box has 6 crayons and you add 2 more. How many crayons?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "8",
+        "explanation": "6 + 2 = 8.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "crayon",
+          "objects": [
+            "crayon"
+          ],
+          "groups": [
+            6,
+            2
+          ],
+          "total": 8,
+          "operation": "add",
+          "equation": "6 + 2 = 8",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "box",
+          "assetHint": "crayon objects in a child-friendly box scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-05-006",
+        "legacyId": "math-forest-5-006",
+        "curriculumTopicId": "math-y1-addition-practice",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition practice",
+        "subtopic": "Addition story problems",
+        "worldId": "forest-world",
+        "level": 5,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There is 1 red apple and there are 6 green apples. How many apples are there altogether?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "explanation": "1 apple plus 6 apples equals 7 apples. 1 + 6 = 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "apple",
+          "objects": [
+            "apple"
+          ],
+          "groups": [
+            1,
+            6
+          ],
+          "total": 7,
+          "operation": "add",
+          "equation": "1 + 6 = 7",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly apple icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-05-007",
+        "legacyId": "math-forest-5-007",
+        "curriculumTopicId": "math-y1-addition-practice",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition practice",
+        "subtopic": "Addition story problems",
+        "worldId": "forest-world",
+        "level": 5,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "A child collects 4 stars, then 4 more. How many stars?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "8",
+        "explanation": "4 + 4 = 8.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "star",
+          "objects": [
+            "star"
+          ],
+          "groups": [
+            4,
+            4
+          ],
+          "total": 8,
+          "operation": "add",
+          "equation": "4 + 4 = 8",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly star icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-05-008",
+        "legacyId": "math-forest-5-008",
+        "curriculumTopicId": "math-y1-addition-practice",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition practice",
+        "subtopic": "Addition story problems",
+        "worldId": "forest-world",
+        "level": 5,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There are 7 fish and 1 more fish. How many fish?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "8",
+        "explanation": "7 + 1 = 8.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "fish",
+          "objects": [
+            "fish"
+          ],
+          "groups": [
+            7,
+            1
+          ],
+          "total": 8,
+          "operation": "add",
+          "equation": "7 + 1 = 8",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "water",
+          "assetHint": "fish objects in a child-friendly water scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-05-009",
+        "legacyId": "math-forest-5-009",
+        "curriculumTopicId": "math-y1-addition-practice",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition practice",
+        "subtopic": "Addition story problems",
+        "worldId": "forest-world",
+        "level": 5,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "A bag has 5 marbles and 5 more are added. How many marbles?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "10",
+        "explanation": "5 + 5 = 10.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "marble",
+          "objects": [
+            "marble"
+          ],
+          "groups": [
+            5,
+            5
+          ],
+          "total": 10,
+          "operation": "add",
+          "equation": "5 + 5 = 10",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "bag",
+          "assetHint": "marble objects in a child-friendly bag scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-05-010",
+        "legacyId": "math-forest-5-010",
+        "curriculumTopicId": "math-y1-addition-practice",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition practice",
+        "subtopic": "Addition story problems",
+        "worldId": "forest-world",
+        "level": 5,
+        "nodeType": "Practice",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There are 2 rabbits in one group and 6 rabbits in another group. How many rabbits are there altogether?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "8",
+        "explanation": "2 rabbits plus 6 rabbits equals 8 rabbits. 2 + 6 = 8.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "rabbit",
+          "objects": [
+            "rabbit"
+          ],
+          "groups": [
+            2,
+            1,
+            6
+          ],
+          "total": 8,
+          "operation": "add",
+          "equation": "2 + 1 + 6 = 8",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly rabbit icons",
+          "reviewStatus": "ready"
+        }
+      }
+    ],
+    "6": [
+      {
+        "questionId": "math-y1-forest-06-001",
+        "legacyId": "math-forest-6-001",
+        "curriculumTopicId": "math-y1-addition-mini-game",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition mini game",
+        "subtopic": "Addition fluency through collection missions",
+        "worldId": "forest-world",
+        "level": 6,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Collect 3 stars and then 2 stars. How many stars collected?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "explanation": "3 + 2 = 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "star",
+          "objects": [
+            "star"
+          ],
+          "groups": [
+            3,
+            2
+          ],
+          "total": 5,
+          "operation": "add",
+          "equation": "3 + 2 = 5",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly star icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-06-002",
+        "legacyId": "math-forest-6-002",
+        "curriculumTopicId": "math-y1-addition-mini-game",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition mini game",
+        "subtopic": "Addition fluency through collection missions",
+        "worldId": "forest-world",
+        "level": 6,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Pick 4 berries and then 3 berries. How many berries?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "explanation": "4 + 3 = 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "berry",
+          "objects": [
+            "berry"
+          ],
+          "groups": [
+            4,
+            3
+          ],
+          "total": 7,
+          "operation": "add",
+          "equation": "4 + 3 = 7",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly berry icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-06-003",
+        "legacyId": "math-forest-6-003",
+        "curriculumTopicId": "math-y1-addition-mini-game",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition mini game",
+        "subtopic": "Addition fluency through collection missions",
+        "worldId": "forest-world",
+        "level": 6,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Win 5 coins and then 2 coins. How many coins?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "explanation": "5 + 2 = 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "coin",
+          "objects": [
+            "coin"
+          ],
+          "groups": [
+            5,
+            2
+          ],
+          "total": 7,
+          "operation": "add",
+          "equation": "5 + 2 = 7",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly coin icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-06-004",
+        "legacyId": "math-forest-6-004",
+        "curriculumTopicId": "math-y1-addition-mini-game",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition mini game",
+        "subtopic": "Addition fluency through collection missions",
+        "worldId": "forest-world",
+        "level": 6,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Find 6 gems and then 3 gems. How many gems?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "9",
+        "explanation": "6 + 3 = 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "gem",
+          "objects": [
+            "gem"
+          ],
+          "groups": [
+            6,
+            3
+          ],
+          "total": 9,
+          "operation": "add",
+          "equation": "6 + 3 = 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly gem icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-06-005",
+        "legacyId": "math-forest-6-005",
+        "curriculumTopicId": "math-y1-addition-mini-game",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition mini game",
+        "subtopic": "Addition fluency through collection missions",
+        "worldId": "forest-world",
+        "level": 6,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Collect 1 leaf and then 8 leaves. How many leaves?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "9",
+        "explanation": "1 + 8 = 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "leaf",
+          "objects": [
+            "leaf"
+          ],
+          "groups": [
+            1,
+            8
+          ],
+          "total": 9,
+          "operation": "add",
+          "equation": "1 + 8 = 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly leaf icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-06-006",
+        "legacyId": "math-forest-6-006",
+        "curriculumTopicId": "math-y1-addition-mini-game",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition mini game",
+        "subtopic": "Addition fluency through collection missions",
+        "worldId": "forest-world",
+        "level": 6,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Get 2 badges and then 5 badges. How many badges?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "explanation": "2 + 5 = 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "badge",
+          "objects": [
+            "badge"
+          ],
+          "groups": [
+            2,
+            5
+          ],
+          "total": 7,
+          "operation": "add",
+          "equation": "2 + 5 = 7",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly badge icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-06-007",
+        "legacyId": "math-forest-6-007",
+        "curriculumTopicId": "math-y1-addition-mini-game",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition mini game",
+        "subtopic": "Addition fluency through collection missions",
+        "worldId": "forest-world",
+        "level": 6,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Gather 3 shells and then 6 shells. How many shells?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "9",
+        "explanation": "3 + 6 = 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "shell",
+          "objects": [
+            "shell"
+          ],
+          "groups": [
+            3,
+            6
+          ],
+          "total": 9,
+          "operation": "add",
+          "equation": "3 + 6 = 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "water",
+          "assetHint": "shell objects in a child-friendly water scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-06-008",
+        "legacyId": "math-forest-6-008",
+        "curriculumTopicId": "math-y1-addition-mini-game",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition mini game",
+        "subtopic": "Addition fluency through collection missions",
+        "worldId": "forest-world",
+        "level": 6,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Earn 4 points and then 5 points. How many points?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "9",
+        "explanation": "4 + 5 = 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "point",
+          "objects": [
+            "point"
+          ],
+          "groups": [
+            4,
+            5
+          ],
+          "total": 9,
+          "operation": "add",
+          "equation": "4 + 5 = 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly point icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-06-009",
+        "legacyId": "math-forest-6-009",
+        "curriculumTopicId": "math-y1-addition-mini-game",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition mini game",
+        "subtopic": "Addition fluency through collection missions",
+        "worldId": "forest-world",
+        "level": 6,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Catch 2 fireflies and then 7 fireflies. How many fireflies?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "9",
+        "explanation": "2 + 7 = 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "firefly",
+          "objects": [
+            "firefly"
+          ],
+          "groups": [
+            2,
+            7
+          ],
+          "total": 9,
+          "operation": "add",
+          "equation": "2 + 7 = 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly firefly icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-06-010",
+        "legacyId": "math-forest-6-010",
+        "curriculumTopicId": "math-y1-addition-mini-game",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Addition mini game",
+        "subtopic": "Addition fluency through collection missions",
+        "worldId": "forest-world",
+        "level": 6,
+        "nodeType": "Mini Game",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Open 5 boxes and then 4 boxes. How many boxes?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "9",
+        "explanation": "5 + 4 = 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "box",
+          "objects": [
+            "box"
+          ],
+          "groups": [
+            5,
+            4
+          ],
+          "total": 9,
+          "operation": "add",
+          "equation": "5 + 4 = 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly box icons",
+          "reviewStatus": "ready"
+        }
+      }
+    ],
+    "7": [
+      {
+        "questionId": "math-y1-forest-07-001",
+        "legacyId": "math-forest-7-001",
+        "curriculumTopicId": "math-y1-simple-subtraction",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple subtraction",
+        "subtopic": "Subtraction within 10",
+        "worldId": "forest-world",
+        "level": 7,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 5 - 1?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "4",
+        "explanation": "5 - 1 = 4.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            5,
+            1
+          ],
+          "total": 4,
+          "operation": "subtract",
+          "equation": "5 - 1 = 4",
+          "startingAmount": 5,
+          "removedAmount": 1,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-07-002",
+        "legacyId": "math-forest-7-002",
+        "curriculumTopicId": "math-y1-simple-subtraction",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple subtraction",
+        "subtopic": "Subtraction within 10",
+        "worldId": "forest-world",
+        "level": 7,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 6 - 2?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "4",
+        "explanation": "6 - 2 = 4.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            6,
+            2
+          ],
+          "total": 4,
+          "operation": "subtract",
+          "equation": "6 - 2 = 4",
+          "startingAmount": 6,
+          "removedAmount": 2,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-07-003",
+        "legacyId": "math-forest-7-003",
+        "curriculumTopicId": "math-y1-simple-subtraction",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple subtraction",
+        "subtopic": "Subtraction within 10",
+        "worldId": "forest-world",
+        "level": 7,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 7 - 3?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "4",
+        "explanation": "7 - 3 = 4.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            7,
+            3
+          ],
+          "total": 4,
+          "operation": "subtract",
+          "equation": "7 - 3 = 4",
+          "startingAmount": 7,
+          "removedAmount": 3,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-07-004",
+        "legacyId": "math-forest-7-004",
+        "curriculumTopicId": "math-y1-simple-subtraction",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple subtraction",
+        "subtopic": "Subtraction within 10",
+        "worldId": "forest-world",
+        "level": 7,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 8 - 2?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "6",
+        "explanation": "8 - 2 = 6.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            8,
+            2
+          ],
+          "total": 6,
+          "operation": "subtract",
+          "equation": "8 - 2 = 6",
+          "startingAmount": 8,
+          "removedAmount": 2,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-07-005",
+        "legacyId": "math-forest-7-005",
+        "curriculumTopicId": "math-y1-simple-subtraction",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple subtraction",
+        "subtopic": "Subtraction within 10",
+        "worldId": "forest-world",
+        "level": 7,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 9 - 4?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "explanation": "9 - 4 = 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            9,
+            4
+          ],
+          "total": 5,
+          "operation": "subtract",
+          "equation": "9 - 4 = 5",
+          "startingAmount": 9,
+          "removedAmount": 4,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-07-006",
+        "legacyId": "math-forest-7-006",
+        "curriculumTopicId": "math-y1-simple-subtraction",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple subtraction",
+        "subtopic": "Subtraction within 10",
+        "worldId": "forest-world",
+        "level": 7,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 10 - 5?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "explanation": "10 - 5 = 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            10,
+            5
+          ],
+          "total": 5,
+          "operation": "subtract",
+          "equation": "10 - 5 = 5",
+          "startingAmount": 10,
+          "removedAmount": 5,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-07-007",
+        "legacyId": "math-forest-7-007",
+        "curriculumTopicId": "math-y1-simple-subtraction",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple subtraction",
+        "subtopic": "Subtraction within 10",
+        "worldId": "forest-world",
+        "level": 7,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There are 6 apples. 1 is eaten. How many are left?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "explanation": "6 - 1 = 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "apple",
+          "objects": [
+            "apple"
+          ],
+          "groups": [
+            6,
+            1
+          ],
+          "total": 5,
+          "operation": "subtract",
+          "equation": "6 - 1 = 5",
+          "startingAmount": 6,
+          "removedAmount": 1,
+          "context": "none",
+          "assetHint": "large child-friendly apple icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-07-008",
+        "legacyId": "math-forest-7-008",
+        "curriculumTopicId": "math-y1-simple-subtraction",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple subtraction",
+        "subtopic": "Subtraction within 10",
+        "worldId": "forest-world",
+        "level": 7,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There are 8 birds. 3 fly away. How many are left?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "explanation": "8 - 3 = 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "bird",
+          "objects": [
+            "bird"
+          ],
+          "groups": [
+            8,
+            3
+          ],
+          "total": 5,
+          "operation": "subtract",
+          "equation": "8 - 3 = 5",
+          "startingAmount": 8,
+          "removedAmount": 3,
+          "context": "none",
+          "assetHint": "large child-friendly bird icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-07-009",
+        "legacyId": "math-forest-7-009",
+        "curriculumTopicId": "math-y1-simple-subtraction",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple subtraction",
+        "subtopic": "Subtraction within 10",
+        "worldId": "forest-world",
+        "level": 7,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There are 9 balloons. 2 pop. How many are left?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "explanation": "9 - 2 = 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "balloon",
+          "objects": [
+            "balloon"
+          ],
+          "groups": [
+            9,
+            2
+          ],
+          "total": 7,
+          "operation": "subtract",
+          "equation": "9 - 2 = 7",
+          "startingAmount": 9,
+          "removedAmount": 2,
+          "context": "none",
+          "assetHint": "large child-friendly balloon icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-07-010",
+        "legacyId": "math-forest-7-010",
+        "curriculumTopicId": "math-y1-simple-subtraction",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Simple subtraction",
+        "subtopic": "Subtraction within 10",
+        "worldId": "forest-world",
+        "level": 7,
+        "nodeType": "Learn",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "There are 10 coins. 4 are spent. How many are left?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "6",
+        "explanation": "10 - 4 = 6.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "coin",
+          "objects": [
+            "coin"
+          ],
+          "groups": [
+            10,
+            4
+          ],
+          "total": 6,
+          "operation": "subtract",
+          "equation": "10 - 4 = 6",
+          "startingAmount": 10,
+          "removedAmount": 4,
+          "context": "none",
+          "assetHint": "large child-friendly coin icons",
+          "reviewStatus": "ready"
+        }
+      }
+    ],
+    "8": [
+      {
+        "questionId": "math-y1-forest-08-001",
+        "legacyId": "math-forest-8-001",
+        "curriculumTopicId": "math-y1-numbers-operations-review",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Review numbers and operations",
+        "subtopic": "Review of number order, addition, and subtraction",
+        "worldId": "forest-world",
+        "level": 8,
+        "nodeType": "Review",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What number comes after 6?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "7",
+        "explanation": "After 6 comes 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            6
+          ],
+          "total": 7,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-08-002",
+        "legacyId": "math-forest-8-002",
+        "curriculumTopicId": "math-y1-numbers-operations-review",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Review numbers and operations",
+        "subtopic": "Review of number order, addition, and subtraction",
+        "worldId": "forest-world",
+        "level": 8,
+        "nodeType": "Review",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 3 + 2?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "explanation": "3 + 2 = 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            3,
+            2
+          ],
+          "total": 5,
+          "operation": "add",
+          "equation": "3 + 2 = 5",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-08-003",
+        "legacyId": "math-forest-8-003",
+        "curriculumTopicId": "math-y1-numbers-operations-review",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Review numbers and operations",
+        "subtopic": "Review of number order, addition, and subtraction",
+        "worldId": "forest-world",
+        "level": 8,
+        "nodeType": "Review",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 7 - 2?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "explanation": "7 - 2 = 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            7,
+            2
+          ],
+          "total": 5,
+          "operation": "subtract",
+          "equation": "7 - 2 = 5",
+          "startingAmount": 7,
+          "removedAmount": 2,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-08-004",
+        "legacyId": "math-forest-8-004",
+        "curriculumTopicId": "math-y1-numbers-operations-review",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Review numbers and operations",
+        "subtopic": "Review of number order, addition, and subtraction",
+        "worldId": "forest-world",
+        "level": 8,
+        "nodeType": "Review",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which number is bigger: 4 or 9?",
+        "options": [
+          "4",
+          "9",
+          "Both",
+          "None"
+        ],
+        "correctAnswer": "9",
+        "explanation": "9 is bigger than 4.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "comparison",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            4,
+            9
+          ],
+          "total": 9,
+          "operation": "compare",
+          "equation": "4 < 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-08-005",
+        "legacyId": "math-forest-8-005",
+        "curriculumTopicId": "math-y1-numbers-operations-review",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Review numbers and operations",
+        "subtopic": "Review of number order, addition, and subtraction",
+        "worldId": "forest-world",
+        "level": 8,
+        "nodeType": "Review",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Which number is smaller: 8 or 2?",
+        "options": [
+          "8",
+          "2",
+          "Both",
+          "None"
+        ],
+        "correctAnswer": "2",
+        "explanation": "2 is smaller than 8.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "comparison",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            8,
+            2
+          ],
+          "total": 2,
+          "operation": "compare",
+          "equation": "8 > 2",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-08-006",
+        "legacyId": "math-forest-8-006",
+        "curriculumTopicId": "math-y1-numbers-operations-review",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Review numbers and operations",
+        "subtopic": "Review of number order, addition, and subtraction",
+        "worldId": "forest-world",
+        "level": 8,
+        "nodeType": "Review",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 5 + 4?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "9",
+        "explanation": "5 + 4 = 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            5,
+            4
+          ],
+          "total": 9,
+          "operation": "add",
+          "equation": "5 + 4 = 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-08-007",
+        "legacyId": "math-forest-8-007",
+        "curriculumTopicId": "math-y1-numbers-operations-review",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Review numbers and operations",
+        "subtopic": "Review of number order, addition, and subtraction",
+        "worldId": "forest-world",
+        "level": 8,
+        "nodeType": "Review",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 9 - 1?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "8",
+        "explanation": "9 - 1 = 8.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            9,
+            1
+          ],
+          "total": 8,
+          "operation": "subtract",
+          "equation": "9 - 1 = 8",
+          "startingAmount": 9,
+          "removedAmount": 1,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-08-008",
+        "legacyId": "math-forest-8-008",
+        "curriculumTopicId": "math-y1-numbers-operations-review",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Review numbers and operations",
+        "subtopic": "Review of number order, addition, and subtraction",
+        "worldId": "forest-world",
+        "level": 8,
+        "nodeType": "Review",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What number is missing: 2, 3, __, 5?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "4",
+        "explanation": "The missing number is 4.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            2,
+            3,
+            5
+          ],
+          "total": 4,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-08-009",
+        "legacyId": "math-forest-8-009",
+        "curriculumTopicId": "math-y1-numbers-operations-review",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Review numbers and operations",
+        "subtopic": "Review of number order, addition, and subtraction",
+        "worldId": "forest-world",
+        "level": 8,
+        "nodeType": "Review",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "Count backward: 5, 4, 3, __",
+        "options": [
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "correctAnswer": "2",
+        "explanation": "After 3 when counting backward comes 2.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            5,
+            4,
+            3
+          ],
+          "total": 2,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-08-010",
+        "legacyId": "math-forest-8-010",
+        "curriculumTopicId": "math-y1-numbers-operations-review",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Review numbers and operations",
+        "subtopic": "Review of number order, addition, and subtraction",
+        "worldId": "forest-world",
+        "level": 8,
+        "nodeType": "Review",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "easy",
+        "question": "What is 6 + 3?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "9",
+        "explanation": "6 + 3 = 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            6,
+            3
+          ],
+          "total": 9,
+          "operation": "add",
+          "equation": "6 + 3 = 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      }
+    ],
+    "9": [
+      {
+        "questionId": "math-y1-forest-09-001",
+        "legacyId": "math-forest-9-001",
+        "curriculumTopicId": "math-y1-mixed-challenge",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Mixed challenge",
+        "subtopic": "Mixed number reasoning",
+        "worldId": "forest-world",
+        "level": 9,
+        "nodeType": "Challenge",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "A fox sees 4 trees and then 3 more trees. How many trees?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "explanation": "4 + 3 = 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "tree",
+          "objects": [
+            "tree"
+          ],
+          "groups": [
+            4,
+            3
+          ],
+          "total": 7,
+          "operation": "add",
+          "equation": "4 + 3 = 7",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly tree icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-09-002",
+        "legacyId": "math-forest-9-002",
+        "curriculumTopicId": "math-y1-mixed-challenge",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Mixed challenge",
+        "subtopic": "Mixed number reasoning",
+        "worldId": "forest-world",
+        "level": 9,
+        "nodeType": "Challenge",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "There are 10 berries. 3 are eaten. How many remain?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "7",
+        "explanation": "10 - 3 = 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "berry",
+          "objects": [
+            "berry"
+          ],
+          "groups": [
+            10,
+            3
+          ],
+          "total": 7,
+          "operation": "subtract",
+          "equation": "10 - 3 = 7",
+          "startingAmount": 10,
+          "removedAmount": 3,
+          "context": "none",
+          "assetHint": "large child-friendly berry icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-09-003",
+        "legacyId": "math-forest-9-003",
+        "curriculumTopicId": "math-y1-mixed-challenge",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Mixed challenge",
+        "subtopic": "Mixed number reasoning",
+        "worldId": "forest-world",
+        "level": 9,
+        "nodeType": "Challenge",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "What is missing: 3, 5, 7, __?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "9",
+        "explanation": "The pattern counts by 2, so the next number is 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            3,
+            5,
+            7
+          ],
+          "total": 9,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-09-004",
+        "legacyId": "math-forest-9-004",
+        "curriculumTopicId": "math-y1-mixed-challenge",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Mixed challenge",
+        "subtopic": "Mixed number reasoning",
+        "worldId": "forest-world",
+        "level": 9,
+        "nodeType": "Challenge",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "Which is more: 8 leaves or 6 leaves?",
+        "options": [
+          "8 leaves",
+          "6 leaves",
+          "Both equal",
+          "No leaves"
+        ],
+        "correctAnswer": "8 leaves",
+        "explanation": "8 is more than 6.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "comparison",
+          "object": "leaf",
+          "objects": [
+            "leaf"
+          ],
+          "groups": [
+            8,
+            6
+          ],
+          "total": 8,
+          "operation": "compare",
+          "equation": "8 > 6",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large child-friendly leaf icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-09-005",
+        "legacyId": "math-forest-9-005",
+        "curriculumTopicId": "math-y1-mixed-challenge",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Mixed challenge",
+        "subtopic": "Mixed number reasoning",
+        "worldId": "forest-world",
+        "level": 9,
+        "nodeType": "Challenge",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "What is 4 + 5?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "9",
+        "explanation": "4 + 5 = 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            4,
+            5
+          ],
+          "total": 9,
+          "operation": "add",
+          "equation": "4 + 5 = 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-09-006",
+        "legacyId": "math-forest-9-006",
+        "curriculumTopicId": "math-y1-mixed-challenge",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Mixed challenge",
+        "subtopic": "Mixed number reasoning",
+        "worldId": "forest-world",
+        "level": 9,
+        "nodeType": "Challenge",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "What is 9 - 5?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "4",
+        "explanation": "9 - 5 = 4.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            9,
+            5
+          ],
+          "total": 4,
+          "operation": "subtract",
+          "equation": "9 - 5 = 4",
+          "startingAmount": 9,
+          "removedAmount": 5,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-09-007",
+        "legacyId": "math-forest-9-007",
+        "curriculumTopicId": "math-y1-mixed-challenge",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Mixed challenge",
+        "subtopic": "Mixed number reasoning",
+        "worldId": "forest-world",
+        "level": 9,
+        "nodeType": "Challenge",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "A path has 2 stones, then 2 more, then 2 more. How many stones?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "6",
+        "explanation": "2 + 2 + 2 = 6.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "stone",
+          "objects": [
+            "stone"
+          ],
+          "groups": [
+            2,
+            2,
+            2
+          ],
+          "total": 6,
+          "operation": "add",
+          "equation": "2 + 2 + 2 = 6",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "path",
+          "assetHint": "stone objects in a child-friendly path scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-09-008",
+        "legacyId": "math-forest-9-008",
+        "curriculumTopicId": "math-y1-mixed-challenge",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Mixed challenge",
+        "subtopic": "Mixed number reasoning",
+        "worldId": "forest-world",
+        "level": 9,
+        "nodeType": "Challenge",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "What number comes before 10?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "9",
+        "explanation": "The number before 10 is 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            10
+          ],
+          "total": 9,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-09-009",
+        "legacyId": "math-forest-9-009",
+        "curriculumTopicId": "math-y1-mixed-challenge",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Mixed challenge",
+        "subtopic": "Mixed number reasoning",
+        "worldId": "forest-world",
+        "level": 9,
+        "nodeType": "Challenge",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "What is 8 - 4?",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "correctAnswer": "4",
+        "explanation": "8 - 4 = 4.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            8,
+            4
+          ],
+          "total": 4,
+          "operation": "subtract",
+          "equation": "8 - 4 = 4",
+          "startingAmount": 8,
+          "removedAmount": 4,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-09-010",
+        "legacyId": "math-forest-9-010",
+        "curriculumTopicId": "math-y1-mixed-challenge",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Mixed challenge",
+        "subtopic": "Mixed number reasoning",
+        "worldId": "forest-world",
+        "level": 9,
+        "nodeType": "Challenge",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "What is 6 + 4?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "10",
+        "explanation": "6 + 4 = 10.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            6,
+            4
+          ],
+          "total": 10,
+          "operation": "add",
+          "equation": "6 + 4 = 10",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      }
+    ],
+    "10": [
+      {
+        "questionId": "math-y1-forest-10-001",
+        "legacyId": "math-forest-10-001",
+        "curriculumTopicId": "math-y1-forest-guardian",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Forest Guardian boss quiz",
+        "subtopic": "Forest Guardian mastery challenge",
+        "worldId": "forest-world",
+        "level": 10,
+        "nodeType": "Boss",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "Forest Guardian asks: What number comes after 8?",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "9",
+        "explanation": "After 8 comes 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            8
+          ],
+          "total": 9,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "forest",
+          "assetHint": "number objects in a child-friendly forest scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-10-002",
+        "legacyId": "math-forest-10-002",
+        "curriculumTopicId": "math-y1-forest-guardian",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Forest Guardian boss quiz",
+        "subtopic": "Forest Guardian mastery challenge",
+        "worldId": "forest-world",
+        "level": 10,
+        "nodeType": "Boss",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "Forest Guardian asks: What is 5 + 5?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "10",
+        "explanation": "5 + 5 = 10.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            5,
+            5
+          ],
+          "total": 10,
+          "operation": "add",
+          "equation": "5 + 5 = 10",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "forest",
+          "assetHint": "number objects in a child-friendly forest scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-10-003",
+        "legacyId": "math-forest-10-003",
+        "curriculumTopicId": "math-y1-forest-guardian",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Forest Guardian boss quiz",
+        "subtopic": "Forest Guardian mastery challenge",
+        "worldId": "forest-world",
+        "level": 10,
+        "nodeType": "Boss",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "Forest Guardian asks: What is 10 - 2?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "8",
+        "explanation": "10 - 2 = 8.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            10,
+            2
+          ],
+          "total": 8,
+          "operation": "subtract",
+          "equation": "10 - 2 = 8",
+          "startingAmount": 10,
+          "removedAmount": 2,
+          "context": "forest",
+          "assetHint": "number objects in a child-friendly forest scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-10-004",
+        "legacyId": "math-forest-10-004",
+        "curriculumTopicId": "math-y1-forest-guardian",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Forest Guardian boss quiz",
+        "subtopic": "Forest Guardian mastery challenge",
+        "worldId": "forest-world",
+        "level": 10,
+        "nodeType": "Boss",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "Which number is smaller: 3 or 7?",
+        "options": [
+          "3",
+          "7",
+          "Both",
+          "None"
+        ],
+        "correctAnswer": "3",
+        "explanation": "3 is smaller than 7.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "comparison",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            3,
+            7
+          ],
+          "total": 3,
+          "operation": "compare",
+          "equation": "3 < 7",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-10-005",
+        "legacyId": "math-forest-10-005",
+        "curriculumTopicId": "math-y1-forest-guardian",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Forest Guardian boss quiz",
+        "subtopic": "Forest Guardian mastery challenge",
+        "worldId": "forest-world",
+        "level": 10,
+        "nodeType": "Boss",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "Which number is bigger: 6 or 9?",
+        "options": [
+          "6",
+          "9",
+          "Both",
+          "None"
+        ],
+        "correctAnswer": "9",
+        "explanation": "9 is bigger than 6.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "comparison",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            6,
+            9
+          ],
+          "total": 9,
+          "operation": "compare",
+          "equation": "6 < 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-10-006",
+        "legacyId": "math-forest-10-006",
+        "curriculumTopicId": "math-y1-forest-guardian",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Forest Guardian boss quiz",
+        "subtopic": "Forest Guardian mastery challenge",
+        "worldId": "forest-world",
+        "level": 10,
+        "nodeType": "Boss",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "What is missing: 4, 5, __, 7?",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer": "6",
+        "explanation": "The missing number is 6.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            4,
+            5,
+            7
+          ],
+          "total": 6,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-10-007",
+        "legacyId": "math-forest-10-007",
+        "curriculumTopicId": "math-y1-forest-guardian",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Forest Guardian boss quiz",
+        "subtopic": "Forest Guardian mastery challenge",
+        "worldId": "forest-world",
+        "level": 10,
+        "nodeType": "Boss",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "A forest chest has 7 coins. You add 2. How many coins?",
+        "options": [
+          "8",
+          "9",
+          "10",
+          "11"
+        ],
+        "correctAnswer": "9",
+        "explanation": "7 + 2 = 9.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "coin",
+          "objects": [
+            "coin"
+          ],
+          "groups": [
+            7,
+            2
+          ],
+          "total": 9,
+          "operation": "add",
+          "equation": "7 + 2 = 9",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "box",
+          "assetHint": "coin objects in a child-friendly box scene",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-10-008",
+        "legacyId": "math-forest-10-008",
+        "curriculumTopicId": "math-y1-forest-guardian",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Forest Guardian boss quiz",
+        "subtopic": "Forest Guardian mastery challenge",
+        "worldId": "forest-world",
+        "level": 10,
+        "nodeType": "Boss",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "There are 9 flowers. 4 are picked. How many flowers remain?",
+        "options": [
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "correctAnswer": "5",
+        "explanation": "9 - 4 = 5.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "subtraction",
+          "object": "flower",
+          "objects": [
+            "flower"
+          ],
+          "groups": [
+            9,
+            4
+          ],
+          "total": 5,
+          "operation": "subtract",
+          "equation": "9 - 4 = 5",
+          "startingAmount": 9,
+          "removedAmount": 4,
+          "context": "none",
+          "assetHint": "large child-friendly flower icons",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-10-009",
+        "legacyId": "math-forest-10-009",
+        "curriculumTopicId": "math-y1-forest-guardian",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Forest Guardian boss quiz",
+        "subtopic": "Forest Guardian mastery challenge",
+        "worldId": "forest-world",
+        "level": 10,
+        "nodeType": "Boss",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "Count by 2: 2, 4, 6, __",
+        "options": [
+          "7",
+          "8",
+          "9",
+          "10"
+        ],
+        "correctAnswer": "8",
+        "explanation": "Counting by 2 gives 2, 4, 6, 8.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "number-sequence",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            2,
+            2,
+            4,
+            6
+          ],
+          "total": 8,
+          "operation": "sequence",
+          "equation": null,
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      },
+      {
+        "questionId": "math-y1-forest-10-010",
+        "legacyId": "math-forest-10-010",
+        "curriculumTopicId": "math-y1-forest-guardian",
+        "subject": "mathematics",
+        "year": 1,
+        "curriculumSource": [
+          "learnplay",
+          "malaysian-kssr",
+          "cambridge-primary",
+          "international-best-practices"
+        ],
+        "topic": "Forest Guardian boss quiz",
+        "subtopic": "Forest Guardian mastery challenge",
+        "worldId": "forest-world",
+        "level": 10,
+        "nodeType": "Boss",
+        "packageType": "mvp-free",
+        "mvpStatus": "active-pilot",
+        "status": "active",
+        "approvedBy": "Fara",
+        "approvalDate": "2026-06-21",
+        "version": "1.0.0",
+        "effectiveDate": "2026-06-21",
+        "difficulty": "medium",
+        "question": "Final boss question: What is 3 + 4 + 1?",
+        "options": [
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "correctAnswer": "8",
+        "explanation": "3 + 4 = 7, and 7 + 1 = 8.",
+        "xpReward": 10,
+        "visualMetadata": {
+          "visualType": "addition",
+          "object": "number",
+          "objects": [
+            "number"
+          ],
+          "groups": [
+            3,
+            4,
+            1
+          ],
+          "total": 8,
+          "operation": "add",
+          "equation": "3 + 4 + 1 = 8",
+          "startingAmount": null,
+          "removedAmount": null,
+          "context": "none",
+          "assetHint": "large number tiles with clear mathematical symbols",
+          "reviewStatus": "ready"
+        }
+      }
+    ]
+  },
+  "validationSummary": {
+    "status": "passed",
+    "approvedQuestionCount": 100,
+    "levelCount": 10,
+    "errors": 0,
+    "warnings": 0,
+    "rulesChecked": [
+      "required-fields",
+      "mvp-approval",
+      "scope-identity",
+      "level-counts",
+      "unique-question-ids",
+      "answer-options",
+      "explanations",
+      "xp-rewards",
+      "visual-review-status"
+    ],
+    "contentHash": "15a34278d71d7f51f8fee3682d62beb8a19aa5342f21b2d45a885a486b88e826"
+  }
+}

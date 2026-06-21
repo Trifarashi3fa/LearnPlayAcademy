@@ -2,6 +2,11 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { forestLevels, getMasteryLabel } from "@/data/mvp-forest-world";
+import {
+  forestWorldIdentity,
+  normalizeForestBadgeName,
+  normalizeForestWorldId,
+} from "@/data/forest-world-identity";
 
 export type MvpProgress = {
   currentSubject: string;
@@ -19,8 +24,8 @@ export type MvpProgress = {
 const STORAGE_KEY = "learnplay-mvp-progress-v1";
 
 export const defaultProgress: MvpProgress = {
-  currentSubject: "mathematics",
-  currentWorld: "forest-world",
+  currentSubject: forestWorldIdentity.subject,
+  currentWorld: forestWorldIdentity.worldId,
   currentLevel: 1,
   xp: 0,
   stars: 0,
@@ -32,10 +37,14 @@ export const defaultProgress: MvpProgress = {
 };
 
 function normalizeProgress(value: Partial<MvpProgress> | null): MvpProgress {
+  // Older local saves used math-forest-world and Forest Guardian Badge.
+  // Normalize names while preserving XP, stars, completed levels, and answers.
   return {
     ...defaultProgress,
     ...value,
-    badges: Array.isArray(value?.badges) ? value.badges : [],
+    currentSubject: forestWorldIdentity.subject,
+    currentWorld: normalizeForestWorldId(value?.currentWorld),
+    badges: Array.isArray(value?.badges) ? value.badges.map(normalizeForestBadgeName) : [],
     completedLevels: Array.isArray(value?.completedLevels) ? value.completedLevels : [],
     levelStars: value?.levelStars ?? {},
   };

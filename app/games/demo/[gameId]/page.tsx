@@ -1,3 +1,5 @@
+import { FeatureUnavailablePage } from "@/components/FeatureUnavailablePage";
+import { isFeatureActive } from "@/data/feature-flags";
 import type { Metadata } from "next";
 import { DemoMathGame } from "@/components/games/DemoMathGame";
 import { getMathDemoGame, mathDemoGames } from "@/data/math-demo-games";
@@ -36,6 +38,9 @@ export async function generateMetadata({
 }
 
 export default async function DemoGamePage({ params }: DemoGamePageProps) {
+  if (!isFeatureActive("mathQuickGames")) {
+    return <FeatureUnavailablePage featureId="mathQuickGames" />;
+  }
   const { gameId } = await params;
   const game = getMathDemoGame(gameId);
 

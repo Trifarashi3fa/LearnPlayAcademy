@@ -1,3 +1,5 @@
+import { FeatureUnavailablePage } from "@/components/FeatureUnavailablePage";
+import { isFeatureActive } from "@/data/feature-flags";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Button } from "@/components/Button";
@@ -19,6 +21,9 @@ export const metadata: Metadata = {
 };
 
 export default function LifeSkillsPage() {
+  if (!isFeatureActive("lifeSkills")) {
+    return <FeatureUnavailablePage featureId="lifeSkills" />;
+  }
   return (
     <PageLayout
       eyebrow="Life Skills"
