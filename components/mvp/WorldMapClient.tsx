@@ -112,7 +112,7 @@ export function WorldMapClient() {
                   } ${current ? "outline outline-4 outline-[#FFC83D] outline-offset-2" : ""}`}
                   aria-hidden="true"
                 >
-                  {completed ? "âœ“" : level.level}
+                  {completed ? "Done" : level.level}
                 </div>
 
                 <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
