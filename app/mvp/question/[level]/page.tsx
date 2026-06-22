@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import { MvpPage } from "@/components/mvp/MvpShell";
 import { QuestionPlayer } from "@/components/mvp/QuestionPlayer";
 import { forestLevels, getForestLevel } from "@/data/mvp-forest-world";
 
@@ -31,13 +30,5 @@ export default async function MvpQuestionPage({ params }: QuestionPageProps) {
     notFound();
   }
 
-  return (
-    <MvpPage
-      eyebrow={`Question Game - Level ${levelData.level}`}
-      title={levelData.title}
-      description="Answer each question, then explore Steps, Visual, Voice, and LearnBot Tip explanations before continuing."
-    >
-      <QuestionPlayer level={levelData} />
-    </MvpPage>
-  );
+  return <QuestionPlayer level={levelData} />;
 }
