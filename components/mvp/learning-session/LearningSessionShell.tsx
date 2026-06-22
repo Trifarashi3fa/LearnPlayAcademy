@@ -22,7 +22,7 @@ export function LearningSessionShell({
   actionBar,
 }: LearningSessionShellProps) {
   return (
-    <main className="flex h-[100dvh] min-h-0 flex-col overflow-hidden bg-[#FFFDF7] text-[#082B80]">
+    <main className="fixed inset-0 flex h-[100dvh] max-h-[100dvh] min-h-0 w-full flex-col overflow-hidden overscroll-none bg-[#FFFDF7] text-[#082B80]">
       <header className="shrink-0 border-b border-[#DDE8F5] bg-white px-3 py-2 sm:px-5">
         <div className="mx-auto flex max-w-[96rem] items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-3">
@@ -53,7 +53,7 @@ export function LearningSessionShell({
       <div className="min-h-0 shrink-0">{progress}</div>
 
       <div className="mx-auto grid min-h-0 w-full max-w-[96rem] flex-1 gap-3 overflow-hidden p-3 lg:grid-cols-[minmax(0,1fr)_22rem] lg:p-4 xl:grid-cols-[minmax(0,1fr)_25rem]">
-        <section className="min-h-0 overflow-y-auto overscroll-contain rounded-[1.5rem]" aria-label="Current question">
+        <section className="min-h-0 touch-pan-y overflow-y-auto overscroll-contain rounded-[1.5rem]" style={{ WebkitOverflowScrolling: "touch" }} aria-label="Current question">
           {children}
         </section>
         <div className="contents">{support}</div>

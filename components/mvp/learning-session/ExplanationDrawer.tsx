@@ -23,13 +23,13 @@ export function ExplanationDrawer({ open, onClose, children }: ExplanationDrawer
       id="question-explanation-drawer"
       aria-label="Question explanation"
       aria-hidden={!open}
-      className={`fixed inset-x-2 bottom-[5.5rem] z-40 flex max-h-[62dvh] flex-col overflow-hidden rounded-t-[2rem] border border-[#DDE8F5] bg-white shadow-[0_-12px_40px_rgba(8,43,128,0.18)] transition duration-200 motion-reduce:transition-none sm:inset-x-4 lg:static lg:inset-auto lg:h-full lg:max-h-none lg:rounded-[1.75rem] lg:shadow-sm ${
+      className={`fixed inset-x-1 top-[max(0.25rem,env(safe-area-inset-top))] bottom-[calc(4.75rem+env(safe-area-inset-bottom))] z-40 flex min-h-0 flex-col overflow-hidden rounded-[1.5rem] border border-[#DDE8F5] bg-white shadow-[0_-12px_40px_rgba(8,43,128,0.18)] transition duration-200 motion-reduce:transition-none sm:inset-x-3 lg:static lg:inset-auto lg:h-full lg:max-h-none lg:rounded-[1.75rem] lg:shadow-sm ${
         open
           ? "translate-y-0 opacity-100 lg:flex"
           : "pointer-events-none translate-y-[120%] opacity-0 lg:hidden"
       }`}
     >
-      <div className="flex shrink-0 items-center justify-between border-b border-[#DDE8F5] px-4 py-3">
+      <div className="flex shrink-0 items-center justify-between border-b border-[#DDE8F5] px-3 py-2 sm:px-4">
         <div>
           <p className="text-xs font-black uppercase text-[#FF4FA0]">Learning Notes</p>
           <h2 className="text-lg font-black text-[#082B80]">Understand the answer</h2>
@@ -43,7 +43,7 @@ export function ExplanationDrawer({ open, onClose, children }: ExplanationDrawer
           Close
         </button>
       </div>
-      <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-3">{children}</div>
+      <div className="min-h-0 flex-1 touch-pan-y overflow-hidden overscroll-contain p-2 sm:p-3" style={{ WebkitOverflowScrolling: "touch" }}>{children}</div>
     </aside>
   );
 }
