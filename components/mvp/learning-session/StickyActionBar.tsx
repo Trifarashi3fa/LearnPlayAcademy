@@ -23,10 +23,10 @@ export function StickyActionBar({
       style={{ paddingBottom: "max(0.5rem, env(safe-area-inset-bottom))" }}
       aria-label="Question actions"
     >
-      <div className="mx-auto flex max-w-[96rem] items-center gap-1.5 sm:gap-3">
+      <div className="mx-auto flex max-w-[96rem] min-w-0 items-center gap-1.5 sm:gap-3">
         <Link
           href="/mvp/world-map"
-          className="inline-flex min-h-12 items-center justify-center rounded-full border-2 border-[#DDE8F5] px-3 text-sm font-black transition hover:border-[#0B63F6] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 sm:px-4"
+          className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full border-2 border-[#DDE8F5] px-3 text-sm font-black transition hover:border-[#0B63F6] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 sm:px-4"
         >
           Exit
         </Link>
@@ -41,7 +41,7 @@ export function StickyActionBar({
             onClick={onToggleExplanation}
             aria-expanded={explanationOpen}
             aria-controls="question-explanation-drawer"
-            className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#EAF6FF] px-3 text-sm font-black text-[#0B63F6] transition hover:bg-[#DCEEFF] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 sm:px-4"
+            className="inline-flex min-h-12 shrink-0 items-center justify-center rounded-full bg-[#EAF6FF] px-3 text-sm font-black text-[#0B63F6] transition hover:bg-[#DCEEFF] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 sm:px-4"
           >
             {explanationOpen ? "Hide notes" : "Explanation"}
           </button>
@@ -51,7 +51,7 @@ export function StickyActionBar({
           type="button"
           onClick={onNext}
           disabled={!answered}
-          className="inline-flex min-h-12 min-w-0 flex-1 items-center justify-center rounded-full bg-[#0B63F6] px-3 text-sm font-black text-white shadow-sm transition hover:bg-[#084FC5] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 disabled:cursor-not-allowed disabled:bg-[#C9D7EA] disabled:text-[#5B6B94] sm:flex-none sm:min-w-44 sm:px-5 sm:text-base motion-reduce:transition-none"
+          className="inline-flex min-h-12 min-w-0 flex-1 items-center justify-center rounded-full bg-[#0B63F6] px-3 text-center text-sm font-black text-white shadow-sm transition hover:bg-[#084FC5] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 disabled:cursor-not-allowed disabled:bg-[#C9D7EA] disabled:text-[#5B6B94] sm:flex-none sm:min-w-44 sm:px-5 sm:text-base motion-reduce:transition-none"
         >
           {answered ? (lastQuestion ? "Finish Level" : "Next Question") : "Select an answer"}
         </button>

@@ -52,11 +52,15 @@ export function LearningSessionShell({
 
       <div className="min-h-0 shrink-0">{progress}</div>
 
-      <div className="mx-auto grid min-h-0 w-full max-w-[96rem] flex-1 gap-3 overflow-hidden p-3 lg:grid-cols-[minmax(0,1fr)_22rem] lg:p-4 xl:grid-cols-[minmax(0,1fr)_25rem]">
-        <section className="min-h-0 touch-pan-y overflow-y-auto overscroll-contain rounded-[1.5rem]" style={{ WebkitOverflowScrolling: "touch" }} aria-label="Current question">
+      <div className="mx-auto grid min-h-0 w-full max-w-[96rem] flex-1 gap-3 overflow-hidden p-3 lg:grid-cols-[minmax(0,1fr)_minmax(20rem,26rem)] lg:p-4 xl:grid-cols-[minmax(0,1fr)_minmax(24rem,30rem)]">
+        <section
+          className="min-h-0 min-w-0 touch-pan-y overflow-y-auto overflow-x-hidden overscroll-contain rounded-[1.5rem]"
+          style={{ WebkitOverflowScrolling: "touch" }}
+          aria-label="Current question"
+        >
           {children}
         </section>
-        <div className="contents">{support}</div>
+        <div className="min-h-0 min-w-0 overflow-hidden">{support}</div>
       </div>
 
       {actionBar}

@@ -10,19 +10,21 @@ type MathVisualRendererProps = {
   visual: VisualLearningModel;
   revealAnswer: boolean;
   compact?: boolean;
+  fitNarrow?: boolean;
 };
 
 export function MathVisualRenderer({
   visual,
   revealAnswer,
   compact = false,
+  fitNarrow = false,
 }: MathVisualRendererProps) {
   if (visual.type === "subtraction" && visual.groups.length >= 2) {
-    return <SubtractionVisual visual={visual} revealAnswer={revealAnswer} compact={compact} />;
+    return <SubtractionVisual visual={visual} revealAnswer={revealAnswer} compact={compact} fitNarrow={fitNarrow} />;
   }
 
   if (visual.type === "comparison" && visual.groups.length >= 2) {
-    return <ComparisonVisual visual={visual} revealAnswer={revealAnswer} compact={compact} />;
+    return <ComparisonVisual visual={visual} revealAnswer={revealAnswer} compact={compact} fitNarrow={fitNarrow} />;
   }
 
   const operator = visual.type === "addition"
@@ -34,37 +36,47 @@ export function MathVisualRenderer({
   const equation = revealAnswer
     ? visual.equation
     : visual.equation?.replace(/=\s*.+$/, "= ?");
+  const groupLayout = fitNarrow
+    ? "flex-col items-stretch"
+    : "flex-col items-stretch md:flex-row md:items-center";
 
   if (!hasGroups && !equation && !(revealAnswer && visual.answerVisual)) return null;
 
   return (
     <VisualFrame visual={visual} compact={compact}>
       {hasGroups ? (
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+        <div className={`flex max-w-full min-w-0 justify-center gap-3 md:gap-4 ${groupLayout}`}>
           {visual.groups.map((count, index) => (
-            <div key={`${visual.object}-${count}-${index}`} className="contents">
+            <div key={`${visual.object}-${count}-${index}`} className={fitNarrow ? "grid min-w-0 gap-3" : "contents"}>
               {index > 0 && operator ? <Operator value={operator} /> : null}
-              <ObjectGroup
-                count={count}
-                object={visual.objects?.[index] ?? visual.object}
-                context={visual.context}
-                compact={compact}
-              />
+              <div className="min-w-0 md:flex-1">
+                <ObjectGroup
+                  count={count}
+                  object={visual.objects?.[index] ?? visual.object}
+                  context={visual.context}
+                  compact={compact}
+                />
+              </div>
             </div>
           ))}
           {visual.type === "matching" && !revealAnswer ? <Operator value="?" /> : null}
           {revealAnswer && visual.answerVisual ? (
-            <><Operator value="=" /><Answer value={visual.answerVisual} /></>
+            <>
+              <Operator value="=" />
+              <Answer value={visual.answerVisual} />
+            </>
           ) : null}
         </div>
       ) : null}
       {equation ? (
-        <p className={`text-center font-black text-[#082B80] ${hasGroups ? "mt-4" : ""} ${compact ? "text-lg" : "text-2xl"}`}>
+        <p className={`max-w-full break-words text-center font-black text-[#082B80] ${hasGroups ? "mt-4" : ""} ${compact ? "text-lg" : "text-2xl"}`}>
           {equation}
         </p>
       ) : null}
       {!hasGroups && revealAnswer && visual.answerVisual ? (
-        <div className="mt-5 text-center"><Answer value={visual.answerVisual} prefix="Answer: " /></div>
+        <div className="mt-5 max-w-full text-center">
+          <Answer value={visual.answerVisual} prefix="Answer: " />
+        </div>
       ) : null}
     </VisualFrame>
   );
@@ -77,8 +89,8 @@ function SubtractionVisual({ visual, revealAnswer, compact = false }: MathVisual
 
   return (
     <VisualFrame visual={visual} compact={compact}>
-      <div className="text-center">
-        <p className="mb-3 text-xs font-black uppercase text-[#5B6B94]">
+      <div className="max-w-full min-w-0 text-center">
+        <p className="mb-3 break-words text-xs font-black uppercase text-[#5B6B94]">
           Start with {total}. Cross out {removed}.
         </p>
         <ObjectGroup
@@ -88,7 +100,7 @@ function SubtractionVisual({ visual, revealAnswer, compact = false }: MathVisual
           compact={compact}
           crossOutCount={removed}
         />
-        <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-4 flex max-w-full flex-wrap items-center justify-center gap-2 sm:gap-3">
           <span className="text-xl font-black text-[#082B80]">{total}</span>
           <Operator value="-" />
           <span className="text-xl font-black text-[#EF4444]">{removed}</span>
@@ -96,8 +108,8 @@ function SubtractionVisual({ visual, revealAnswer, compact = false }: MathVisual
           {revealAnswer ? <Answer value={String(remaining)} /> : <Operator value="?" />}
         </div>
         {revealAnswer ? (
-          <div className="mt-5">
-            <p className="mb-2 text-xs font-black uppercase text-[#15803D]">{remaining} left</p>
+          <div className="mt-5 max-w-full">
+            <p className="mb-2 break-words text-xs font-black uppercase text-[#15803D]">{remaining} left</p>
             <ObjectGroup count={remaining} object={visual.objects?.[0] ?? visual.object} context="none" compact />
           </div>
         ) : null}
@@ -106,27 +118,45 @@ function SubtractionVisual({ visual, revealAnswer, compact = false }: MathVisual
   );
 }
 
-function ComparisonVisual({ visual, revealAnswer, compact = false }: MathVisualRendererProps) {
+function ComparisonVisual({ visual, revealAnswer, compact = false, fitNarrow = false }: MathVisualRendererProps) {
   const [first, second] = visual.groups;
   const symbol = visual.comparisonSymbol ?? (first > second ? ">" : "<");
   const firstObject = visual.objects?.[0] ?? visual.object;
   const secondObject = visual.objects?.[1] ?? visual.object;
   const answerNumber = Number(visual.answerVisual?.match(/\d+/)?.[0]);
+  const gridClass = fitNarrow
+    ? "grid-cols-1"
+    : "md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center";
+
   return (
     <VisualFrame visual={visual} compact={compact}>
-      <div className="grid gap-4 sm:grid-cols-[1fr_auto_1fr] sm:items-center">
-        <ComparisonGroup label={`Group A: ${first} ${objectVisualMap[firstObject].plural}`} correct={revealAnswer && answerNumber === first}><ObjectGroup count={first} object={firstObject} context={visual.context} compact={compact} /></ComparisonGroup>
+      <div className={`grid max-w-full min-w-0 gap-4 ${gridClass}`}>
+        <ComparisonGroup label={`Group A: ${first} ${objectVisualMap[firstObject].plural}`} correct={revealAnswer && answerNumber === first}>
+          <ObjectGroup count={first} object={firstObject} context={visual.context} compact={compact} />
+        </ComparisonGroup>
         <Operator value={symbol} />
-        <ComparisonGroup label={`Group B: ${second} ${objectVisualMap[secondObject].plural}`} correct={revealAnswer && answerNumber === second}><ObjectGroup count={second} object={secondObject} context={visual.context} compact={compact} /></ComparisonGroup>
+        <ComparisonGroup label={`Group B: ${second} ${objectVisualMap[secondObject].plural}`} correct={revealAnswer && answerNumber === second}>
+          <ObjectGroup count={second} object={secondObject} context={visual.context} compact={compact} />
+        </ComparisonGroup>
       </div>
-      {revealAnswer && visual.answerVisual ? <div className="mt-5 text-center"><Answer value={visual.answerVisual} prefix="Correct group: " /></div> : null}
+      {revealAnswer && visual.answerVisual ? (
+        <div className="mt-5 max-w-full text-center">
+          <Answer value={visual.answerVisual} prefix="Correct group: " />
+        </div>
+      ) : null}
     </VisualFrame>
   );
 }
 
 function ComparisonGroup({ label, correct, children }: { label: string; correct: boolean; children: ReactNode }) {
-  return <div className={`rounded-[1.5rem] border-2 p-3 ${correct ? "border-[#22C55E] bg-[#DCFCE7]" : "border-transparent bg-white"}`}><p className="mb-3 text-center text-sm font-black text-[#082B80]">{label}</p>{children}</div>;
+  return (
+    <div className={`min-w-0 rounded-[1.5rem] border-2 p-3 ${correct ? "border-[#22C55E] bg-[#DCFCE7]" : "border-transparent bg-white"}`}>
+      <p className="mb-3 break-words text-center text-sm font-black text-[#082B80]">{label}</p>
+      {children}
+    </div>
+  );
 }
+
 function VisualFrame({
   visual,
   compact,
@@ -138,7 +168,7 @@ function VisualFrame({
 }) {
   return (
     <div
-      className={`rounded-[1.5rem] border border-[#DDE8F5] bg-[#F8FBFF] ${compact ? "p-4" : "p-5 sm:p-6"}`}
+      className={`max-w-full min-w-0 overflow-hidden overflow-x-hidden rounded-[1.5rem] border border-[#DDE8F5] bg-[#F8FBFF] ${compact ? "p-3 sm:p-4" : "p-4 sm:p-6"}`}
       role="img"
       aria-label={visual.accessibleLabel}
     >
@@ -166,17 +196,17 @@ function ObjectGroup({
 
   return (
     <ContextScene context={context}>
-      <div className="flex max-w-full flex-wrap justify-center gap-1.5" aria-label={`${count} ${objectVisualMap[object].plural}`}>
+      <div className="flex max-w-full min-w-0 flex-wrap justify-center gap-1.5" aria-label={`${count} ${objectVisualMap[object].plural}`}>
         {items.map((index) => {
           const crossed = crossOutCount > 0 && index >= firstCrossedIndex;
           return (
-            <span key={index} className={`relative inline-flex ${crossed ? "opacity-45" : ""}`}>
+            <span key={index} className={`relative inline-flex max-w-full shrink-0 ${crossed ? "opacity-45" : ""}`}>
               {object === "number" || object === "object" ? (
                 <span className={`flex items-center justify-center rounded-full bg-[#0B63F6] font-black text-white ${compact ? "h-8 w-8 text-xs" : "h-11 w-11 text-sm"}`}>
                   {index + 1}
                 </span>
               ) : (
-                <MathObjectIcon object={object} className={compact ? "h-9 w-9" : "h-12 w-12 sm:h-14 sm:w-14"} />
+                <MathObjectIcon object={object} className={compact ? "h-9 w-9 max-w-full" : "h-12 w-12 max-w-full sm:h-14 sm:w-14"} />
               )}
               {crossed ? <span className="pointer-events-none absolute left-0 top-1/2 h-1 w-full -rotate-45 rounded-full bg-[#EF4444]" /> : null}
             </span>
@@ -190,9 +220,11 @@ function ObjectGroup({
 function ContextScene({ context, children }: { context: VisualSceneContext; children: ReactNode }) {
   if (context === "basket") {
     return (
-      <div className="relative min-w-44 pt-5">
-        <span className="absolute left-1/2 top-0 h-16 w-32 -translate-x-1/2 rounded-t-full border-4 border-b-0 border-[#B96D18]" />
-        <div className="relative rounded-b-[1.5rem] rounded-t-xl border-4 border-[#B96D18] bg-[#F6B94F] p-3 shadow-inner">{children}</div>
+      <div className="relative w-full max-w-full min-w-0 pt-5">
+        <span className="absolute left-1/2 top-0 h-16 w-32 max-w-[80%] -translate-x-1/2 rounded-t-full border-4 border-b-0 border-[#B96D18]" />
+        <div className="relative max-w-full min-w-0 rounded-b-[1.5rem] rounded-t-xl border-4 border-[#B96D18] bg-[#F6B94F] p-3 shadow-inner">
+          {children}
+        </div>
       </div>
     );
   }
@@ -205,13 +237,21 @@ function ContextScene({ context, children }: { context: VisualSceneContext; chil
     water: "border-b-8 border-[#38BDF8] bg-[#E0F7FF]",
     none: "border border-[#DDE8F5] bg-white",
   }[context];
-  return <div className={`min-w-32 rounded-2xl p-3 shadow-sm ${sceneClass}`}>{children}</div>;
+  return <div className={`w-full max-w-full min-w-0 rounded-2xl p-3 shadow-sm ${sceneClass}`}>{children}</div>;
 }
 
 function Operator({ value }: { value: string }) {
-  return <span className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl bg-white px-3 text-xl font-black text-[#0B63F6] shadow-sm">{value}</span>;
+  return (
+    <span className="mx-auto inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-xl bg-white px-3 text-xl font-black text-[#0B63F6] shadow-sm">
+      {value}
+    </span>
+  );
 }
 
 function Answer({ value, prefix = "" }: { value: string; prefix?: string }) {
-  return <span className="inline-flex min-h-14 items-center justify-center rounded-2xl bg-[#DCFCE7] px-4 text-2xl font-black text-[#15803D] shadow-sm">{prefix}{value}</span>;
+  return (
+    <span className="inline-flex min-h-14 max-w-full items-center justify-center whitespace-normal break-words rounded-2xl bg-[#DCFCE7] px-4 text-center text-2xl font-black text-[#15803D] shadow-sm">
+      {prefix}{value}
+    </span>
+  );
 }
