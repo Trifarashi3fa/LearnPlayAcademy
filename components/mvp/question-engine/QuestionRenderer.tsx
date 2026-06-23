@@ -1,5 +1,6 @@
 import type { NormalizedQuestion } from "@/data/question-engine-types";
 import { MultipleChoiceRenderer } from "@/components/mvp/question-engine/renderers/MultipleChoiceRenderer";
+import { TrueFalseRenderer } from "@/components/mvp/question-engine/renderers/TrueFalseRenderer";
 
 type QuestionRendererProps = {
   question: NormalizedQuestion;
@@ -31,6 +32,15 @@ export function QuestionRenderer({
     case "multiple-choice":
       return (
         <MultipleChoiceRenderer
+          question={question}
+          selectedAnswer={selectedAnswer}
+          onSelectAnswer={onSelectAnswer}
+          compact={compact}
+        />
+      );
+    case "true-false":
+      return (
+        <TrueFalseRenderer
           question={question}
           selectedAnswer={selectedAnswer}
           onSelectAnswer={onSelectAnswer}
