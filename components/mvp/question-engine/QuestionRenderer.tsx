@@ -1,5 +1,7 @@
 import type { NormalizedQuestion } from "@/data/question-engine-types";
+import { CountObjectsRenderer } from "@/components/mvp/question-engine/renderers/CountObjectsRenderer";
 import { MultipleChoiceRenderer } from "@/components/mvp/question-engine/renderers/MultipleChoiceRenderer";
+import { TapAnswerRenderer } from "@/components/mvp/question-engine/renderers/TapAnswerRenderer";
 import { TrueFalseRenderer } from "@/components/mvp/question-engine/renderers/TrueFalseRenderer";
 
 type QuestionRendererProps = {
@@ -41,6 +43,24 @@ export function QuestionRenderer({
     case "true-false":
       return (
         <TrueFalseRenderer
+          question={question}
+          selectedAnswer={selectedAnswer}
+          onSelectAnswer={onSelectAnswer}
+          compact={compact}
+        />
+      );
+    case "count-objects":
+      return (
+        <CountObjectsRenderer
+          question={question}
+          selectedAnswer={selectedAnswer}
+          onSelectAnswer={onSelectAnswer}
+          compact={compact}
+        />
+      );
+    case "tap-answer":
+      return (
+        <TapAnswerRenderer
           question={question}
           selectedAnswer={selectedAnswer}
           onSelectAnswer={onSelectAnswer}
