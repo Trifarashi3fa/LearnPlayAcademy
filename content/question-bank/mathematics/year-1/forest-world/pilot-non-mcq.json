@@ -1,0 +1,155 @@
+[
+  {
+    "questionId": "pilot-math-y1-forest-true-false-001",
+    "legacyId": null,
+    "curriculumTopicId": "math-y1-numbers-1-10",
+    "subject": "mathematics",
+    "year": 1,
+    "curriculumSource": ["LearnPlay MVP Pilot"],
+    "topic": "Numbers 1-10",
+    "subtopic": "Number order",
+    "worldId": "forest-world",
+    "level": 1,
+    "nodeType": "Learn",
+    "packageType": "mvp-free",
+    "mvpStatus": "pilot",
+    "status": "pilot",
+    "approvedBy": "Pending",
+    "approvalDate": "",
+    "version": "0.1.0-pilot",
+    "effectiveDate": "",
+    "difficulty": "easy",
+    "interactionType": "true-false",
+    "question": "True or false: The number 6 comes after 5.",
+    "options": ["True", "False"],
+    "correctAnswer": "True",
+    "explanation": "When we count forward, 5 comes before 6. So 6 comes after 5.",
+    "xpReward": 10,
+    "interaction": {
+      "trueLabel": "True",
+      "falseLabel": "False"
+    },
+    "answerSpec": {
+      "correctValue": true
+    },
+    "gradingSpec": {
+      "strategy": "exact-boolean"
+    },
+    "visualMetadata": {
+      "visualType": "number-sequence",
+      "object": "number",
+      "groups": [5, 6],
+      "total": 6,
+      "operation": "sequence",
+      "assetHint": "number-line",
+      "reviewStatus": "pilot"
+    },
+    "accessibilityText": "True or false question asking whether 6 comes after 5.",
+    "activeManifestEligible": false
+  },
+  {
+    "questionId": "pilot-math-y1-forest-count-objects-001",
+    "legacyId": null,
+    "curriculumTopicId": "math-y1-counting-objects",
+    "subject": "mathematics",
+    "year": 1,
+    "curriculumSource": ["LearnPlay MVP Pilot"],
+    "topic": "Counting objects",
+    "subtopic": "Counting stars",
+    "worldId": "forest-world",
+    "level": 2,
+    "nodeType": "Practice",
+    "packageType": "mvp-free",
+    "mvpStatus": "pilot",
+    "status": "pilot",
+    "approvedBy": "Pending",
+    "approvalDate": "",
+    "version": "0.1.0-pilot",
+    "effectiveDate": "",
+    "difficulty": "easy",
+    "interactionType": "count-objects",
+    "question": "Count the stars. How many stars are there?",
+    "options": ["4", "5", "6", "7"],
+    "correctAnswer": "6",
+    "explanation": "Count each star one by one: 1, 2, 3, 4, 5, 6. There are 6 stars.",
+    "xpReward": 10,
+    "interaction": {
+      "responseMode": "numeric-choice",
+      "numericChoices": [4, 5, 6, 7],
+      "prompt": "Tap the number that matches the stars."
+    },
+    "answerSpec": {
+      "expectedCount": 6,
+      "acceptedAnswers": ["6", 6]
+    },
+    "gradingSpec": {
+      "strategy": "exact-count"
+    },
+    "visualMetadata": {
+      "visualType": "counting",
+      "object": "star",
+      "groups": [6],
+      "total": 6,
+      "operation": "count",
+      "assetHint": "star",
+      "reviewStatus": "pilot"
+    },
+    "accessibilityText": "Count six star objects and choose the number 6.",
+    "activeManifestEligible": false
+  },
+  {
+    "questionId": "pilot-math-y1-forest-fill-blank-001",
+    "legacyId": null,
+    "curriculumTopicId": "math-y1-simple-addition",
+    "subject": "mathematics",
+    "year": 1,
+    "curriculumSource": ["LearnPlay MVP Pilot"],
+    "topic": "Simple addition",
+    "subtopic": "Adding within 10",
+    "worldId": "forest-world",
+    "level": 4,
+    "nodeType": "Learn",
+    "packageType": "mvp-free",
+    "mvpStatus": "pilot",
+    "status": "pilot",
+    "approvedBy": "Pending",
+    "approvalDate": "",
+    "version": "0.1.0-pilot",
+    "effectiveDate": "",
+    "difficulty": "easy",
+    "interactionType": "fill-in-blank",
+    "question": "Fill in the blank: 3 + 2 = __.",
+    "options": [],
+    "correctAnswer": "5",
+    "explanation": "Start with 3. Add 2 more. Count 4, 5. So 3 + 2 = 5.",
+    "xpReward": 10,
+    "interaction": {
+      "template": "3 + 2 = ____",
+      "blankId": "sum",
+      "inputMode": "numeric",
+      "placeholder": "Type the answer"
+    },
+    "answerSpec": {
+      "acceptedAnswers": ["5", "five"]
+    },
+    "gradingSpec": {
+      "strategy": "normalized-text",
+      "trimWhitespace": true,
+      "caseSensitive": false,
+      "collapseWhitespace": true,
+      "numericNormalization": true
+    },
+    "visualMetadata": {
+      "visualType": "addition",
+      "object": "apple",
+      "groups": [3, 2],
+      "total": 5,
+      "operation": "addition",
+      "equation": "3 + 2 = 5",
+      "assetHint": "apple",
+      "reviewStatus": "pilot"
+    },
+    "accessibilityText": "Fill in the missing answer for 3 plus 2 equals 5.",
+    "activeManifestEligible": false
+  }
+]
