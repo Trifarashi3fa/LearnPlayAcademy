@@ -1,5 +1,6 @@
 import type { NormalizedQuestion } from "@/data/question-engine-types";
 import { CountObjectsRenderer } from "@/components/mvp/question-engine/renderers/CountObjectsRenderer";
+import { FillBlankRenderer } from "@/components/mvp/question-engine/renderers/FillBlankRenderer";
 import { MultipleChoiceRenderer } from "@/components/mvp/question-engine/renderers/MultipleChoiceRenderer";
 import { TapAnswerRenderer } from "@/components/mvp/question-engine/renderers/TapAnswerRenderer";
 import { TrueFalseRenderer } from "@/components/mvp/question-engine/renderers/TrueFalseRenderer";
@@ -67,7 +68,18 @@ export function QuestionRenderer({
           compact={compact}
         />
       );
-    default:
-      return <UnsupportedQuestionMessage interactionType={question.interactionType} />;
+    case "fill-in-blank":
+      return (
+        <FillBlankRenderer
+          question={question}
+          selectedAnswer={selectedAnswer}
+          onSelectAnswer={onSelectAnswer}
+          compact={compact}
+        />
+      );
+    default: {
+      const unsupportedQuestion = question as { interactionType: string };
+      return <UnsupportedQuestionMessage interactionType={unsupportedQuestion.interactionType} />;
+    }
   }
 }
