@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import type { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode, SelectHTMLAttributes } from "react";
@@ -161,7 +161,7 @@ export function MvpProgressBar({
     <div>
       {label ? <p className="sr-only">{label}: {safeValue}%</p> : null}
       <div className="h-3 overflow-hidden rounded-full bg-[#EAF6FF]" aria-hidden={Boolean(label)}>
-        <div className="h-full rounded-full bg-[#22C55E] transition-[width] duration-300 motion-reduce:transition-none" style={{ width: `${safeValue}%` }} />
+        <div className="h-full rounded-full bg-[#22C55E] transition-[width] duration-500 ease-out motion-reduce:transition-none" style={{ width: `${safeValue}%` }} />
       </div>
     </div>
   );
@@ -184,7 +184,7 @@ export function MvpMetricCard({
   }[tone];
 
   return (
-    <div className={`rounded-[1.5rem] p-5 ${toneClass}`}>
+    <div className={`rounded-[1.5rem] p-5 transition-all duration-200 motion-reduce:transition-none ${toneClass}`}>
       <p className="text-sm font-black uppercase tracking-wide text-[#5B6B94]">{label}</p>
       <p className="mt-2 text-3xl font-black text-[#082B80]">{value}</p>
     </div>

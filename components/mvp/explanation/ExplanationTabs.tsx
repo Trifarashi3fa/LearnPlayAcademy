@@ -117,11 +117,11 @@ export function ExplanationTabs({
 
   return (
     <section
-      className="flex h-full min-h-0 max-w-full flex-col overflow-hidden rounded-[1.35rem] border border-[#BDE7D0] bg-gradient-to-br from-[#F8FBFF] via-white to-[#EAFBF0] shadow-sm lg:h-auto lg:overflow-visible"
+      className="lp-reveal-soft flex h-full min-h-0 max-w-full flex-col overflow-hidden rounded-[1.35rem] border border-[#BDE7D0] bg-gradient-to-br from-[#F8FBFF] via-white to-[#EAFBF0] shadow-sm transition-all duration-200 motion-reduce:transition-none lg:h-auto lg:overflow-visible"
       aria-label="Answer explanation"
     >
       <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto overflow-x-hidden p-2.5 sm:p-3 lg:gap-1.5 lg:overflow-visible lg:p-2">
-        <div className={`shrink-0 rounded-[1rem] border px-2.5 py-1.5 ${status.className}`} aria-live="polite">
+        <div className={`shrink-0 rounded-[1rem] border px-2.5 py-1.5 transition-all duration-200 motion-reduce:transition-none ${isCorrect ? "lp-correct-glow" : "lp-shake-soft"} ${status.className}`} aria-live="polite">
           <div className="flex flex-wrap items-center gap-2">
             <p className="rounded-full bg-white/70 px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-wide">
               {status.label}
@@ -131,7 +131,7 @@ export function ExplanationTabs({
           <p className="mt-0.5 text-xs font-bold leading-4 text-[#3F527E] sm:text-sm sm:leading-5">{status.body}</p>
         </div>
 
-        <div className="min-h-0 shrink-0">
+        <div className="lp-reveal-soft min-h-0 shrink-0">
           <CompactExplanationVisual visual={content.visual} correctAnswer={correctAnswer} />
         </div>
 

@@ -10,11 +10,11 @@ type XPRewardCardProps = {
 export function XPRewardCard({ correct, xpGained, levelXp, compact = false }: XPRewardCardProps) {
   return (
     <section
-      className={`rounded-[1rem] border shadow-sm ${compact ? "p-2.5" : "p-4"} ${correct ? "border-[#22C55E]/40 bg-[#DCFCE7]" : "border-[#FF4FA0]/30 bg-[#FFF0F7]"}`}
+      className={`lp-reveal-soft rounded-[1rem] border shadow-sm transition-all duration-200 motion-reduce:transition-none ${correct ? "lp-correct-glow" : ""} ${compact ? "p-2.5" : "p-4"} ${correct ? "border-[#22C55E]/40 bg-[#DCFCE7]" : "border-[#FF4FA0]/30 bg-[#FFF0F7]"}`}
       aria-live="polite"
     >
       <div className="flex items-center gap-2.5">
-        <span className={`flex shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ${compact ? "h-10 w-10" : "h-14 w-14"}`}>
+        <span className={`lp-pop-on-change flex shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ${compact ? "h-10 w-10" : "h-14 w-14"}`}>
           <Image src="/rewards/star.png" alt="Star reward" width={44} height={44} className={compact ? "h-8 w-8 object-contain" : "h-11 w-11 object-contain"} />
         </span>
         <div className="min-w-0">

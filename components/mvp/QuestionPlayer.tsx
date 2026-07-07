@@ -166,7 +166,7 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
             </summary>
             <p className="pb-2 text-sm font-bold leading-6 text-[#5B6B94]">{thinkHint}</p>
           </details>
-          <div className="min-h-0 flex-1">
+          <div key={currentQuestion.id} className="lp-reveal-soft min-h-0 flex-1">
             <QuestionCard
               question={currentQuestion}
               visual={learningContent.visual}

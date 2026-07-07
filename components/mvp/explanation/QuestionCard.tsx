@@ -20,7 +20,7 @@ export function QuestionCard({ question, visual, selectedAnswer, onSelectAnswer,
 
   return (
     <section
-      className={`flex min-h-full flex-col border border-[#DDE8F5] bg-white shadow-playful lg:min-h-0 ${compact ? "rounded-[1.5rem] p-3 lg:p-3" : "rounded-[2rem] p-5 sm:p-7"}`}
+      className={`flex min-h-full flex-col border border-[#DDE8F5] bg-white shadow-playful transition-all duration-200 motion-reduce:transition-none lg:min-h-0 ${compact ? "rounded-[1.5rem] p-3 lg:p-3" : "rounded-[2rem] p-5 sm:p-7"}`}
       aria-labelledby={`${question.id}-prompt`}
     >
       <div className="flex shrink-0 flex-wrap items-center gap-2">
@@ -32,7 +32,7 @@ export function QuestionCard({ question, visual, selectedAnswer, onSelectAnswer,
         </span>
         {answered ? (
           <span
-            className={`rounded-full px-3 py-1.5 text-[0.68rem] font-black uppercase tracking-wide sm:text-xs ${
+            className={`lp-pop-on-change rounded-full px-3 py-1.5 text-[0.68rem] font-black uppercase tracking-wide sm:text-xs ${
               answeredCorrectly ? "bg-[#DCFCE7] text-[#15803D]" : "bg-[#FEE2E2] text-[#B91C1C]"
             }`}
             role="status"
@@ -50,7 +50,7 @@ export function QuestionCard({ question, visual, selectedAnswer, onSelectAnswer,
         {question.question}
       </h2>
 
-      <div className={`${isComparisonQuestion ? "mt-1.5 p-1.5 sm:p-2" : "mt-2 p-2 sm:p-2.5"} shrink-0 overflow-visible rounded-[1.25rem] border border-[#DDE8F5] bg-[#F8FBFF]`}>
+      <div className={`${isComparisonQuestion ? "mt-1.5 p-1.5 sm:p-2" : "mt-2 p-2 sm:p-2.5"} shrink-0 overflow-visible rounded-[1.25rem] border border-[#DDE8F5] bg-[#F8FBFF] transition-all duration-200 motion-reduce:transition-none`}>
         <MathVisualRenderer visual={visual} revealAnswer={answered} compact={false} fitNarrow />
       </div>
 

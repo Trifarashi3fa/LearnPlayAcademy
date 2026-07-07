@@ -54,9 +54,10 @@ export function ForestRewardScreen({
   });
   const displayedTotalStars = totalStars ?? starsEarned;
   const displayedTotalXp = totalXp ?? xpEarned;
+  const nextLevel = level < 10 ? level + 1 : null;
 
   return (
-    <section className="relative overflow-hidden rounded-[2rem] border border-[#BDE7D0] bg-gradient-to-br from-[#EAFBF0] via-white to-[#FFF3C4] p-5 shadow-playful sm:p-8">
+    <section className="lp-reveal-soft relative overflow-hidden rounded-[2rem] border border-[#BDE7D0] bg-gradient-to-br from-[#EAFBF0] via-white to-[#FFF3C4] p-5 shadow-playful sm:p-8">
       <span className="absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[#66CC00]/15" />
       <span className="absolute -right-10 top-8 h-24 w-24 rounded-full bg-[#FF4FA0]/15" />
       <span className="absolute -bottom-12 -right-12 h-48 w-48 rounded-full bg-[#FFC83D]/20" />
@@ -66,16 +67,16 @@ export function ForestRewardScreen({
 
       <div className="relative grid gap-6 lg:grid-cols-[320px_1fr] lg:items-center">
         <div className="text-center">
-          <div className="mx-auto max-w-64 overflow-hidden rounded-[2rem] border-8 border-white bg-[#FFF3C4] p-3 shadow-playful sm:max-w-80">
+          <div className="lp-pop-on-change mx-auto max-w-64 overflow-hidden rounded-[2rem] border-8 border-white bg-[#FFF3C4] p-3 shadow-playful sm:max-w-80">
             <Image src="/rewards/badge.png" alt={badgeName} width={360} height={360} className="aspect-square w-full rounded-[1.25rem] object-cover" priority />
           </div>
           <p className="mt-4 inline-flex rounded-full bg-[#082B80] px-5 py-2 text-sm font-black text-white">{badgeName}</p>
         </div>
 
         <div>
-          <p className="text-sm font-black uppercase tracking-wide text-[#FF4FA0]">{worldComplete ? "Forest World Complete" : "Level Completed"}</p>
-          <h2 className="mt-2 text-3xl font-black leading-tight text-[#082B80] sm:text-5xl">{worldComplete ? "Forest World mastered!" : `Level ${level} complete!`}</h2>
-          <p className="mt-4 text-base font-bold leading-7 text-[#5B6B94] sm:text-lg sm:leading-8">{worldComplete ? "You completed all 10 Forest World missions and unlocked the Forest Explorer Badge." : "Excellent effort. Your next Forest World mission is now ready."}</p>
+          <p className="text-sm font-black uppercase tracking-wide text-[#FF4FA0]">{worldComplete ? "Forest Guardian Victory" : "Level Completed"}</p>
+          <h2 className="mt-2 text-3xl font-black leading-tight text-[#082B80] sm:text-5xl">{worldComplete ? "Forest Guardian defeated!" : `Level ${level} complete!`}</h2>
+          <p className="mt-4 text-base font-bold leading-7 text-[#5B6B94] sm:text-lg sm:leading-8">{worldComplete ? "You completed all 10 Forest World missions, earned the Forest Explorer Badge, and finished the Forest Guardian challenge." : nextLevel ? `Excellent effort. Level ${nextLevel} is now unlocked for your next Forest World mission.` : "Excellent effort. Your next Forest World mission is ready."}</p>
 
           <div className="mt-4 rounded-[1.25rem] bg-white/85 p-3 shadow-sm" aria-live="polite">
             <MvpStatusPill tone={syncTone(syncStatus)}>{syncLabel(syncStatus)}</MvpStatusPill>
@@ -84,11 +85,12 @@ export function ForestRewardScreen({
             </p>
           </div>
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
             <RewardStat label="Correct" value={`${correctCount}/${totalQuestions}`} />
             <RewardStat label="Stars earned" value={String(starsEarned)} />
             <RewardStat label="XP earned" value={String(xpEarned)} />
             <RewardStat label={worldComplete ? "Total stars" : "Skill learned"} value={worldComplete ? String(displayedTotalStars) : skillLearned} />
+            <RewardStat label="Unlocked" value={nextLevel ? `Level ${nextLevel}` : "Forest complete"} />
           </div>
 
           {worldComplete ? (
@@ -191,7 +193,7 @@ function AssessmentOption({ title, detail }: { title: string; detail: string }) 
 
 function RewardStat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-[1.25rem] bg-white p-4 text-center shadow-sm">
+    <div className="lp-pop-on-change rounded-[1.25rem] bg-white p-4 text-center shadow-sm transition-all duration-200 motion-reduce:transition-none">
       <p className="text-xs font-black uppercase tracking-wide text-[#5B6B94]">{label}</p>
       <p className="mt-1 break-words text-2xl font-black text-[#082B80]">{value}</p>
     </div>

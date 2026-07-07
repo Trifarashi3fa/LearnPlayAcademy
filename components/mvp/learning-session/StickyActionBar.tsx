@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { MvpButton, MvpButtonLink } from "@/components/mvp/MvpUi";
 
@@ -24,7 +24,7 @@ export function StickyActionBar({
       aria-label="Question actions"
     >
       <div className="mx-auto grid max-w-[96rem] min-w-0 grid-cols-[auto_1fr] items-center gap-2 sm:flex sm:gap-3">
-        <MvpButtonLink href="/mvp/world-map" tone="white" className="shrink-0 px-3 sm:px-4">
+        <MvpButtonLink href="/mvp/world-map" tone="white" className="shrink-0 px-3 transition-transform duration-200 motion-safe:hover:-translate-y-0.5 sm:px-4">
           Exit
         </MvpButtonLink>
 
@@ -38,7 +38,7 @@ export function StickyActionBar({
             onClick={onToggleExplanation}
             aria-expanded={explanationOpen}
             aria-controls="question-explanation-drawer"
-            className="shrink-0 px-3 sm:px-4"
+            className="shrink-0 px-3 transition-transform duration-200 motion-safe:hover:-translate-y-0.5 sm:px-4"
           >
             {explanationOpen ? "Hide notes" : "Learning notes"}
           </MvpButton>
@@ -47,7 +47,7 @@ export function StickyActionBar({
         <MvpButton
           onClick={onNext}
           disabled={!answered}
-          className="col-span-2 min-w-0 px-4 sm:col-span-1 sm:flex-none sm:min-w-48"
+          className="col-span-2 min-w-0 px-4 transition-transform duration-200 motion-safe:hover:-translate-y-0.5 sm:col-span-1 sm:flex-none sm:min-w-48"
         >
           {answered ? (lastQuestion ? "Finish Level" : "Next Question") : "Select an answer"}
         </MvpButton>

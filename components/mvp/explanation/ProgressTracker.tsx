@@ -37,7 +37,7 @@ export function ProgressTracker({
               <h2 className="mt-0.5 text-base font-black text-[#082B80]">{nodeType} Mission</h2>
             </div>
             <div className="flex flex-wrap items-center gap-2">
-              <p className="rounded-full bg-[#FFF3C4] px-3 py-1 text-xs font-black text-[#082B80] sm:text-sm">
+              <p key={`question-${questionNumber}`} className="lp-pop-on-change rounded-full bg-[#FFF3C4] px-3 py-1 text-xs font-black text-[#082B80] sm:text-sm">
                 Question {questionNumber} of {totalQuestions}
               </p>
               <SaveStatus status={syncStatus} />
@@ -105,7 +105,7 @@ function Status({
   }[tone];
 
   return (
-    <div className={`min-w-0 rounded-xl px-2 py-1.5 text-center ${toneClass}`}>
+    <div key={`${label}-${value}`} className={`lp-pop-on-change min-w-0 rounded-xl px-2 py-1.5 text-center transition-all duration-200 motion-reduce:transition-none ${toneClass}`}>
       <p className="text-[0.58rem] font-black uppercase tracking-wide text-[#5B6B94]">{label}</p>
       <p className="mt-0.5 text-sm font-black text-[#082B80] sm:text-base">{value}</p>
     </div>
