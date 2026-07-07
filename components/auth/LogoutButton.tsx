@@ -1,7 +1,7 @@
-"use client";
+﻿"use client";
 
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/Button";
+import { MvpButton } from "@/components/mvp/MvpUi";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
@@ -14,13 +14,13 @@ export function LogoutButton() {
       await supabase.auth.signOut();
     }
 
-    router.push("/login");
+    router.push("/auth/login");
     router.refresh();
   }
 
   return (
-    <Button onClick={handleLogout} variant="secondary">
+    <MvpButton onClick={handleLogout} tone="white" size="sm">
       Logout
-    </Button>
+    </MvpButton>
   );
 }

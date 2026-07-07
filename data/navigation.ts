@@ -1,4 +1,4 @@
-export type NavigationLink = {
+﻿export type NavigationLink = {
   href: string;
   label: string;
 };
@@ -9,8 +9,16 @@ export const primaryNavigation: NavigationLink[] = [
   { href: "/subjects", label: "Subjects" },
   { href: "/mvp/world-map", label: "Forest World" },
   { href: "/mvp/parent-dashboard", label: "Parent Dashboard" },
-  { href: "/login", label: "Login" },
-  { href: "/register", label: "Register" },
+  { href: "/auth/login", label: "Login" },
+  { href: "/auth/register", label: "Register" },
+];
+
+export const signedInNavigation: NavigationLink[] = [
+  { href: "/", label: "Home" },
+  { href: "/subjects", label: "Subjects" },
+  { href: "/mvp/world-map", label: "Forest World" },
+  { href: "/mvp/parent-dashboard", label: "Parent Dashboard" },
+  { href: "/account", label: "Account" },
 ];
 
 export const footerQuickLinks: NavigationLink[] = [

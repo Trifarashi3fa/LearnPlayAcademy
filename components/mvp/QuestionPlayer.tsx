@@ -3,7 +3,7 @@
 import { useMemo, useRef, useState } from "react";
 import { ExplanationTabs } from "@/components/mvp/explanation/ExplanationTabs";
 import { ForestRewardScreen } from "@/components/mvp/explanation/ForestRewardScreen";
-import { HintPanel } from "@/components/mvp/explanation/HintPanel";
+import { getThinkModeHint, HintPanel } from "@/components/mvp/explanation/HintPanel";
 import { LearnBotPanel } from "@/components/mvp/explanation/LearnBotPanel";
 import { ProgressTracker } from "@/components/mvp/explanation/ProgressTracker";
 import { QuestionCard } from "@/components/mvp/explanation/QuestionCard";
@@ -18,13 +18,14 @@ import type { NodeType } from "@/data/curriculum-types";
 import type { LevelQuestionAttemptInput } from "@/data/progress-types";
 
 export function QuestionPlayer({ level }: { level: MvpLevel }) {
-  const { worldProgressRecord, worldCompleted, completeLevel } = useMvpProgress();
+  const { progress, worldProgressRecord, worldCompleted, completeLevel, syncStatus, lastSyncedAt } = useMvpProgress();
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [attempts, setAttempts] = useState<LevelQuestionAttemptInput[]>([]);
   const [completed, setCompleted] = useState(false);
   const [rewardXp, setRewardXp] = useState(0);
+  const [rewardTotals, setRewardTotals] = useState({ stars: 0, xp: 0 });
   const [explanationOpen, setExplanationOpen] = useState(false);
   const finishingRef = useRef(false);
   const currentQuestion = level.questions[questionIndex];
@@ -34,6 +35,7 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
   const answerXp = attempts.reduce((total, attempt) => total + (attempt.correct ? attempt.xpReward : 0), 0);
   const completesWorld = level.level === 10;
   const answered = selectedAnswer !== null;
+  const thinkHint = getThinkModeHint(learningContent.visual.type, currentQuestion.id, learningContent.hint);
 
   function chooseAnswer(answer: string) {
     if (selectedAnswer) return;
@@ -62,7 +64,13 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
     const firstLevelCompletion = !worldProgressRecord.completedLevels.includes(level.level);
     const completionBonus = firstLevelCompletion ? getLevelBonusXp(level.level) : 0;
     const worldBonus = completesWorld && !worldCompleted ? 500 : 0;
-    setRewardXp(answerXp + completionBonus + worldBonus);
+    const earnedXp = answerXp + completionBonus + worldBonus;
+    const previousStars = worldProgressRecord.levelStars[String(level.level)] ?? 0;
+    setRewardXp(earnedXp);
+    setRewardTotals({
+      stars: progress.totalStars + Math.max(0, starsEarned - previousStars),
+      xp: progress.totalXp + earnedXp,
+    });
     completeLevel({
       subject: forestWorldIdentity.subject,
       year: forestWorldIdentity.year,
@@ -93,6 +101,10 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
             totalQuestions={level.questions.length}
             starsEarned={starsEarned}
             xpEarned={rewardXp}
+            totalStars={rewardTotals.stars}
+            totalXp={rewardTotals.xp}
+            syncStatus={syncStatus}
+            lastSyncedAt={lastSyncedAt}
           />
         </div>
       </main>
@@ -105,12 +117,13 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
         key={currentQuestion.id}
         content={learningContent}
         correctAnswer={currentQuestion.correctAnswer}
+        selectedAnswer={selectedAnswer}
         compact
       />
     </ExplanationDrawer>
   ) : (
     <div className="hidden min-h-0 lg:block">
-      <LearnBotPanel answered={false} correct={false} tip={learningContent.learnBotTip} compact />
+      <LearnBotPanel answered={false} correct={false} tip={learningContent.learnBotTip} state="thinking" messageSeed={currentQuestion.id} compact />
     </div>
   );
 
@@ -127,6 +140,7 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
           totalQuestions={level.questions.length}
           score={correctCount}
           xp={answerXp}
+          syncStatus={syncStatus}
           compact
         />
       )}
@@ -141,31 +155,35 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
         />
       )}
     >
-      <div className="grid gap-3 xl:grid-cols-[12rem_minmax(0,1fr)]">
-        <div className="hidden xl:block">
-          <HintPanel hint={learningContent.hint} type={learningContent.visual.type} />
+      <div className="grid h-full min-h-0 gap-3 lg:grid-cols-[13rem_minmax(0,1fr)] xl:grid-cols-[14rem_minmax(0,1fr)]">
+        <div className="hidden min-h-0 lg:block">
+          <HintPanel hint={learningContent.hint} type={learningContent.visual.type} nodeType={level.nodeType} messageSeed={currentQuestion.id} />
         </div>
-        <div className="space-y-3">
-          <details className="rounded-[1.25rem] border border-[#FFD76A] bg-[#FFF7D6] p-3 xl:hidden">
-            <summary className="min-h-12 cursor-pointer py-3 text-sm font-black text-[#082B80] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25">
+        <div className="flex min-h-0 flex-col gap-2 lg:gap-3">
+          <details className="shrink-0 rounded-[1.25rem] border border-[#FFD76A] bg-[#FFF7D6] p-2 lg:hidden">
+            <summary className="min-h-11 cursor-pointer py-2 text-sm font-black text-[#082B80] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25">
               Need a hint?
             </summary>
-            <p className="pb-2 text-sm font-bold leading-6 text-[#5B6B94]">{learningContent.hint}</p>
+            <p className="pb-2 text-sm font-bold leading-6 text-[#5B6B94]">{thinkHint}</p>
           </details>
-          <QuestionCard
-            question={currentQuestion}
-            visual={learningContent.visual}
-            selectedAnswer={selectedAnswer}
-            onSelectAnswer={chooseAnswer}
-            compact
-          />
-          {answered ? (
-            <XPRewardCard
-              correct={answeredCorrectly}
-              xpGained={answeredCorrectly ? currentQuestion.xpReward : 0}
-              levelXp={answerXp}
+          <div className="min-h-0 flex-1">
+            <QuestionCard
+              question={currentQuestion}
+              visual={learningContent.visual}
+              selectedAnswer={selectedAnswer}
+              onSelectAnswer={chooseAnswer}
               compact
             />
+          </div>
+          {answered ? (
+            <div className="shrink-0">
+              <XPRewardCard
+                correct={answeredCorrectly}
+                xpGained={answeredCorrectly ? currentQuestion.xpReward : 0}
+                levelXp={answerXp}
+                compact
+              />
+            </div>
           ) : null}
         </div>
       </div>

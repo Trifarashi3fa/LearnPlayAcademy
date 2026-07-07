@@ -37,24 +37,24 @@ export function MathVisualRenderer({
     ? visual.equation
     : visual.equation?.replace(/=\s*.+$/, "= ?");
   const groupLayout = fitNarrow
-    ? "flex-col items-stretch"
+    ? "flex-row flex-wrap items-stretch"
     : "flex-col items-stretch md:flex-row md:items-center";
 
   if (!hasGroups && !equation && !(revealAnswer && visual.answerVisual)) return null;
 
   return (
-    <VisualFrame visual={visual} compact={compact}>
+    <VisualFrame visual={visual} compact={compact || fitNarrow}>
       {hasGroups ? (
         <div className={`flex max-w-full min-w-0 justify-center gap-3 md:gap-4 ${groupLayout}`}>
           {visual.groups.map((count, index) => (
-            <div key={`${visual.object}-${count}-${index}`} className={fitNarrow ? "grid min-w-0 gap-3" : "contents"}>
+            <div key={`${visual.object}-${count}-${index}`} className={fitNarrow ? "flex min-w-0 flex-1 basis-[10rem] items-center gap-2" : "contents"}>
               {index > 0 && operator ? <Operator value={operator} /> : null}
               <div className="min-w-0 md:flex-1">
                 <ObjectGroup
                   count={count}
                   object={visual.objects?.[index] ?? visual.object}
                   context={visual.context}
-                  compact={compact}
+                  compact={compact || fitNarrow}
                 />
               </div>
             </div>
@@ -82,13 +82,13 @@ export function MathVisualRenderer({
   );
 }
 
-function SubtractionVisual({ visual, revealAnswer, compact = false }: MathVisualRendererProps) {
+function SubtractionVisual({ visual, revealAnswer, compact = false, fitNarrow = false }: MathVisualRendererProps) {
   const total = visual.groups[0];
   const removed = visual.groups[1];
   const remaining = Math.max(0, total - removed);
 
   return (
-    <VisualFrame visual={visual} compact={compact}>
+    <VisualFrame visual={visual} compact={compact || fitNarrow}>
       <div className="max-w-full min-w-0 text-center">
         <p className="mb-3 break-words text-xs font-black uppercase text-[#5B6B94]">
           Start with {total}. Cross out {removed}.
@@ -124,34 +124,53 @@ function ComparisonVisual({ visual, revealAnswer, compact = false, fitNarrow = f
   const firstObject = visual.objects?.[0] ?? visual.object;
   const secondObject = visual.objects?.[1] ?? visual.object;
   const answerNumber = Number(visual.answerVisual?.match(/\d+/)?.[0]);
+  const relationship = visual.equation ?? `${first} ${symbol} ${second}`;
   const gridClass = fitNarrow
-    ? "grid-cols-1"
+    ? "sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-center"
     : "md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] md:items-center";
 
   return (
-    <VisualFrame visual={visual} compact={compact}>
-      <div className={`grid max-w-full min-w-0 gap-4 ${gridClass}`}>
+    <VisualFrame visual={visual} compact={compact || fitNarrow}>
+      <div className={`grid max-w-full min-w-0 gap-2 sm:gap-2.5 ${gridClass}`}>
         <ComparisonGroup label={`Group A: ${first} ${objectVisualMap[firstObject].plural}`} correct={revealAnswer && answerNumber === first}>
           <ObjectGroup count={first} object={firstObject} context={visual.context} compact={compact} />
         </ComparisonGroup>
-        <Operator value={symbol} />
+        <ComparisonOperator value={symbol} />
         <ComparisonGroup label={`Group B: ${second} ${objectVisualMap[secondObject].plural}`} correct={revealAnswer && answerNumber === second}>
           <ObjectGroup count={second} object={secondObject} context={visual.context} compact={compact} />
         </ComparisonGroup>
       </div>
       {revealAnswer && visual.answerVisual ? (
-        <div className="mt-5 max-w-full text-center">
-          <Answer value={visual.answerVisual} prefix="Correct group: " />
+        <div className="mt-2 max-w-full text-center">
+          <ComparisonAnswer value={relationship} />
         </div>
       ) : null}
     </VisualFrame>
   );
 }
 
+function ComparisonOperator({ value }: { value: string }) {
+  return (
+    <span className="self-center">
+      <span className="mx-auto inline-flex min-h-10 min-w-10 shrink-0 items-center justify-center rounded-xl bg-white px-2.5 text-lg font-black text-[#0B63F6] shadow-sm">
+        {value}
+      </span>
+    </span>
+  );
+}
+
+function ComparisonAnswer({ value }: { value: string }) {
+  return (
+    <span className="inline-flex min-h-11 max-w-full items-center justify-center whitespace-normal break-words rounded-2xl bg-[#DCFCE7] px-3 text-center text-xl font-black text-[#15803D] shadow-sm">
+      Relationship: {value}
+    </span>
+  );
+}
+
 function ComparisonGroup({ label, correct, children }: { label: string; correct: boolean; children: ReactNode }) {
   return (
-    <div className={`min-w-0 rounded-[1.5rem] border-2 p-3 ${correct ? "border-[#22C55E] bg-[#DCFCE7]" : "border-transparent bg-white"}`}>
-      <p className="mb-3 break-words text-center text-sm font-black text-[#082B80]">{label}</p>
+    <div className={`min-w-0 rounded-[1.2rem] border-2 p-2 ${correct ? "border-[#22C55E] bg-[#DCFCE7]" : "border-transparent bg-white"}`}>
+      <p className="mb-1.5 break-words text-center text-xs font-black text-[#082B80] sm:text-sm">{label}</p>
       {children}
     </div>
   );
@@ -168,7 +187,7 @@ function VisualFrame({
 }) {
   return (
     <div
-      className={`max-w-full min-w-0 overflow-hidden overflow-x-hidden rounded-[1.5rem] border border-[#DDE8F5] bg-[#F8FBFF] ${compact ? "p-3 sm:p-4" : "p-4 sm:p-6"}`}
+      className={`max-w-full min-w-0 overflow-visible rounded-[1.5rem] border border-[#DDE8F5] bg-[#F8FBFF] ${compact ? "p-3 sm:p-4" : "p-4 sm:p-6"}`}
       role="img"
       aria-label={visual.accessibleLabel}
     >

@@ -1,11 +1,11 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LogoutButton } from "@/components/auth/LogoutButton";
-import { primaryNavigation, type NavigationLink } from "@/data/navigation";
+import { primaryNavigation, signedInNavigation, type NavigationLink } from "@/data/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
@@ -18,10 +18,7 @@ function isActive(pathname: string, href: string) {
 }
 
 function getVisibleNavigation(isSignedIn: boolean): NavigationLink[] {
-  if (!isSignedIn) return primaryNavigation;
-  return primaryNavigation.filter(
-    (link) => link.href !== "/login" && link.href !== "/register",
-  );
+  return isSignedIn ? signedInNavigation : primaryNavigation;
 }
 
 export function Navbar() {

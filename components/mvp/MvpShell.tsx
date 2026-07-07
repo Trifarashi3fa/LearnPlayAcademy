@@ -1,6 +1,9 @@
+﻿"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { MvpButtonLink, MvpProgressBar, MvpSurface, mvpFocusRing } from "@/components/mvp/MvpUi";
 
 export function MvpPage({
   eyebrow,
@@ -36,7 +39,7 @@ export function MvpPage({
 export function MvpTopBar() {
   return (
     <div className="flex flex-col gap-4 rounded-[2rem] border border-[#DDE8F5] bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
-      <Link href="/" className="flex items-center gap-3 rounded-3xl focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25">
+      <Link href="/" className={`flex items-center gap-3 rounded-3xl ${mvpFocusRing}`}>
         <Image
           src="/learnplay-academy-logo.png"
           alt="LearnPlay Academy logo"
@@ -62,7 +65,7 @@ export function MvpTopBar() {
           <Link
             key={href}
             href={href}
-            className="rounded-full px-4 py-2 text-sm font-black text-[#082B80] transition hover:bg-[#EAF6FF] hover:text-[#0B63F6] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25"
+            className={`rounded-full px-4 py-2 text-sm font-black text-[#082B80] transition hover:bg-[#EAF6FF] hover:text-[#0B63F6] ${mvpFocusRing}`}
           >
             {label}
           </Link>
@@ -81,35 +84,13 @@ export function PrimaryLink({
   children: ReactNode;
   tone?: "blue" | "pink" | "green" | "white";
 }) {
-  const classes = {
-    blue: "bg-[#0B63F6] text-white hover:bg-[#084fc5]",
-    pink: "bg-[#FF4FA0] text-white hover:bg-[#e83d8e]",
-    green: "bg-[#66CC00] text-[#082B80] hover:bg-[#58b800]",
-    white: "bg-white text-[#082B80] ring-2 ring-[#DDE8F5] hover:ring-[#0B63F6]",
-  }[tone];
-
-  return (
-    <Link
-      href={href}
-      className={`inline-flex min-h-12 items-center justify-center rounded-full px-6 py-3 text-base font-black shadow-sm transition hover:-translate-y-0.5 focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 ${classes}`}
-    >
-      {children}
-    </Link>
-  );
+  return <MvpButtonLink href={href} tone={tone}>{children}</MvpButtonLink>;
 }
 
 export function ProgressBar({ value }: { value: number }) {
-  return (
-    <div className="h-3 overflow-hidden rounded-full bg-[#EAF6FF]">
-      <div className="h-full rounded-full bg-[#22C55E]" style={{ width: `${Math.max(0, Math.min(100, value))}%` }} />
-    </div>
-  );
+  return <MvpProgressBar value={value} />;
 }
 
 export function MvpCard({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return (
-    <article className={`rounded-[2rem] border border-[#DDE8F5] bg-white p-5 shadow-sm ${className}`}>
-      {children}
-    </article>
-  );
+  return <MvpSurface as="article" className={className}>{children}</MvpSurface>;
 }

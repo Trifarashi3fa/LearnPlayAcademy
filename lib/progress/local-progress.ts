@@ -201,6 +201,10 @@ function normalizeV2(value: unknown): LocalProgressV2 | null {
   };
 }
 
+export function normalizeLocalProgress(value: unknown): LocalProgressV2 | null {
+  return normalizeV2(value);
+}
+
 function migrateV1(value: unknown): LocalProgressV2 | null {
   if (!record(value)) return null;
   const legacy = value as LegacyProgressV1;

@@ -62,3 +62,7 @@ export function getSubjectFeatureId(subjectSlug: string): FeatureId | null {
   if (subjectSlug === "critical-thinking") return "criticalThinking";
   return null;
 }
+export const questionEngineFeatureFlags = {
+  // Non-MCQ import and renderer previews are development-only until approved.
+  nonMCQPreview: process.env.NODE_ENV !== "production",
+} as const;

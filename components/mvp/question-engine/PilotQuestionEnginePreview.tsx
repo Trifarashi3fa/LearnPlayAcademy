@@ -1,6 +1,6 @@
-"use client";
+﻿"use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import type {
   ExactBooleanGradingSpec,
   ExactNumberGradingSpec,
@@ -10,6 +10,10 @@ import type {
   NormalizedTextGradingSpec,
   NormalizedTrueFalseQuestion,
 } from "@/data/question-engine-types";
+import type {
+  ForestL01QuestionAssetRow as AssetRow,
+  QuestionAssetValidationSummary as AssetValidationSummary,
+} from "@/data/question-asset-schema";
 import { QuestionRenderer } from "@/components/mvp/question-engine/QuestionRenderer";
 
 export type PilotQuestionRecord = {
@@ -31,7 +35,11 @@ export type PilotQuestionRecord = {
 
 type PilotQuestionEnginePreviewProps = {
   pilotQuestions: PilotQuestionRecord[];
+  assetRows?: AssetRow[];
+  assetValidation?: AssetValidationSummary;
 };
+
+type RandomMode = "valid" | "publishable";
 
 function asString(value: unknown, fallback = "") {
   return typeof value === "string" ? value : fallback;
@@ -180,8 +188,238 @@ function expectedAnswer(question: NormalizedQuestion) {
   return "";
 }
 
+function getRowsByMode(
+  assetRows: AssetRow[],
+  assetValidation: AssetValidationSummary | undefined,
+  mode: RandomMode,
+) {
+  if (!assetValidation) return [];
+  const allowedIds = new Set(
+    assetValidation.rowResults
+      .filter((result) => (mode === "publishable" ? result.isPublishable : result.isValid))
+      .map((result) => result.questionId),
+  );
+  return assetRows.filter((row) => allowedIds.has(row["Question ID"]));
+}
+
+function pickRandomRows(rows: AssetRow[], count: number) {
+  return [...rows]
+    .map((row) => ({ row, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .slice(0, Math.min(count, rows.length))
+    .map((item) => item.row);
+}
+
+function countByQuestionType(rows: AssetRow[]) {
+  return rows.reduce<Record<string, number>>((counts, row) => {
+    const type = row["Question Type"] || "Unknown";
+    counts[type] = (counts[type] ?? 0) + 1;
+    return counts;
+  }, {});
+}
+
+function AssetValidationPanel({
+  assetRows = [],
+  assetValidation,
+}: {
+  assetRows?: AssetRow[];
+  assetValidation?: AssetValidationSummary;
+}) {
+  if (!assetValidation) return null;
+
+  const typeCounts = countByQuestionType(assetRows);
+  const statusTone =
+    assetValidation.errorCount > 0
+      ? "border-[#EF4444] bg-[#FEE2E2] text-[#7F1D1D]"
+      : assetValidation.warningCount > 0
+        ? "border-[#FFD76A] bg-[#FFF7D6] text-[#082B80]"
+        : "border-[#22C55E] bg-[#DCFCE7] text-[#14532D]";
+
+  return (
+    <section className="rounded-[2rem] border border-[#DDE8F5] bg-white p-5 shadow-sm">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p className="text-sm font-black uppercase tracking-wide text-[#FF4FB8]">
+            Question Asset Import Layer
+          </p>
+          <h2 className="mt-2 text-2xl font-black text-[#082B80]">
+            Forest L01 Approval Gate
+          </h2>
+          <p className="mt-2 max-w-3xl text-sm font-bold leading-6 text-[#5B6B94]">
+            Thirty local asset rows are structurally validated separately from
+            publishability. Only rows marked Approved can be mapped later.
+          </p>
+        </div>
+        <div className={`rounded-2xl border-2 px-4 py-3 text-sm font-black ${statusTone}`}>
+          {assetValidation.errorCount} errors - {assetValidation.warningCount} warnings
+        </div>
+      </div>
+
+      <div className="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
+        <div className="rounded-2xl bg-[#EAF6FF] p-4">
+          <p className="text-xs font-black uppercase text-[#0B63F6]">Total rows</p>
+          <p className="mt-1 text-3xl font-black">{assetValidation.totalRows}</p>
+        </div>
+        <div className="rounded-2xl bg-[#DCFCE7] p-4">
+          <p className="text-xs font-black uppercase text-[#14532D]">Valid rows</p>
+          <p className="mt-1 text-3xl font-black">{assetValidation.validRows}</p>
+        </div>
+        <div className="rounded-2xl bg-[#F3E8FF] p-4">
+          <p className="text-xs font-black uppercase text-[#8B5CF6]">Publishable</p>
+          <p className="mt-1 text-3xl font-black">{assetValidation.publishableRows}</p>
+        </div>
+        <div className="rounded-2xl bg-[#FFF7D6] p-4">
+          <p className="text-xs font-black uppercase text-[#082B80]">Not publishable</p>
+          <p className="mt-1 text-3xl font-black">{assetValidation.nonPublishableRows}</p>
+        </div>
+        <div className="rounded-2xl bg-[#FFF7D6] p-4">
+          <p className="text-xs font-black uppercase text-[#082B80]">Warnings</p>
+          <p className="mt-1 text-3xl font-black">{assetValidation.warningCount}</p>
+        </div>
+        <div className="rounded-2xl bg-[#FEE2E2] p-4">
+          <p className="text-xs font-black uppercase text-[#7F1D1D]">Errors</p>
+          <p className="mt-1 text-3xl font-black">{assetValidation.errorCount}</p>
+        </div>
+      </div>
+
+      <div className="mt-5 flex flex-wrap gap-2">
+        {Object.entries(typeCounts).map(([type, count]) => (
+          <span
+            key={type}
+            className="rounded-full bg-[#F3E8FF] px-3 py-2 text-xs font-black text-[#8B5CF6]"
+          >
+            {type}: {count}
+          </span>
+        ))}
+      </div>
+
+      {assetValidation.issues.length > 0 ? (
+        <div className="mt-5 grid max-h-96 gap-2 overflow-y-auto pr-1">
+          {assetValidation.issues.map((issue) => (
+            <div
+              key={`${issue.questionId}-${issue.field}-${issue.message}`}
+              className={`rounded-2xl border p-3 text-sm font-bold ${
+                issue.severity === "error"
+                  ? "border-[#EF4444] bg-[#FEE2E2] text-[#7F1D1D]"
+                  : "border-[#FFD76A] bg-[#FFF7D6] text-[#082B80]"
+              }`}
+            >
+              Row {issue.rowNumber} - {issue.questionId} - {issue.field}: {issue.message}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p className="mt-5 rounded-2xl border border-[#22C55E] bg-[#DCFCE7] p-3 text-sm font-black text-[#14532D]">
+          Import validation passed for the 30 Forest L01 asset rows.
+        </p>
+      )}
+    </section>
+  );
+}
+
+function RandomSessionPreview({
+  assetRows = [],
+  assetValidation,
+}: {
+  assetRows?: AssetRow[];
+  assetValidation?: AssetValidationSummary;
+}) {
+  const [mode, setMode] = useState<RandomMode>("valid");
+  const availableRows = useMemo(
+    () => getRowsByMode(assetRows, assetValidation, mode),
+    [assetRows, assetValidation, mode],
+  );
+  const [sessionRows, setSessionRows] = useState<AssetRow[]>([]);
+
+  function generateSession() {
+    setSessionRows(pickRandomRows(availableRows, 10));
+  }
+
+  useEffect(() => {
+    if (availableRows.length > 0) {
+      setSessionRows(pickRandomRows(availableRows, 10));
+    } else {
+      setSessionRows([]);
+    }
+  }, [availableRows]);
+
+  if (!assetValidation) return null;
+
+  return (
+    <section className="rounded-[2rem] border border-[#BFD7FF] bg-[#EAF6FF] p-5 shadow-sm">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p className="text-sm font-black uppercase tracking-wide text-[#0B63F6]">
+            Forest L01 Random Session Preview
+          </p>
+          <h2 className="mt-2 text-2xl font-black text-[#082B80]">
+            Random 10-question session
+          </h2>
+          <p className="mt-2 max-w-3xl text-sm font-bold leading-6 text-[#5B6B94]">
+            Choose valid mode for all structurally valid rows, or publishable
+            mode for rows that pass the approval gate.
+          </p>
+        </div>
+        <button
+          type="button"
+          onClick={generateSession}
+          disabled={availableRows.length === 0}
+          className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#0B63F6] px-5 py-3 text-sm font-black text-white transition hover:bg-[#084FC5] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 disabled:cursor-not-allowed disabled:bg-[#C9D7EA] disabled:text-[#5B6B94]"
+        >
+          Generate New Random Session
+        </button>
+      </div>
+
+      <div className="mt-5 flex flex-wrap gap-2">
+        {(["valid", "publishable"] as const).map((option) => (
+          <button
+            key={option}
+            type="button"
+            onClick={() => setMode(option)}
+            className={`min-h-11 rounded-full px-4 py-2 text-sm font-black capitalize transition focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 ${
+              mode === option
+                ? "bg-[#0B63F6] text-white"
+                : "bg-white text-[#082B80] hover:bg-[#F8FBFF]"
+            }`}
+          >
+            Random from {option} rows
+          </button>
+        ))}
+      </div>
+
+      {mode === "publishable" && availableRows.length === 0 ? (
+        <p className="mt-5 rounded-2xl border-2 border-[#FFD76A] bg-[#FFF7D6] p-4 text-sm font-black leading-6 text-[#082B80]">
+          No publishable rows yet. Mark Status and Review Status as Approved to
+          test publishable mode.
+        </p>
+      ) : null}
+
+      <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+        {sessionRows.map((row, index) => (
+          <article
+            key={`${row["Question ID"]}-${index}`}
+            className="rounded-2xl border border-[#DDE8F5] bg-white p-3"
+          >
+            <p className="text-xs font-black uppercase text-[#FF4FB8]">
+              Session {index + 1}
+            </p>
+            <h3 className="mt-1 text-sm font-black text-[#082B80]">
+              {row["Question ID"]}
+            </h3>
+            <p className="mt-2 text-xs font-bold text-[#5B6B94]">
+              {row["Question Type"]}
+            </p>
+          </article>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export function PilotQuestionEnginePreview({
   pilotQuestions,
+  assetRows,
+  assetValidation,
 }: PilotQuestionEnginePreviewProps) {
   const questions = useMemo(
     () => pilotQuestions.map(normalizePilotQuestion),
@@ -191,6 +429,12 @@ export function PilotQuestionEnginePreview({
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const activeQuestion = questions[activeIndex];
   const answerResult = activeQuestion ? checkAnswer(activeQuestion, selectedAnswer) : null;
+
+  useEffect(() => {
+    if (assetValidation) {
+      console.info("[LearnPlay A11A] Forest L01 asset approval validation", assetValidation);
+    }
+  }, [assetValidation]);
 
   function selectQuestion(index: number) {
     setActiveIndex(index);
@@ -223,6 +467,9 @@ export function PilotQuestionEnginePreview({
             approved active manifest.
           </p>
         </section>
+
+        <AssetValidationPanel assetRows={assetRows} assetValidation={assetValidation} />
+        <RandomSessionPreview assetRows={assetRows} assetValidation={assetValidation} />
 
         <section className="grid gap-3 rounded-[1.5rem] border border-[#DDE8F5] bg-white p-4 shadow-sm sm:grid-cols-3">
           {questions.map((question, index) => {

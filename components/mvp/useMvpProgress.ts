@@ -4,6 +4,11 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { forestLevels, getMasteryLabel } from "@/data/mvp-forest-world";
 import type { CompleteLevelInput, LocalProgressV2 } from "@/data/progress-types";
 import {
+  loadProgress as loadChildProgress,
+  saveProgress as saveChildProgress,
+  type ProgressSyncStatus,
+} from "@/lib/progress/child-progress";
+import {
   completeLocalLevel,
   createDefaultLocalProgress,
   FOREST_PROGRESS_REF,
@@ -25,23 +30,59 @@ export function calculateStars(correct: number, total: number) {
 export function useMvpProgress() {
   const [progress, setProgress] = useState<LocalProgressV2>(createDefaultLocalProgress);
   const [ready, setReady] = useState(false);
+  const [syncStatus, setSyncStatus] = useState<ProgressSyncStatus>("loading");
+  const [lastSyncedAt, setLastSyncedAt] = useState<string | null>(null);
 
   useEffect(() => {
-    setProgress(readLocalProgress());
+    let active = true;
+    const localProgress = readLocalProgress();
+    setProgress(localProgress);
     setReady(true);
+
+    void loadChildProgress()
+      .then((result) => {
+        if (!active) return;
+        if (result.progress) {
+          saveLocalProgress(result.progress);
+          setProgress(result.progress);
+        }
+        setSyncStatus(result.status);
+        setLastSyncedAt(result.lastPlayedAt);
+      })
+      .catch(() => {
+        if (!active) return;
+        setSyncStatus("error");
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  const syncRemoteProgress = useCallback((nextProgress: LocalProgressV2) => {
+    setSyncStatus("syncing");
+    void saveChildProgress(nextProgress)
+      .then((result) => {
+        setSyncStatus(result.status);
+        if (result.lastPlayedAt) setLastSyncedAt(result.lastPlayedAt);
+      })
+      .catch(() => {
+        setSyncStatus("error");
+      });
   }, []);
 
   const completeLevel = useCallback((input: CompleteLevelInput) => {
-    setProgress((current) => {
-      const result = completeLocalLevel(current, input);
-      saveLocalProgress(result.progress);
-      return result.progress;
-    });
-  }, []);
+    const result = completeLocalLevel(progress, input);
+    saveLocalProgress(result.progress);
+    setProgress(result.progress);
+    syncRemoteProgress(result.progress);
+  }, [progress, syncRemoteProgress]);
 
   const reset = useCallback(() => {
-    setProgress(resetLocalProgress());
-  }, []);
+    const fresh = resetLocalProgress();
+    setProgress(fresh);
+    syncRemoteProgress(fresh);
+  }, [syncRemoteProgress]);
 
   const worldProgressRecord = getWorldProgress(progress, FOREST_PROGRESS_REF);
   const completedCount = worldProgressRecord.completedLevels.length;
@@ -62,6 +103,8 @@ export function useMvpProgress() {
       worldProgressRecord,
       worldCompleted,
       ready,
+      syncStatus,
+      lastSyncedAt,
       completeLevel,
       reset,
       completedCount,
@@ -76,6 +119,8 @@ export function useMvpProgress() {
       worldProgressRecord,
       worldCompleted,
       ready,
+      syncStatus,
+      lastSyncedAt,
       completeLevel,
       reset,
       completedCount,

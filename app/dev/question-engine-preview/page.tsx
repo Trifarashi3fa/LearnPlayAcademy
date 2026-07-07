@@ -1,5 +1,9 @@
 import { notFound } from "next/navigation";
 import pilotQuestions from "@/content/question-bank/mathematics/year-1/forest-world/pilot-non-mcq.json";
+import forestL01AssetRows from "@/content/question-assets/mathematics/year-1/forest-world/forest-l01-sample.json";
+import { questionEngineFeatureFlags } from "@/data/feature-flags";
+import type { ForestL01QuestionAssetRow } from "@/data/question-asset-schema";
+import { validateForestL01AssetRows } from "@/lib/question-assets/validate-question-assets";
 import {
   PilotQuestionEnginePreview,
   type PilotQuestionRecord,
@@ -14,13 +18,21 @@ export const metadata = {
 };
 
 export default function QuestionEnginePreviewPage() {
-  if (process.env.NODE_ENV === "production") {
+  if (!questionEngineFeatureFlags.nonMCQPreview) {
     notFound();
   }
+
+  const assetRows = forestL01AssetRows as ForestL01QuestionAssetRow[];
+  const assetValidation = validateForestL01AssetRows(
+    assetRows,
+    "Forest L01 Question Asset Master sample",
+  );
 
   return (
     <PilotQuestionEnginePreview
       pilotQuestions={pilotQuestions as PilotQuestionRecord[]}
+      assetRows={assetRows}
+      assetValidation={assetValidation}
     />
   );
 }
