@@ -7,6 +7,7 @@ export const forestL01AssetColumns = [
   "World",
   "Level",
   "Topic",
+  "Subtopic",
   "Learning Objective",
   "Difficulty",
   "Question Type",
@@ -35,6 +36,7 @@ export const supportedForestL01QuestionTypes = [
   "Tap Correct Group",
   "Fill Missing Number",
   "Match Pairs",
+  "True or False",
 ] as const;
 
 export type ForestL01QuestionType = (typeof supportedForestL01QuestionTypes)[number];
@@ -82,6 +84,7 @@ export type ParsedForestL01QuestionAsset = {
   world: string;
   level: number;
   topic: string;
+  subtopic: string;
   learningObjective: string;
   difficulty: string;
   questionType: string;

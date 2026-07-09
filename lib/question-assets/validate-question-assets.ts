@@ -11,7 +11,7 @@ import {
 const supportedQuestionTypeSet = new Set<string>(supportedForestL01QuestionTypes);
 const repeatedVisualObjectWarningThreshold = 8;
 
-function text(row: ForestL01QuestionAssetRow, field: ForestL01AssetColumn) {
+function text(row: Partial<ForestL01QuestionAssetRow>, field: ForestL01AssetColumn) {
   return String(row[field] ?? "").trim();
 }
 
@@ -21,7 +21,7 @@ function normalizeForDuplicateCheck(value: string) {
 
 function addIssue(
   issues: QuestionAssetValidationIssue[],
-  row: ForestL01QuestionAssetRow,
+  row: Partial<ForestL01QuestionAssetRow>,
   rowIndex: number,
   field: ForestL01AssetColumn,
   message: string,
@@ -56,6 +56,7 @@ export function parseForestL01AssetRows(
     world: text(row, "World"),
     level: Number(text(row, "Level")),
     topic: text(row, "Topic"),
+    subtopic: text(row, "Subtopic"),
     learningObjective: text(row, "Learning Objective"),
     difficulty: text(row, "Difficulty"),
     questionType: text(row, "Question Type"),
@@ -85,6 +86,7 @@ export function validateForestL01AssetRows(
   const issues: QuestionAssetValidationIssue[] = [];
   const questionWordings = new Map<string, number[]>();
   const visualObjects = new Map<string, number[]>();
+  const questionIds = new Map<string, number[]>();
 
   rows.forEach((row, rowIndex) => {
     for (const column of forestL01AssetColumns) {
@@ -93,12 +95,16 @@ export function validateForestL01AssetRows(
       }
     }
 
+    if (!text(row, "Question ID")) {
+      addIssue(issues, row, rowIndex, "Question ID", "Missing question ID.", "error");
+    }
+
     if (!text(row, "Correct Answer")) {
       addIssue(issues, row, rowIndex, "Correct Answer", "Missing correct answer.", "error");
     }
 
     if (!text(row, "Visual Description")) {
-      addIssue(issues, row, rowIndex, "Visual Description", "Missing visual description.", "warning");
+      addIssue(issues, row, rowIndex, "Visual Description", "Missing visual description.", "error");
     }
 
     const questionType = text(row, "Question Type");
@@ -115,7 +121,7 @@ export function validateForestL01AssetRows(
 
     for (const field of ["Step 1", "Step 2", "Step 3", "Final Explanation"] as const) {
       if (!text(row, field)) {
-        addIssue(issues, row, rowIndex, field, `Empty explanation step: ${field}.`, "warning");
+        addIssue(issues, row, rowIndex, field, `Missing explanation step: ${field}.`, "error");
       }
     }
 
@@ -153,6 +159,14 @@ export function validateForestL01AssetRows(
       addIssue(issues, row, rowIndex, "Version Notes", "Row is missing Version Notes.", "warning");
     }
 
+    const normalizedQuestionId = normalizeForDuplicateCheck(text(row, "Question ID"));
+    if (normalizedQuestionId) {
+      questionIds.set(normalizedQuestionId, [
+        ...(questionIds.get(normalizedQuestionId) ?? []),
+        rowIndex,
+      ]);
+    }
+
     const normalizedQuestion = normalizeForDuplicateCheck(text(row, "Question"));
     if (normalizedQuestion) {
       questionWordings.set(normalizedQuestion, [
@@ -169,6 +183,20 @@ export function validateForestL01AssetRows(
       ]);
     }
   });
+
+  for (const duplicateRows of questionIds.values()) {
+    if (duplicateRows.length <= 1) continue;
+    for (const rowIndex of duplicateRows) {
+      addIssue(
+        issues,
+        rows[rowIndex],
+        rowIndex,
+        "Question ID",
+        "Duplicate question ID in the local asset file.",
+        "error",
+      );
+    }
+  }
 
   for (const duplicateRows of questionWordings.values()) {
     if (duplicateRows.length <= 1) continue;

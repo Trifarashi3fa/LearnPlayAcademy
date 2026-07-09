@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useMemo, useState } from "react";
 import type {
@@ -14,6 +14,7 @@ import type {
   ForestL01QuestionAssetRow as AssetRow,
   QuestionAssetValidationSummary as AssetValidationSummary,
 } from "@/data/question-asset-schema";
+import type { QuestionAssetImportError } from "@/lib/question-assets/import-question-assets";
 import { QuestionRenderer } from "@/components/mvp/question-engine/QuestionRenderer";
 
 export type PilotQuestionRecord = {
@@ -37,6 +38,8 @@ type PilotQuestionEnginePreviewProps = {
   pilotQuestions: PilotQuestionRecord[];
   assetRows?: AssetRow[];
   assetValidation?: AssetValidationSummary;
+  importedAssetQuestions?: NormalizedQuestion[];
+  assetImportErrors?: QuestionAssetImportError[];
 };
 
 type RandomMode = "valid" | "publishable";
@@ -148,6 +151,13 @@ function normalizeTextAnswer(value: string, question: NormalizedFillInBlankQuest
 function checkAnswer(question: NormalizedQuestion, selectedAnswer: string | null) {
   if (selectedAnswer === null) return null;
 
+  if (question.interactionType === "multiple-choice") {
+    const correctChoice = question.interaction.choices.find(
+      (choice) => choice.id === question.answerSpec.correctChoiceId,
+    );
+    return selectedAnswer === correctChoice?.label;
+  }
+
   if (question.interactionType === "true-false") {
     const selectedValue =
       selectedAnswer === question.interaction.trueLabel ||
@@ -157,6 +167,13 @@ function checkAnswer(question: NormalizedQuestion, selectedAnswer: string | null
 
   if (question.interactionType === "count-objects") {
     return Number(selectedAnswer) === question.answerSpec.expectedCount;
+  }
+
+  if (question.interactionType === "tap-answer") {
+    const correctTarget = question.interaction.targets.find(
+      (target) => target.id === question.answerSpec.correctTargetId,
+    );
+    return selectedAnswer === correctTarget?.label || selectedAnswer === correctTarget?.id;
   }
 
   if (question.interactionType === "fill-in-blank") {
@@ -171,6 +188,12 @@ function checkAnswer(question: NormalizedQuestion, selectedAnswer: string | null
 }
 
 function expectedAnswer(question: NormalizedQuestion) {
+  if (question.interactionType === "multiple-choice") {
+    return question.interaction.choices.find(
+      (choice) => choice.id === question.answerSpec.correctChoiceId,
+    )?.label ?? "";
+  }
+
   if (question.interactionType === "true-false") {
     return question.answerSpec.correctValue
       ? question.interaction.trueLabel
@@ -179,6 +202,12 @@ function expectedAnswer(question: NormalizedQuestion) {
 
   if (question.interactionType === "count-objects") {
     return String(question.answerSpec.expectedCount);
+  }
+
+  if (question.interactionType === "tap-answer") {
+    return question.interaction.targets.find(
+      (target) => target.id === question.answerSpec.correctTargetId,
+    )?.label ?? "";
   }
 
   if (question.interactionType === "fill-in-blank") {
@@ -221,15 +250,17 @@ function countByQuestionType(rows: AssetRow[]) {
 function AssetValidationPanel({
   assetRows = [],
   assetValidation,
+  assetImportErrors = [],
 }: {
   assetRows?: AssetRow[];
   assetValidation?: AssetValidationSummary;
+  assetImportErrors?: QuestionAssetImportError[];
 }) {
   if (!assetValidation) return null;
 
   const typeCounts = countByQuestionType(assetRows);
   const statusTone =
-    assetValidation.errorCount > 0
+    assetValidation.errorCount > 0 || assetImportErrors.length > 0
       ? "border-[#EF4444] bg-[#FEE2E2] text-[#7F1D1D]"
       : assetValidation.warningCount > 0
         ? "border-[#FFD76A] bg-[#FFF7D6] text-[#082B80]"
@@ -243,15 +274,15 @@ function AssetValidationPanel({
             Question Asset Import Layer
           </p>
           <h2 className="mt-2 text-2xl font-black text-[#082B80]">
-            Forest L01 Approval Gate
+            Forest L01 Asset Validation
           </h2>
           <p className="mt-2 max-w-3xl text-sm font-bold leading-6 text-[#5B6B94]">
-            Thirty local asset rows are structurally validated separately from
-            publishability. Only rows marked Approved can be mapped later.
+            Local asset rows are validated and imported separately from the
+            approved production manifest. Production gameplay is unchanged.
           </p>
         </div>
         <div className={`rounded-2xl border-2 px-4 py-3 text-sm font-black ${statusTone}`}>
-          {assetValidation.errorCount} errors - {assetValidation.warningCount} warnings
+          {assetValidation.errorCount + assetImportErrors.length} errors - {assetValidation.warningCount} warnings
         </div>
       </div>
 
@@ -269,8 +300,8 @@ function AssetValidationPanel({
           <p className="mt-1 text-3xl font-black">{assetValidation.publishableRows}</p>
         </div>
         <div className="rounded-2xl bg-[#FFF7D6] p-4">
-          <p className="text-xs font-black uppercase text-[#082B80]">Not publishable</p>
-          <p className="mt-1 text-3xl font-black">{assetValidation.nonPublishableRows}</p>
+          <p className="text-xs font-black uppercase text-[#082B80]">Imported</p>
+          <p className="mt-1 text-3xl font-black">{assetValidation.validRows - assetImportErrors.length}</p>
         </div>
         <div className="rounded-2xl bg-[#FFF7D6] p-4">
           <p className="text-xs font-black uppercase text-[#082B80]">Warnings</p>
@@ -278,7 +309,7 @@ function AssetValidationPanel({
         </div>
         <div className="rounded-2xl bg-[#FEE2E2] p-4">
           <p className="text-xs font-black uppercase text-[#7F1D1D]">Errors</p>
-          <p className="mt-1 text-3xl font-black">{assetValidation.errorCount}</p>
+          <p className="mt-1 text-3xl font-black">{assetValidation.errorCount + assetImportErrors.length}</p>
         </div>
       </div>
 
@@ -293,7 +324,7 @@ function AssetValidationPanel({
         ))}
       </div>
 
-      {assetValidation.issues.length > 0 ? (
+      {assetValidation.issues.length > 0 || assetImportErrors.length > 0 ? (
         <div className="mt-5 grid max-h-96 gap-2 overflow-y-auto pr-1">
           {assetValidation.issues.map((issue) => (
             <div
@@ -307,10 +338,18 @@ function AssetValidationPanel({
               Row {issue.rowNumber} - {issue.questionId} - {issue.field}: {issue.message}
             </div>
           ))}
+          {assetImportErrors.map((issue) => (
+            <div
+              key={`${issue.questionId}-${issue.rowNumber}-${issue.message}`}
+              className="rounded-2xl border border-[#EF4444] bg-[#FEE2E2] p-3 text-sm font-bold text-[#7F1D1D]"
+            >
+              Row {issue.rowNumber} - {issue.questionId} - Import: {issue.message}
+            </div>
+          ))}
         </div>
       ) : (
         <p className="mt-5 rounded-2xl border border-[#22C55E] bg-[#DCFCE7] p-3 text-sm font-black text-[#14532D]">
-          Import validation passed for the 30 Forest L01 asset rows.
+          Import validation passed for the Forest L01 asset rows.
         </p>
       )}
     </section>
@@ -356,8 +395,8 @@ function RandomSessionPreview({
             Random 10-question session
           </h2>
           <p className="mt-2 max-w-3xl text-sm font-bold leading-6 text-[#5B6B94]">
-            Choose valid mode for all structurally valid rows, or publishable
-            mode for rows that pass the approval gate.
+            This preview samples local asset rows only. It does not affect
+            progress, XP, badges, or the production manifest.
           </p>
         </div>
         <button
@@ -416,10 +455,141 @@ function RandomSessionPreview({
   );
 }
 
+function ImportedAssetQuestionPreview({
+  questions,
+}: {
+  questions: NormalizedQuestion[];
+}) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
+  const activeQuestion = questions[activeIndex];
+  const answerResult = activeQuestion ? checkAnswer(activeQuestion, selectedAnswer) : null;
+
+  function selectQuestion(index: number) {
+    setActiveIndex(index);
+    setSelectedAnswer(null);
+  }
+
+  if (!activeQuestion) {
+    return (
+      <section className="rounded-[2rem] border border-[#FFD76A] bg-[#FFF7D6] p-5 text-sm font-black text-[#082B80]">
+        No imported asset questions are ready to preview.
+      </section>
+    );
+  }
+
+  return (
+    <section className="grid gap-5 rounded-[2rem] border border-[#DDE8F5] bg-white p-5 shadow-sm">
+      <div>
+        <p className="text-sm font-black uppercase tracking-wide text-[#FF4FB8]">
+          Imported Asset Question Preview
+        </p>
+        <h2 className="mt-2 text-2xl font-black text-[#082B80]">
+          Forest L01 sample through QuestionRenderer
+        </h2>
+        <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">
+          These imported local asset questions are dev-only and are not active
+          Forest content.
+        </p>
+      </div>
+
+      <div className="grid gap-2 sm:grid-cols-3 lg:grid-cols-6">
+        {questions.slice(0, 12).map((question, index) => (
+          <button
+            key={question.questionId}
+            type="button"
+            onClick={() => selectQuestion(index)}
+            className={`min-h-12 rounded-2xl border-2 px-3 py-2 text-left text-xs font-black transition focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 ${
+              index === activeIndex
+                ? "border-[#0B63F6] bg-[#EAF6FF] text-[#082B80]"
+                : "border-[#DDE8F5] bg-white text-[#5B6B94] hover:border-[#0B63F6]"
+            }`}
+          >
+            <span className="block text-[#FF4FB8]">{question.questionId}</span>
+            <span className="block capitalize">{question.interactionType}</span>
+          </button>
+        ))}
+      </div>
+
+      <section className="grid gap-5 lg:grid-cols-[1fr_18rem]">
+        <article className="rounded-[2rem] border border-[#DDE8F5] bg-[#F8FBFF] p-5">
+          <div className="mb-4 flex flex-wrap items-center gap-2">
+            <span className="rounded-full bg-[#EAF6FF] px-3 py-2 text-xs font-black uppercase text-[#0B63F6]">
+              Imported asset
+            </span>
+            <span className="rounded-full bg-[#F3E8FF] px-3 py-2 text-xs font-black uppercase text-[#8B5CF6]">
+              {activeQuestion.interactionType}
+            </span>
+          </div>
+          <h3 className="text-2xl font-black leading-tight text-[#082B80]">
+            {activeQuestion.prompt}
+          </h3>
+          <div className="mt-6">
+            <QuestionRenderer
+              question={activeQuestion}
+              selectedAnswer={selectedAnswer}
+              onSelectAnswer={setSelectedAnswer}
+            />
+          </div>
+        </article>
+
+        <aside className="rounded-[2rem] border border-[#BFD7FF] bg-[#EAF6FF] p-5">
+          <p className="text-xs font-black uppercase text-[#0B63F6]">
+            Imported Preview State
+          </p>
+          <dl className="mt-4 grid gap-3 text-sm font-bold">
+            <div className="rounded-2xl bg-white p-3">
+              <dt className="text-[#5B6B94]">Selected answer</dt>
+              <dd className="mt-1 break-words text-[#082B80]">
+                {selectedAnswer ?? "No answer selected"}
+              </dd>
+            </div>
+            <div className="rounded-2xl bg-white p-3">
+              <dt className="text-[#5B6B94]">Expected answer</dt>
+              <dd className="mt-1 break-words text-[#082B80]">
+                {expectedAnswer(activeQuestion)}
+              </dd>
+            </div>
+            <div
+              className={`rounded-2xl p-3 ${
+                answerResult === null
+                  ? "bg-white text-[#5B6B94]"
+                  : answerResult
+                    ? "bg-[#DCFCE7] text-[#14532D]"
+                    : "bg-[#FEE2E2] text-[#7F1D1D]"
+              }`}
+              aria-live="polite"
+            >
+              <dt>Feedback</dt>
+              <dd className="mt-1">
+                {answerResult === null
+                  ? "Choose an answer to test the imported renderer."
+                  : answerResult
+                    ? "Correct"
+                    : "Review this answer"}
+              </dd>
+            </div>
+          </dl>
+
+          <button
+            type="button"
+            onClick={() => setSelectedAnswer(null)}
+            className="mt-4 inline-flex min-h-12 w-full items-center justify-center rounded-full border-2 border-[#BFD7FF] bg-white px-5 py-3 text-sm font-black text-[#082B80] transition hover:border-[#0B63F6] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25"
+          >
+            Reset answer
+          </button>
+        </aside>
+      </section>
+    </section>
+  );
+}
+
 export function PilotQuestionEnginePreview({
   pilotQuestions,
   assetRows,
   assetValidation,
+  importedAssetQuestions = [],
+  assetImportErrors = [],
 }: PilotQuestionEnginePreviewProps) {
   const questions = useMemo(
     () => pilotQuestions.map(normalizePilotQuestion),
@@ -432,9 +602,12 @@ export function PilotQuestionEnginePreview({
 
   useEffect(() => {
     if (assetValidation) {
-      console.info("[LearnPlay A11A] Forest L01 asset approval validation", assetValidation);
+      console.info("[LearnPlay A9] Forest L01 asset validation", assetValidation);
     }
-  }, [assetValidation]);
+    if (assetImportErrors.length > 0) {
+      console.warn("[LearnPlay A9] Forest L01 asset import warnings", assetImportErrors);
+    }
+  }, [assetValidation, assetImportErrors]);
 
   function selectQuestion(index: number) {
     setActiveIndex(index);
@@ -468,8 +641,13 @@ export function PilotQuestionEnginePreview({
           </p>
         </section>
 
-        <AssetValidationPanel assetRows={assetRows} assetValidation={assetValidation} />
+        <AssetValidationPanel
+          assetRows={assetRows}
+          assetValidation={assetValidation}
+          assetImportErrors={assetImportErrors}
+        />
         <RandomSessionPreview assetRows={assetRows} assetValidation={assetValidation} />
+        <ImportedAssetQuestionPreview questions={importedAssetQuestions} />
 
         <section className="grid gap-3 rounded-[1.5rem] border border-[#DDE8F5] bg-white p-4 shadow-sm sm:grid-cols-3">
           {questions.map((question, index) => {
