@@ -19,11 +19,25 @@ function normalizeForDuplicateCheck(value: string) {
   return value.trim().replace(/\s+/g, " ").toLocaleLowerCase("en");
 }
 
+function normalizeAnswer(value: string) {
+  const trimmed = value.trim().replace(/\s+/g, " ");
+  const numeric = Number(trimmed.replace(/,/g, ""));
+  if (trimmed !== "" && Number.isFinite(numeric)) return String(numeric);
+  return trimmed.toLocaleLowerCase("en");
+}
+
+function splitOptions(value: string) {
+  return value
+    .split("|")
+    .map((option) => option.trim())
+    .filter(Boolean);
+}
+
 function addIssue(
   issues: QuestionAssetValidationIssue[],
   row: Partial<ForestL01QuestionAssetRow>,
   rowIndex: number,
-  field: ForestL01AssetColumn,
+  field: QuestionAssetValidationIssue["field"],
   message: string,
   severity: "warning" | "error" = "warning",
 ) {
@@ -42,6 +56,15 @@ function parseBoolean(value: string) {
 
 function isApproved(value: string) {
   return value.trim().toLocaleLowerCase("en") === "approved";
+}
+
+function optionsAreUnique(options: string[]) {
+  return new Set(options.map(normalizeAnswer)).size === options.length;
+}
+
+function correctAnswerMatchesOption(options: string[], correctAnswer: string) {
+  const normalizedCorrect = normalizeAnswer(correctAnswer);
+  return options.some((option) => normalizeAnswer(option) === normalizedCorrect);
 }
 
 export function parseForestL01AssetRows(
@@ -63,10 +86,7 @@ export function parseForestL01AssetRows(
     question: text(row, "Question"),
     visualObject: text(row, "Visual Object"),
     visualDescription: text(row, "Visual Description"),
-    options: text(row, "Options")
-      .split("|")
-      .map((option) => option.trim())
-      .filter(Boolean),
+    options: splitOptions(text(row, "Options")),
     correctAnswer: text(row, "Correct Answer"),
     steps: [text(row, "Step 1"), text(row, "Step 2"), text(row, "Step 3")],
     finalExplanation: text(row, "Final Explanation"),
@@ -75,6 +95,8 @@ export function parseForestL01AssetRows(
     curriculumAlignment: text(row, "Curriculum Alignment"),
     estimatedTime: text(row, "Estimated Time"),
     voiceScript: text(row, "Voice Script"),
+    teachingNotes: text(row, "Teaching Notes"),
+    requiredAssets: text(row, "Required Assets"),
     versionNotes: text(row, "Version Notes"),
   }));
 }
@@ -95,19 +117,28 @@ export function validateForestL01AssetRows(
       }
     }
 
-    if (!text(row, "Question ID")) {
-      addIssue(issues, row, rowIndex, "Question ID", "Missing question ID.", "error");
-    }
-
-    if (!text(row, "Correct Answer")) {
-      addIssue(issues, row, rowIndex, "Correct Answer", "Missing correct answer.", "error");
-    }
-
-    if (!text(row, "Visual Description")) {
-      addIssue(issues, row, rowIndex, "Visual Description", "Missing visual description.", "error");
+    for (const field of [
+      "Question ID",
+      "Subject",
+      "Year",
+      "World",
+      "Level",
+      "Difficulty",
+      "Question Type",
+      "Question",
+      "Correct Answer",
+      "Step 1",
+      "Step 2",
+      "Step 3",
+      "Final Explanation",
+    ] as const) {
+      if (!text(row, field)) addIssue(issues, row, rowIndex, field, `Missing ${field}.`, "error");
     }
 
     const questionType = text(row, "Question Type");
+    const options = splitOptions(text(row, "Options"));
+    const correctAnswer = text(row, "Correct Answer");
+
     if (!supportedQuestionTypeSet.has(questionType)) {
       addIssue(
         issues,
@@ -119,10 +150,35 @@ export function validateForestL01AssetRows(
       );
     }
 
-    for (const field of ["Step 1", "Step 2", "Step 3", "Final Explanation"] as const) {
-      if (!text(row, field)) {
-        addIssue(issues, row, rowIndex, field, `Missing explanation step: ${field}.`, "error");
+    if (questionType === "Multiple Choice") {
+      if (options.length < 2) {
+        addIssue(issues, row, rowIndex, "Options", "Multiple Choice requires at least 2 usable options.", "error");
+      } else if (!correctAnswerMatchesOption(options, correctAnswer)) {
+        addIssue(issues, row, rowIndex, "Correct Answer", "Correct Answer must match one Multiple Choice option.", "error");
       }
+      if (options.length >= 2 && !optionsAreUnique(options)) {
+        addIssue(issues, row, rowIndex, "Options", "Duplicate answer options found.", "warning");
+      }
+    }
+
+    if (questionType === "Tap Correct Group") {
+      if (options.length < 2) {
+        addIssue(issues, row, rowIndex, "Options", "Tap Correct Group requires at least 2 usable tap targets.", "error");
+      } else if (!correctAnswerMatchesOption(options, correctAnswer)) {
+        addIssue(issues, row, rowIndex, "Correct Answer", "Correct Answer must match one tap target.", "error");
+      }
+    }
+
+    if (questionType === "Match Pairs") {
+      addIssue(issues, row, rowIndex, "Question Type", "Match Pairs imports for preview only; dedicated renderer is not complete.", "warning");
+    }
+
+    if (questionType === "True or False" && !["true", "false", "yes", "no", "correct", "incorrect"].includes(normalizeAnswer(correctAnswer))) {
+      addIssue(issues, row, rowIndex, "Correct Answer", "True or False rows must use True or False as the correct answer.", "error");
+    }
+
+    if (["Count & Type", "Tap Correct Group", "Multiple Choice"].includes(questionType) && !text(row, "Visual Description")) {
+      addIssue(issues, row, rowIndex, "Visual Description", "Missing visual description.", "error");
     }
 
     if (!text(row, "Assessment Eligible")) {
@@ -131,6 +187,14 @@ export function validateForestL01AssetRows(
 
     if (!text(row, "LearnBot Tip")) {
       addIssue(issues, row, rowIndex, "LearnBot Tip", "Missing LearnBot tip.", "warning");
+    }
+
+    if (!text(row, "Teaching Notes")) {
+      addIssue(issues, row, rowIndex, "Teaching Notes", "Teaching notes are missing and should be reviewed before approval.", "warning");
+    }
+
+    if (!text(row, "Required Assets")) {
+      addIssue(issues, row, rowIndex, "Required Assets", "Required assets are missing or inferred and should be reviewed before approval.", "warning");
     }
 
     if (!isApproved(text(row, "Status"))) {
@@ -239,7 +303,10 @@ export function validateForestL01AssetRows(
       isApproved(text(row, "Status")) &&
       isApproved(text(row, "Review Status")) &&
       text(row, "Assessment Eligible") !== "" &&
-      text(row, "Version Notes") !== "";
+      text(row, "Version Notes") !== "" &&
+      text(row, "Teaching Notes") !== "" &&
+      text(row, "Required Assets") !== "" &&
+      text(row, "Question Type") !== "Match Pairs";
 
     return {
       questionId,

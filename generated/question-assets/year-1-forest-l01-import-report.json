@@ -1,0 +1,2351 @@
+{
+  "generatedAt": "2026-07-11T00:13:26.119Z",
+  "sourceFile": "E:\\Codex\\learnplay-academy\\content\\question-assets\\imports\\mathematics\\year-1\\forest-l01.csv",
+  "sourceType": "CSV",
+  "requestedSheet": "Forest L01",
+  "detectedWorksheet": null,
+  "csvSheetNote": "CSV exports contain one tab only; --sheet is used for source validation.",
+  "outputJsonPath": "E:\\Codex\\learnplay-academy\\content\\question-assets\\mathematics\\year-1\\forest-world\\forest-l01-imported.json",
+  "reportJsonPath": "E:\\Codex\\learnplay-academy\\generated\\question-assets\\year-1-forest-l01-import-report.json",
+  "detectedQuestionIdPrefix": "FW-Y1-L01-Q",
+  "detectedSubject": "Mathematics",
+  "detectedYear": 1,
+  "detectedWorld": "Forest World",
+  "detectedLevel": 1,
+  "sourceMismatch": {
+    "hasMismatch": false,
+    "message": "",
+    "expectedLevel": 1,
+    "detectedLevel": 1
+  },
+  "totalSourceRows": 30,
+  "schemaValidRows": 30,
+  "validRows": 30,
+  "importedRows": 30,
+  "rejectedRows": 0,
+  "publishableRows": 0,
+  "warningCount": 70,
+  "errorCount": 0,
+  "duplicateIds": [],
+  "questionTypeDistribution": {
+    "Multiple Choice": 10,
+    "Fill Missing Number": 10,
+    "Match Pairs": 10
+  },
+  "headerMappingAudit": {
+    "detectedHeaders": [
+      "Question ID",
+      "Question Pool Version",
+      "Status",
+      "Subject",
+      "Year",
+      "World",
+      "Level",
+      "Topic",
+      "Subtopic",
+      "Learning Objective",
+      "Difficulty",
+      "Question Type",
+      "Question",
+      "Visual Object",
+      "Visual Description",
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D",
+      "Correct Answer",
+      "Step 1",
+      "Step 2",
+      "Step 3",
+      "Final Explanation",
+      "LearnBot Tip",
+      "Assessment Eligible",
+      "Curriculum Alignment",
+      "Estimated Time (Seconds)",
+      "Visual Asset Required",
+      "Voice Script",
+      "Reviewer",
+      "Review Status",
+      "Review Date",
+      "Version Notes"
+    ],
+    "mapped": [
+      {
+        "originalHeader": "Question ID",
+        "canonicalField": "Question ID"
+      },
+      {
+        "originalHeader": "Question Pool Version",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Status",
+        "canonicalField": "Status"
+      },
+      {
+        "originalHeader": "Subject",
+        "canonicalField": "Subject"
+      },
+      {
+        "originalHeader": "Year",
+        "canonicalField": "Year"
+      },
+      {
+        "originalHeader": "World",
+        "canonicalField": "World"
+      },
+      {
+        "originalHeader": "Level",
+        "canonicalField": "Level"
+      },
+      {
+        "originalHeader": "Topic",
+        "canonicalField": "Topic"
+      },
+      {
+        "originalHeader": "Subtopic",
+        "canonicalField": "Subtopic"
+      },
+      {
+        "originalHeader": "Learning Objective",
+        "canonicalField": "Learning Objective"
+      },
+      {
+        "originalHeader": "Difficulty",
+        "canonicalField": "Difficulty"
+      },
+      {
+        "originalHeader": "Question Type",
+        "canonicalField": "Question Type"
+      },
+      {
+        "originalHeader": "Question",
+        "canonicalField": "Question"
+      },
+      {
+        "originalHeader": "Visual Object",
+        "canonicalField": "Visual Object"
+      },
+      {
+        "originalHeader": "Visual Description",
+        "canonicalField": "Visual Description"
+      },
+      {
+        "originalHeader": "Option A",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Option B",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Option C",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Option D",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Correct Answer",
+        "canonicalField": "Correct Answer"
+      },
+      {
+        "originalHeader": "Step 1",
+        "canonicalField": "Step 1"
+      },
+      {
+        "originalHeader": "Step 2",
+        "canonicalField": "Step 2"
+      },
+      {
+        "originalHeader": "Step 3",
+        "canonicalField": "Step 3"
+      },
+      {
+        "originalHeader": "Final Explanation",
+        "canonicalField": "Final Explanation"
+      },
+      {
+        "originalHeader": "LearnBot Tip",
+        "canonicalField": "LearnBot Tip"
+      },
+      {
+        "originalHeader": "Assessment Eligible",
+        "canonicalField": "Assessment Eligible"
+      },
+      {
+        "originalHeader": "Curriculum Alignment",
+        "canonicalField": "Curriculum Alignment"
+      },
+      {
+        "originalHeader": "Estimated Time (Seconds)",
+        "canonicalField": "Estimated Time"
+      },
+      {
+        "originalHeader": "Visual Asset Required",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Voice Script",
+        "canonicalField": "Voice Script"
+      },
+      {
+        "originalHeader": "Reviewer",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Review Status",
+        "canonicalField": "Review Status"
+      },
+      {
+        "originalHeader": "Review Date",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Version Notes",
+        "canonicalField": "Version Notes"
+      }
+    ],
+    "unknownHeaders": [
+      "Question Pool Version",
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D",
+      "Visual Asset Required",
+      "Reviewer",
+      "Review Date"
+    ],
+    "missingRequiredHeaders": [],
+    "optionalMissingHeaders": [
+      "Teaching Notes",
+      "Required Assets",
+      "Asset Source",
+      "Content Owner",
+      "QA Notes"
+    ]
+  },
+  "inferredFieldsCount": 60,
+  "explicitFieldsCount": 20,
+  "inferredFields": [
+    {
+      "rowNumber": 2,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 2,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 3,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 3,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 4,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 4,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 5,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 5,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 6,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 6,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 7,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 7,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 8,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 8,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 9,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 9,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 10,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 10,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 11,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 11,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 12,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 12,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 13,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 13,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 14,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 14,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 15,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 15,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 16,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 16,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 17,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 17,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 18,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 18,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 19,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 19,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 20,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 20,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 21,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 21,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 22,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 22,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 23,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 23,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 24,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 24,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 25,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 25,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 26,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 26,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 27,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 27,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 28,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 28,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 29,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 29,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 30,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 30,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 31,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 31,
+      "field": "Required Assets",
+      "status": "inferred"
+    }
+  ],
+  "explicitFields": [
+    {
+      "rowNumber": 2,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 3,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 4,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 5,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 6,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 7,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 8,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 9,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 10,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 11,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 22,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 23,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 24,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 25,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 26,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 27,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 28,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 29,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 30,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 31,
+      "field": "Options",
+      "source": "Option A-D"
+    }
+  ],
+  "rendererLimitations": [
+    {
+      "questionId": "FW-Y1-L01-Q021",
+      "message": "Match Pairs imports for preview only; dedicated renderer TODO."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q022",
+      "message": "Match Pairs imports for preview only; dedicated renderer TODO."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q023",
+      "message": "Match Pairs imports for preview only; dedicated renderer TODO."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q024",
+      "message": "Match Pairs imports for preview only; dedicated renderer TODO."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q025",
+      "message": "Match Pairs imports for preview only; dedicated renderer TODO."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q026",
+      "message": "Match Pairs imports for preview only; dedicated renderer TODO."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q027",
+      "message": "Match Pairs imports for preview only; dedicated renderer TODO."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q028",
+      "message": "Match Pairs imports for preview only; dedicated renderer TODO."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q029",
+      "message": "Match Pairs imports for preview only; dedicated renderer TODO."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q030",
+      "message": "Match Pairs imports for preview only; dedicated renderer TODO."
+    }
+  ],
+  "issues": [
+    {
+      "questionId": "FW-Y1-L01-Q001",
+      "rowNumber": 2,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q001",
+      "rowNumber": 2,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q001",
+      "rowNumber": 2,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q001",
+      "rowNumber": 2,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q002",
+      "rowNumber": 3,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q002",
+      "rowNumber": 3,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q002",
+      "rowNumber": 3,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q002",
+      "rowNumber": 3,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q003",
+      "rowNumber": 4,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q003",
+      "rowNumber": 4,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q003",
+      "rowNumber": 4,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q003",
+      "rowNumber": 4,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q004",
+      "rowNumber": 5,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q004",
+      "rowNumber": 5,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q004",
+      "rowNumber": 5,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q004",
+      "rowNumber": 5,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q005",
+      "rowNumber": 6,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q005",
+      "rowNumber": 6,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q005",
+      "rowNumber": 6,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q005",
+      "rowNumber": 6,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q006",
+      "rowNumber": 7,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q006",
+      "rowNumber": 7,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q006",
+      "rowNumber": 7,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q006",
+      "rowNumber": 7,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q007",
+      "rowNumber": 8,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q007",
+      "rowNumber": 8,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q007",
+      "rowNumber": 8,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q007",
+      "rowNumber": 8,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q008",
+      "rowNumber": 9,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q008",
+      "rowNumber": 9,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q008",
+      "rowNumber": 9,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q008",
+      "rowNumber": 9,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q009",
+      "rowNumber": 10,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q009",
+      "rowNumber": 10,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q009",
+      "rowNumber": 10,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q009",
+      "rowNumber": 10,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q010",
+      "rowNumber": 11,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q010",
+      "rowNumber": 11,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q010",
+      "rowNumber": 11,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q010",
+      "rowNumber": 11,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q011",
+      "rowNumber": 12,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q011",
+      "rowNumber": 12,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q011",
+      "rowNumber": 12,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q011",
+      "rowNumber": 12,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q012",
+      "rowNumber": 13,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q012",
+      "rowNumber": 13,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q012",
+      "rowNumber": 13,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q012",
+      "rowNumber": 13,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q013",
+      "rowNumber": 14,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q013",
+      "rowNumber": 14,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q013",
+      "rowNumber": 14,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q013",
+      "rowNumber": 14,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q014",
+      "rowNumber": 15,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q014",
+      "rowNumber": 15,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q014",
+      "rowNumber": 15,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q014",
+      "rowNumber": 15,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q015",
+      "rowNumber": 16,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q015",
+      "rowNumber": 16,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q015",
+      "rowNumber": 16,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q015",
+      "rowNumber": 16,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q016",
+      "rowNumber": 17,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q016",
+      "rowNumber": 17,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q016",
+      "rowNumber": 17,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q016",
+      "rowNumber": 17,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q017",
+      "rowNumber": 18,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q017",
+      "rowNumber": 18,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q017",
+      "rowNumber": 18,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q017",
+      "rowNumber": 18,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q018",
+      "rowNumber": 19,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q018",
+      "rowNumber": 19,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q018",
+      "rowNumber": 19,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q018",
+      "rowNumber": 19,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q019",
+      "rowNumber": 20,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q019",
+      "rowNumber": 20,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q019",
+      "rowNumber": 20,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q019",
+      "rowNumber": 20,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q020",
+      "rowNumber": 21,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q020",
+      "rowNumber": 21,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q020",
+      "rowNumber": 21,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q020",
+      "rowNumber": 21,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q021",
+      "rowNumber": 22,
+      "field": "Question Type",
+      "severity": "warning",
+      "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q021",
+      "rowNumber": 22,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q021",
+      "rowNumber": 22,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q021",
+      "rowNumber": 22,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q021",
+      "rowNumber": 22,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q022",
+      "rowNumber": 23,
+      "field": "Question Type",
+      "severity": "warning",
+      "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q022",
+      "rowNumber": 23,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q022",
+      "rowNumber": 23,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q022",
+      "rowNumber": 23,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q022",
+      "rowNumber": 23,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q023",
+      "rowNumber": 24,
+      "field": "Question Type",
+      "severity": "warning",
+      "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q023",
+      "rowNumber": 24,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q023",
+      "rowNumber": 24,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q023",
+      "rowNumber": 24,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q023",
+      "rowNumber": 24,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q024",
+      "rowNumber": 25,
+      "field": "Question Type",
+      "severity": "warning",
+      "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q024",
+      "rowNumber": 25,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q024",
+      "rowNumber": 25,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q024",
+      "rowNumber": 25,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q024",
+      "rowNumber": 25,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q025",
+      "rowNumber": 26,
+      "field": "Question Type",
+      "severity": "warning",
+      "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q025",
+      "rowNumber": 26,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q025",
+      "rowNumber": 26,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q025",
+      "rowNumber": 26,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q025",
+      "rowNumber": 26,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q026",
+      "rowNumber": 27,
+      "field": "Question Type",
+      "severity": "warning",
+      "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q026",
+      "rowNumber": 27,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q026",
+      "rowNumber": 27,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q026",
+      "rowNumber": 27,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q026",
+      "rowNumber": 27,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q027",
+      "rowNumber": 28,
+      "field": "Question Type",
+      "severity": "warning",
+      "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q027",
+      "rowNumber": 28,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q027",
+      "rowNumber": 28,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q027",
+      "rowNumber": 28,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q027",
+      "rowNumber": 28,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q028",
+      "rowNumber": 29,
+      "field": "Question Type",
+      "severity": "warning",
+      "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q028",
+      "rowNumber": 29,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q028",
+      "rowNumber": 29,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q028",
+      "rowNumber": 29,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q028",
+      "rowNumber": 29,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q029",
+      "rowNumber": 30,
+      "field": "Question Type",
+      "severity": "warning",
+      "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q029",
+      "rowNumber": 30,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q029",
+      "rowNumber": 30,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q029",
+      "rowNumber": 30,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q029",
+      "rowNumber": 30,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q030",
+      "rowNumber": 31,
+      "field": "Question Type",
+      "severity": "warning",
+      "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q030",
+      "rowNumber": 31,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q030",
+      "rowNumber": 31,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L01-Q030",
+      "rowNumber": 31,
+      "field": "Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Status is Review."
+    },
+    {
+      "questionId": "FW-Y1-L01-Q030",
+      "rowNumber": 31,
+      "field": "Review Status",
+      "severity": "warning",
+      "message": "Row is valid but not publishable because Review Status is Pending."
+    }
+  ],
+  "rowResults": [
+    {
+      "questionId": "FW-Y1-L01-Q001",
+      "rowNumber": 2,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q001",
+          "rowNumber": 2,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q001",
+          "rowNumber": 2,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q002",
+      "rowNumber": 3,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q002",
+          "rowNumber": 3,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q002",
+          "rowNumber": 3,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q003",
+      "rowNumber": 4,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q003",
+          "rowNumber": 4,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q003",
+          "rowNumber": 4,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q004",
+      "rowNumber": 5,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q004",
+          "rowNumber": 5,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q004",
+          "rowNumber": 5,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q005",
+      "rowNumber": 6,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q005",
+          "rowNumber": 6,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q005",
+          "rowNumber": 6,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q006",
+      "rowNumber": 7,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q006",
+          "rowNumber": 7,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q006",
+          "rowNumber": 7,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q007",
+      "rowNumber": 8,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q007",
+          "rowNumber": 8,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q007",
+          "rowNumber": 8,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q008",
+      "rowNumber": 9,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q008",
+          "rowNumber": 9,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q008",
+          "rowNumber": 9,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q009",
+      "rowNumber": 10,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q009",
+          "rowNumber": 10,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q009",
+          "rowNumber": 10,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q010",
+      "rowNumber": 11,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q010",
+          "rowNumber": 11,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q010",
+          "rowNumber": 11,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q011",
+      "rowNumber": 12,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q011",
+          "rowNumber": 12,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q011",
+          "rowNumber": 12,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q012",
+      "rowNumber": 13,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q012",
+          "rowNumber": 13,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q012",
+          "rowNumber": 13,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q013",
+      "rowNumber": 14,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q013",
+          "rowNumber": 14,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q013",
+          "rowNumber": 14,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q014",
+      "rowNumber": 15,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q014",
+          "rowNumber": 15,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q014",
+          "rowNumber": 15,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q015",
+      "rowNumber": 16,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q015",
+          "rowNumber": 16,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q015",
+          "rowNumber": 16,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q016",
+      "rowNumber": 17,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q016",
+          "rowNumber": 17,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q016",
+          "rowNumber": 17,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q017",
+      "rowNumber": 18,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q017",
+          "rowNumber": 18,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q017",
+          "rowNumber": 18,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q018",
+      "rowNumber": 19,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q018",
+          "rowNumber": 19,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q018",
+          "rowNumber": 19,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q019",
+      "rowNumber": 20,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q019",
+          "rowNumber": 20,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q019",
+          "rowNumber": 20,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q020",
+      "rowNumber": 21,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q020",
+          "rowNumber": 21,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q020",
+          "rowNumber": 21,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q021",
+      "rowNumber": 22,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q021",
+          "rowNumber": 22,
+          "field": "Question Type",
+          "severity": "warning",
+          "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q021",
+          "rowNumber": 22,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q021",
+          "rowNumber": 22,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q022",
+      "rowNumber": 23,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q022",
+          "rowNumber": 23,
+          "field": "Question Type",
+          "severity": "warning",
+          "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q022",
+          "rowNumber": 23,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q022",
+          "rowNumber": 23,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q023",
+      "rowNumber": 24,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q023",
+          "rowNumber": 24,
+          "field": "Question Type",
+          "severity": "warning",
+          "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q023",
+          "rowNumber": 24,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q023",
+          "rowNumber": 24,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q024",
+      "rowNumber": 25,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q024",
+          "rowNumber": 25,
+          "field": "Question Type",
+          "severity": "warning",
+          "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q024",
+          "rowNumber": 25,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q024",
+          "rowNumber": 25,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q025",
+      "rowNumber": 26,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q025",
+          "rowNumber": 26,
+          "field": "Question Type",
+          "severity": "warning",
+          "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q025",
+          "rowNumber": 26,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q025",
+          "rowNumber": 26,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q026",
+      "rowNumber": 27,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q026",
+          "rowNumber": 27,
+          "field": "Question Type",
+          "severity": "warning",
+          "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q026",
+          "rowNumber": 27,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q026",
+          "rowNumber": 27,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q027",
+      "rowNumber": 28,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q027",
+          "rowNumber": 28,
+          "field": "Question Type",
+          "severity": "warning",
+          "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q027",
+          "rowNumber": 28,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q027",
+          "rowNumber": 28,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q028",
+      "rowNumber": 29,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q028",
+          "rowNumber": 29,
+          "field": "Question Type",
+          "severity": "warning",
+          "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q028",
+          "rowNumber": 29,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q028",
+          "rowNumber": 29,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q029",
+      "rowNumber": 30,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q029",
+          "rowNumber": 30,
+          "field": "Question Type",
+          "severity": "warning",
+          "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q029",
+          "rowNumber": 30,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q029",
+          "rowNumber": 30,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    },
+    {
+      "questionId": "FW-Y1-L01-Q030",
+      "rowNumber": 31,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": [
+        {
+          "questionId": "FW-Y1-L01-Q030",
+          "rowNumber": 31,
+          "field": "Question Type",
+          "severity": "warning",
+          "message": "Match Pairs is preview-only until its dedicated renderer is complete."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q030",
+          "rowNumber": 31,
+          "field": "Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Status is Review."
+        },
+        {
+          "questionId": "FW-Y1-L01-Q030",
+          "rowNumber": 31,
+          "field": "Review Status",
+          "severity": "warning",
+          "message": "Row is valid but not publishable because Review Status is Pending."
+        }
+      ]
+    }
+  ]
+}

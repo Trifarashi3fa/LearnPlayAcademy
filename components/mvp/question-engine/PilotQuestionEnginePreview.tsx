@@ -15,6 +15,11 @@ import type {
   QuestionAssetValidationSummary as AssetValidationSummary,
 } from "@/data/question-asset-schema";
 import type { QuestionAssetImportError } from "@/lib/question-assets/import-question-assets";
+import {
+  forestL01TargetDistribution,
+  selectForestL01RandomSession,
+  summarizeRendererSupport,
+} from "@/lib/question-assets/random-question-pool";
 import { QuestionRenderer } from "@/components/mvp/question-engine/QuestionRenderer";
 
 export type PilotQuestionRecord = {
@@ -34,15 +39,49 @@ export type PilotQuestionRecord = {
   mvpStatus?: string;
 };
 
+type AssetImportReport = {
+  sourceType?: string;
+  requestedSheet?: string;
+  detectedWorksheet?: string | null;
+  detectedQuestionIdPrefix?: string | null;
+  detectedSubject?: string | null;
+  detectedYear?: number | null;
+  detectedWorld?: string | null;
+  detectedLevel?: number | null;
+  totalSourceRows?: number;
+  importedRows?: number;
+  rejectedRows?: number;
+  warningCount?: number;
+  errorCount?: number;
+  sourceMismatch?: {
+    hasMismatch?: boolean;
+    message?: string;
+    expectedLevel?: number | null;
+    detectedLevel?: number | null;
+  };
+  rendererLimitations?: Array<{ questionId?: string; message?: string }>;
+};
+
+export type AssetPreviewSource = {
+  id: string;
+  label: string;
+  rows: AssetRow[];
+  validation: AssetValidationSummary;
+  importedQuestions: NormalizedQuestion[];
+  importErrors: QuestionAssetImportError[];
+  importReport?: AssetImportReport;
+};
+
 type PilotQuestionEnginePreviewProps = {
   pilotQuestions: PilotQuestionRecord[];
+  assetSources?: AssetPreviewSource[];
   assetRows?: AssetRow[];
   assetValidation?: AssetValidationSummary;
   importedAssetQuestions?: NormalizedQuestion[];
   assetImportErrors?: QuestionAssetImportError[];
+  randomPoolPreviewEnabled?: boolean;
 };
 
-type RandomMode = "valid" | "publishable";
 
 function asString(value: unknown, fallback = "") {
   return typeof value === "string" ? value : fallback;
@@ -217,28 +256,6 @@ function expectedAnswer(question: NormalizedQuestion) {
   return "";
 }
 
-function getRowsByMode(
-  assetRows: AssetRow[],
-  assetValidation: AssetValidationSummary | undefined,
-  mode: RandomMode,
-) {
-  if (!assetValidation) return [];
-  const allowedIds = new Set(
-    assetValidation.rowResults
-      .filter((result) => (mode === "publishable" ? result.isPublishable : result.isValid))
-      .map((result) => result.questionId),
-  );
-  return assetRows.filter((row) => allowedIds.has(row["Question ID"]));
-}
-
-function pickRandomRows(rows: AssetRow[], count: number) {
-  return [...rows]
-    .map((row) => ({ row, sort: Math.random() }))
-    .sort((a, b) => a.sort - b.sort)
-    .slice(0, Math.min(count, rows.length))
-    .map((item) => item.row);
-}
-
 function countByQuestionType(rows: AssetRow[]) {
   return rows.reduce<Record<string, number>>((counts, row) => {
     const type = row["Question Type"] || "Unknown";
@@ -247,22 +264,116 @@ function countByQuestionType(rows: AssetRow[]) {
   }, {});
 }
 
+function IssueList({
+  title,
+  tone,
+  items,
+}: {
+  title: string;
+  tone: "error" | "warning" | "info";
+  items: string[];
+}) {
+  const toneClass =
+    tone === "error"
+      ? "border-[#EF4444] bg-[#FEE2E2] text-[#7F1D1D]"
+      : tone === "warning"
+        ? "border-[#FFD76A] bg-[#FFF7D6] text-[#082B80]"
+        : "border-[#BFD7FF] bg-[#EAF6FF] text-[#082B80]";
+
+  const visibleItems = items.slice(0, 10);
+
+  return (
+    <details className={`rounded-2xl border p-3 ${toneClass}`} open={tone === "error" && items.length > 0}>
+      <summary className="cursor-pointer text-sm font-black">
+        {title}: {items.length}
+      </summary>
+      {items.length > 0 ? (
+        <>
+          <ul className="mt-3 grid gap-2 text-sm font-bold leading-6">
+            {visibleItems.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          {items.length > visibleItems.length ? (
+            <p className="mt-3 text-xs font-black uppercase">
+              Showing first {visibleItems.length} of {items.length}. Open the JSON report for the full list.
+            </p>
+          ) : null}
+        </>
+      ) : (
+        <p className="mt-3 text-sm font-bold">None found.</p>
+      )}
+    </details>
+  );
+}
+
 function AssetValidationPanel({
   assetRows = [],
   assetValidation,
   assetImportErrors = [],
+  assetImportReport,
 }: {
   assetRows?: AssetRow[];
   assetValidation?: AssetValidationSummary;
   assetImportErrors?: QuestionAssetImportError[];
+  assetImportReport?: AssetImportReport;
 }) {
   if (!assetValidation) return null;
 
   const typeCounts = countByQuestionType(assetRows);
+  const importedCount = Math.max(
+    0,
+    assetImportReport?.importedRows ?? assetValidation.validRows - assetImportErrors.length,
+  );
+  const rejectedCount = Math.max(
+    0,
+    assetImportReport?.rejectedRows ?? assetValidation.totalRows - importedCount,
+  );
+  const totalRows = assetImportReport?.totalSourceRows ?? assetValidation.totalRows;
+  const hasSourceMismatch = assetImportReport?.sourceMismatch?.hasMismatch === true;
+  const validationErrors = assetValidation.issues
+    .filter((issue) => issue.severity === "error")
+    .map((issue) => `Row ${issue.rowNumber} - ${issue.questionId} - ${issue.field}: ${issue.message}`);
+  const importErrors = assetImportErrors.map(
+    (issue) => `Row ${issue.rowNumber} - ${issue.questionId} - Import: ${issue.message}`,
+  );
+  const publishabilityIssues = assetValidation.issues
+    .filter((issue) => issue.severity === "warning" && ["Status", "Review Status", "Version Notes"].includes(issue.field))
+    .map((issue) => `Row ${issue.rowNumber} - ${issue.questionId} - ${issue.field}: ${issue.message}`);
+  const warnings = assetValidation.issues
+    .filter((issue) => issue.severity === "warning" && !["Status", "Review Status", "Version Notes"].includes(issue.field))
+    .map((issue) => `Row ${issue.rowNumber} - ${issue.questionId} - ${issue.field}: ${issue.message}`);
+  const rendererSupport = summarizeRendererSupport(assetRows);
+  const rendererClassifications = rendererSupport.items.map(
+    (item) => `${item.questionType}: ${item.status} (${item.count}) - ${item.message}`,
+  );
+  const previewRendererFallbacks = [
+    ...rendererSupport.previewFallback.map(
+      (item) => `${item.questionType}: ${item.count} preview through a safe fallback. ${item.message}`,
+    ),
+    ...rendererSupport.previewOnlyLimitation.map(
+      (item) => `${item.questionType}: ${item.count} preview-only limitation. ${item.message}`,
+    ),
+    ...(assetImportReport?.rendererLimitations ?? []).map(
+      (item) => `${item.questionId ?? "Report"}: ${item.message ?? "Renderer limitation."}`,
+    ),
+  ];
+  const unsupportedRenderers = rendererSupport.unsupported.map(
+    (item) => `${item.questionType}: ${item.count} unsupported. ${item.message}`,
+  );
+  const missingVisuals = assetValidation.issues
+    .filter((issue) => ["Visual Description", "Visual Object", "Required Assets"].includes(issue.field))
+    .map((issue) => `Row ${issue.rowNumber} - ${issue.questionId} - ${issue.field}: ${issue.message}`);
+  const duplicateIds = assetValidation.issues
+    .filter((issue) => issue.field === "Question ID" && issue.message.toLocaleLowerCase("en").includes("duplicate"))
+    .map((issue) => `Row ${issue.rowNumber} - ${issue.questionId}: ${issue.message}`);
+  const missingExplanations = assetValidation.issues
+    .filter((issue) => ["Step 1", "Step 2", "Step 3", "Final Explanation", "Teaching Notes", "LearnBot Tip"].includes(issue.field))
+    .map((issue) => `Row ${issue.rowNumber} - ${issue.questionId} - ${issue.field}: ${issue.message}`);
   const statusTone =
-    assetValidation.errorCount > 0 || assetImportErrors.length > 0
+    validationErrors.length > 0 || importErrors.length > 0
       ? "border-[#EF4444] bg-[#FEE2E2] text-[#7F1D1D]"
-      : assetValidation.warningCount > 0
+      : warnings.length > 0
         ? "border-[#FFD76A] bg-[#FFF7D6] text-[#082B80]"
         : "border-[#22C55E] bg-[#DCFCE7] text-[#14532D]";
 
@@ -274,7 +385,7 @@ function AssetValidationPanel({
             Question Asset Import Layer
           </p>
           <h2 className="mt-2 text-2xl font-black text-[#082B80]">
-            Forest L01 Asset Validation
+            Forest L01 Asset QA
           </h2>
           <p className="mt-2 max-w-3xl text-sm font-bold leading-6 text-[#5B6B94]">
             Local asset rows are validated and imported separately from the
@@ -282,14 +393,32 @@ function AssetValidationPanel({
           </p>
         </div>
         <div className={`rounded-2xl border-2 px-4 py-3 text-sm font-black ${statusTone}`}>
-          {assetValidation.errorCount + assetImportErrors.length} errors - {assetValidation.warningCount} warnings
+          {validationErrors.length + importErrors.length} errors - {assetValidation.warningCount} warnings
         </div>
       </div>
+
+      {assetImportReport ? (
+        <div className={`mt-5 rounded-2xl border-2 p-4 text-sm font-black leading-6 ${
+          hasSourceMismatch
+            ? "border-[#EF4444] bg-[#FEE2E2] text-[#7F1D1D]"
+            : "border-[#BFD7FF] bg-[#EAF6FF] text-[#082B80]"
+        }`}>
+          <p>
+            Source: {assetImportReport.sourceType ?? "Local JSON"} / Requested:{" "}
+            {assetImportReport.requestedSheet ?? "Forest L01"} / Detected level:{" "}
+            {assetImportReport.detectedLevel ?? "not detected"} / Prefix:{" "}
+            {assetImportReport.detectedQuestionIdPrefix ?? "not detected"}
+          </p>
+          {hasSourceMismatch ? (
+            <p className="mt-2">{assetImportReport.sourceMismatch?.message}</p>
+          ) : null}
+        </div>
+      ) : null}
 
       <div className="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-6">
         <div className="rounded-2xl bg-[#EAF6FF] p-4">
           <p className="text-xs font-black uppercase text-[#0B63F6]">Total rows</p>
-          <p className="mt-1 text-3xl font-black">{assetValidation.totalRows}</p>
+          <p className="mt-1 text-3xl font-black">{totalRows}</p>
         </div>
         <div className="rounded-2xl bg-[#DCFCE7] p-4">
           <p className="text-xs font-black uppercase text-[#14532D]">Valid rows</p>
@@ -301,15 +430,15 @@ function AssetValidationPanel({
         </div>
         <div className="rounded-2xl bg-[#FFF7D6] p-4">
           <p className="text-xs font-black uppercase text-[#082B80]">Imported</p>
-          <p className="mt-1 text-3xl font-black">{assetValidation.validRows - assetImportErrors.length}</p>
+          <p className="mt-1 text-3xl font-black">{importedCount}</p>
         </div>
         <div className="rounded-2xl bg-[#FFF7D6] p-4">
-          <p className="text-xs font-black uppercase text-[#082B80]">Warnings</p>
-          <p className="mt-1 text-3xl font-black">{assetValidation.warningCount}</p>
+          <p className="text-xs font-black uppercase text-[#082B80]">Rejected</p>
+          <p className="mt-1 text-3xl font-black">{rejectedCount}</p>
         </div>
         <div className="rounded-2xl bg-[#FEE2E2] p-4">
           <p className="text-xs font-black uppercase text-[#7F1D1D]">Errors</p>
-          <p className="mt-1 text-3xl font-black">{assetValidation.errorCount + assetImportErrors.length}</p>
+          <p className="mt-1 text-3xl font-black">{validationErrors.length + importErrors.length}</p>
         </div>
       </div>
 
@@ -324,34 +453,17 @@ function AssetValidationPanel({
         ))}
       </div>
 
-      {assetValidation.issues.length > 0 || assetImportErrors.length > 0 ? (
-        <div className="mt-5 grid max-h-96 gap-2 overflow-y-auto pr-1">
-          {assetValidation.issues.map((issue) => (
-            <div
-              key={`${issue.questionId}-${issue.field}-${issue.message}`}
-              className={`rounded-2xl border p-3 text-sm font-bold ${
-                issue.severity === "error"
-                  ? "border-[#EF4444] bg-[#FEE2E2] text-[#7F1D1D]"
-                  : "border-[#FFD76A] bg-[#FFF7D6] text-[#082B80]"
-              }`}
-            >
-              Row {issue.rowNumber} - {issue.questionId} - {issue.field}: {issue.message}
-            </div>
-          ))}
-          {assetImportErrors.map((issue) => (
-            <div
-              key={`${issue.questionId}-${issue.rowNumber}-${issue.message}`}
-              className="rounded-2xl border border-[#EF4444] bg-[#FEE2E2] p-3 text-sm font-bold text-[#7F1D1D]"
-            >
-              Row {issue.rowNumber} - {issue.questionId} - Import: {issue.message}
-            </div>
-          ))}
-        </div>
-      ) : (
-        <p className="mt-5 rounded-2xl border border-[#22C55E] bg-[#DCFCE7] p-3 text-sm font-black text-[#14532D]">
-          Import validation passed for the Forest L01 asset rows.
-        </p>
-      )}
+      <div className="mt-5 grid gap-3 lg:grid-cols-2">
+        <IssueList title="Errors" tone="error" items={[...validationErrors, ...importErrors]} />
+        <IssueList title="Publishability issues" tone="warning" items={publishabilityIssues} />
+        <IssueList title="Warnings" tone="warning" items={warnings} />
+        <IssueList title="Renderer classifications" tone="info" items={rendererClassifications} />
+        <IssueList title="Preview fallback / limitations" tone="info" items={previewRendererFallbacks} />
+        <IssueList title="Unsupported renderers" tone="error" items={unsupportedRenderers} />
+        <IssueList title="Missing visuals/assets" tone="error" items={missingVisuals} />
+        <IssueList title="Duplicate IDs" tone="error" items={duplicateIds} />
+        <IssueList title="Missing explanations/teaching notes" tone="error" items={missingExplanations} />
+      </div>
     </section>
   );
 }
@@ -359,94 +471,162 @@ function AssetValidationPanel({
 function RandomSessionPreview({
   assetRows = [],
   assetValidation,
+  assetImportReport,
+  importedQuestions = [],
+  enabled = false,
 }: {
   assetRows?: AssetRow[];
   assetValidation?: AssetValidationSummary;
+  assetImportReport?: AssetImportReport;
+  importedQuestions?: NormalizedQuestion[];
+  enabled?: boolean;
 }) {
-  const [mode, setMode] = useState<RandomMode>("valid");
-  const availableRows = useMemo(
-    () => getRowsByMode(assetRows, assetValidation, mode),
-    [assetRows, assetValidation, mode],
+  const [seedIndex, setSeedIndex] = useState(1);
+  const validQuestionIds = useMemo(
+    () =>
+      assetValidation?.rowResults
+        .filter((result) => result.isValid)
+        .map((result) => result.questionId) ?? [],
+    [assetValidation],
   );
-  const [sessionRows, setSessionRows] = useState<AssetRow[]>([]);
-
-  function generateSession() {
-    setSessionRows(pickRandomRows(availableRows, 10));
-  }
-
-  useEffect(() => {
-    if (availableRows.length > 0) {
-      setSessionRows(pickRandomRows(availableRows, 10));
-    } else {
-      setSessionRows([]);
-    }
-  }, [availableRows]);
+  const session = useMemo(
+    () =>
+      selectForestL01RandomSession({
+        questions: importedQuestions,
+        assetRows,
+        validQuestionIds,
+        seed: `forest-l01-preview-${seedIndex}`,
+      }),
+    [assetRows, importedQuestions, seedIndex, validQuestionIds],
+  );
 
   if (!assetValidation) return null;
+
+  const duplicateCount =
+    session.selectedQuestionIds.length - new Set(session.selectedQuestionIds).size;
 
   return (
     <section className="rounded-[2rem] border border-[#BFD7FF] bg-[#EAF6FF] p-5 shadow-sm">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <p className="text-sm font-black uppercase tracking-wide text-[#0B63F6]">
-            Forest L01 Random Session Preview
+            Forest L01 Random Pool Preview
           </p>
           <h2 className="mt-2 text-2xl font-black text-[#082B80]">
             Random 10-question session
           </h2>
           <p className="mt-2 max-w-3xl text-sm font-bold leading-6 text-[#5B6B94]">
-            This preview samples local asset rows only. It does not affect
-            progress, XP, badges, or the production manifest.
+            This dev-only preview samples valid imported asset questions with a
+            target mix of interaction types. Production Forest gameplay still
+            uses the approved active manifest.
+          </p>
+          <p className="mt-2 max-w-3xl text-xs font-black uppercase tracking-wide text-[#5B6B94]">
+            Dataset: {assetImportReport?.requestedSheet ?? "Forest L01"} / Source:{" "}
+            {assetImportReport?.sourceType ?? "local JSON"} / Detected level:{" "}
+            {assetImportReport?.detectedLevel ?? "not detected"}
+          </p>
+          <p className="mt-2 max-w-3xl text-xs font-bold leading-5 text-[#5B6B94]">
+            Publishability does not control dev-preview eligibility. Review/Pending
+            rows can be sampled here when they are structurally valid and imported.
           </p>
         </div>
         <button
           type="button"
-          onClick={generateSession}
-          disabled={availableRows.length === 0}
+          onClick={() => setSeedIndex((current) => current + 1)}
+          disabled={!enabled || session.eligibleCount < 10}
           className="inline-flex min-h-12 items-center justify-center rounded-full bg-[#0B63F6] px-5 py-3 text-sm font-black text-white transition hover:bg-[#084FC5] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 disabled:cursor-not-allowed disabled:bg-[#C9D7EA] disabled:text-[#5B6B94]"
         >
           Generate New Random Session
         </button>
       </div>
 
-      <div className="mt-5 flex flex-wrap gap-2">
-        {(["valid", "publishable"] as const).map((option) => (
-          <button
-            key={option}
-            type="button"
-            onClick={() => setMode(option)}
-            className={`min-h-11 rounded-full px-4 py-2 text-sm font-black capitalize transition focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 ${
-              mode === option
-                ? "bg-[#0B63F6] text-white"
-                : "bg-white text-[#082B80] hover:bg-[#F8FBFF]"
-            }`}
-          >
-            Random from {option} rows
-          </button>
-        ))}
-      </div>
-
-      {mode === "publishable" && availableRows.length === 0 ? (
+      {!enabled ? (
         <p className="mt-5 rounded-2xl border-2 border-[#FFD76A] bg-[#FFF7D6] p-4 text-sm font-black leading-6 text-[#082B80]">
-          No publishable rows yet. Mark Status and Review Status as Approved to
-          test publishable mode.
+          Random pool preview is disabled outside the development preview flag.
         </p>
       ) : null}
 
+      {enabled && session.eligibleCount < 10 ? (
+        <p className="mt-5 rounded-2xl border-2 border-[#FFD76A] bg-[#FFF7D6] p-4 text-sm font-black leading-6 text-[#082B80]">
+          Random session unavailable: Forest L01 needs at least 10 dev-preview
+          eligible imported questions, but this source has {session.eligibleCount}.
+        </p>
+      ) : null}
+
+      <div className="mt-5 grid gap-3 sm:grid-cols-4">
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-xs font-black uppercase text-[#0B63F6]">Dev-preview eligible pool</p>
+          <p className="mt-1 text-3xl font-black text-[#082B80]">{session.eligibleCount}</p>
+        </div>
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-xs font-black uppercase text-[#0B63F6]">Selected</p>
+          <p className="mt-1 text-3xl font-black text-[#082B80]">{session.selectedQuestions.length}</p>
+        </div>
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-xs font-black uppercase text-[#0B63F6]">Duplicates</p>
+          <p className="mt-1 text-3xl font-black text-[#082B80]">{duplicateCount}</p>
+        </div>
+        <div className="rounded-2xl bg-white p-4">
+          <p className="text-xs font-black uppercase text-[#0B63F6]">Seed</p>
+          <p className="mt-1 text-xl font-black text-[#082B80]">{seedIndex}</p>
+        </div>
+      </div>
+
+      <div className="mt-5 rounded-2xl border border-[#DDE8F5] bg-white p-4">
+        <p className="text-xs font-black uppercase text-[#5B6B94]">Target mix</p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {Object.entries(forestL01TargetDistribution).map(([type, count]) => (
+            <span
+              key={type}
+              className="rounded-full bg-[#F3E8FF] px-3 py-2 text-xs font-black text-[#8B5CF6]"
+            >
+              {type}: {count}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <div className="mt-5 rounded-2xl border border-[#DDE8F5] bg-white p-4">
+        <p className="text-xs font-black uppercase text-[#5B6B94]">Selected mix</p>
+        <div className="mt-3 flex flex-wrap gap-2">
+          {Object.entries(session.typeDistribution).map(([type, count]) => (
+            <span
+              key={type}
+              className="rounded-full bg-[#DCFCE7] px-3 py-2 text-xs font-black text-[#14532D]"
+            >
+              {type}: {count}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {session.warnings.length > 0 ? (
+        <div className="mt-5 grid gap-2">
+          {session.warnings.map((warning, index) => (
+            <p
+              key={`${warning.code}-${warning.questionId ?? "pool"}-${index}`}
+              className="rounded-2xl border border-[#FFD76A] bg-[#FFF7D6] p-3 text-sm font-bold leading-6 text-[#082B80]"
+            >
+              {warning.message}
+            </p>
+          ))}
+        </div>
+      ) : null}
+
       <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
-        {sessionRows.map((row, index) => (
+        {session.selectedQuestions.map((question, index) => (
           <article
-            key={`${row["Question ID"]}-${index}`}
+            key={`${question.questionId}-${index}`}
             className="rounded-2xl border border-[#DDE8F5] bg-white p-3"
           >
             <p className="text-xs font-black uppercase text-[#FF4FB8]">
               Session {index + 1}
             </p>
-            <h3 className="mt-1 text-sm font-black text-[#082B80]">
-              {row["Question ID"]}
+            <h3 className="mt-1 break-words text-sm font-black text-[#082B80]">
+              {question.questionId}
             </h3>
             <p className="mt-2 text-xs font-bold text-[#5B6B94]">
-              {row["Question Type"]}
+              {question.interactionType}
             </p>
           </article>
         ))}
@@ -586,11 +766,36 @@ function ImportedAssetQuestionPreview({
 
 export function PilotQuestionEnginePreview({
   pilotQuestions,
+  assetSources,
   assetRows,
   assetValidation,
   importedAssetQuestions = [],
   assetImportErrors = [],
+  randomPoolPreviewEnabled = false,
 }: PilotQuestionEnginePreviewProps) {
+  const resolvedAssetSources = useMemo<AssetPreviewSource[]>(() => {
+    if (assetSources?.length) return assetSources;
+    if (assetRows && assetValidation) {
+      return [
+        {
+          id: "fixed-sample",
+          label: assetValidation.sourceName,
+          rows: assetRows,
+          validation: assetValidation,
+          importedQuestions: importedAssetQuestions,
+          importErrors: assetImportErrors,
+        },
+      ];
+    }
+    return [];
+  }, [assetSources, assetRows, assetValidation, importedAssetQuestions, assetImportErrors]);
+  const [activeAssetSourceId, setActiveAssetSourceId] = useState(
+    resolvedAssetSources[0]?.id ?? "fixed-sample",
+  );
+  const activeAssetSource =
+    resolvedAssetSources.find((source) => source.id === activeAssetSourceId) ??
+    resolvedAssetSources[0];
+
   const questions = useMemo(
     () => pilotQuestions.map(normalizePilotQuestion),
     [pilotQuestions],
@@ -601,13 +806,13 @@ export function PilotQuestionEnginePreview({
   const answerResult = activeQuestion ? checkAnswer(activeQuestion, selectedAnswer) : null;
 
   useEffect(() => {
-    if (assetValidation) {
-      console.info("[LearnPlay A9] Forest L01 asset validation", assetValidation);
+    if (activeAssetSource) {
+      console.info("[LearnPlay A11] Forest L01 asset validation", activeAssetSource.validation);
     }
-    if (assetImportErrors.length > 0) {
-      console.warn("[LearnPlay A9] Forest L01 asset import warnings", assetImportErrors);
+    if (activeAssetSource?.importErrors.length) {
+      console.warn("[LearnPlay A11] Forest L01 asset import warnings", activeAssetSource.importErrors);
     }
-  }, [assetValidation, assetImportErrors]);
+  }, [activeAssetSource]);
 
   function selectQuestion(index: number) {
     setActiveIndex(index);
@@ -641,13 +846,44 @@ export function PilotQuestionEnginePreview({
           </p>
         </section>
 
+        {resolvedAssetSources.length > 1 ? (
+          <section className="rounded-[1.5rem] border border-[#DDE8F5] bg-white p-4 shadow-sm">
+            <p className="text-xs font-black uppercase text-[#FF4FB8]">
+              Question asset source
+            </p>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {resolvedAssetSources.map((source) => (
+                <button
+                  key={source.id}
+                  type="button"
+                  onClick={() => setActiveAssetSourceId(source.id)}
+                  className={`min-h-11 rounded-full px-4 py-2 text-sm font-black transition focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/25 ${
+                    activeAssetSource?.id === source.id
+                      ? "bg-[#0B63F6] text-white"
+                      : "bg-[#EAF6FF] text-[#082B80] hover:bg-[#DCEEFF]"
+                  }`}
+                >
+                  {source.label}
+                </button>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <AssetValidationPanel
-          assetRows={assetRows}
-          assetValidation={assetValidation}
-          assetImportErrors={assetImportErrors}
+          assetRows={activeAssetSource?.rows}
+          assetValidation={activeAssetSource?.validation}
+          assetImportErrors={activeAssetSource?.importErrors ?? []}
+          assetImportReport={activeAssetSource?.importReport}
         />
-        <RandomSessionPreview assetRows={assetRows} assetValidation={assetValidation} />
-        <ImportedAssetQuestionPreview questions={importedAssetQuestions} />
+        <RandomSessionPreview
+          assetRows={activeAssetSource?.rows}
+          assetValidation={activeAssetSource?.validation}
+          assetImportReport={activeAssetSource?.importReport}
+          importedQuestions={activeAssetSource?.importedQuestions ?? []}
+          enabled={randomPoolPreviewEnabled}
+        />
+        <ImportedAssetQuestionPreview questions={activeAssetSource?.importedQuestions ?? []} />
 
         <section className="grid gap-3 rounded-[1.5rem] border border-[#DDE8F5] bg-white p-4 shadow-sm sm:grid-cols-3">
           {questions.map((question, index) => {
@@ -761,3 +997,4 @@ export function PilotQuestionEnginePreview({
     </main>
   );
 }
+

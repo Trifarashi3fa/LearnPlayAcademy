@@ -65,4 +65,6 @@ export function getSubjectFeatureId(subjectSlug: string): FeatureId | null {
 export const questionEngineFeatureFlags = {
   // Non-MCQ import and renderer previews are development-only until approved.
   nonMCQPreview: process.env.NODE_ENV !== "production",
+  // Forest L01 random sessions are for local/dev review only until approved.
+  forestL01RandomPoolPreview: process.env.NODE_ENV !== "production",
 } as const;

@@ -26,7 +26,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "After 4 comes 5.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Start at number 4. Count one step forward. The next number is 5. Counting forward helps you find the next number.",
+        "Required Assets":  "Use local LearnPlay visual renderer for number line; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-002",
@@ -55,7 +57,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The group has 6 stars.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Look at each star. Touch or count each star one time. There are six stars altogether. Point to each object as you count so you do not skip any.",
+        "Required Assets":  "Use local LearnPlay visual renderer for stars; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-003",
@@ -84,7 +88,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "Group B has more apples.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Count the apples in Group A. Count the apples in Group B. Five apples is more than three apples. When comparing groups, count both groups before choosing.",
+        "Required Assets":  "Use local LearnPlay visual renderer for apples; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-004",
@@ -113,7 +119,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The missing number is 4.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Read the numbers in order. After 3 comes 4. Before 5 comes 4. Say the sequence out loud to hear the missing number.",
+        "Required Assets":  "Use local LearnPlay visual renderer for number cards; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-005",
@@ -142,7 +150,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "60 seconds",
         "Voice Script":  "Each number matches the group with the same amount of flowers.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Look at the number on each card. Count the flowers in each group. Connect each number to the group with the same count. A number tells how many objects are in the group.",
+        "Required Assets":  "Use local LearnPlay visual renderer for flowers; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-006",
@@ -171,7 +181,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "5 is smaller than 7.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Read the number 7. Look for a number that comes before 7. 5 comes before 7. Numbers that come earlier when counting are smaller.",
+        "Required Assets":  "Use local LearnPlay visual renderer for ladybugs; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-007",
@@ -200,7 +212,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The answer is 4.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Look at each butterfly. Count each butterfly once. There are four butterflies. Slow counting helps you avoid counting the same object twice.",
+        "Required Assets":  "Use local LearnPlay visual renderer for butterflies; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-008",
@@ -229,7 +243,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "Group B has fewer leaves.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Count Group A. Count Group B. Two leaves is fewer than six leaves. Fewer means the group has a smaller amount.",
+        "Required Assets":  "Use local LearnPlay visual renderer for leaves; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-009",
@@ -258,7 +274,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The missing number is 7.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Start at 6. Count one number forward. After 6 comes 7, then 8. Use the numbers before and after the blank to help you.",
+        "Required Assets":  "Use local LearnPlay visual renderer for stepping stones; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-010",
@@ -287,7 +305,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The number eight is written as 8.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Look at each number badge. Find the badge with the number 8. Choose 8. Number shapes help us read numbers quickly.",
+        "Required Assets":  "Use local LearnPlay visual renderer for number badges; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-011",
@@ -316,7 +336,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The answer is 7.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Look at the basket scene. Count each orange one time. There are seven oranges. Count slowly from left to right.",
+        "Required Assets":  "Use local LearnPlay visual renderer for oranges; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-012",
@@ -345,7 +367,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "60 seconds",
         "Voice Script":  "One matches 1, three matches 3, and six matches 6.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Read the number word. Find the matching number symbol. Pair each word with the same number. Number words and number symbols can mean the same amount.",
+        "Required Assets":  "Use local LearnPlay visual renderer for number words; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-013",
@@ -374,7 +398,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "9 comes before 10.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Find number 10. Look at the number just before it. The number before 10 is 9. Counting backward helps you find the number before.",
+        "Required Assets":  "Use local LearnPlay visual renderer for forest sign; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-014",
@@ -403,7 +429,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The answer is 5.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Look under the tree. Count each acorn once. There are five acorns. Move your finger as you count each object.",
+        "Required Assets":  "Use local LearnPlay visual renderer for acorns; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-015",
@@ -432,7 +460,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "Group A matches the number 4.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Find the target number 4. Count each mushroom group. Group A has four mushrooms. Same number means equal amount.",
+        "Required Assets":  "Use local LearnPlay visual renderer for mushrooms; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-016",
@@ -461,7 +491,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The missing number is 3.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Read from 1. Count forward: 1, 2, 3, 4. The blank is 3. Counting aloud makes missing numbers easier.",
+        "Required Assets":  "Use local LearnPlay visual renderer for number cards; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-017",
@@ -490,7 +522,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The group with 3 berries is correct.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Read the target number 3. Count the berries in each group. Choose the group with three berries. Match the number to the exact count.",
+        "Required Assets":  "Use local LearnPlay visual renderer for berries; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-018",
@@ -519,7 +553,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The answer is 3.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Look at the pond. Count each duck. There are three ducks. Every object gets one count.",
+        "Required Assets":  "Use local LearnPlay visual renderer for ducks; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-019",
@@ -548,7 +584,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "Group B has more pinecones.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Count Group A. Count Group B. Eight is more than four. More means the larger count.",
+        "Required Assets":  "Use local LearnPlay visual renderer for pinecones; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-020",
@@ -577,7 +615,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The missing number is 9.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Start at 7. Count forward through 8. After 8 comes 9, then 10. Look at the numbers around the blank for clues.",
+        "Required Assets":  "Use local LearnPlay visual renderer for stepping stones; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-021",
@@ -606,7 +646,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "3 is between 2 and 4.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Read 2 and 4. Count from 2 to 4. The number between them is 3. Between means in the middle of two numbers.",
+        "Required Assets":  "Use local LearnPlay visual renderer for number bridge; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-022",
@@ -635,7 +677,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The answer is 8.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Look beside the stream. Count each shell once. There are eight shells. Line objects up in your mind as you count.",
+        "Required Assets":  "Use local LearnPlay visual renderer for shells; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-023",
@@ -664,7 +708,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "60 seconds",
         "Voice Script":  "Each dot card matches its number.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Count the dots on a card. Find the number showing the same amount. Match all cards correctly. Dots are useful for quick counting practice.",
+        "Required Assets":  "Use local LearnPlay visual renderer for dot cards; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-024",
@@ -693,7 +739,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "Group B has fewer fish.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Count the fish in Group A. Count the fish in Group B. Four is fewer than nine. The smaller count is the fewer group.",
+        "Required Assets":  "Use local LearnPlay visual renderer for fish; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-025",
@@ -722,7 +770,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "9 is the biggest number.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Look at all the numbers. Think about which number comes latest when counting. 9 comes after the others. The biggest number is farthest along when counting forward.",
+        "Required Assets":  "Use local LearnPlay visual renderer for number leaves; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-026",
@@ -751,7 +801,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The answer is 9.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Look at the marbles. Count each marble one time. There are nine marbles. Make sure every marble gets one count.",
+        "Required Assets":  "Use local LearnPlay visual renderer for marbles; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-027",
@@ -780,7 +832,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "The missing number is 6.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Read the numbers in order. After 5 comes 6. Then comes 7. Use counting forward to fill the blank.",
+        "Required Assets":  "Use local LearnPlay visual renderer for number cards; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-028",
@@ -794,22 +848,24 @@
         "Subtopic":  "Numbers 1-10",
         "Learning Objective":  "Recognize the number 10.",
         "Difficulty":  "Easy",
-        "Question Type":  "Multiple Choice",
-        "Question":  "Which number means ten?",
-        "Visual Object":  "number badges",
-        "Visual Description":  "Four badges show 7, 8, 9, and 10.",
-        "Options":  "7 | 8 | 9 | 10",
-        "Correct Answer":  "10",
-        "Step 1":  "Look for the number symbol for ten.",
-        "Step 2":  "Ten is written with 1 and 0.",
-        "Step 3":  "Choose 10.",
-        "Final Explanation":  "The number ten is written as 10.",
-        "LearnBot Tip":  "Some numbers use two digits, like 10.",
+        "Question Type":  "True or False",
+        "Question":  "True or False: 10 comes after 9.",
+        "Visual Object":  "number line",
+        "Visual Description":  "A number line shows 9, then 10 highlighted as the next number.",
+        "Options":  "",
+        "Correct Answer":  "True",
+        "Step 1":  "Start at 9.",
+        "Step 2":  "Count one step forward.",
+        "Step 3":  "The next number is 10, so the statement is true.",
+        "Final Explanation":  "True. 10 comes right after 9.",
+        "LearnBot Tip":  "When checking true or false, count carefully before choosing.",
         "Assessment Eligible":  "Yes",
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
-        "Voice Script":  "The number ten is written as 10.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Voice Script":  "True. 10 comes right after 9.",
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Start at 9. Count forward once. The next number is 10, so the statement is true.",
+        "Required Assets":  "Use local LearnPlay number-line visual fallback; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-029",
@@ -838,7 +894,9 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "45 seconds",
         "Voice Script":  "Group A matches 6.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Read the target number 6. Count the bees in each group. Group A has six bees. Exact match means the count is the same as the number.",
+        "Required Assets":  "Use local LearnPlay visual renderer for bees; no external asset required."
     },
     {
         "Question ID":  "asset-forest-l01-030",
@@ -867,6 +925,8 @@
         "Curriculum Alignment":  "Mathematics Year 1 - Forest World Level 1",
         "Estimated Time":  "60 seconds",
         "Voice Script":  "All groups match the correct numbers.",
-        "Version Notes":  "A10 local pool draft - pending approval."
+        "Version Notes":  "A10 local pool draft - pending approval.",
+        "Teaching Notes":  "Count each object group. Find the matching number card. Connect each group to its count. Careful counting helps you match every pair.",
+        "Required Assets":  "Use local LearnPlay visual renderer for forest objects; no external asset required."
     }
 ]

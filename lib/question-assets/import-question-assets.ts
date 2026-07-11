@@ -22,6 +22,20 @@ export type QuestionAssetImportResult = {
   errors: QuestionAssetImportError[];
 };
 
+const numberWords: Record<string, number> = {
+  zero: 0,
+  one: 1,
+  two: 2,
+  three: 3,
+  four: 4,
+  five: 5,
+  six: 6,
+  seven: 7,
+  eight: 8,
+  nine: 9,
+  ten: 10,
+};
+
 function slugify(value: string, fallback: string) {
   const slug = value
     .trim()
@@ -35,12 +49,62 @@ function choiceId(index: number) {
   return `choice-${String(index + 1).padStart(2, "0")}`;
 }
 
-function getCorrectChoiceId(options: string[], correctAnswer: string, questionId: string) {
-  const exactIndex = options.findIndex((option) => option === correctAnswer);
-  const normalizedIndex = options.findIndex(
-    (option) => option.trim().toLocaleLowerCase("en") === correctAnswer.trim().toLocaleLowerCase("en"),
+function parseCount(value: string) {
+  const normalized = value.trim().toLocaleLowerCase("en");
+  return Number.isFinite(Number(normalized)) ? Number(normalized) : numberWords[normalized];
+}
+
+function normalizeAnswer(value: string) {
+  const trimmed = value.trim().replace(/\s+/g, " ");
+  const numeric = Number(trimmed.replace(/,/g, ""));
+  if (trimmed !== "" && Number.isFinite(numeric)) return String(numeric);
+  return trimmed.toLocaleLowerCase("en");
+}
+
+function normalizeObjectName(value: string) {
+  const normalized = value.trim().toLocaleLowerCase("en");
+  const dictionary: Record<string, string> = {
+    apples: "apple",
+    apple: "apple",
+    oranges: "orange",
+    orange: "orange",
+    leaves: "leaf",
+    leaf: "leaf",
+    mushrooms: "mushroom",
+    mushroom: "mushroom",
+    pinecones: "pinecone",
+    pinecone: "pinecone",
+    fish: "fish",
+    bees: "bee",
+    bee: "bee",
+    stars: "star",
+    star: "star",
+    counters: "number",
+    dots: "number",
+    rocks: "stone",
+    rock: "stone",
+  };
+  return dictionary[normalized] ?? (normalized.replace(/s$/, "") || "object");
+}
+
+function parseComparisonGroups(visualDescription: string) {
+  const matches = Array.from(
+    visualDescription.matchAll(/(Group [A-D])\s*(?::|-)?\s*(?:shows|has)?\s*([a-z0-9,]+)\s+([a-z]+)/gi),
   );
-  const index = exactIndex >= 0 ? exactIndex : normalizedIndex;
+  if (matches.length < 2) return undefined;
+
+  return matches.slice(0, 4).map((match) => ({
+    id: slugify(match[1], "group"),
+    label: match[1],
+    count: parseCount(match[2].replace(/,/g, "")) ?? 0,
+    object: normalizeObjectName(match[3]),
+  }));
+}
+
+function getCorrectChoiceId(options: string[], correctAnswer: string, questionId: string) {
+  const index = options.findIndex(
+    (option) => normalizeAnswer(option) === normalizeAnswer(correctAnswer),
+  );
   if (index < 0) {
     throw new Error(`${questionId}: correct answer does not match any option.`);
   }
@@ -48,11 +112,12 @@ function getCorrectChoiceId(options: string[], correctAnswer: string, questionId
 }
 
 function getCorrectTargetId(targets: TapTarget[], correctAnswer: string, questionId: string) {
-  const normalizedAnswer = correctAnswer.trim().toLocaleLowerCase("en");
+  const normalizedAnswer = normalizeAnswer(correctAnswer);
   const target = targets.find(
     (item) =>
       item.id === correctAnswer ||
-      item.label.trim().toLocaleLowerCase("en") === normalizedAnswer,
+      normalizeAnswer(item.label) === normalizedAnswer ||
+      normalizeAnswer(item.label.replace(/^Group\s+[A-D]\s*:\s*/i, "")) === normalizedAnswer,
   );
   if (!target) {
     throw new Error(`${questionId}: correct answer does not match any tap target.`);
@@ -60,8 +125,21 @@ function getCorrectTargetId(targets: TapTarget[], correctAnswer: string, questio
   return target.id;
 }
 
+function getCorrectMatchPairTargetId(targets: TapTarget[], correctAnswer: string) {
+  const firstAnswer = correctAnswer
+    .split(";")
+    .map((item) => item.trim())
+    .filter(Boolean)[0];
+  if (!firstAnswer) return targets[0]?.id ?? "";
+  return (
+    targets.find((item) => normalizeAnswer(item.label) === normalizeAnswer(firstAnswer))?.id ??
+    targets[0]?.id ??
+    ""
+  );
+}
+
 function parseNumberAnswer(correctAnswer: string, questionId: string) {
-  const value = Number(correctAnswer);
+  const value = Number(correctAnswer.replace(/,/g, ""));
   if (!Number.isFinite(value)) {
     throw new Error(`${questionId}: expected a numeric correct answer.`);
   }
@@ -76,10 +154,18 @@ function parseTrueFalse(correctAnswer: string, questionId: string) {
 }
 
 function visualMetadata(row: ReturnType<typeof parseForestL01AssetRows>[number]) {
+  const requiredAssets = row.requiredAssets
+    .split("|")
+    .map((asset) => asset.trim())
+    .filter(Boolean);
+
   return {
     source: "question-asset-master",
-    visualObject: row.visualObject,
+    assetQuestionType: row.questionType,
+    visualObject: normalizeObjectName(row.visualObject),
     visualDescription: row.visualDescription,
+    comparisonGroups: parseComparisonGroups(row.visualDescription),
+    matchPairTodo: row.questionType === "Match Pairs",
     topic: row.topic,
     subtopic: row.subtopic,
     learningObjective: row.learningObjective,
@@ -87,6 +173,9 @@ function visualMetadata(row: ReturnType<typeof parseForestL01AssetRows>[number])
     steps: row.steps,
     finalExplanation: row.finalExplanation,
     learnBotTip: row.learnBotTip,
+    teachingNotes: row.teachingNotes,
+    requiredAssets: row.requiredAssets,
+    requiredAssetList: requiredAssets,
   };
 }
 
@@ -101,7 +190,7 @@ function baseFields(row: ReturnType<typeof parseForestL01AssetRows>[number]) {
 }
 
 function toMultipleChoice(row: ReturnType<typeof parseForestL01AssetRows>[number]): NormalizedMultipleChoiceQuestion {
-  if (row.options.length === 0) {
+  if (row.options.length < 2) {
     throw new Error(`${row.questionId}: multiple-choice options are missing.`);
   }
   const choices: ChoiceOption[] = row.options.map((label, index) => ({
@@ -126,7 +215,7 @@ function toMultipleChoice(row: ReturnType<typeof parseForestL01AssetRows>[number
 function toCountObjects(row: ReturnType<typeof parseForestL01AssetRows>[number]): NormalizedCountObjectsQuestion {
   const expectedCount = parseNumberAnswer(row.correctAnswer, row.questionId);
   const numericChoices = row.options
-    .map((option) => Number(option))
+    .map((option) => Number(option.replace(/,/g, "")))
     .filter((option) => Number.isFinite(option));
 
   return {
@@ -141,8 +230,11 @@ function toCountObjects(row: ReturnType<typeof parseForestL01AssetRows>[number])
   };
 }
 
-function toTapAnswer(row: ReturnType<typeof parseForestL01AssetRows>[number]): NormalizedTapAnswerQuestion {
-  if (row.options.length === 0) {
+function toTapAnswer(
+  row: ReturnType<typeof parseForestL01AssetRows>[number],
+  mode: "tap-group" | "match-pairs" = "tap-group",
+): NormalizedTapAnswerQuestion {
+  if (row.options.length < 2) {
     throw new Error(`${row.questionId}: tap-answer targets are missing.`);
   }
   const targets: TapTarget[] = row.options.map((label, index) => ({
@@ -156,7 +248,12 @@ function toTapAnswer(row: ReturnType<typeof parseForestL01AssetRows>[number]): N
     ...baseFields(row),
     interactionType: "tap-answer",
     interaction: { targets },
-    answerSpec: { correctTargetId: getCorrectTargetId(targets, row.correctAnswer, row.questionId) },
+    answerSpec: {
+      correctTargetId:
+        mode === "match-pairs"
+          ? getCorrectMatchPairTargetId(targets, row.correctAnswer)
+          : getCorrectTargetId(targets, row.correctAnswer, row.questionId),
+    },
     gradingSpec: { strategy: "exact-target" },
   };
 }
@@ -168,7 +265,7 @@ function toFillInBlank(row: ReturnType<typeof parseForestL01AssetRows>[number]):
     interaction: {
       template: row.question,
       blankId: `${row.questionId}-blank`,
-      inputMode: Number.isFinite(Number(row.correctAnswer)) ? "numeric" : "text",
+      inputMode: Number.isFinite(Number(row.correctAnswer.replace(/,/g, ""))) ? "numeric" : "text",
       placeholder: "Type your answer",
     },
     answerSpec: { acceptedAnswers: [row.correctAnswer] },
@@ -206,9 +303,7 @@ function normalizeAssetRow(row: ReturnType<typeof parseForestL01AssetRows>[numbe
     case "Fill Missing Number":
       return toFillInBlank(row);
     case "Match Pairs":
-      // A dedicated matching renderer can be added later. For the A9 preview
-      // layer, pair rows are safely represented as tap-answer choices.
-      return toTapAnswer(row);
+      return toTapAnswer(row, "match-pairs");
     case "True or False":
       return toTrueFalse(row);
     default:

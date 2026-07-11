@@ -1,3 +1,48 @@
+export const forestL01LegacyColumns = [
+  "Question ID",
+  "Question Pool Version",
+  "Status",
+  "Subject",
+  "Year",
+  "World",
+  "Level",
+  "Topic",
+  "Subtopic",
+  "Learning Objective",
+  "Difficulty",
+  "Question Type",
+  "Question",
+  "Visual Object",
+  "Visual Description",
+  "Option A",
+  "Option B",
+  "Option C",
+  "Option D",
+  "Correct Answer",
+  "Step 1",
+  "Step 2",
+  "Step 3",
+  "Final Explanation",
+  "LearnBot Tip",
+  "Assessment Eligible",
+  "Curriculum Alignment",
+  "Estimated Time (Seconds)",
+  "Visual Asset Required",
+  "Voice Script",
+  "Reviewer",
+  "Review Status",
+  "Review Date",
+  "Version Notes",
+] as const;
+
+export const forestL01OptionalEnrichmentColumns = [
+  "Teaching Notes",
+  "Required Assets",
+  "Asset Source",
+  "Content Owner",
+  "QA Notes",
+] as const;
+
 export const forestL01AssetColumns = [
   "Question ID",
   "Status",
@@ -25,9 +70,12 @@ export const forestL01AssetColumns = [
   "Curriculum Alignment",
   "Estimated Time",
   "Voice Script",
+  "Teaching Notes",
+  "Required Assets",
   "Version Notes",
 ] as const;
 
+export type ForestL01LegacyColumn = (typeof forestL01LegacyColumns)[number];
 export type ForestL01AssetColumn = (typeof forestL01AssetColumns)[number];
 
 export const supportedForestL01QuestionTypes = [
@@ -48,7 +96,7 @@ export type QuestionAssetValidationSeverity = "warning" | "error";
 export type QuestionAssetValidationIssue = {
   questionId: string;
   rowNumber: number;
-  field: ForestL01AssetColumn;
+  field: ForestL01AssetColumn | ForestL01LegacyColumn | "Source" | "Import";
   severity: QuestionAssetValidationSeverity;
   message: string;
 };
@@ -100,5 +148,7 @@ export type ParsedForestL01QuestionAsset = {
   curriculumAlignment: string;
   estimatedTime: string;
   voiceScript: string;
+  teachingNotes: string;
+  requiredAssets: string;
   versionNotes: string;
 };
