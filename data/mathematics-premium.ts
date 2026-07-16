@@ -34,7 +34,7 @@ export const premiumLearningWorlds: LearningWorld[] = [
     progress: 100,
     stars: 300,
     locked: false,
-    imageSrc: "/assets/math-premium/world-forest.png",
+    imageSrc: "/assets/math-premium/world-forest.webp",
     imageAlt: "Forest World mathematics learning card",
   },
   {
@@ -46,7 +46,7 @@ export const premiumLearningWorlds: LearningWorld[] = [
     progress: 80,
     stars: 240,
     locked: false,
-    imageSrc: "/assets/math-premium/world-mountain.png",
+    imageSrc: "/assets/math-premium/world-mountain.webp",
     imageAlt: "Mountain World mathematics learning card",
   },
   {
@@ -58,7 +58,7 @@ export const premiumLearningWorlds: LearningWorld[] = [
     progress: 35,
     stars: 110,
     locked: true,
-    imageSrc: "/assets/math-premium/world-ocean.png",
+    imageSrc: "/assets/math-premium/world-ocean.webp",
     imageAlt: "Ocean World mathematics learning card",
   },
   {
@@ -70,7 +70,7 @@ export const premiumLearningWorlds: LearningWorld[] = [
     progress: 15,
     stars: 45,
     locked: true,
-    imageSrc: "/assets/math-premium/world-space.png",
+    imageSrc: "/assets/math-premium/world-space.webp",
     imageAlt: "Space World mathematics learning card",
   },
   {
@@ -82,7 +82,7 @@ export const premiumLearningWorlds: LearningWorld[] = [
     progress: 0,
     stars: 0,
     locked: true,
-    imageSrc: "/assets/math-premium/world-galaxy.png",
+    imageSrc: "/assets/math-premium/world-galaxy.webp",
     imageAlt: "Galaxy World mathematics learning card",
   },
 ];

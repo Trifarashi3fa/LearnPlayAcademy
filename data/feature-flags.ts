@@ -39,14 +39,14 @@ export const publicSubjectAvailability = [
     featureId: "mathematicsYear1ForestWorld",
     title: "Mathematics Year 1",
     description: "Enter Forest World for the approved Foundation MVP learning path.",
-    image: "/subjects/math.png",
+    image: "/subjects/math.webp",
     href: "/mvp/world-map",
   },
-  { id: "english", featureId: "englishWordBuilder", title: "English", description: "Preserved for a future approved curriculum package.", image: "/subjects/english.png", href: "/subjects/english" },
-  { id: "science", featureId: "science", title: "Science", description: "Preserved for a future approved curriculum package.", image: "/subjects/science.png", href: "/subjects/science" },
-  { id: "bahasa-melayu", featureId: "bahasaMelayu", title: "Bahasa Melayu", description: "Preserved for a future approved curriculum package.", image: "/subjects/bahasa-melayu.png", href: "/subjects/bahasa-melayu" },
-  { id: "life-skills", featureId: "lifeSkills", title: "Life Skills", description: "Preserved for a future approved curriculum package.", image: "/subjects/life-skills.png", href: "/subjects/life-skills" },
-  { id: "general-knowledge", featureId: "generalKnowledge", title: "General Knowledge", description: "Preserved for a future approved curriculum package.", image: "/subjects/general-knowledge.png", href: "/subjects" },
+  { id: "english", featureId: "englishWordBuilder", title: "English", description: "Preserved for a future approved curriculum package.", image: "/subjects/english.webp", href: "/subjects/english" },
+  { id: "science", featureId: "science", title: "Science", description: "Preserved for a future approved curriculum package.", image: "/subjects/science.webp", href: "/subjects/science" },
+  { id: "bahasa-melayu", featureId: "bahasaMelayu", title: "Bahasa Melayu", description: "Preserved for a future approved curriculum package.", image: "/subjects/bahasa-melayu.webp", href: "/subjects/bahasa-melayu" },
+  { id: "life-skills", featureId: "lifeSkills", title: "Life Skills", description: "Preserved for a future approved curriculum package.", image: "/subjects/life-skills.webp", href: "/subjects/life-skills" },
+  { id: "general-knowledge", featureId: "generalKnowledge", title: "General Knowledge", description: "Preserved for a future approved curriculum package.", image: "/subjects/general-knowledge.webp", href: "/subjects" },
 ] as const satisfies ReadonlyArray<{
   id: string;
   featureId: FeatureId;

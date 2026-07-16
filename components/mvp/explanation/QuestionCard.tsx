@@ -7,7 +7,7 @@ type QuestionCardProps = {
   question: MvpQuestion;
   visual: VisualLearningModel;
   selectedAnswer: string | null;
-  onSelectAnswer: (answer: string) => void;
+  onSelectAnswer: (answer: string | null) => void;
   compact?: boolean;
 };
 

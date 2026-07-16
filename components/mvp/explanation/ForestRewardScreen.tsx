@@ -68,7 +68,7 @@ export function ForestRewardScreen({
       <div className="relative grid gap-6 lg:grid-cols-[320px_1fr] lg:items-center">
         <div className="text-center">
           <div className="lp-pop-on-change mx-auto max-w-64 overflow-hidden rounded-[2rem] border-8 border-white bg-[#FFF3C4] p-3 shadow-playful sm:max-w-80">
-            <Image src="/rewards/badge.png" alt={badgeName} width={360} height={360} className="aspect-square w-full rounded-[1.25rem] object-cover" priority />
+            <Image src="/rewards/badge.webp" alt={badgeName} width={360} height={360} className="aspect-square w-full rounded-[1.25rem] object-cover" priority />
           </div>
           <p className="mt-4 inline-flex rounded-full bg-[#082B80] px-5 py-2 text-sm font-black text-white">{badgeName}</p>
         </div>

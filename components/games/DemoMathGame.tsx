@@ -314,20 +314,20 @@ const iconMap = [
   { match: "apple", src: "/assets/math-icons/apple.png", alt: "Apple" },
   { match: "bird", src: "/assets/math-icons/bird.png", alt: "Bird" },
   { match: "fish", src: "/assets/math-icons/fish.png", alt: "Fish" },
-  { match: "star", src: "/assets/math-icons/star.png", alt: "Star reward" },
-  { match: "coin", src: "/assets/math-icons/coin.png", alt: "Coin reward" },
-  { match: "gem", src: "/assets/math-icons/gem.png", alt: "Gem reward" },
-  { match: "shell", src: "/assets/math-icons/gem.png", alt: "Shell treasure" },
-  { match: "bubble", src: "/assets/math-icons/gem.png", alt: "Bubble treasure" },
-  { match: "box", src: "/assets/math-icons/box.png", alt: "Box" },
-  { match: "pencil", src: "/assets/math-icons/pencil.png", alt: "Pencil" },
-  { match: "splash", src: "/assets/math-icons/splash.png", alt: "Splash" },
+  { match: "star", src: "/assets/math-icons/star.webp", alt: "Star reward" },
+  { match: "coin", src: "/assets/math-icons/coin.webp", alt: "Coin reward" },
+  { match: "gem", src: "/assets/math-icons/gem.webp", alt: "Gem reward" },
+  { match: "shell", src: "/assets/math-icons/gem.webp", alt: "Shell treasure" },
+  { match: "bubble", src: "/assets/math-icons/gem.webp", alt: "Bubble treasure" },
+  { match: "box", src: "/assets/math-icons/box.webp", alt: "Box" },
+  { match: "pencil", src: "/assets/math-icons/pencil.webp", alt: "Pencil" },
+  { match: "splash", src: "/assets/math-icons/splash.webp", alt: "Splash" },
   { match: "triangle", src: "/assets/math-icons/triangle.png", alt: "Triangle" },
   { match: "square", src: "/assets/math-icons/square.png", alt: "Square" },
   { match: "rectangle", src: "/assets/math-icons/square.png", alt: "Rectangle" },
   { match: "circle", src: "/assets/math-icons/circle.png", alt: "Circle" },
-  { match: "ball", src: "/assets/math-icons/gem.png", alt: "Ball" },
-  { match: "tree", src: "/worlds/level 1-forest-world.png", alt: "Tree" },
+  { match: "ball", src: "/assets/math-icons/gem.webp", alt: "Ball" },
+  { match: "tree", src: "/worlds/level 1-forest-world.webp", alt: "Tree" },
 ];
 
 function VisualChip({ label }: { label: string }) {
@@ -404,9 +404,9 @@ function MascotHelper({ mood }: { mood: string }) {
 function Celebration() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0">
-      <span className="absolute left-8 top-4 animate-bounce rounded-full bg-white p-2 shadow-sm"><Image src="/rewards/star.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" /></span>
-      <span className="absolute right-12 top-8 animate-ping rounded-full bg-white p-2 shadow-sm"><Image src="/rewards/badge.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" /></span>
-      <span className="absolute bottom-6 left-1/2 animate-bounce rounded-full bg-white p-2 shadow-sm"><Image src="/rewards/certificate.png" alt="" width={32} height={32} className="h-8 w-8 object-contain" /></span>
+      <span className="absolute left-8 top-4 animate-bounce rounded-full bg-white p-2 shadow-sm"><Image src="/rewards/star.webp" alt="" width={32} height={32} className="h-8 w-8 object-contain" /></span>
+      <span className="absolute right-12 top-8 animate-ping rounded-full bg-white p-2 shadow-sm"><Image src="/rewards/badge.webp" alt="" width={32} height={32} className="h-8 w-8 object-contain" /></span>
+      <span className="absolute bottom-6 left-1/2 animate-bounce rounded-full bg-white p-2 shadow-sm"><Image src="/rewards/certificate.webp" alt="" width={32} height={32} className="h-8 w-8 object-contain" /></span>
     </div>
   );
 }

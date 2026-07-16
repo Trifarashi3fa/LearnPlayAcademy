@@ -49,7 +49,7 @@ export default function ScienceExplorerGamePage() {
 
             <div className="rounded-3xl bg-white p-5 text-center">
               <Image
-                src="/learnplay-academy-logo.png"
+                src="/learnplay-academy-logo.webp"
                 alt="LearnPlay Academy logo"
                 width={180}
                 height={180}

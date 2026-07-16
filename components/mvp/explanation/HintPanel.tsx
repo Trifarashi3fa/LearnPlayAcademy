@@ -112,7 +112,7 @@ export function HintPanel({
         <div className="mt-3 flex justify-center">
           <div className="relative h-28 w-28 bg-transparent drop-shadow-lg">
             <Image
-              src="/mascots/learnbot-happy.png"
+              src="/mascots/learnbot-happy.webp"
               alt="LearnBot offering a hint"
               fill
               sizes="112px"

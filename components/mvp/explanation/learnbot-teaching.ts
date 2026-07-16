@@ -27,16 +27,16 @@ type LearnBotMessage = {
 };
 
 const stateImages: Record<LearnBotState, string> = {
-  idle: "/mascots/learnbot-front.png",
-  thinking: "/mascots/learnbot-thinking.png",
-  correct: "/mascots/learnbot-celebrate.png",
-  incorrect: "/mascots/learnbot-explaining.png",
-  hint: "/mascots/learnbot-happy.png",
-  celebration: "/mascots/learnbot-trophy.png",
-  boss: "/mascots/learnbot-trophy.png",
-  complete: "/mascots/learnbot-celebrate.png",
-  perfect: "/mascots/learnbot-trophy.png",
-  loading: "/mascots/learnbot-happy.png",
+  idle: "/mascots/learnbot-front.webp",
+  thinking: "/mascots/learnbot-thinking.webp",
+  correct: "/mascots/learnbot-celebrate.webp",
+  incorrect: "/mascots/learnbot-explaining.webp",
+  hint: "/mascots/learnbot-happy.webp",
+  celebration: "/mascots/learnbot-trophy.webp",
+  boss: "/mascots/learnbot-trophy.webp",
+  complete: "/mascots/learnbot-celebrate.webp",
+  perfect: "/mascots/learnbot-trophy.webp",
+  loading: "/mascots/learnbot-happy.webp",
 };
 
 const baseMessages: Record<LearnBotState, LearnBotMessage[]> = {

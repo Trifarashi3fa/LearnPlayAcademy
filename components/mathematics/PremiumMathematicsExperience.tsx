@@ -112,7 +112,7 @@ export function ProgressCard({ studentName }: { studentName: string }) {
       <div className="relative grid h-full gap-6 md:grid-cols-[220px_1fr] md:items-center">
         <div className="relative mx-auto h-64 w-56">
           <Image
-            src="/assets/math-premium/dashboard-hero.png"
+            src="/assets/math-premium/dashboard-hero.webp"
             alt="Happy LearnPlay student"
             fill
             sizes="224px"
@@ -414,7 +414,7 @@ export function ExplanationNotesPanel() {
           <p className="mt-2 text-sm font-bold leading-6 text-[#082B80]">
             Encourage counting-on strategies. It helps build strong number sense.
           </p>
-          <Image src="/assets/math-premium/learnbot-helper.png" alt="LearnBot helper mascot" width={160} height={120} className="mx-auto mt-5 h-32 w-40 object-contain" />
+          <Image src="/assets/math-premium/learnbot-helper.webp" alt="LearnBot helper mascot" width={160} height={120} className="mx-auto mt-5 h-32 w-40 object-contain" />
         </div>
       </div>
     </article>

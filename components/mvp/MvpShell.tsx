@@ -41,7 +41,7 @@ export function MvpTopBar() {
     <div className="flex flex-col gap-4 rounded-[2rem] border border-[#DDE8F5] bg-white p-4 shadow-sm sm:flex-row sm:items-center sm:justify-between">
       <Link href="/" className={`flex items-center gap-3 rounded-3xl ${mvpFocusRing}`}>
         <Image
-          src="/learnplay-academy-logo.png"
+          src="/learnplay-academy-logo.webp"
           alt="LearnPlay Academy logo"
           width={56}
           height={56}

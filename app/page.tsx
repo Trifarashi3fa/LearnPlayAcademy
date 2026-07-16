@@ -37,7 +37,7 @@ export default function Home() {
             </div>
           </div>
           <div className="relative rounded-[2rem] border border-[#DDE8F5] bg-white p-5 shadow-playful">
-            <div className="overflow-hidden rounded-[1.5rem] bg-[#EAF6FF]"><Image src="/design-system/learnbot-reference.png" alt="LearnBot welcoming children to Forest World" width={520} height={420} className="h-72 w-full object-cover object-top" priority /></div>
+            <div className="overflow-hidden rounded-[1.5rem] bg-[#EAF6FF]"><Image src="/mascots/learnbot-explaining.png" alt="LearnBot welcoming children to Forest World" width={520} height={420} className="h-72 w-full object-cover object-top" priority /></div>
             <h2 className="mt-5 text-3xl font-black">Forest World is open</h2>
             <p className="mt-2 text-base font-bold leading-7 text-[#5B6B94]">Other subjects and years remain safely preserved for later approval.</p>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">{highlights.map((item) => <div key={item} className="rounded-2xl border border-[#DDE8F5] bg-[#FFFDF7] px-4 py-3 text-sm font-black">{item}</div>)}</div>

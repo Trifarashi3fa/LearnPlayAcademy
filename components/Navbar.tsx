@@ -67,7 +67,7 @@ export function Navbar() {
           className="flex items-center gap-3 rounded-3xl focus:outline-none focus:ring-4 focus:ring-sky/25"
         >
           <Image
-            src="/learnplay-academy-logo.png"
+            src="/learnplay-academy-logo.webp"
             alt="LearnPlay Academy logo"
             width={56}
             height={56}

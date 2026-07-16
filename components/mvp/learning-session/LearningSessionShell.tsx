@@ -30,7 +30,7 @@ export function LearningSessionShell({
         <div className="mx-auto flex max-w-[100rem] items-center justify-between gap-3">
           <div className="flex min-w-0 items-center gap-2.5">
             <Image
-              src="/learnplay-academy-logo.png"
+              src="/learnplay-academy-logo.webp"
               alt="LearnPlay Academy"
               width={40}
               height={40}

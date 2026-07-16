@@ -15,7 +15,7 @@ export function XPRewardCard({ correct, xpGained, levelXp, compact = false }: XP
     >
       <div className="flex items-center gap-2.5">
         <span className={`lp-pop-on-change flex shrink-0 items-center justify-center rounded-xl bg-white shadow-sm ${compact ? "h-10 w-10" : "h-14 w-14"}`}>
-          <Image src="/rewards/star.png" alt="Star reward" width={44} height={44} className={compact ? "h-8 w-8 object-contain" : "h-11 w-11 object-contain"} />
+          <Image src="/rewards/star.webp" alt="Star reward" width={44} height={44} className={compact ? "h-8 w-8 object-contain" : "h-11 w-11 object-contain"} />
         </span>
         <div className="min-w-0">
           <p className={`font-black leading-tight ${compact ? "text-sm" : "text-lg"} ${correct ? "text-[#15803D]" : "text-[#B91C1C]"}`}>
