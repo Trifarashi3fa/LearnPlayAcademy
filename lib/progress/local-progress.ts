@@ -297,9 +297,9 @@ export function readLocalProgress(): LocalProgressV2 {
 
 export function resetLocalProgress() {
   const fresh = createDefaultLocalProgress();
-  saveLocalProgress(fresh);
+  const saved = saveLocalProgress(fresh);
   // The v1 key is intentionally retained; an existing valid v2 record prevents remigration.
-  return fresh;
+  return { progress: fresh, saved };
 }
 
 export function getWorldProgress(progress: LocalProgressV2, ref: ProgressWorldRef) {

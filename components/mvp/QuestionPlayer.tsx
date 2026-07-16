@@ -10,15 +10,17 @@ import { QuestionCard } from "@/components/mvp/explanation/QuestionCard";
 import { XPRewardCard } from "@/components/mvp/explanation/XPRewardCard";
 import { ExplanationDrawer } from "@/components/mvp/learning-session/ExplanationDrawer";
 import { LearningSessionShell } from "@/components/mvp/learning-session/LearningSessionShell";
+import { LockedLevelNotice } from "@/components/mvp/LockedLevelNotice";
 import { StickyActionBar } from "@/components/mvp/learning-session/StickyActionBar";
 import { calculateStars, useMvpProgress } from "@/components/mvp/useMvpProgress";
 import { forestWorldIdentity } from "@/data/forest-world-identity";
 import { getLevelBonusXp, getQuestionLearningContent, type MvpLevel } from "@/data/mvp-forest-world";
 import type { NodeType } from "@/data/curriculum-types";
 import type { LevelQuestionAttemptInput } from "@/data/progress-types";
+import { getForestLevelAccess } from "@/lib/progress/level-access";
 
 export function QuestionPlayer({ level }: { level: MvpLevel }) {
-  const { progress, worldProgressRecord, worldCompleted, completeLevel, syncStatus, lastSyncedAt } = useMvpProgress();
+  const { progress, ready, worldProgressRecord, worldCompleted, completeLevel, syncStatus, lastSyncedAt } = useMvpProgress();
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
@@ -36,20 +38,31 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
   const completesWorld = level.level === 10;
   const answered = selectedAnswer !== null;
   const thinkHint = getThinkModeHint(learningContent.visual.type, currentQuestion.id, learningContent.hint);
+  const progressLoading = level.level !== 1 && (!ready || syncStatus === "loading");
+  const levelAccess = getForestLevelAccess(level.level, worldProgressRecord.completedLevels);
 
-  function chooseAnswer(answer: string) {
-    if (selectedAnswer) return;
-    const correct = answer === currentQuestion.correctAnswer;
-    setSelectedAnswer(answer);
-    setAttempts((current) => [...current, {
+  function chooseAnswer(answer: string | null) {
+  if (selectedAnswer !== null || answer === null) return;
+
+  const correct = answer === currentQuestion.correctAnswer;
+
+  setSelectedAnswer(answer);
+  setAttempts((current) => [
+    ...current,
+    {
       questionId: currentQuestion.id,
       selectedAnswer: answer,
       correct,
       xpReward: currentQuestion.xpReward,
-    }]);
-    if (correct) setCorrectCount((current) => current + 1);
-    setExplanationOpen(true);
+    },
+  ]);
+
+  if (correct) {
+    setCorrectCount((current) => current + 1);
   }
+
+  setExplanationOpen(true);
+}
 
   function nextQuestion() {
     if (!answered) return;
@@ -109,6 +122,14 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
         </div>
       </main>
     );
+  }
+
+  if (progressLoading) {
+    return <LockedLevelNotice level={level.level} requiredLevel={levelAccess.requiredLevel} checking />;
+  }
+
+  if (!levelAccess.accessible) {
+    return <LockedLevelNotice level={level.level} requiredLevel={levelAccess.requiredLevel} />;
   }
 
   const support = answered ? (

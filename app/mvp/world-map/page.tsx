@@ -3,7 +3,7 @@ import { WorldMapClient } from "@/components/mvp/WorldMapClient";
 
 export const metadata = {
   title: "MVP Forest World Map",
-  description: "Play through 10 Forest World levels with localStorage progress.",
+  description: "Play through 10 Forest World levels with local progress and optional child-profile sync.",
 };
 
 export default function MvpWorldMapPage() {

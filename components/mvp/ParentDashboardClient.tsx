@@ -2,6 +2,7 @@
 
 import { forestLevels, mvpSubjects } from "@/data/mvp-forest-world";
 import { forestWorldIdentity } from "@/data/forest-world-identity";
+import { getYearLevelAvailabilityMessage, isSupportedMvpYearLevel } from "@/data/account-types";
 import { MvpButtonLink, MvpEmptyState, MvpMetricCard, MvpProgressBar, MvpStatusPill, MvpSurface } from "@/components/mvp/MvpUi";
 import { useMvpProgress } from "@/components/mvp/useMvpProgress";
 import type { ProgressSyncStatus } from "@/lib/progress/child-progress";
@@ -17,26 +18,74 @@ export function ParentDashboardClient() {
     mastery,
     syncStatus,
     lastSyncedAt,
+    selectedChild,
+    ready,
   } = useMvpProgress();
 
   const completedTopics = forestLevels.filter((level) => worldProgressRecord.completedLevels.includes(level.level));
-  const strongTopics = completedTopics.slice(-3).map((level) => level.title);
-  const weakTopics = forestLevels
+  const completedSkillLabels = completedTopics.slice(-3).map((level) => `Level ${level.level}: ${level.title}`);
+  const practiceLevels = forestLevels
     .filter((level) => !worldProgressRecord.completedLevels.includes(level.level))
-    .slice(0, 3)
-    .map((level) => level.title);
+    .slice(0, 3);
+  const nextLevel = forestLevels.find((level) => level.level === worldProgressRecord.currentLevel)
+    ?? practiceLevels[0]
+    ?? null;
+  const allForestLevelsComplete = completedCount >= totalLevels;
+  const noProgressYet = completedCount === 0 && worldProgressRecord.questionsAnswered === 0 && progress.totalXp === 0;
+  const unsupportedYear = Boolean(selectedChild && !isSupportedMvpYearLevel(selectedChild.yearLevel));
 
   return (
     <div className="space-y-6">
-      <MvpSurface className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div>
+      <MvpSurface className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" aria-live="polite">
+        <div className="min-w-0">
           <MvpStatusPill tone={syncTone(syncStatus)}>{syncLabel(syncStatus)}</MvpStatusPill>
           <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">
-            {lastSyncedAt ? `Last saved: ${new Date(lastSyncedAt).toLocaleString()}` : "Complete a level to save this child profile's Forest progress."}
+            {syncDescription(syncStatus, lastSyncedAt)}
           </p>
         </div>
         <MvpButtonLink href="/account" tone="white">Account</MvpButtonLink>
       </MvpSurface>
+
+      {!ready || syncStatus === "loading" ? (
+        <MvpSurface className="border-[#BFE3FF] bg-[#F4FAFF]">
+          <MvpStatusPill tone="blue">Checking save status</MvpStatusPill>
+          <h2 className="mt-3 text-2xl font-black text-[#082B80]">Loading the latest progress</h2>
+          <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">
+            LearnPlay is checking this device and the selected child profile. Local progress remains visible while account sync finishes.
+          </p>
+        </MvpSurface>
+      ) : null}
+
+      {syncStatus === "no-child-profile" ? (
+        <MvpEmptyState
+          title="No child profile selected"
+          description="Create one nickname-based child profile to sync Forest World progress to the parent account. This device can still keep local progress."
+          action={<MvpButtonLink href="/account">Create Child Profile</MvpButtonLink>}
+        />
+      ) : null}
+
+      {unsupportedYear && selectedChild ? (
+        <MvpSurface className="border-[#FFD76A] bg-[#FFF7D6]">
+          <MvpStatusPill tone="yellow">Year {selectedChild.yearLevel} coming soon</MvpStatusPill>
+          <h2 className="mt-3 text-2xl font-black text-[#082B80]">Active lessons are Year 1 only</h2>
+          <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">
+            {getYearLevelAvailabilityMessage(selectedChild.yearLevel)} Switch the profile to Year 1 to use the current Mathematics Forest World MVP.
+          </p>
+          <div className="mt-4">
+            <MvpButtonLink href="/account" tone="white">Review Child Profile</MvpButtonLink>
+          </div>
+        </MvpSurface>
+      ) : null}
+
+      {noProgressYet ? (
+        <MvpSurface className="border-[#BDE7D0] bg-[#F3FFF7]">
+          <MvpStatusPill tone="green">Ready to start</MvpStatusPill>
+          <h2 className="mt-3 text-2xl font-black text-[#082B80]">No learning progress yet</h2>
+          <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">
+            Start Level 1 to create the first Forest World progress record. The dashboard will update after a level is completed.
+          </p>
+        </MvpSurface>
+      ) : null}
 
       <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
         <MvpMetricCard label="Total XP" value={progress.totalXp} tone="blue" />
@@ -48,7 +97,7 @@ export function ParentDashboardClient() {
       <MvpSurface>
         <h2 className="text-3xl font-black">Child Progress</h2>
         <p className="mt-2 text-base font-bold leading-7 text-[#5B6B94]">
-          Current subject: Mathematics Year {forestWorldIdentity.year}. Current world: Forest World. Current unlocked level: {worldProgressRecord.currentLevel}.
+          Current subject: Mathematics Year {forestWorldIdentity.year}. Current world: Forest World. Current unlocked mission: Level {worldProgressRecord.currentLevel}.
         </p>
         <div className="mt-5">
           <div className="mb-2 flex justify-between text-sm font-black">
@@ -59,19 +108,27 @@ export function ParentDashboardClient() {
         </div>
       </MvpSurface>
 
+      <RecommendedPracticeCard
+        allComplete={allForestLevelsComplete}
+        nextLevel={nextLevel}
+        unsupportedYear={unsupportedYear}
+      />
+
       <div className="grid gap-5 lg:grid-cols-2">
         <TopicList
-          title="Strong Topics"
-          emptyTitle="Strong topics will appear soon"
-          emptyDescription="Complete Level 1 so LearnPlay can show the skills your child is building."
-          topics={strongTopics}
+          title="Recently Completed Skills"
+          helper="These are based on completed Forest World levels, not topic-level test analytics yet."
+          emptyTitle="Completed skills will appear soon"
+          emptyDescription="Complete Level 1 so LearnPlay can show the skills your child has recently finished."
+          topics={completedSkillLabels}
           tone="green"
         />
         <TopicList
-          title="Topics To Practice Next"
-          emptyTitle="No practice topics yet"
-          emptyDescription="When every Forest mission is complete, this area will stay clear."
-          topics={weakTopics}
+          title="Recommended Practice"
+          helper="For this MVP, recommendations use the next incomplete Forest World levels."
+          emptyTitle="All current practice is complete"
+          emptyDescription="Every available Forest mission is complete. Rewards and assessment preparation can come next."
+          topics={practiceLevels.map((level) => `Level ${level.level}: ${level.title}`)}
           tone="yellow"
         />
       </div>
@@ -122,6 +179,9 @@ export function ParentDashboardClient() {
           <MvpMetricCard label="Correct Answers" value={worldProgressRecord.correctAnswers} tone="green" />
           <MvpMetricCard label="Stars Earned" value={progress.totalStars} tone="yellow" />
         </div>
+        <p className="mt-3 text-sm font-bold leading-6 text-[#5B6B94]">
+          Accuracy is based on recorded question attempts, including replays. True topic-strength analytics will be added later.
+        </p>
       </MvpSurface>
 
       <div className="flex flex-wrap gap-3">
@@ -134,11 +194,26 @@ export function ParentDashboardClient() {
 
 function syncLabel(status: ProgressSyncStatus) {
   if (status === "synced") return "Saved in child profile";
-  if (status === "syncing" || status === "loading") return "Syncing progress";
+  if (status === "syncing") return "Saving progress";
+  if (status === "loading") return "Checking saved progress";
   if (status === "no-child-profile") return "Create child profile to save";
   if (status === "signed-out") return "Log in to save progress";
   if (status === "error") return "Save issue";
   return "Local progress only";
+}
+
+function syncDescription(status: ProgressSyncStatus, lastSyncedAt: string | null) {
+  if (status === "synced") {
+    return lastSyncedAt
+      ? `Saved to the selected child profile: ${new Date(lastSyncedAt).toLocaleString()}`
+      : "Connected to a child profile. The next completed level will update the saved progress.";
+  }
+  if (status === "syncing") return "Saving the latest completed level to the selected child profile.";
+  if (status === "loading") return "Checking whether this parent account has a selected child profile and saved progress.";
+  if (status === "no-child-profile") return "Progress can stay on this device, but account sync needs one nickname-based child profile.";
+  if (status === "signed-out") return "Progress is available on this device. Log in to sync future completed levels to a child profile.";
+  if (status === "error") return "Local progress is still visible. Account sync could not be confirmed, so try again later or check the account page.";
+  return "Progress is stored on this device only. It will not follow the child to another device until an account and child profile are used.";
 }
 
 function syncTone(status: ProgressSyncStatus): "blue" | "green" | "yellow" | "red" {
@@ -148,14 +223,90 @@ function syncTone(status: ProgressSyncStatus): "blue" | "green" | "yellow" | "re
   return "yellow";
 }
 
+function RecommendedPracticeCard({
+  allComplete,
+  nextLevel,
+  unsupportedYear,
+}: {
+  allComplete: boolean;
+  nextLevel: (typeof forestLevels)[number] | null;
+  unsupportedYear: boolean;
+}) {
+  if (unsupportedYear) {
+    return (
+      <MvpSurface className="border-[#FFD76A] bg-[#FFF7D6]">
+        <MvpStatusPill tone="yellow">Action needed</MvpStatusPill>
+        <h2 className="mt-3 text-2xl font-black text-[#082B80]">Update the child year level first</h2>
+        <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">
+          Recommended practice is available for Year 1 Forest World only in the current MVP.
+        </p>
+        <div className="mt-4">
+          <MvpButtonLink href="/account" tone="white">Open Account</MvpButtonLink>
+        </div>
+      </MvpSurface>
+    );
+  }
+
+  if (allComplete) {
+    return (
+      <MvpSurface className="border-[#BDE7D0] bg-[#F3FFF7]">
+        <MvpStatusPill tone="green">Forest World complete</MvpStatusPill>
+        <h2 className="mt-3 text-2xl font-black text-[#082B80]">All current Forest missions are complete</h2>
+        <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">
+          Your child has completed every available Year 1 Forest World level. Visit rewards while the next learning step is prepared.
+        </p>
+        <div className="mt-4 flex flex-wrap gap-3">
+          <MvpButtonLink href="/mvp/rewards">View Rewards</MvpButtonLink>
+          <MvpButtonLink href="/mvp/world-map" tone="white">Open World Map</MvpButtonLink>
+        </div>
+      </MvpSurface>
+    );
+  }
+
+  if (!nextLevel) {
+    return (
+      <MvpEmptyState
+        title="Recommended practice is almost ready"
+        description="Open the Forest World map to choose the next available mission."
+        action={<MvpButtonLink href="/mvp/world-map">Open Forest World Map</MvpButtonLink>}
+      />
+    );
+  }
+
+  return (
+    <MvpSurface className="border-[#BFE3FF] bg-gradient-to-br from-white via-[#F8FBFF] to-[#EAF6FF]">
+      <MvpStatusPill tone="blue">Recommended Practice</MvpStatusPill>
+      <div className="mt-3 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div className="min-w-0">
+          <h2 className="text-2xl font-black text-[#082B80]">
+            Level {nextLevel.level}: {nextLevel.title}
+          </h2>
+          <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">
+            This is the next unlocked Forest World mission based on completed levels.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <MvpStatusPill tone="pink">{nextLevel.nodeType}</MvpStatusPill>
+            <MvpStatusPill tone="yellow">Year {forestWorldIdentity.year}</MvpStatusPill>
+          </div>
+        </div>
+        <MvpButtonLink href={`/mvp/level/${nextLevel.level}`} size="lg">
+          Continue Level {nextLevel.level}
+        </MvpButtonLink>
+      </div>
+    </MvpSurface>
+  );
+}
+
 function TopicList({
   title,
+  helper,
   emptyTitle,
   emptyDescription,
   topics,
   tone,
 }: {
   title: string;
+  helper: string;
   emptyTitle: string;
   emptyDescription: string;
   topics: string[];
@@ -170,6 +321,7 @@ function TopicList({
   return (
     <MvpSurface>
       <h2 className="text-2xl font-black">{title}</h2>
+      <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">{helper}</p>
       <div className="mt-4 space-y-3">
         {topics.map((topic) => (
           <p key={topic} className={`rounded-[1.25rem] px-4 py-3 text-sm font-black ${className}`}>

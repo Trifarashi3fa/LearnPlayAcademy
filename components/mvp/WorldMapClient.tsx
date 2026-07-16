@@ -6,6 +6,7 @@ import { MvpCard, PrimaryLink, ProgressBar } from "@/components/mvp/MvpShell";
 import { useMvpProgress } from "@/components/mvp/useMvpProgress";
 import { forestWorldIdentity } from "@/data/forest-world-identity";
 import { forestLevels } from "@/data/mvp-forest-world";
+import { getForestLevelAccess } from "@/lib/progress/level-access";
 
 const nodeColors: Record<string, string> = {
   Learn: "bg-[#0B63F6] text-white",
@@ -84,8 +85,8 @@ export function WorldMapClient() {
 
           {forestLevels.map((level) => {
             const completed = worldProgressRecord.completedLevels.includes(level.level);
-            const current = !worldCompleted && !completed && level.level === currentLevel;
-            const unlocked = completed || current || level.level === 1 || level.level <= nextUnlockedLevel;
+            const unlocked = getForestLevelAccess(level.level, worldProgressRecord.completedLevels).accessible;
+            const current = !worldCompleted && !completed && unlocked && level.level === currentLevel;
             const locked = !unlocked;
             const boss = level.level === 10;
             const stars = worldProgressRecord.levelStars[String(level.level)] ?? 0;
@@ -148,14 +149,14 @@ export function WorldMapClient() {
                     </p>
                     {boss && (
                       <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-black text-[#082B80] shadow-sm">
-                        <Image src="/rewards/star.png" alt="" width={22} height={22} className="h-6 w-6 object-contain" />
+                        <Image src="/rewards/star.webp" alt="" width={22} height={22} className="h-6 w-6 object-contain" />
                         Badge reward: {forestWorldIdentity.completionBadge}
                       </div>
                     )}
                   </div>
                   <div className="flex flex-wrap items-center gap-2 sm:justify-end">
                     <span className="inline-flex items-center gap-2 rounded-full bg-[#FFF3C4] px-3 py-2 text-xs font-black">
-                      <Image src="/rewards/star.png" alt="" width={18} height={18} className="h-5 w-5 object-contain" />
+                      <Image src="/rewards/star.webp" alt="" width={18} height={18} className="h-5 w-5 object-contain" />
                       {stars} stars
                     </span>
                     {unlocked && !completed && (
@@ -191,7 +192,7 @@ export function WorldMapClient() {
         <div className="grid lg:grid-cols-[0.75fr_1.25fr]">
           <div className="relative min-h-48 overflow-hidden sm:min-h-56">
             <Image
-              src="/worlds/level 1-forest-world.png"
+              src="/worlds/level 1-forest-world.webp"
               alt="Forest World landscape"
               fill
               sizes="(min-width: 1024px) 420px, 100vw"

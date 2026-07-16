@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { childAvatarOptions, type ChildAvatar } from "@/data/account-types";
+import { activeMvpYearLevel, childAvatarOptions, parseSupportedMvpYearLevel, type ChildAvatar } from "@/data/account-types";
 import { ensureParentProfile } from "@/lib/account/profiles";
 
 function cleanNickname(value: FormDataEntryValue | null) {
@@ -13,9 +13,7 @@ function cleanNickname(value: FormDataEntryValue | null) {
 }
 
 function cleanYear(value: FormDataEntryValue | null) {
-  const year = Number(value);
-  if (!Number.isInteger(year) || year < 1 || year > 6) return 1;
-  return year;
+  return parseSupportedMvpYearLevel(value);
 }
 
 function cleanAvatar(value: FormDataEntryValue | null): ChildAvatar {
@@ -38,6 +36,11 @@ export async function saveChildProfile(formData: FormData) {
     redirect("/account?error=nickname-required");
   }
 
+  const yearLevel = cleanYear(formData.get("year_level"));
+  if (!yearLevel) {
+    redirect("/account?error=year-not-available");
+  }
+
   const { error: parentError } = await ensureParentProfile(supabase, user);
   if (parentError) {
     redirect("/account?error=profile-save-failed");
@@ -47,7 +50,7 @@ export async function saveChildProfile(formData: FormData) {
     {
       parent_id: user.id,
       nickname,
-      year_level: cleanYear(formData.get("year_level")),
+      year_level: yearLevel ?? activeMvpYearLevel,
       avatar: cleanAvatar(formData.get("avatar")),
       selected: true,
       updated_at: new Date().toISOString(),

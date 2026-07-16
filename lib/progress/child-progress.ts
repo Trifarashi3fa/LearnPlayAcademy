@@ -1,4 +1,5 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
+import type { ChildProfile } from "@/data/account-types";
 import type { LocalProgressV2, ProgressWorldRef, WorldProgressRecord } from "@/data/progress-types";
 import { getSelectedChildProfile } from "@/lib/account/profiles";
 import {
@@ -23,6 +24,7 @@ export type ChildProgressLoadResult = {
   progress: LocalProgressV2 | null;
   status: ProgressSyncStatus;
   lastPlayedAt: string | null;
+  child: ChildProfile | null;
   message?: string;
 };
 
@@ -102,20 +104,20 @@ function progressPayload(progress: LocalProgressV2, childId: string, parentId: s
 
 export async function loadProgress(): Promise<ChildProgressLoadResult> {
   if (!canUseSupabase()) {
-    return { progress: null, status: "local-only", lastPlayedAt: null };
+    return { progress: null, status: "local-only", lastPlayedAt: null, child: null };
   }
 
   try {
     const supabase = createClient();
     const user = await getAuthenticatedParent(supabase);
-    if (!user) return { progress: null, status: "signed-out", lastPlayedAt: null };
+    if (!user) return { progress: null, status: "signed-out", lastPlayedAt: null, child: null };
 
     const { child, error: childError } = await getSelectedChildProfile(supabase, user.id);
     if (childError) {
-      return { progress: null, status: "error", lastPlayedAt: null, message: childError.message };
+      return { progress: null, status: "error", lastPlayedAt: null, child: null, message: childError.message };
     }
     if (!child) {
-      return { progress: null, status: "no-child-profile", lastPlayedAt: null };
+      return { progress: null, status: "no-child-profile", lastPlayedAt: null, child: null };
     }
 
     const { data, error } = await supabase
@@ -126,25 +128,26 @@ export async function loadProgress(): Promise<ChildProgressLoadResult> {
       .maybeSingle();
 
     if (error) {
-      return { progress: null, status: "error", lastPlayedAt: null, message: error.message };
+      return { progress: null, status: "error", lastPlayedAt: null, child, message: error.message };
     }
 
     const row = data as ChildProgressRow | null;
     if (!row) {
-      return { progress: null, status: "synced", lastPlayedAt: null };
+      return { progress: null, status: "synced", lastPlayedAt: null, child };
     }
 
     const normalized = normalizeLocalProgress(row.progress_data);
     if (!normalized) {
-      return { progress: createDefaultLocalProgress(), status: "error", lastPlayedAt: row.last_played_at, message: "Saved progress could not be read." };
+      return { progress: createDefaultLocalProgress(), status: "error", lastPlayedAt: row.last_played_at, child, message: "Saved progress could not be read." };
     }
 
-    return { progress: normalized, status: "synced", lastPlayedAt: row.last_played_at };
+    return { progress: normalized, status: "synced", lastPlayedAt: row.last_played_at, child };
   } catch (error) {
     return {
       progress: null,
       status: "error",
       lastPlayedAt: null,
+      child: null,
       message: error instanceof Error ? error.message : "Progress could not be loaded.",
     };
   }

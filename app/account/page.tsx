@@ -122,7 +122,7 @@ export default async function AccountPage({
 
       {params?.profile === "deleted" ? (
         <div className="mb-6 rounded-[1.25rem] bg-[#FFF3C4] p-4 text-sm font-bold text-[#9A6700]" role="status">
-          Child profile deleted. You can create a new one below.
+          Child profile deleted. Any saved child progress linked to that profile may also have been removed. You can create a new nickname-based profile below.
         </div>
       ) : null}
 
@@ -130,6 +130,8 @@ export default async function AccountPage({
         <div className="mb-6 rounded-[1.25rem] bg-[#FEE2E2] p-4 text-sm font-bold text-[#B91C1C]" role="alert">
           {params?.error === "nickname-required"
             ? "Please add a child nickname."
+            : params?.error === "year-not-available"
+              ? "LearnPlay currently supports Year 1 Mathematics Forest World only. Please choose Year 1 for the MVP."
             : "We could not load or save the child profile. You can try the form below. The server console includes the exact Supabase error."}
         </div>
       ) : null}
@@ -149,7 +151,7 @@ function AccountShell({ children }: { children: React.ReactNode }) {
           <p className="text-sm font-black uppercase tracking-wide text-[#FF4FA0]">Parent account</p>
           <h1 className="mt-3 max-w-4xl text-4xl font-black leading-tight md:text-6xl">Your LearnPlay family space</h1>
           <p className="mt-4 max-w-2xl text-base font-bold leading-7 text-[#5B6B94]">
-            Manage one child profile, continue Forest World, and keep learning progress connected.
+            Manage one nickname-based child profile, continue Forest World, and keep learning progress connected without collecting extra child details.
           </p>
         </div>
       </section>

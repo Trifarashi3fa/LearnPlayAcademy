@@ -26,7 +26,7 @@ export function ParentAuthForm({ mode }: ParentAuthFormProps) {
       return {
         eyebrow: "Parent account",
         title: "Create your parent account",
-        description: "Use email and password to prepare one child profile for the Forest World MVP.",
+        description: "Use a parent email and password to prepare one nickname-based child profile for the Forest World MVP.",
         button: "Create Account",
       };
     }
@@ -43,7 +43,7 @@ export function ParentAuthForm({ mode }: ParentAuthFormProps) {
     return {
       eyebrow: "Welcome back",
       title: "Log in to LearnPlay",
-      description: "Continue to your parent account and child profile setup.",
+      description: "Continue to your parent account, child profile, and saved Forest World progress.",
       button: "Log In",
     };
   }, [mode]);
@@ -163,7 +163,7 @@ export function ParentAuthForm({ mode }: ParentAuthFormProps) {
         </MvpButton>
 
         <div className="rounded-[1.25rem] bg-[#EAF6FF] p-3 text-center text-xs font-bold leading-5 text-[#5B6B94]">
-          Google login can be added later after OAuth is prepared in Supabase.
+          The MVP child profile uses a nickname only. Do not enter a child legal name, school, address, phone number, or date of birth.
         </div>
 
         <div className="grid gap-2 text-center text-sm font-bold text-[#5B6B94]">

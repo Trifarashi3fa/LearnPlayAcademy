@@ -6,7 +6,7 @@ import { typography } from "@/components/theme";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description:
-    "Learn how LearnPlay Academy handles account details, student profiles, XP, scores, and learning progress.",
+    "Learn how LearnPlay Academy handles parent accounts, nickname-based child profiles, local progress, and synced learning progress.",
   openGraph: {
     title: "LearnPlay Academy Privacy Policy",
     description:
@@ -16,33 +16,53 @@ export const metadata: Metadata = {
 
 const sections = [
   {
-    title: "Information we collect",
-    copy: "LearnPlay Academy may store an email address, student profile details such as name, age, grade level, and favorite subject, plus learning progress such as XP, levels, scores, game history, and subject progress.",
+    title: "MVP / beta policy",
+    copy: "This page describes the current LearnPlay Academy MVP data model. It is practical product wording, not a formal legal opinion, and should receive legal review before public launch.",
     tone: "blue" as const,
   },
   {
-    title: "How information is used",
-    copy: "This information is used to let students sign in, save progress, show dashboard summaries, personalize the learning experience, and help families celebrate growth.",
+    title: "Parent account data",
+    copy: "A parent account uses an email address, password handled by Supabase Auth, and a simple parent profile record. The profile may store the email address and a display name based on the email prefix.",
     tone: "yellow" as const,
   },
   {
-    title: "Children and families",
-    copy: "LearnPlay Academy is designed for children aged 7 to 12 with parent-friendly oversight. Parents or guardians should help children create and manage accounts when needed.",
+    title: "Child profile data",
+    copy: "The MVP supports one child profile. It asks for a nickname, Year 1 level, avatar choice, and selected-profile status. It does not ask for a child legal name, date of birth, school, home address, phone number, or precise location.",
     tone: "green" as const,
   },
   {
-    title: "Payments",
-    copy: "LearnPlay Academy does not process payments yet. If premium plans are added later, payment information should be handled by a secure payment provider.",
+    title: "Learning progress",
+    copy: "Forest World progress may include current world, current level, completed levels, level stars, XP, total stars, badges, completed worlds, unlocked worlds, questions answered, correct answers, question-attempt summaries, and last played or updated timestamps.",
     tone: "purple" as const,
   },
   {
-    title: "Data access and updates",
-    copy: "Families can update student profile details from the dashboard. For support with account information or deletion requests, contact LearnPlay Academy by email.",
+    title: "Local and synced progress",
+    copy: "Progress is saved locally in the browser first. If a parent is logged in and a child profile is selected, level-completion checkpoints can sync to the Supabase child_progress table. Clearing local device data clears browser progress only and does not delete synced child progress.",
     tone: "pink" as const,
   },
   {
+    title: "Deleting child profile data",
+    copy: "Parents can delete the child profile from the account page. The current database links child progress to the child profile, so deleting the profile may also remove linked saved child progress. The UI warns before this action.",
+    tone: "white" as const,
+  },
+  {
+    title: "Analytics and performance",
+    copy: "The app includes Vercel Analytics and Speed Insights to understand website usage and performance. The MVP does not use these tools to ask for child legal names, school details, addresses, phone numbers, or precise location.",
+    tone: "blue" as const,
+  },
+  {
+    title: "Parent control",
+    copy: "Parents can create, update, or delete the one MVP child profile from the account page. For account access or deletion support beyond the current UI, contact LearnPlay Academy by email.",
+    tone: "yellow" as const,
+  },
+  {
+    title: "Payments",
+    copy: "LearnPlay Academy does not process payments yet. If premium plans are added later, payment information should be handled by a secure payment provider and explained before purchase.",
+    tone: "green" as const,
+  },
+  {
     title: "Contact",
-    copy: "For privacy questions, email support@learnplayacademy.com. This page is a practical project policy and should be reviewed by a legal professional before commercial launch.",
+    copy: "For privacy questions, email support@learnplayacademy.com. Do not treat this page as a claim of COPPA, GDPR, PDPA, or other legal compliance until formal legal review is complete.",
     tone: "white" as const,
   },
 ];
@@ -52,7 +72,7 @@ export default function PrivacyPage() {
     <PageLayout
       eyebrow="Privacy"
       title="Privacy Policy"
-      description="A clear overview of the data LearnPlay Academy uses to support safe, visible learning progress."
+      description="A parent-friendly MVP overview of the account, child profile, and progress data LearnPlay currently uses."
       heroTone="blue"
     >
       <PageSection>

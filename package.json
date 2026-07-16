@@ -10,7 +10,11 @@
                     "validate:curriculum":  "node scripts/validate-curriculum.mjs",
                     "prebuild":  "npm run validate:curriculum",
                     "import:questions":  "node scripts/import-question-assets.mjs",
-                    "test:question-assets":  "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/test-question-asset-import.mjs"
+                    "import:questions:year1-forest":  "node scripts/import-year1-forest-question-assets.mjs",
+                    "test:question-assets":  "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/test-question-asset-import.mjs",
+                    "test:mvp-level-access":  "node scripts/test-mvp-level-access.mjs",
+                    "test:mvp-reset-safety":  "node scripts/test-mvp-reset-safety.mjs",
+                    "test:mvp-year-availability":  "node scripts/test-mvp-year-availability.mjs"
                 },
     "dependencies":  {
                          "@supabase/ssr":  "^0.12.0",

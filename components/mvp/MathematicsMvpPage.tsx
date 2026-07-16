@@ -5,6 +5,7 @@ import Link from "next/link";
 import { forestLevels } from "@/data/mvp-forest-world";
 import { ProgressBar } from "@/components/mvp/MvpShell";
 import { useMvpProgress } from "@/components/mvp/useMvpProgress";
+import { getForestLevelAccess } from "@/lib/progress/level-access";
 
 const levelTone: Record<string, string> = {
   Learn: "bg-[#0B63F6]",
@@ -16,7 +17,7 @@ const levelTone: Record<string, string> = {
 };
 
 export function MathematicsMvpPage() {
-  const { completedCount, totalLevels, worldProgress, progress, worldProgressRecord, nextUnlockedLevel } = useMvpProgress();
+  const { completedCount, totalLevels, worldProgress, progress, worldProgressRecord } = useMvpProgress();
 
   return (
     <main className="bg-[#FFFDF7] text-[#082B80]">
@@ -49,7 +50,7 @@ export function MathematicsMvpPage() {
           </div>
           <div className="overflow-hidden rounded-[2rem] border border-[#DDE8F5] bg-white shadow-playful">
             <Image
-              src="/worlds/level 1-forest-world.png"
+              src="/worlds/level 1-forest-world.webp"
               alt="Forest World mathematics adventure"
               width={520}
               height={380}
@@ -90,7 +91,7 @@ export function MathematicsMvpPage() {
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {forestLevels.map((level) => {
-            const unlocked = level.level === 1 || level.level <= nextUnlockedLevel || worldProgressRecord.completedLevels.includes(level.level);
+            const unlocked = getForestLevelAccess(level.level, worldProgressRecord.completedLevels).accessible;
             const content = (
               <article className={`h-full rounded-[1.5rem] border bg-white p-4 shadow-sm transition ${
                 unlocked ? "border-[#0B63F6] hover:-translate-y-1 hover:shadow-playful" : "border-[#DDE8F5] opacity-75"

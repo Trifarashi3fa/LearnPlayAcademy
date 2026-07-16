@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
+import type { ChildProfile } from "@/data/account-types";
 import { forestLevels, getMasteryLabel } from "@/data/mvp-forest-world";
 import type { CompleteLevelInput, LocalProgressV2 } from "@/data/progress-types";
 import {
@@ -32,6 +33,7 @@ export function useMvpProgress() {
   const [ready, setReady] = useState(false);
   const [syncStatus, setSyncStatus] = useState<ProgressSyncStatus>("loading");
   const [lastSyncedAt, setLastSyncedAt] = useState<string | null>(null);
+  const [selectedChild, setSelectedChild] = useState<ChildProfile | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -46,6 +48,7 @@ export function useMvpProgress() {
           saveLocalProgress(result.progress);
           setProgress(result.progress);
         }
+        setSelectedChild(result.child);
         setSyncStatus(result.status);
         setLastSyncedAt(result.lastPlayedAt);
       })
@@ -78,11 +81,12 @@ export function useMvpProgress() {
     syncRemoteProgress(result.progress);
   }, [progress, syncRemoteProgress]);
 
-  const reset = useCallback(() => {
-    const fresh = resetLocalProgress();
-    setProgress(fresh);
-    syncRemoteProgress(fresh);
-  }, [syncRemoteProgress]);
+  const clearLocalDeviceProgress = useCallback(() => {
+    const result = resetLocalProgress();
+    setProgress(result.progress);
+    setSyncStatus(result.saved ? "local-only" : "error");
+    return result.saved;
+  }, []);
 
   const worldProgressRecord = getWorldProgress(progress, FOREST_PROGRESS_REF);
   const completedCount = worldProgressRecord.completedLevels.length;
@@ -105,8 +109,10 @@ export function useMvpProgress() {
       ready,
       syncStatus,
       lastSyncedAt,
+      selectedChild,
       completeLevel,
-      reset,
+      clearLocalDeviceProgress,
+      reset: clearLocalDeviceProgress,
       completedCount,
       totalLevels,
       worldProgress,
@@ -121,8 +127,9 @@ export function useMvpProgress() {
       ready,
       syncStatus,
       lastSyncedAt,
+      selectedChild,
       completeLevel,
-      reset,
+      clearLocalDeviceProgress,
       completedCount,
       totalLevels,
       worldProgress,

@@ -27,13 +27,23 @@ const terms = [
   },
   {
     title: "Account use",
-    copy: "Users should provide accurate account information, keep passwords private, and use LearnPlay Academy in a respectful and appropriate way.",
+    copy: "Parents should use their own email address, keep passwords private, and manage the child profile. The MVP child profile should use a nickname only.",
     tone: "green" as const,
   },
   {
     title: "Progress and rewards",
-    copy: "XP, levels, stars, badges, and scores are designed to encourage practice. They are motivational tools and may change as the platform grows.",
+    copy: "XP, levels, stars, badges, question-attempt summaries, and progress dashboards are designed to encourage practice. They are motivational tools and may change as the platform grows.",
     tone: "purple" as const,
+  },
+  {
+    title: "Child profile and data",
+    copy: "The current MVP does not ask for a child legal name, date of birth, school, address, phone number, or precise location. It uses a nickname-based child profile and learning progress records.",
+    tone: "blue" as const,
+  },
+  {
+    title: "Local and synced progress",
+    copy: "Some progress is stored on the local device. Logged-in parent accounts with a selected child profile may also sync level-completion progress to Supabase. Clearing local device data does not delete synced child progress.",
+    tone: "yellow" as const,
   },
   {
     title: "Future premium plans",
@@ -42,7 +52,7 @@ const terms = [
   },
   {
     title: "Contact",
-    copy: "For questions about these terms, email support@learnplayacademy.com. These terms should be reviewed by a legal professional before commercial launch.",
+    copy: "For questions about these terms, email support@learnplayacademy.com. These MVP terms should be reviewed by a legal professional before commercial launch and are not a formal compliance statement.",
     tone: "white" as const,
   },
 ];
