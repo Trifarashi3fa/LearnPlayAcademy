@@ -7,6 +7,7 @@ import {
   type QuestionAssetValidationIssue,
   type QuestionAssetValidationSummary,
 } from "@/data/question-asset-schema";
+import { buildLegacyMatchPairs } from "@/lib/question-engine/match-pairs";
 
 const supportedQuestionTypeSet = new Set<string>(supportedForestL01QuestionTypes);
 const repeatedVisualObjectWarningThreshold = 8;
@@ -65,6 +66,23 @@ function optionsAreUnique(options: string[]) {
 function correctAnswerMatchesOption(options: string[], correctAnswer: string) {
   const normalizedCorrect = normalizeAnswer(correctAnswer);
   return options.some((option) => normalizeAnswer(option) === normalizedCorrect);
+}
+
+function correctAnswerMatchesTapTarget(options: string[], correctAnswer: string) {
+  const normalizedCorrect = normalizeAnswer(correctAnswer);
+  if (["both", "both groups", "same"].includes(normalizedCorrect)) {
+    return options.length >= 2;
+  }
+
+  return options.some((option) => {
+    const groupLabel = normalizeAnswer(option.split(":")[0] ?? "");
+    const optionValue = normalizeAnswer(option.replace(/^Group\s+[A-D]\s*:\s*/i, ""));
+    return (
+      normalizeAnswer(option) === normalizedCorrect ||
+      groupLabel === normalizedCorrect ||
+      optionValue === normalizedCorrect
+    );
+  });
 }
 
 export function parseForestL01AssetRows(
@@ -164,13 +182,31 @@ export function validateForestL01AssetRows(
     if (questionType === "Tap Correct Group") {
       if (options.length < 2) {
         addIssue(issues, row, rowIndex, "Options", "Tap Correct Group requires at least 2 usable tap targets.", "error");
-      } else if (!correctAnswerMatchesOption(options, correctAnswer)) {
+      } else if (!correctAnswerMatchesTapTarget(options, correctAnswer)) {
         addIssue(issues, row, rowIndex, "Correct Answer", "Correct Answer must match one tap target.", "error");
       }
     }
 
     if (questionType === "Match Pairs") {
-      addIssue(issues, row, rowIndex, "Question Type", "Match Pairs imports for preview only; dedicated renderer is not complete.", "warning");
+      const pairResult = buildLegacyMatchPairs({
+        options,
+        correctAnswer,
+        questionId: text(row, "Question ID") || `row-${rowIndex + 1}`,
+        visualRef: text(row, "Visual Object"),
+      });
+      if (pairResult.pairs.length < 2) {
+        addIssue(
+          issues,
+          row,
+          rowIndex,
+          "Question Type",
+          "Match Pairs will use a safe fallback because fewer than 2 complete left = right pairs were found.",
+          "warning",
+        );
+      }
+      pairResult.warnings.forEach((warning) => {
+        addIssue(issues, row, rowIndex, "Question Type", warning, "warning");
+      });
     }
 
     if (questionType === "True or False" && !["true", "false", "yes", "no", "correct", "incorrect"].includes(normalizeAnswer(correctAnswer))) {
@@ -305,8 +341,7 @@ export function validateForestL01AssetRows(
       text(row, "Assessment Eligible") !== "" &&
       text(row, "Version Notes") !== "" &&
       text(row, "Teaching Notes") !== "" &&
-      text(row, "Required Assets") !== "" &&
-      text(row, "Question Type") !== "Match Pairs";
+      text(row, "Required Assets") !== "";
 
     return {
       questionId,

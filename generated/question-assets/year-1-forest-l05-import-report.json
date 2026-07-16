@@ -1,22 +1,22 @@
 {
-  "generatedAt": "2026-07-16T12:07:12.026Z",
-  "sourceFile": "E:\\Codex\\learnplay-academy\\content\\question-assets\\imports\\mathematics\\year-1\\forest-l01.csv",
+  "generatedAt": "2026-07-16T12:07:12.202Z",
+  "sourceFile": "E:\\Codex\\learnplay-academy\\content\\question-assets\\imports\\mathematics\\year-1\\forest-l05.csv",
   "sourceType": "CSV",
-  "requestedSheet": "Forest L01",
+  "requestedSheet": "Forest L05",
   "detectedWorksheet": null,
   "csvSheetNote": "CSV exports contain one tab only; --sheet is used for source validation.",
-  "outputJsonPath": "E:\\Codex\\learnplay-academy\\content\\question-assets\\mathematics\\year-1\\forest-world\\forest-l01-imported.json",
-  "reportJsonPath": "E:\\Codex\\learnplay-academy\\generated\\question-assets\\year-1-forest-l01-import-report.json",
-  "detectedQuestionIdPrefix": "FW-Y1-L01-Q",
+  "outputJsonPath": "E:\\Codex\\learnplay-academy\\content\\question-assets\\mathematics\\year-1\\forest-world\\forest-l05-imported.json",
+  "reportJsonPath": "E:\\Codex\\learnplay-academy\\generated\\question-assets\\year-1-forest-l05-import-report.json",
+  "detectedQuestionIdPrefix": "FW-Y1-L05-Q",
   "detectedSubject": "Mathematics",
   "detectedYear": 1,
   "detectedWorld": "Forest World",
-  "detectedLevel": 1,
+  "detectedLevel": 5,
   "sourceMismatch": {
     "hasMismatch": false,
     "message": "",
-    "expectedLevel": 1,
-    "detectedLevel": 1
+    "expectedLevel": 5,
+    "detectedLevel": 5
   },
   "totalSourceRows": 30,
   "sourceRows": 30,
@@ -32,9 +32,10 @@
   "errorCount": 0,
   "duplicateIds": [],
   "questionTypeDistribution": {
-    "Multiple Choice": 10,
-    "Fill Missing Number": 10,
-    "Match Pairs": 10
+    "Multiple Choice": 12,
+    "Count & Type": 6,
+    "Fill Missing Number": 6,
+    "Tap Correct Group": 6
   },
   "headerMappingAudit": {
     "detectedHeaders": [
@@ -231,7 +232,7 @@
     ]
   },
   "inferredFieldsCount": 60,
-  "explicitFieldsCount": 20,
+  "explicitFieldsCount": 18,
   "inferredFields": [
     {
       "rowNumber": 2,
@@ -586,22 +587,12 @@
       "source": "Option A-D"
     },
     {
-      "rowNumber": 22,
+      "rowNumber": 12,
       "field": "Options",
       "source": "Option A-D"
     },
     {
-      "rowNumber": 23,
-      "field": "Options",
-      "source": "Option A-D"
-    },
-    {
-      "rowNumber": 24,
-      "field": "Options",
-      "source": "Option A-D"
-    },
-    {
-      "rowNumber": 25,
+      "rowNumber": 13,
       "field": "Options",
       "source": "Option A-D"
     },
@@ -639,420 +630,420 @@
   "rendererLimitations": [],
   "issues": [
     {
-      "questionId": "FW-Y1-L01-Q001",
+      "questionId": "FW-Y1-L05-Q001",
       "rowNumber": 2,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q001",
+      "questionId": "FW-Y1-L05-Q001",
       "rowNumber": 2,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q002",
+      "questionId": "FW-Y1-L05-Q002",
       "rowNumber": 3,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q002",
+      "questionId": "FW-Y1-L05-Q002",
       "rowNumber": 3,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q003",
+      "questionId": "FW-Y1-L05-Q003",
       "rowNumber": 4,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q003",
+      "questionId": "FW-Y1-L05-Q003",
       "rowNumber": 4,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q004",
+      "questionId": "FW-Y1-L05-Q004",
       "rowNumber": 5,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q004",
+      "questionId": "FW-Y1-L05-Q004",
       "rowNumber": 5,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q005",
+      "questionId": "FW-Y1-L05-Q005",
       "rowNumber": 6,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q005",
+      "questionId": "FW-Y1-L05-Q005",
       "rowNumber": 6,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q006",
+      "questionId": "FW-Y1-L05-Q006",
       "rowNumber": 7,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q006",
+      "questionId": "FW-Y1-L05-Q006",
       "rowNumber": 7,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q007",
+      "questionId": "FW-Y1-L05-Q007",
       "rowNumber": 8,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q007",
+      "questionId": "FW-Y1-L05-Q007",
       "rowNumber": 8,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q008",
+      "questionId": "FW-Y1-L05-Q008",
       "rowNumber": 9,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q008",
+      "questionId": "FW-Y1-L05-Q008",
       "rowNumber": 9,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q009",
+      "questionId": "FW-Y1-L05-Q009",
       "rowNumber": 10,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q009",
+      "questionId": "FW-Y1-L05-Q009",
       "rowNumber": 10,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q010",
+      "questionId": "FW-Y1-L05-Q010",
       "rowNumber": 11,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q010",
+      "questionId": "FW-Y1-L05-Q010",
       "rowNumber": 11,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q011",
+      "questionId": "FW-Y1-L05-Q011",
       "rowNumber": 12,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q011",
+      "questionId": "FW-Y1-L05-Q011",
       "rowNumber": 12,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q012",
+      "questionId": "FW-Y1-L05-Q012",
       "rowNumber": 13,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q012",
+      "questionId": "FW-Y1-L05-Q012",
       "rowNumber": 13,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q013",
+      "questionId": "FW-Y1-L05-Q013",
       "rowNumber": 14,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q013",
+      "questionId": "FW-Y1-L05-Q013",
       "rowNumber": 14,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q014",
+      "questionId": "FW-Y1-L05-Q014",
       "rowNumber": 15,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q014",
+      "questionId": "FW-Y1-L05-Q014",
       "rowNumber": 15,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q015",
+      "questionId": "FW-Y1-L05-Q015",
       "rowNumber": 16,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q015",
+      "questionId": "FW-Y1-L05-Q015",
       "rowNumber": 16,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q016",
+      "questionId": "FW-Y1-L05-Q016",
       "rowNumber": 17,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q016",
+      "questionId": "FW-Y1-L05-Q016",
       "rowNumber": 17,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q017",
+      "questionId": "FW-Y1-L05-Q017",
       "rowNumber": 18,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q017",
+      "questionId": "FW-Y1-L05-Q017",
       "rowNumber": 18,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q018",
+      "questionId": "FW-Y1-L05-Q018",
       "rowNumber": 19,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q018",
+      "questionId": "FW-Y1-L05-Q018",
       "rowNumber": 19,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q019",
+      "questionId": "FW-Y1-L05-Q019",
       "rowNumber": 20,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q019",
+      "questionId": "FW-Y1-L05-Q019",
       "rowNumber": 20,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q020",
+      "questionId": "FW-Y1-L05-Q020",
       "rowNumber": 21,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q020",
+      "questionId": "FW-Y1-L05-Q020",
       "rowNumber": 21,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q021",
+      "questionId": "FW-Y1-L05-Q021",
       "rowNumber": 22,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q021",
+      "questionId": "FW-Y1-L05-Q021",
       "rowNumber": 22,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q022",
+      "questionId": "FW-Y1-L05-Q022",
       "rowNumber": 23,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q022",
+      "questionId": "FW-Y1-L05-Q022",
       "rowNumber": 23,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q023",
+      "questionId": "FW-Y1-L05-Q023",
       "rowNumber": 24,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q023",
+      "questionId": "FW-Y1-L05-Q023",
       "rowNumber": 24,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q024",
+      "questionId": "FW-Y1-L05-Q024",
       "rowNumber": 25,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q024",
+      "questionId": "FW-Y1-L05-Q024",
       "rowNumber": 25,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q025",
+      "questionId": "FW-Y1-L05-Q025",
       "rowNumber": 26,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q025",
+      "questionId": "FW-Y1-L05-Q025",
       "rowNumber": 26,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q026",
+      "questionId": "FW-Y1-L05-Q026",
       "rowNumber": 27,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q026",
+      "questionId": "FW-Y1-L05-Q026",
       "rowNumber": 27,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q027",
+      "questionId": "FW-Y1-L05-Q027",
       "rowNumber": 28,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q027",
+      "questionId": "FW-Y1-L05-Q027",
       "rowNumber": 28,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q028",
+      "questionId": "FW-Y1-L05-Q028",
       "rowNumber": 29,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q028",
+      "questionId": "FW-Y1-L05-Q028",
       "rowNumber": 29,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q029",
+      "questionId": "FW-Y1-L05-Q029",
       "rowNumber": 30,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q029",
+      "questionId": "FW-Y1-L05-Q029",
       "rowNumber": 30,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q030",
+      "questionId": "FW-Y1-L05-Q030",
       "rowNumber": 31,
       "field": "Teaching Notes",
       "severity": "Teaching Notes were inferred from existing explanation fields.",
       "message": "warning"
     },
     {
-      "questionId": "FW-Y1-L01-Q030",
+      "questionId": "FW-Y1-L05-Q030",
       "rowNumber": 31,
       "field": "Required Assets",
       "severity": "Required Assets were inferred from legacy visual fields.",
@@ -1061,7 +1052,7 @@
   ],
   "rowResults": [
     {
-      "questionId": "FW-Y1-L01-Q001",
+      "questionId": "FW-Y1-L05-Q001",
       "rowNumber": 2,
       "isValid": true,
       "isPublishable": true,
@@ -1069,7 +1060,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q002",
+      "questionId": "FW-Y1-L05-Q002",
       "rowNumber": 3,
       "isValid": true,
       "isPublishable": true,
@@ -1077,7 +1068,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q003",
+      "questionId": "FW-Y1-L05-Q003",
       "rowNumber": 4,
       "isValid": true,
       "isPublishable": true,
@@ -1085,7 +1076,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q004",
+      "questionId": "FW-Y1-L05-Q004",
       "rowNumber": 5,
       "isValid": true,
       "isPublishable": true,
@@ -1093,7 +1084,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q005",
+      "questionId": "FW-Y1-L05-Q005",
       "rowNumber": 6,
       "isValid": true,
       "isPublishable": true,
@@ -1101,7 +1092,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q006",
+      "questionId": "FW-Y1-L05-Q006",
       "rowNumber": 7,
       "isValid": true,
       "isPublishable": true,
@@ -1109,7 +1100,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q007",
+      "questionId": "FW-Y1-L05-Q007",
       "rowNumber": 8,
       "isValid": true,
       "isPublishable": true,
@@ -1117,7 +1108,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q008",
+      "questionId": "FW-Y1-L05-Q008",
       "rowNumber": 9,
       "isValid": true,
       "isPublishable": true,
@@ -1125,7 +1116,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q009",
+      "questionId": "FW-Y1-L05-Q009",
       "rowNumber": 10,
       "isValid": true,
       "isPublishable": true,
@@ -1133,7 +1124,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q010",
+      "questionId": "FW-Y1-L05-Q010",
       "rowNumber": 11,
       "isValid": true,
       "isPublishable": true,
@@ -1141,7 +1132,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q011",
+      "questionId": "FW-Y1-L05-Q011",
       "rowNumber": 12,
       "isValid": true,
       "isPublishable": true,
@@ -1149,7 +1140,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q012",
+      "questionId": "FW-Y1-L05-Q012",
       "rowNumber": 13,
       "isValid": true,
       "isPublishable": true,
@@ -1157,7 +1148,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q013",
+      "questionId": "FW-Y1-L05-Q013",
       "rowNumber": 14,
       "isValid": true,
       "isPublishable": true,
@@ -1165,7 +1156,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q014",
+      "questionId": "FW-Y1-L05-Q014",
       "rowNumber": 15,
       "isValid": true,
       "isPublishable": true,
@@ -1173,7 +1164,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q015",
+      "questionId": "FW-Y1-L05-Q015",
       "rowNumber": 16,
       "isValid": true,
       "isPublishable": true,
@@ -1181,7 +1172,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q016",
+      "questionId": "FW-Y1-L05-Q016",
       "rowNumber": 17,
       "isValid": true,
       "isPublishable": true,
@@ -1189,7 +1180,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q017",
+      "questionId": "FW-Y1-L05-Q017",
       "rowNumber": 18,
       "isValid": true,
       "isPublishable": true,
@@ -1197,7 +1188,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q018",
+      "questionId": "FW-Y1-L05-Q018",
       "rowNumber": 19,
       "isValid": true,
       "isPublishable": true,
@@ -1205,7 +1196,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q019",
+      "questionId": "FW-Y1-L05-Q019",
       "rowNumber": 20,
       "isValid": true,
       "isPublishable": true,
@@ -1213,7 +1204,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q020",
+      "questionId": "FW-Y1-L05-Q020",
       "rowNumber": 21,
       "isValid": true,
       "isPublishable": true,
@@ -1221,7 +1212,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q021",
+      "questionId": "FW-Y1-L05-Q021",
       "rowNumber": 22,
       "isValid": true,
       "isPublishable": true,
@@ -1229,7 +1220,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q022",
+      "questionId": "FW-Y1-L05-Q022",
       "rowNumber": 23,
       "isValid": true,
       "isPublishable": true,
@@ -1237,7 +1228,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q023",
+      "questionId": "FW-Y1-L05-Q023",
       "rowNumber": 24,
       "isValid": true,
       "isPublishable": true,
@@ -1245,7 +1236,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q024",
+      "questionId": "FW-Y1-L05-Q024",
       "rowNumber": 25,
       "isValid": true,
       "isPublishable": true,
@@ -1253,7 +1244,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q025",
+      "questionId": "FW-Y1-L05-Q025",
       "rowNumber": 26,
       "isValid": true,
       "isPublishable": true,
@@ -1261,7 +1252,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q026",
+      "questionId": "FW-Y1-L05-Q026",
       "rowNumber": 27,
       "isValid": true,
       "isPublishable": true,
@@ -1269,7 +1260,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q027",
+      "questionId": "FW-Y1-L05-Q027",
       "rowNumber": 28,
       "isValid": true,
       "isPublishable": true,
@@ -1277,7 +1268,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q028",
+      "questionId": "FW-Y1-L05-Q028",
       "rowNumber": 29,
       "isValid": true,
       "isPublishable": true,
@@ -1285,7 +1276,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q029",
+      "questionId": "FW-Y1-L05-Q029",
       "rowNumber": 30,
       "isValid": true,
       "isPublishable": true,
@@ -1293,7 +1284,7 @@
       "warnings": []
     },
     {
-      "questionId": "FW-Y1-L01-Q030",
+      "questionId": "FW-Y1-L05-Q030",
       "rowNumber": 31,
       "isValid": true,
       "isPublishable": true,
@@ -1303,22 +1294,28 @@
   ],
   "rendererClassifications": [
     {
-      "questionType": "Fill Missing Number",
+      "questionType": "Count & Type",
       "status": "supported",
-      "count": 10,
-      "message": "Fill Missing Number renders through a dedicated question-engine renderer."
+      "count": 6,
+      "message": "Count & Type renders through a dedicated question-engine renderer."
     },
     {
-      "questionType": "Match Pairs",
+      "questionType": "Fill Missing Number",
       "status": "supported",
-      "count": 10,
-      "message": "Match Pairs renders through a dedicated question-engine renderer."
+      "count": 6,
+      "message": "Fill Missing Number renders through a dedicated question-engine renderer."
     },
     {
       "questionType": "Multiple Choice",
       "status": "supported",
-      "count": 10,
+      "count": 12,
       "message": "Multiple Choice renders through a dedicated question-engine renderer."
+    },
+    {
+      "questionType": "Tap Correct Group",
+      "status": "supported",
+      "count": 6,
+      "message": "Tap Correct Group renders through a dedicated question-engine renderer."
     }
   ]
 }

@@ -124,18 +124,12 @@ export function classifyQuestionRendererSupport(questionType: string): {
     questionType === "Count & Type" ||
     questionType === "Tap Correct Group" ||
     questionType === "Fill Missing Number" ||
-    questionType === "True or False"
+    questionType === "True or False" ||
+    questionType === "Match Pairs"
   ) {
     return {
       status: "supported",
       message: `${questionType} renders through a dedicated question-engine renderer.`,
-    };
-  }
-
-  if (questionType === "Match Pairs") {
-    return {
-      status: "preview-fallback",
-      message: "Match Pairs imports safely and previews through the tap-answer fallback. Dedicated renderer TODO.",
     };
   }
 
@@ -368,11 +362,22 @@ export function selectForestL01RandomSession(options: {
   seed?: string;
   desiredQuestionCount?: number;
 }) {
+  return selectForestYear1RandomSession({ ...options, level: 1 });
+}
+
+export function selectForestYear1RandomSession(options: {
+  level: number;
+  questions: NormalizedQuestion[];
+  assetRows: ForestL01QuestionAssetRow[];
+  validQuestionIds?: Iterable<string>;
+  seed?: string;
+  desiredQuestionCount?: number;
+}) {
   return selectRandomQuestionPool({
     subject: "Mathematics",
     year: 1,
     world: "Forest World",
-    level: 1,
+    level: options.level,
     desiredQuestionCount: options.desiredQuestionCount ?? 10,
     targetDistribution: forestL01TargetDistribution,
     seed: options.seed,

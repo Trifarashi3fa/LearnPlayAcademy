@@ -17,9 +17,10 @@ import type {
 import type { QuestionAssetImportError } from "@/lib/question-assets/import-question-assets";
 import {
   forestL01TargetDistribution,
-  selectForestL01RandomSession,
+  selectForestYear1RandomSession,
   summarizeRendererSupport,
 } from "@/lib/question-assets/random-question-pool";
+import { parseMatchPairsState } from "@/lib/question-engine/match-pairs";
 import { QuestionRenderer } from "@/components/mvp/question-engine/QuestionRenderer";
 
 export type PilotQuestionRecord = {
@@ -223,6 +224,10 @@ function checkAnswer(question: NormalizedQuestion, selectedAnswer: string | null
     return accepted.includes(actual);
   }
 
+  if (question.interactionType === "match-pairs") {
+    return parseMatchPairsState(selectedAnswer)?.completed ?? false;
+  }
+
   return false;
 }
 
@@ -253,7 +258,62 @@ function expectedAnswer(question: NormalizedQuestion) {
     return question.answerSpec.acceptedAnswers[0] ?? "";
   }
 
+  if (question.interactionType === "match-pairs") {
+    return `${question.interaction.pairs.length} matched pairs`;
+  }
+
   return "";
+}
+
+function selectedAnswerSummary(question: NormalizedQuestion, selectedAnswer: string | null) {
+  if (selectedAnswer === null) return "No answer selected";
+  if (question.interactionType !== "match-pairs") return selectedAnswer;
+
+  const state = parseMatchPairsState(selectedAnswer);
+  if (!state) return "No match-pairs state yet";
+  return state.completed
+    ? "All pairs matched"
+    : `${state.matchedPairIds.length} matched, ${state.attempts} attempt(s)`;
+}
+
+function MatchPairsPreviewState({
+  question,
+  selectedAnswer,
+}: {
+  question: NormalizedQuestion;
+  selectedAnswer: string | null;
+}) {
+  if (question.interactionType !== "match-pairs") return null;
+  const state = parseMatchPairsState(selectedAnswer);
+
+  return (
+    <>
+      <div className="rounded-2xl bg-white p-3">
+        <dt className="text-[#5B6B94]">Selected left item</dt>
+        <dd className="mt-1 break-words text-[#082B80]">
+          {state?.selectedLeftId ?? "None"}
+        </dd>
+      </div>
+      <div className="rounded-2xl bg-white p-3">
+        <dt className="text-[#5B6B94]">Selected right item</dt>
+        <dd className="mt-1 break-words text-[#082B80]">
+          {state?.selectedRightId ?? "None"}
+        </dd>
+      </div>
+      <div className="rounded-2xl bg-white p-3">
+        <dt className="text-[#5B6B94]">Matched pairs</dt>
+        <dd className="mt-1 break-words text-[#082B80]">
+          {state?.matchedPairIds.length ?? 0} / {question.interaction.pairs.length}
+        </dd>
+      </div>
+      <div className="rounded-2xl bg-white p-3">
+        <dt className="text-[#5B6B94]">Attempts / completed</dt>
+        <dd className="mt-1 break-words text-[#082B80]">
+          {state?.attempts ?? 0} attempts, {state?.completed ? "complete" : "not complete"}
+        </dd>
+      </div>
+    </>
+  );
 }
 
 function countByQuestionType(rows: AssetRow[]) {
@@ -491,13 +551,14 @@ function RandomSessionPreview({
   );
   const session = useMemo(
     () =>
-      selectForestL01RandomSession({
+      selectForestYear1RandomSession({
+        level: assetImportReport?.detectedLevel ?? 1,
         questions: importedQuestions,
         assetRows,
         validQuestionIds,
         seed: `forest-l01-preview-${seedIndex}`,
       }),
-    [assetRows, importedQuestions, seedIndex, validQuestionIds],
+    [assetImportReport?.detectedLevel, assetRows, importedQuestions, seedIndex, validQuestionIds],
   );
 
   if (!assetValidation) return null;
@@ -721,7 +782,7 @@ function ImportedAssetQuestionPreview({
             <div className="rounded-2xl bg-white p-3">
               <dt className="text-[#5B6B94]">Selected answer</dt>
               <dd className="mt-1 break-words text-[#082B80]">
-                {selectedAnswer ?? "No answer selected"}
+                {selectedAnswerSummary(activeQuestion, selectedAnswer)}
               </dd>
             </div>
             <div className="rounded-2xl bg-white p-3">
@@ -749,6 +810,10 @@ function ImportedAssetQuestionPreview({
                     : "Review this answer"}
               </dd>
             </div>
+            <MatchPairsPreviewState
+              question={activeQuestion}
+              selectedAnswer={selectedAnswer}
+            />
           </dl>
 
           <button
@@ -943,7 +1008,7 @@ export function PilotQuestionEnginePreview({
               <div className="rounded-2xl bg-white p-3">
                 <dt className="text-[#5B6B94]">Selected answer</dt>
                 <dd className="mt-1 break-words text-[#082B80]">
-                  {selectedAnswer ?? "No answer selected"}
+                  {selectedAnswerSummary(activeQuestion, selectedAnswer)}
                 </dd>
               </div>
               <div className="rounded-2xl bg-white p-3">
@@ -971,6 +1036,10 @@ export function PilotQuestionEnginePreview({
                       : "Review this answer"}
                 </dd>
               </div>
+              <MatchPairsPreviewState
+                question={activeQuestion}
+                selectedAnswer={selectedAnswer}
+              />
             </dl>
 
             <button

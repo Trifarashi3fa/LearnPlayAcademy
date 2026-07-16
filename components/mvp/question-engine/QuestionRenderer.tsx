@@ -1,6 +1,7 @@
 import type { NormalizedQuestion } from "@/data/question-engine-types";
 import { CountObjectsRenderer } from "@/components/mvp/question-engine/renderers/CountObjectsRenderer";
 import { FillBlankRenderer } from "@/components/mvp/question-engine/renderers/FillBlankRenderer";
+import { MatchPairsRenderer } from "@/components/mvp/question-engine/renderers/MatchPairsRenderer";
 import { MultipleChoiceRenderer } from "@/components/mvp/question-engine/renderers/MultipleChoiceRenderer";
 import { TapAnswerRenderer } from "@/components/mvp/question-engine/renderers/TapAnswerRenderer";
 import { TrueFalseRenderer } from "@/components/mvp/question-engine/renderers/TrueFalseRenderer";
@@ -8,7 +9,7 @@ import { TrueFalseRenderer } from "@/components/mvp/question-engine/renderers/Tr
 type QuestionRendererProps = {
   question: NormalizedQuestion;
   selectedAnswer: string | null;
-  onSelectAnswer: (answer: string) => void;
+  onSelectAnswer: (answer: string | null) => void;
   compact?: boolean;
 };
 
@@ -71,6 +72,15 @@ export function QuestionRenderer({
     case "fill-in-blank":
       return (
         <FillBlankRenderer
+          question={question}
+          selectedAnswer={selectedAnswer}
+          onSelectAnswer={onSelectAnswer}
+          compact={compact}
+        />
+      );
+    case "match-pairs":
+      return (
+        <MatchPairsRenderer
           question={question}
           selectedAnswer={selectedAnswer}
           onSelectAnswer={onSelectAnswer}

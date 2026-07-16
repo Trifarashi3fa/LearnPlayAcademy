@@ -174,6 +174,72 @@ function normalizeAnswer(value) {
   return trimmed.toLocaleLowerCase("en");
 }
 
+function normalizeContentStatus(value) {
+  return trimCell(value).toLocaleLowerCase("en");
+}
+
+function isApprovedContentStatus(value) {
+  return normalizeContentStatus(value) === "approved";
+}
+
+function skippedRowForStatus(row) {
+  const status = trimCell(row.Status);
+  return {
+    questionId: row["Question ID"] || `row-${row.__sourceRowNumber ?? "unknown"}`,
+    rowNumber: row.__sourceRowNumber ?? null,
+    status: status || "(blank)",
+    questionType: row["Question Type"] || "(blank)",
+    reason: `Skipped before production schema validation because Status is ${status || "(blank)"}. Only Approved rows are imported.`,
+  };
+}
+
+function correctAnswerMatchesTapTarget(options, correctAnswer) {
+  const normalizedCorrect = normalizeAnswer(correctAnswer);
+  if (["both", "both groups", "same"].includes(normalizedCorrect)) {
+    return options.length >= 2;
+  }
+
+  return options.some((option) => {
+    const normalizedOption = normalizeAnswer(option);
+    const groupLabel = normalizeAnswer(String(option).split(":")[0] ?? "");
+    const optionValue = normalizeAnswer(String(option).replace(/^Group\s+[A-D]\s*:\s*/i, ""));
+    return (
+      normalizedOption === normalizedCorrect ||
+      groupLabel === normalizedCorrect ||
+      optionValue === normalizedCorrect
+    );
+  });
+}
+
+function parseLegacyMatchPairText(value) {
+  const text = trimCell(value).replace(/\s+/g, " ");
+  if (!text) return null;
+  const separatorMatch = text.match(/\s*(?:=|->|→|-)\s*/);
+  if (!separatorMatch?.[0]) return null;
+  const separatorIndex = text.indexOf(separatorMatch[0]);
+  const left = trimCell(text.slice(0, separatorIndex));
+  const right = trimCell(text.slice(separatorIndex + separatorMatch[0].length));
+  return left && right ? { left, right } : null;
+}
+
+function legacyMatchPairStatus(options, correctAnswer) {
+  const sourceItems = String(correctAnswer ?? "")
+    .split(";")
+    .map((item) => item.trim())
+    .filter(Boolean);
+  const fallbackItems = options.map((option) => option.trim()).filter(Boolean);
+  const pairs = (sourceItems.length > 0 ? sourceItems : fallbackItems)
+    .map(parseLegacyMatchPairText)
+    .filter(Boolean);
+  const unique = new Set(
+    pairs.map((pair) => `${normalizeAnswer(pair.left)}=>${normalizeAnswer(pair.right)}`),
+  );
+  return {
+    pairCount: unique.size,
+    dedicatedReady: unique.size >= 2,
+  };
+}
+
 function decodeXml(value) {
   return String(value ?? "")
     .replace(/&lt;/g, "<")
@@ -425,7 +491,7 @@ function sourceToAssetRows(tableRows) {
     else inferredFields.push({ rowNumber: index + 2, field: "Teaching Notes", status: teachingNotes.status });
     if (requiredAssets.status === "explicit") explicitFields.push({ rowNumber: index + 2, field: "Required Assets" });
     else inferredFields.push({ rowNumber: index + 2, field: "Required Assets", status: requiredAssets.status });
-    return Object.fromEntries(canonicalColumns.map((column) => {
+    const mappedRow = Object.fromEntries(canonicalColumns.map((column) => {
       if (column === "Options") return [column, options.join("|")];
       if (column === "Question Type") return [column, normalizeQuestionType(sourceRecord[column])];
       if (column === "Teaching Notes") return [column, teachingNotes.value];
@@ -433,6 +499,11 @@ function sourceToAssetRows(tableRows) {
       if (column === "Estimated Time") return [column, trimCell(sourceRecord["Estimated Time"] || rawRecord["Estimated Time (Seconds)"])];
       return [column, trimCell(sourceRecord[column])];
     }));
+    Object.defineProperty(mappedRow, "__sourceRowNumber", {
+      value: headerRowIndex + index + 2,
+      enumerable: false,
+    });
+    return mappedRow;
   });
   return { headers, sourceRows, mappedRows, headerAudit, inferredFields, explicitFields };
 }
@@ -503,7 +574,7 @@ function validateRows(rows, missingRequiredHeaders, requestedSheet, filePath) {
     }
   }
   rows.forEach((row, index) => {
-    const rowNumber = index + 2;
+    const rowNumber = row.__sourceRowNumber ?? index + 2;
     for (const field of missingRequiredHeaders) addIssue(issues, row, rowNumber, field, "error", `Required header ${field} was not found.`);
     for (const field of blockingRequiredFields) {
       if (!row[field]) addIssue(issues, row, rowNumber, field, "error", `${field} is required.`);
@@ -527,10 +598,22 @@ function validateRows(rows, missingRequiredHeaders, requestedSheet, filePath) {
     }
     if (type === "Tap Correct Group") {
       if (options.length < 2) addIssue(issues, row, rowNumber, "Options", "Tap Correct Group requires at least 2 tap targets.", "error");
-      else if (!options.some((option) => normalizeAnswer(option) === correct)) addIssue(issues, row, rowNumber, "Correct Answer", "error", "Correct Answer must match one tap target.");
+      else if (!correctAnswerMatchesTapTarget(options, row["Correct Answer"])) addIssue(issues, row, rowNumber, "Correct Answer", "error", "Correct Answer must match one tap target.");
     }
     if (type === "True or False" && !["true", "false", "yes", "no", "correct", "incorrect"].includes(correct)) addIssue(issues, row, rowNumber, "Correct Answer", "error", "True or False rows must use True or False as the correct answer.");
-    if (type === "Match Pairs") addIssue(issues, row, rowNumber, "Question Type", "warning", "Match Pairs is preview-only until its dedicated renderer is complete.");
+    if (type === "Match Pairs") {
+      const pairStatus = legacyMatchPairStatus(options, row["Correct Answer"]);
+      if (!pairStatus.dedicatedReady) {
+        addIssue(
+          issues,
+          row,
+          rowNumber,
+          "Question Type",
+          "warning",
+          "Match Pairs will use a safe fallback because fewer than 2 complete left = right pairs were found.",
+        );
+      }
+    }
     if (["Multiple Choice", "Count & Type", "Tap Correct Group"].includes(type) && !row["Visual Description"]) addIssue(issues, row, rowNumber, "Visual Description", "Visual Description is required for this question type.", "error");
     if (!row["Teaching Notes"]) addIssue(issues, row, rowNumber, "Teaching Notes", "Teaching Notes were inferred or missing; review before approval.", "warning");
     else if (row["Teaching Notes"].includes("|")) addIssue(issues, row, rowNumber, "Teaching Notes", "Teaching Notes were inferred from existing explanation fields.", "warning");
@@ -546,7 +629,7 @@ function validateRows(rows, missingRequiredHeaders, requestedSheet, filePath) {
     rowNumbers.forEach((rowNumber) => addIssue(issues, rows[rowNumber - 2], rowNumber, "Question ID", "error", `Duplicate Question ID: ${id}.`));
   }
   const rowResults = rows.map((row, index) => {
-    const rowNumber = index + 2;
+    const rowNumber = row.__sourceRowNumber ?? index + 2;
     const rowIssues = issues.filter((issue) => issue.rowNumber === rowNumber);
     const errors = rowIssues.filter((issue) => issue.severity === "error");
     const warnings = rowIssues.filter((issue) => issue.severity === "warning");
@@ -555,7 +638,7 @@ function validateRows(rows, missingRequiredHeaders, requestedSheet, filePath) {
       questionId: row["Question ID"] || `row-${rowNumber}`,
       rowNumber,
       isValid,
-      isPublishable: isValid && row.Status === "Approved" && row["Review Status"] === "Approved" && row["Assessment Eligible"] !== "" && row["Version Notes"] !== "" && row["Teaching Notes"] !== "" && row["Required Assets"] !== "" && row["Question Type"] !== "Match Pairs",
+      isPublishable: isValid && isApprovedContentStatus(row.Status) && row["Review Status"] === "Approved" && row["Assessment Eligible"] !== "" && row["Version Notes"] !== "" && row["Teaching Notes"] !== "" && row["Required Assets"] !== "",
       errors,
       warnings,
     };
@@ -591,13 +674,21 @@ export function importQuestionAssets({ filePath, sheet = "Forest L01", allowMism
   const loaded = loadRows(resolvedFilePath, sheet);
   const { sourceRows, mappedRows, headerAudit, inferredFields, explicitFields } = sourceToAssetRows(loaded.rows);
   const missingRequiredHeaders = headerAudit.missingRequiredHeaders;
-  const validation = validateRows(mappedRows, missingRequiredHeaders, sheet, resolvedFilePath);
-  const validRows = validation.sourceMismatch.hasMismatch && !allowMismatch ? [] : mappedRows.filter((_, index) => validation.rowResults[index]?.isValid);
+  const approvedRows = mappedRows.filter((row) => isApprovedContentStatus(row.Status));
+  const skippedRows = mappedRows.filter((row) => !isApprovedContentStatus(row.Status)).map(skippedRowForStatus);
+  const validation = validateRows(approvedRows, missingRequiredHeaders, sheet, resolvedFilePath);
+  const validRows = validation.sourceMismatch.hasMismatch && !allowMismatch ? [] : approvedRows.filter((_, index) => validation.rowResults[index]?.isValid);
   const importedRows = validRows.length;
-  const rejectedRows = Math.max(0, sourceRows.length - importedRows);
-  const rendererLimitations = mappedRows
-    .filter((row) => row["Question Type"] === "Match Pairs")
-    .map((row) => ({ questionId: row["Question ID"], message: "Match Pairs imports for preview only; dedicated renderer TODO." }));
+  const rejectedRows = Math.max(0, approvedRows.length - importedRows);
+  const rendererLimitations = approvedRows
+    .filter((row) => {
+      if (row["Question Type"] !== "Match Pairs") return false;
+      return !legacyMatchPairStatus(splitOptions(row.Options), row["Correct Answer"]).dedicatedReady;
+    })
+    .map((row) => ({
+      questionId: row["Question ID"],
+      message: "Match Pairs will use the safe tap-answer fallback because canonical pair data is incomplete.",
+    }));
   const report = {
     generatedAt: new Date().toISOString(),
     sourceFile: resolvedFilePath,
@@ -614,6 +705,10 @@ export function importQuestionAssets({ filePath, sheet = "Forest L01", allowMism
     detectedLevel: validation.detected.level,
     sourceMismatch: validation.sourceMismatch,
     totalSourceRows: sourceRows.length,
+    sourceRows: sourceRows.length,
+    approvedRows: approvedRows.length,
+    skippedRows: skippedRows.length,
+    skippedRowDetails: skippedRows,
     schemaValidRows: validation.validRows,
     validRows: validation.validRows,
     importedRows,
@@ -650,6 +745,7 @@ function main() {
   writeJson(reportJsonPath, result.report);
   console.log(`Source rows: ${result.report.totalSourceRows}`);
   console.log(`Imported rows: ${result.report.importedRows}`);
+  console.log(`Skipped rows: ${result.report.skippedRows}`);
   console.log(`Rejected rows: ${result.report.rejectedRows}`);
   console.log(`Errors: ${result.report.errorCount}`);
   console.log(`Warnings: ${result.report.warningCount}`);

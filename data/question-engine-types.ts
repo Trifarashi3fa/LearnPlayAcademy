@@ -4,6 +4,7 @@ export const supportedInteractionTypes = [
   "count-objects",
   "tap-answer",
   "fill-in-blank",
+  "match-pairs",
 ] as const;
 
 export type InteractionType = (typeof supportedInteractionTypes)[number];
@@ -18,6 +19,19 @@ export type TapTarget = {
   label: string;
   visualRef?: string;
   accessibilityLabel: string;
+};
+
+export type MatchPairItem = {
+  id: string;
+  label: string;
+  visualRef?: string;
+  accessibilityLabel: string;
+};
+
+export type MatchPair = {
+  id: string;
+  left: MatchPairItem;
+  right: MatchPairItem;
 };
 
 export type MultipleChoiceInteraction = {
@@ -39,6 +53,13 @@ export type TapAnswerInteraction = {
   targets: TapTarget[];
 };
 
+export type MatchPairsInteraction = {
+  pairs: MatchPair[];
+  leftItems: MatchPairItem[];
+  rightItems: MatchPairItem[];
+  minPairsToComplete: number;
+};
+
 export type FillInBlankInteraction = {
   template: string;
   blankId: string;
@@ -51,11 +72,13 @@ export type TrueFalseAnswerSpec = { correctValue: boolean };
 export type CountObjectsAnswerSpec = { expectedCount: number };
 export type TapAnswerAnswerSpec = { correctTargetId: string };
 export type FillInBlankAnswerSpec = { acceptedAnswers: string[] };
+export type MatchPairsAnswerSpec = { pairIds: string[] };
 
 export type ExactChoiceGradingSpec = { strategy: "exact-choice" };
 export type ExactBooleanGradingSpec = { strategy: "exact-boolean" };
 export type ExactNumberGradingSpec = { strategy: "exact-number" };
 export type ExactTargetGradingSpec = { strategy: "exact-target" };
+export type ExactPairsGradingSpec = { strategy: "exact-pairs" };
 export type NormalizedTextGradingSpec = {
   strategy: "normalized-text";
   trimWhitespace: boolean;
@@ -123,19 +146,28 @@ export type NormalizedFillInBlankQuestion = NormalizedQuestionBase<
   NormalizedTextGradingSpec
 >;
 
+export type NormalizedMatchPairsQuestion = NormalizedQuestionBase<
+  "match-pairs",
+  MatchPairsInteraction,
+  MatchPairsAnswerSpec,
+  ExactPairsGradingSpec
+>;
+
 export type NormalizedQuestion =
   | NormalizedMultipleChoiceQuestion
   | NormalizedTrueFalseQuestion
   | NormalizedCountObjectsQuestion
   | NormalizedTapAnswerQuestion
-  | NormalizedFillInBlankQuestion;
+  | NormalizedFillInBlankQuestion
+  | NormalizedMatchPairsQuestion;
 
 export type QuestionResponse =
   | { interactionType: "multiple-choice"; choiceId: string }
   | { interactionType: "true-false"; value: boolean }
   | { interactionType: "count-objects"; value: number }
   | { interactionType: "tap-answer"; targetId: string }
-  | { interactionType: "fill-in-blank"; value: string };
+  | { interactionType: "fill-in-blank"; value: string }
+  | { interactionType: "match-pairs"; pairIds: string[] };
 
 export type GradeResult = {
   correct: boolean;

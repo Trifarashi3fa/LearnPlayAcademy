@@ -2,6 +2,7 @@ import type {
   ChoiceOption,
   NormalizedCountObjectsQuestion,
   NormalizedFillInBlankQuestion,
+  NormalizedMatchPairsQuestion,
   NormalizedMultipleChoiceQuestion,
   NormalizedQuestion,
   NormalizedTapAnswerQuestion,
@@ -9,6 +10,10 @@ import type {
   TapTarget,
 } from "@/data/question-engine-types";
 import type { ForestL01QuestionAssetRow } from "@/data/question-asset-schema";
+import {
+  buildLegacyMatchPairs,
+  orderRightItemsForPreview,
+} from "@/lib/question-engine/match-pairs";
 import { parseForestL01AssetRows } from "@/lib/question-assets/validate-question-assets";
 
 export type QuestionAssetImportError = {
@@ -117,6 +122,7 @@ function getCorrectTargetId(targets: TapTarget[], correctAnswer: string, questio
     (item) =>
       item.id === correctAnswer ||
       normalizeAnswer(item.label) === normalizedAnswer ||
+      normalizeAnswer(item.label.split(":")[0] ?? "") === normalizedAnswer ||
       normalizeAnswer(item.label.replace(/^Group\s+[A-D]\s*:\s*/i, "")) === normalizedAnswer,
   );
   if (!target) {
@@ -153,7 +159,10 @@ function parseTrueFalse(correctAnswer: string, questionId: string) {
   throw new Error(`${questionId}: true/false correct answer must be True or False.`);
 }
 
-function visualMetadata(row: ReturnType<typeof parseForestL01AssetRows>[number]) {
+function visualMetadata(
+  row: ReturnType<typeof parseForestL01AssetRows>[number],
+  overrides: Record<string, unknown> = {},
+) {
   const requiredAssets = row.requiredAssets
     .split("|")
     .map((asset) => asset.trim())
@@ -165,7 +174,8 @@ function visualMetadata(row: ReturnType<typeof parseForestL01AssetRows>[number])
     visualObject: normalizeObjectName(row.visualObject),
     visualDescription: row.visualDescription,
     comparisonGroups: parseComparisonGroups(row.visualDescription),
-    matchPairTodo: row.questionType === "Match Pairs",
+    matchPairTodo: false,
+    matchPairsRenderer: row.questionType === "Match Pairs" ? "dedicated" : undefined,
     topic: row.topic,
     subtopic: row.subtopic,
     learningObjective: row.learningObjective,
@@ -176,15 +186,19 @@ function visualMetadata(row: ReturnType<typeof parseForestL01AssetRows>[number])
     teachingNotes: row.teachingNotes,
     requiredAssets: row.requiredAssets,
     requiredAssetList: requiredAssets,
+    ...overrides,
   };
 }
 
-function baseFields(row: ReturnType<typeof parseForestL01AssetRows>[number]) {
+function baseFields(
+  row: ReturnType<typeof parseForestL01AssetRows>[number],
+  metadataOverrides: Record<string, unknown> = {},
+) {
   return {
     questionId: row.questionId,
     prompt: row.question,
     explanation: row.finalExplanation,
-    visualMetadata: visualMetadata(row),
+    visualMetadata: visualMetadata(row, metadataOverrides),
     accessibilityText: `${row.question} ${row.visualDescription}`.trim(),
   };
 }
@@ -233,6 +247,7 @@ function toCountObjects(row: ReturnType<typeof parseForestL01AssetRows>[number])
 function toTapAnswer(
   row: ReturnType<typeof parseForestL01AssetRows>[number],
   mode: "tap-group" | "match-pairs" = "tap-group",
+  fallbackReason?: string,
 ): NormalizedTapAnswerQuestion {
   if (row.options.length < 2) {
     throw new Error(`${row.questionId}: tap-answer targets are missing.`);
@@ -243,9 +258,27 @@ function toTapAnswer(
     visualRef: row.visualObject,
     accessibilityLabel: `Tap ${label}`,
   }));
+  if (mode === "tap-group" && ["both", "both groups", "same"].includes(normalizeAnswer(row.correctAnswer))) {
+    targets.push({
+      id: "both-groups",
+      label: "Both groups",
+      visualRef: row.visualObject,
+      accessibilityLabel: "Tap Both groups",
+    });
+  }
 
   return {
-    ...baseFields(row),
+    ...baseFields(
+      row,
+      mode === "match-pairs"
+        ? {
+            matchPairTodo: true,
+            matchPairsRenderer: "fallback",
+            matchPairsFallbackReason:
+              fallbackReason ?? "Match Pairs source data was incomplete.",
+          }
+        : {},
+    ),
     interactionType: "tap-answer",
     interaction: { targets },
     answerSpec: {
@@ -255,6 +288,37 @@ function toTapAnswer(
           : getCorrectTargetId(targets, row.correctAnswer, row.questionId),
     },
     gradingSpec: { strategy: "exact-target" },
+  };
+}
+
+function toMatchPairs(row: ReturnType<typeof parseForestL01AssetRows>[number]): NormalizedMatchPairsQuestion {
+  const result = buildLegacyMatchPairs({
+    options: row.options,
+    correctAnswer: row.correctAnswer,
+    questionId: row.questionId,
+    visualRef: row.visualObject,
+  });
+
+  if (result.pairs.length < 2) {
+    throw new Error(
+      `${row.questionId}: Match Pairs needs at least 2 complete left = right pairs for the dedicated renderer.`,
+    );
+  }
+
+  return {
+    ...baseFields(row, {
+      matchPairsRenderer: "dedicated",
+      matchPairsWarnings: result.warnings,
+    }),
+    interactionType: "match-pairs",
+    interaction: {
+      pairs: result.pairs,
+      leftItems: result.pairs.map((pair) => pair.left),
+      rightItems: orderRightItemsForPreview(result.pairs),
+      minPairsToComplete: result.pairs.length,
+    },
+    answerSpec: { pairIds: result.pairs.map((pair) => pair.id) },
+    gradingSpec: { strategy: "exact-pairs" },
   };
 }
 
@@ -303,7 +367,15 @@ function normalizeAssetRow(row: ReturnType<typeof parseForestL01AssetRows>[numbe
     case "Fill Missing Number":
       return toFillInBlank(row);
     case "Match Pairs":
-      return toTapAnswer(row, "match-pairs");
+      try {
+        return toMatchPairs(row);
+      } catch (error) {
+        return toTapAnswer(
+          row,
+          "match-pairs",
+          error instanceof Error ? error.message : "Match Pairs source data was incomplete.",
+        );
+      }
     case "True or False":
       return toTrueFalse(row);
     default:

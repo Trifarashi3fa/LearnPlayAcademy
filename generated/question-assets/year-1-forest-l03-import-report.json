@@ -1,0 +1,2124 @@
+{
+  "generatedAt": "2026-07-16T12:07:12.155Z",
+  "sourceFile": "E:\\Codex\\learnplay-academy\\content\\question-assets\\imports\\mathematics\\year-1\\forest-l03.csv",
+  "sourceType": "CSV",
+  "requestedSheet": "Forest L03",
+  "detectedWorksheet": null,
+  "csvSheetNote": "CSV exports contain one tab only; --sheet is used for source validation.",
+  "outputJsonPath": "E:\\Codex\\learnplay-academy\\content\\question-assets\\mathematics\\year-1\\forest-world\\forest-l03-imported.json",
+  "reportJsonPath": "E:\\Codex\\learnplay-academy\\generated\\question-assets\\year-1-forest-l03-import-report.json",
+  "detectedQuestionIdPrefix": "FW-Y1-L03-Q",
+  "detectedSubject": "Mathematics",
+  "detectedYear": 1,
+  "detectedWorld": "Forest World",
+  "detectedLevel": 3,
+  "sourceMismatch": {
+    "hasMismatch": false,
+    "message": "",
+    "expectedLevel": 3,
+    "detectedLevel": 3
+  },
+  "totalSourceRows": 70,
+  "sourceRows": 70,
+  "approvedRows": 23,
+  "skippedRows": 47,
+  "skippedRowDetails": [
+    {
+      "questionId": "FW-Y1-L03-Q003",
+      "rowNumber": 4,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q004",
+      "rowNumber": 5,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q006",
+      "rowNumber": 7,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q007",
+      "rowNumber": 8,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q008",
+      "rowNumber": 9,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q010",
+      "rowNumber": 11,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q011",
+      "rowNumber": 12,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q012",
+      "rowNumber": 13,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q015",
+      "rowNumber": 16,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q016",
+      "rowNumber": 17,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q017",
+      "rowNumber": 18,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q019",
+      "rowNumber": 20,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q020",
+      "rowNumber": 21,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q022",
+      "rowNumber": 23,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q023",
+      "rowNumber": 24,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q024",
+      "rowNumber": 25,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q026",
+      "rowNumber": 27,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q027",
+      "rowNumber": 28,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q028",
+      "rowNumber": 29,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q029",
+      "rowNumber": 30,
+      "status": "Review",
+      "questionType": "Match Pairs",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q034",
+      "rowNumber": 35,
+      "status": "Review",
+      "questionType": "Multiple Choice",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q035",
+      "rowNumber": 36,
+      "status": "Review",
+      "questionType": "Multiple Choice",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q036",
+      "rowNumber": 37,
+      "status": "Review",
+      "questionType": "Count & Type",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q038",
+      "rowNumber": 39,
+      "status": "Review",
+      "questionType": "Count & Type",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q039",
+      "rowNumber": 40,
+      "status": "Review",
+      "questionType": "Count & Type",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q041",
+      "rowNumber": 42,
+      "status": "Review",
+      "questionType": "Tap Correct Group",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q042",
+      "rowNumber": 43,
+      "status": "Review",
+      "questionType": "Tap Correct Group",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q048",
+      "rowNumber": 49,
+      "status": "Review",
+      "questionType": "Fill Missing Number",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q050",
+      "rowNumber": 51,
+      "status": "Review",
+      "questionType": "Fill Missing Number",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q051",
+      "rowNumber": 52,
+      "status": "Review",
+      "questionType": "True or False",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q054",
+      "rowNumber": 55,
+      "status": "Review",
+      "questionType": "True or False",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q055",
+      "rowNumber": 56,
+      "status": "Review",
+      "questionType": "True or False",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q056",
+      "rowNumber": 57,
+      "status": "Review",
+      "questionType": "Drag and Drop (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q057",
+      "rowNumber": 58,
+      "status": "Review",
+      "questionType": "Drag and Drop (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q058",
+      "rowNumber": 59,
+      "status": "Review",
+      "questionType": "Drag and Drop (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q059",
+      "rowNumber": 60,
+      "status": "Review",
+      "questionType": "Drag and Drop (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q060",
+      "rowNumber": 61,
+      "status": "Review",
+      "questionType": "Drag and Drop (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q061",
+      "rowNumber": 62,
+      "status": "Review",
+      "questionType": "Sorting (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q062",
+      "rowNumber": 63,
+      "status": "Review",
+      "questionType": "Sorting (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q063",
+      "rowNumber": 64,
+      "status": "Review",
+      "questionType": "Sorting (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q064",
+      "rowNumber": 65,
+      "status": "Review",
+      "questionType": "Sorting (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q065",
+      "rowNumber": 66,
+      "status": "Review",
+      "questionType": "Sorting (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q066",
+      "rowNumber": 67,
+      "status": "Review",
+      "questionType": "Puzzle (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q067",
+      "rowNumber": 68,
+      "status": "Review",
+      "questionType": "Puzzle (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q068",
+      "rowNumber": 69,
+      "status": "Review",
+      "questionType": "Puzzle (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q069",
+      "rowNumber": 70,
+      "status": "Review",
+      "questionType": "Puzzle (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    },
+    {
+      "questionId": "FW-Y1-L03-Q070",
+      "rowNumber": 71,
+      "status": "Review",
+      "questionType": "Puzzle (Future)",
+      "reason": "Skipped before production schema validation because Status is Review. Only Approved rows are imported."
+    }
+  ],
+  "schemaValidRows": 23,
+  "validRows": 23,
+  "importedRows": 23,
+  "rejectedRows": 0,
+  "publishableRows": 20,
+  "warningCount": 0,
+  "errorCount": 0,
+  "duplicateIds": [],
+  "questionTypeDistribution": {
+    "Match Pairs": 30,
+    "Multiple Choice": 5,
+    "Count & Type": 5,
+    "Tap Correct Group": 5,
+    "Fill Missing Number": 5,
+    "True or False": 5,
+    "Drag and Drop (Future)": 5,
+    "Sorting (Future)": 5,
+    "Puzzle (Future)": 5
+  },
+  "headerMappingAudit": {
+    "detectedHeaders": [
+      "Question ID",
+      "Question Pool Version",
+      "Status",
+      "Subject",
+      "Year",
+      "World",
+      "Level",
+      "Topic",
+      "Subtopic",
+      "Learning Objective",
+      "Difficulty",
+      "Question Type",
+      "Question",
+      "Visual Object",
+      "Visual Description",
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D",
+      "Correct Answer",
+      "Step 1",
+      "Step 2",
+      "Step 3",
+      "Final Explanation",
+      "LearnBot Tip",
+      "Assessment Eligible",
+      "Curriculum Alignment",
+      "Estimated Time (Seconds)",
+      "Visual Asset Required",
+      "Voice Script",
+      "Reviewer",
+      "Review Status",
+      "Review Date",
+      "Version Notes"
+    ],
+    "mapped": [
+      {
+        "originalHeader": "Question ID",
+        "canonicalField": "Question ID"
+      },
+      {
+        "originalHeader": "Question Pool Version",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Status",
+        "canonicalField": "Status"
+      },
+      {
+        "originalHeader": "Subject",
+        "canonicalField": "Subject"
+      },
+      {
+        "originalHeader": "Year",
+        "canonicalField": "Year"
+      },
+      {
+        "originalHeader": "World",
+        "canonicalField": "World"
+      },
+      {
+        "originalHeader": "Level",
+        "canonicalField": "Level"
+      },
+      {
+        "originalHeader": "Topic",
+        "canonicalField": "Topic"
+      },
+      {
+        "originalHeader": "Subtopic",
+        "canonicalField": "Subtopic"
+      },
+      {
+        "originalHeader": "Learning Objective",
+        "canonicalField": "Learning Objective"
+      },
+      {
+        "originalHeader": "Difficulty",
+        "canonicalField": "Difficulty"
+      },
+      {
+        "originalHeader": "Question Type",
+        "canonicalField": "Question Type"
+      },
+      {
+        "originalHeader": "Question",
+        "canonicalField": "Question"
+      },
+      {
+        "originalHeader": "Visual Object",
+        "canonicalField": "Visual Object"
+      },
+      {
+        "originalHeader": "Visual Description",
+        "canonicalField": "Visual Description"
+      },
+      {
+        "originalHeader": "Option A",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Option B",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Option C",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Option D",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Correct Answer",
+        "canonicalField": "Correct Answer"
+      },
+      {
+        "originalHeader": "Step 1",
+        "canonicalField": "Step 1"
+      },
+      {
+        "originalHeader": "Step 2",
+        "canonicalField": "Step 2"
+      },
+      {
+        "originalHeader": "Step 3",
+        "canonicalField": "Step 3"
+      },
+      {
+        "originalHeader": "Final Explanation",
+        "canonicalField": "Final Explanation"
+      },
+      {
+        "originalHeader": "LearnBot Tip",
+        "canonicalField": "LearnBot Tip"
+      },
+      {
+        "originalHeader": "Assessment Eligible",
+        "canonicalField": "Assessment Eligible"
+      },
+      {
+        "originalHeader": "Curriculum Alignment",
+        "canonicalField": "Curriculum Alignment"
+      },
+      {
+        "originalHeader": "Estimated Time (Seconds)",
+        "canonicalField": "Estimated Time"
+      },
+      {
+        "originalHeader": "Visual Asset Required",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Voice Script",
+        "canonicalField": "Voice Script"
+      },
+      {
+        "originalHeader": "Reviewer",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Review Status",
+        "canonicalField": "Review Status"
+      },
+      {
+        "originalHeader": "Review Date",
+        "canonicalField": null
+      },
+      {
+        "originalHeader": "Version Notes",
+        "canonicalField": "Version Notes"
+      }
+    ],
+    "unknownHeaders": [
+      "Question Pool Version",
+      "Option A",
+      "Option B",
+      "Option C",
+      "Option D",
+      "Visual Asset Required",
+      "Reviewer",
+      "Review Date"
+    ],
+    "missingRequiredHeaders": [],
+    "optionalMissingHeaders": [
+      "Teaching Notes",
+      "Required Assets",
+      "Asset Source",
+      "Content Owner",
+      "QA Notes"
+    ]
+  },
+  "inferredFieldsCount": 140,
+  "explicitFieldsCount": 60,
+  "inferredFields": [
+    {
+      "rowNumber": 2,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 2,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 3,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 3,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 4,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 4,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 5,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 5,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 6,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 6,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 7,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 7,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 8,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 8,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 9,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 9,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 10,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 10,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 11,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 11,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 12,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 12,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 13,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 13,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 14,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 14,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 15,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 15,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 16,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 16,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 17,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 17,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 18,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 18,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 19,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 19,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 20,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 20,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 21,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 21,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 22,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 22,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 23,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 23,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 24,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 24,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 25,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 25,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 26,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 26,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 27,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 27,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 28,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 28,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 29,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 29,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 30,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 30,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 31,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 31,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 32,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 32,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 33,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 33,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 34,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 34,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 35,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 35,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 36,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 36,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 37,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 37,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 38,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 38,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 39,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 39,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 40,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 40,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 41,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 41,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 42,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 42,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 43,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 43,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 44,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 44,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 45,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 45,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 46,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 46,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 47,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 47,
+      "field": "Required Assets",
+      "status": "not-required"
+    },
+    {
+      "rowNumber": 48,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 48,
+      "field": "Required Assets",
+      "status": "not-required"
+    },
+    {
+      "rowNumber": 49,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 49,
+      "field": "Required Assets",
+      "status": "not-required"
+    },
+    {
+      "rowNumber": 50,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 50,
+      "field": "Required Assets",
+      "status": "not-required"
+    },
+    {
+      "rowNumber": 51,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 51,
+      "field": "Required Assets",
+      "status": "not-required"
+    },
+    {
+      "rowNumber": 52,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 52,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 53,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 53,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 54,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 54,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 55,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 55,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 56,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 56,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 57,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 57,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 58,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 58,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 59,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 59,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 60,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 60,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 61,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 61,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 62,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 62,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 63,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 63,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 64,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 64,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 65,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 65,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 66,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 66,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 67,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 67,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 68,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 68,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 69,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 69,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 70,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 70,
+      "field": "Required Assets",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 71,
+      "field": "Teaching Notes",
+      "status": "inferred"
+    },
+    {
+      "rowNumber": 71,
+      "field": "Required Assets",
+      "status": "inferred"
+    }
+  ],
+  "explicitFields": [
+    {
+      "rowNumber": 2,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 3,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 4,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 5,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 6,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 7,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 8,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 9,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 10,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 11,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 12,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 13,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 14,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 15,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 16,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 17,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 18,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 19,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 20,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 21,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 22,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 23,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 24,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 25,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 26,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 27,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 28,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 29,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 30,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 31,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 32,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 33,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 34,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 35,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 36,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 42,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 43,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 44,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 45,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 46,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 52,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 53,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 54,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 55,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 56,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 57,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 58,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 59,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 60,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 61,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 62,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 63,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 64,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 65,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 66,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 67,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 68,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 69,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 70,
+      "field": "Options",
+      "source": "Option A-D"
+    },
+    {
+      "rowNumber": 71,
+      "field": "Options",
+      "source": "Option A-D"
+    }
+  ],
+  "rendererLimitations": [],
+  "issues": [
+    {
+      "questionId": "FW-Y1-L03-Q001",
+      "rowNumber": 2,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q001",
+      "rowNumber": 2,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q002",
+      "rowNumber": 3,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q002",
+      "rowNumber": 3,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q005",
+      "rowNumber": 6,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q005",
+      "rowNumber": 6,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q009",
+      "rowNumber": 10,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q009",
+      "rowNumber": 10,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q013",
+      "rowNumber": 14,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q013",
+      "rowNumber": 14,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q014",
+      "rowNumber": 15,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q014",
+      "rowNumber": 15,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q018",
+      "rowNumber": 19,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q018",
+      "rowNumber": 19,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q021",
+      "rowNumber": 22,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q021",
+      "rowNumber": 22,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q025",
+      "rowNumber": 26,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q025",
+      "rowNumber": 26,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q030",
+      "rowNumber": 31,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q030",
+      "rowNumber": 31,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q031",
+      "rowNumber": 32,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q031",
+      "rowNumber": 32,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q032",
+      "rowNumber": 33,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q032",
+      "rowNumber": 33,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q033",
+      "rowNumber": 34,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q033",
+      "rowNumber": 34,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q037",
+      "rowNumber": 38,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q037",
+      "rowNumber": 38,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q040",
+      "rowNumber": 41,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q040",
+      "rowNumber": 41,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q043",
+      "rowNumber": 44,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q043",
+      "rowNumber": 44,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q044",
+      "rowNumber": 45,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q044",
+      "rowNumber": 45,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q045",
+      "rowNumber": 46,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q045",
+      "rowNumber": 46,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q046",
+      "rowNumber": 47,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q046",
+      "rowNumber": 47,
+      "field": "Required Assets",
+      "severity": "Required Assets missing or not required.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q047",
+      "rowNumber": 48,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q047",
+      "rowNumber": 48,
+      "field": "Required Assets",
+      "severity": "Required Assets missing or not required.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q049",
+      "rowNumber": 50,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q049",
+      "rowNumber": 50,
+      "field": "Required Assets",
+      "severity": "Required Assets missing or not required.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q052",
+      "rowNumber": 53,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q052",
+      "rowNumber": 53,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q053",
+      "rowNumber": 54,
+      "field": "Teaching Notes",
+      "severity": "Teaching Notes were inferred from existing explanation fields.",
+      "message": "warning"
+    },
+    {
+      "questionId": "FW-Y1-L03-Q053",
+      "rowNumber": 54,
+      "field": "Required Assets",
+      "severity": "Required Assets were inferred from legacy visual fields.",
+      "message": "warning"
+    }
+  ],
+  "rowResults": [
+    {
+      "questionId": "FW-Y1-L03-Q001",
+      "rowNumber": 2,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q002",
+      "rowNumber": 3,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q005",
+      "rowNumber": 6,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q009",
+      "rowNumber": 10,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q013",
+      "rowNumber": 14,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q014",
+      "rowNumber": 15,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q018",
+      "rowNumber": 19,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q021",
+      "rowNumber": 22,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q025",
+      "rowNumber": 26,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q030",
+      "rowNumber": 31,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q031",
+      "rowNumber": 32,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q032",
+      "rowNumber": 33,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q033",
+      "rowNumber": 34,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q037",
+      "rowNumber": 38,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q040",
+      "rowNumber": 41,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q043",
+      "rowNumber": 44,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q044",
+      "rowNumber": 45,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q045",
+      "rowNumber": 46,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q046",
+      "rowNumber": 47,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q047",
+      "rowNumber": 48,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q049",
+      "rowNumber": 50,
+      "isValid": true,
+      "isPublishable": false,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q052",
+      "rowNumber": 53,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    },
+    {
+      "questionId": "FW-Y1-L03-Q053",
+      "rowNumber": 54,
+      "isValid": true,
+      "isPublishable": true,
+      "errors": [],
+      "warnings": []
+    }
+  ],
+  "rendererClassifications": [
+    {
+      "questionType": "Count & Type",
+      "status": "supported",
+      "count": 2,
+      "message": "Count & Type renders through a dedicated question-engine renderer."
+    },
+    {
+      "questionType": "Fill Missing Number",
+      "status": "supported",
+      "count": 3,
+      "message": "Fill Missing Number renders through a dedicated question-engine renderer."
+    },
+    {
+      "questionType": "Match Pairs",
+      "status": "supported",
+      "count": 10,
+      "message": "Match Pairs renders through a dedicated question-engine renderer."
+    },
+    {
+      "questionType": "Multiple Choice",
+      "status": "supported",
+      "count": 3,
+      "message": "Multiple Choice renders through a dedicated question-engine renderer."
+    },
+    {
+      "questionType": "Tap Correct Group",
+      "status": "supported",
+      "count": 3,
+      "message": "Tap Correct Group renders through a dedicated question-engine renderer."
+    },
+    {
+      "questionType": "True or False",
+      "status": "supported",
+      "count": 2,
+      "message": "True or False renders through a dedicated question-engine renderer."
+    }
+  ]
+}

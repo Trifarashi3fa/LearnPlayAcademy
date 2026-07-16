@@ -13,5 +13,7 @@ export function serializeQuestionResponse(response: QuestionResponse): string {
       return response.targetId;
     case "fill-in-blank":
       return response.value;
+    case "match-pairs":
+      return response.pairIds.join("|");
   }
 }

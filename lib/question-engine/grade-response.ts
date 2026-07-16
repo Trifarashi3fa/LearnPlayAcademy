@@ -73,5 +73,14 @@ export function gradeQuestionResponse(
         expectedAnswerSummary: question.answerSpec.acceptedAnswers[0] ?? "",
       };
     }
+    case "match-pairs": {
+      if (response.interactionType !== "match-pairs") return mismatchedResponse(response);
+      const selected = new Set(response.pairIds);
+      return {
+        correct: question.answerSpec.pairIds.every((pairId) => selected.has(pairId)),
+        serializedResponse: serializeQuestionResponse(response),
+        expectedAnswerSummary: `${question.answerSpec.pairIds.length} pairs`,
+      };
+    }
   }
 }
