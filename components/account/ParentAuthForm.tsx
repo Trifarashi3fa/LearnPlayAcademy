@@ -4,6 +4,7 @@ import { useMemo, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MvpButton, MvpField, MvpInput, MvpStatusPill, MvpSurface } from "@/components/mvp/MvpUi";
+import { getAuthRedirectUrl } from "@/lib/supabase/auth-redirect";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
@@ -64,7 +65,7 @@ export function ParentAuthForm({ mode }: ParentAuthFormProps) {
 
     if (mode === "forgot-password") {
       const { error: resetError } = await supabase.auth.resetPasswordForEmail(trimmedEmail, {
-        redirectTo: `${window.location.origin}/auth/login`,
+        redirectTo: getAuthRedirectUrl("/auth/login"),
       });
 
       setIsLoading(false);
@@ -82,7 +83,7 @@ export function ParentAuthForm({ mode }: ParentAuthFormProps) {
         email: trimmedEmail,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/account`,
+          emailRedirectTo: getAuthRedirectUrl("/account"),
           data: {
             display_name: trimmedEmail.split("@")[0],
           },

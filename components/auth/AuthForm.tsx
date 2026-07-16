@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/Button";
 import { Card } from "@/components/Card";
+import { getAuthRedirectUrl } from "@/lib/supabase/auth-redirect";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
 
@@ -42,7 +43,7 @@ export function AuthForm({ mode }: AuthFormProps) {
         email: trimmedEmail,
         password,
         options: {
-          emailRedirectTo: `${window.location.origin}/mvp/parent-dashboard`,
+          emailRedirectTo: getAuthRedirectUrl("/mvp/parent-dashboard"),
         },
       });
 
