@@ -5,6 +5,7 @@ import pilotQuestions from "@/content/question-bank/mathematics/year-1/forest-wo
 import forestL01AssetRows from "@/content/question-assets/mathematics/year-1/forest-world/forest-l01-sample.json";
 import { questionEngineFeatureFlags } from "@/data/feature-flags";
 import type { ForestL01QuestionAssetRow } from "@/data/question-asset-schema";
+import { isDevRouteAccessAllowed } from "@/lib/dev-routes/access";
 import { importForestL01AssetRows } from "@/lib/question-assets/import-question-assets";
 import { validateForestL01AssetRows } from "@/lib/question-assets/validate-question-assets";
 import {
@@ -40,13 +41,21 @@ function readJsonFile<T>(filePath: string): T | null {
   return JSON.parse(fs.readFileSync(filePath, "utf8")) as T;
 }
 
-function loadImportedYear1ForestSources(): AssetPreviewSource[] {
+function loadImportedForestSources({
+  subject,
+  labelPrefix,
+  reportDir,
+}: {
+  subject: "mathematics" | "english";
+  labelPrefix: string;
+  reportDir: string;
+}): AssetPreviewSource[] {
   const repoRoot = process.cwd();
   const importedDir = path.join(
-    repoRoot,
-    "content/question-assets/mathematics/year-1/forest-world",
+    /* turbopackIgnore: true */ repoRoot,
+    `content/question-assets/${subject}/year-1/forest-world`,
   );
-  const reportDir = path.join(repoRoot, "generated/question-assets");
+  const resolvedReportDir = path.join(/* turbopackIgnore: true */ repoRoot, reportDir);
 
   if (!fs.existsSync(importedDir)) return [];
 
@@ -61,14 +70,14 @@ function loadImportedYear1ForestSources(): AssetPreviewSource[] {
         path.join(importedDir, fileName),
       );
       const report = readJsonFile<AssetPreviewSource["importReport"]>(
-        path.join(reportDir, `year-1-forest-l${levelCode}-import-report.json`),
+        path.join(resolvedReportDir, `year-1-forest-l${levelCode}-import-report.json`),
       );
 
       if (!rows) return null;
 
       return createPreviewSource(
-        `imported-forest-l${levelCode}`,
-        `Imported Year 1 Forest L${levelCode}`,
+        `${subject}-imported-forest-l${levelCode}`,
+        `${labelPrefix} L${levelCode}`,
         rows,
         report ?? undefined,
       );
@@ -76,8 +85,23 @@ function loadImportedYear1ForestSources(): AssetPreviewSource[] {
     .filter((source): source is AssetPreviewSource => source !== null);
 }
 
+function loadImportedYear1ForestSources(): AssetPreviewSource[] {
+  return [
+    ...loadImportedForestSources({
+      subject: "mathematics",
+      labelPrefix: "Imported Mathematics Year 1 Forest",
+      reportDir: "generated/question-assets",
+    }),
+    ...loadImportedForestSources({
+      subject: "english",
+      labelPrefix: "Imported English Year 1 Forest",
+      reportDir: "generated/question-assets/english",
+    }),
+  ];
+}
+
 export default function QuestionEnginePreviewPage() {
-  if (!questionEngineFeatureFlags.nonMCQPreview) {
+  if (!isDevRouteAccessAllowed() || !questionEngineFeatureFlags.nonMCQPreview) {
     notFound();
   }
 

@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { deleteChildProfile } from "@/app/account/actions";
 import { ChildProfileSetupForm } from "@/components/account/ChildProfileSetupForm";
 import { MvpButton, MvpButtonLink, MvpMetricCard, MvpProgressBar, MvpStatusPill, MvpSurface } from "@/components/mvp/MvpUi";
 import { getYearLevelAvailabilityMessage, isSupportedMvpYearLevel, type ChildAvatar, type ChildProfile, type ChildProgressSummary } from "@/data/account-types";
+import { trackLearningEvent } from "@/lib/learning-analytics/client";
 
 const avatarImages: Record<ChildAvatar, string> = {
   learnbot: "/mascots/learnbot-happy.webp",
@@ -32,6 +33,16 @@ export function ChildProfileManager({
 }) {
   const [editing, setEditing] = useState(false);
   const activeYear = child ? isSupportedMvpYearLevel(child.yearLevel) : false;
+
+  useEffect(() => {
+    trackLearningEvent("parent_account_viewed", { hasChildProfile: Boolean(child) });
+  }, [child]);
+
+  useEffect(() => {
+    if (child && !activeYear) {
+      trackLearningEvent("child_profile_year_unavailable_seen", { year: child.yearLevel });
+    }
+  }, [activeYear, child]);
 
   if (!child) {
     return (
@@ -81,7 +92,14 @@ export function ChildProfileManager({
                 </div>
                 <div className="mt-5 flex flex-wrap gap-3">
                   {activeYear ? <MvpButtonLink href="/mvp/world-map">Continue Learning</MvpButtonLink> : null}
-                  <MvpButton type="button" tone="white" onClick={() => setEditing((current) => !current)}>
+                  <MvpButton
+                    type="button"
+                    tone="white"
+                    onClick={() => {
+                      if (!editing) trackLearningEvent("child_profile_update_started", { source: "account-profile-card" });
+                      setEditing((current) => !current);
+                    }}
+                  >
                     {editing ? "Hide Edit Form" : activeYear ? "Edit Profile" : "Switch to Year 1"}
                   </MvpButton>
                 </div>
@@ -166,7 +184,9 @@ export function ChildProfileManager({
             onSubmit={(event) => {
               if (!window.confirm("Delete this child profile? Linked saved child progress may also be removed. This cannot be undone.")) {
                 event.preventDefault();
+                return;
               }
+              trackLearningEvent("child_profile_delete_requested", { source: "account-danger-zone" });
             }}
           >
             <MvpButton type="submit" tone="danger">Delete Child Profile</MvpButton>

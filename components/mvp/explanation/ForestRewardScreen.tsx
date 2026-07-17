@@ -3,6 +3,7 @@ import Link from "next/link";
 import { MvpStatusPill } from "@/components/mvp/MvpUi";
 import { PrimaryLink } from "@/components/mvp/MvpShell";
 import { forestWorldIdentity } from "@/data/forest-world-identity";
+import { mathematicsForestWorldPackage } from "@/data/learning-packages";
 import {
   getLearnBotImage,
   getLearnBotMessage,
@@ -54,7 +55,7 @@ export function ForestRewardScreen({
   });
   const displayedTotalStars = totalStars ?? starsEarned;
   const displayedTotalXp = totalXp ?? xpEarned;
-  const nextLevel = level < 10 ? level + 1 : null;
+  const nextLevel = level < mathematicsForestWorldPackage.totalLevels ? level + 1 : null;
 
   return (
     <section className="lp-reveal-soft relative overflow-hidden rounded-[2rem] border border-[#BDE7D0] bg-gradient-to-br from-[#EAFBF0] via-white to-[#FFF3C4] p-5 shadow-playful sm:p-8">
@@ -118,7 +119,7 @@ export function ForestRewardScreen({
           {worldComplete ? <AssessmentComingSoon /> : null}
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            {level < 10 ? (
+            {level < mathematicsForestWorldPackage.totalLevels ? (
               <PrimaryLink href={`/mvp/level/${level + 1}`} tone="green">Continue</PrimaryLink>
             ) : (
               <PrimaryLink href="/mvp/rewards" tone="green">View Badge</PrimaryLink>

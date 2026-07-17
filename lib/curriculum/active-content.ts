@@ -1,4 +1,9 @@
 import activeContentManifestJson from "@/generated/active-content-manifest.json";
+import {
+  getLearningPackageByRef,
+  mathematicsForestWorldPackage,
+  type LearningPackageRef,
+} from "@/data/learning-packages";
 import { objectVisualMap, type VisualObjectName } from "@/data/object-visual-map";
 
 type ApprovedVisualMetadata = {
@@ -84,10 +89,10 @@ const manifest = activeContentManifestJson as unknown as ApprovedManifest;
 if (
   manifest.validationSummary.status !== "passed" ||
   manifest.validationSummary.errors !== 0 ||
-  manifest.subject !== "mathematics" ||
-  manifest.year !== 1 ||
-  manifest.worldId !== "forest-world" ||
-  manifest.questionCount !== 100
+  manifest.subject !== mathematicsForestWorldPackage.subject ||
+  manifest.year !== mathematicsForestWorldPackage.year ||
+  manifest.worldId !== mathematicsForestWorldPackage.worldId ||
+  manifest.questionCount !== mathematicsForestWorldPackage.questionContentSource.activeQuestionCount
 ) {
   throw new Error("The approved Forest World content manifest is invalid or outside the active MVP scope.");
 }
@@ -151,6 +156,14 @@ export function getApprovedForestQuestionsForLevel(level: number): ApprovedRunti
     throw new Error(`Approved Forest World level ${level} must contain exactly 10 questions.`);
   }
   return questions.map(adaptQuestion);
+}
+
+export function getApprovedQuestionsForLearningPackage(ref: LearningPackageRef, level: number): ApprovedRuntimeQuestion[] {
+  const pkg = getLearningPackageByRef(ref);
+  if (!pkg || pkg.packageId !== mathematicsForestWorldPackage.packageId) {
+    throw new Error("Approved runtime questions are currently available only for the active Mathematics Forest World package.");
+  }
+  return getApprovedForestQuestionsForLevel(level);
 }
 
 export const approvedForestContentSummary = {

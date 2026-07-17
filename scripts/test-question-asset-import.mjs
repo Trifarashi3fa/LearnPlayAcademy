@@ -21,6 +21,19 @@ const {
   discoverYear1ForestCsvFiles,
   processYear1ForestBatch,
 } = await import("./import-year1-forest-question-assets.mjs");
+const {
+  buildCurriculumQaSummary,
+} = await import("../lib/question-assets/curriculum-qa.ts");
+const {
+  canTransitionQuestionAssetStatus,
+  questionAssetStatusTransitions,
+  isSupportedQuestionAssetStatus,
+  normalizeQuestionAssetStatus,
+} = await import("../data/question-asset-qa.ts");
+const {
+  englishSourceRowsToQuestionAssetRows,
+  parseQuestionAssetCsv,
+} = await import("../lib/question-assets/english-source-assets.ts");
 
 const headers = [
   "Question ID",
@@ -57,6 +70,36 @@ const headers = [
   "Review Status",
   "Review Date",
   "Version Notes",
+];
+
+const englishHeaders = [
+  "Question ID",
+  "Subject",
+  "Year",
+  "World",
+  "Level",
+  "Topic",
+  "Learning Objective",
+  "Curriculum Alignment",
+  "Cambridge Alignment",
+  "Question Type",
+  "Question",
+  "Instructions",
+  "Option A",
+  "Option B",
+  "Option C",
+  "Option D",
+  "Correct Answer",
+  "Explanation",
+  "LearnBot Tip",
+  "Voice Script",
+  "Visual Type",
+  "Visual Description",
+  "Difficulty",
+  "XP",
+  "Status",
+  "Version",
+  "QA Notes",
 ];
 
 function csvEscape(value) {
@@ -111,8 +154,12 @@ function writeCsv(rows) {
 }
 
 function writeCsvFile(file, rows) {
+  writeCsvFileWithHeaders(file, headers, rows);
+}
+
+function writeCsvFileWithHeaders(file, csvHeaders, rows) {
   fs.mkdirSync(path.dirname(file), { recursive: true });
-  const lines = [headers.join(","), ...rows.map((row) => headers.map((header) => csvEscape(row[header])).join(","))];
+  const lines = [csvHeaders.join(","), ...rows.map((row) => csvHeaders.map((header) => csvEscape(row[header])).join(","))];
   fs.writeFileSync(file, `${lines.join("\n")}\n`, "utf8");
 }
 
@@ -130,6 +177,57 @@ function run(rows, sheet = "Forest L01") {
   return importQuestionAssets({ filePath: writeCsv(rows), sheet });
 }
 
+function makeEnglishRow(overrides = {}) {
+  return {
+    "Question ID": "ENG-Y1-L01-Q001",
+    Subject: "English",
+    Year: "1",
+    World: "Forest World",
+    Level: "1",
+    Topic: "Letters",
+    "Learning Objective": "Match uppercase and lowercase letters.",
+    "Curriculum Alignment": "KSSR Year 1 English early literacy",
+    "Cambridge Alignment": "Cambridge Primary Stage 1 early reading",
+    "Question Type": "Multiple Choice",
+    Question: "Which lowercase letter matches A?",
+    Instructions: "Look at the capital letter and choose the matching small letter.",
+    "Option A": "a",
+    "Option B": "b",
+    "Option C": "c",
+    "Option D": "d",
+    "Correct Answer": "a",
+    Explanation: "Uppercase A matches lowercase a.",
+    "LearnBot Tip": "Look for the same letter shape.",
+    "Voice Script": "Which lowercase letter matches A?",
+    "Visual Type": "letter-card",
+    "Visual Description": "Show a large uppercase A with four lowercase letter cards.",
+    Difficulty: "Easy",
+    XP: "10",
+    Status: "Approved",
+    Version: "1.0.0",
+    "QA Notes": "Template test row.",
+    ...overrides,
+  };
+}
+
+function writeEnglishCsv(rows) {
+  const file = path.join(os.tmpdir(), `learnplay-english-import-test-${Date.now()}-${Math.random()}.csv`);
+  writeCsvFileWithHeaders(file, englishHeaders, rows);
+  return file;
+}
+
+function runEnglish(rows, overrides = {}) {
+  return importQuestionAssets({
+    filePath: writeEnglishCsv(rows),
+    sheet: "Forest L01",
+    subject: "english",
+    year: 1,
+    world: "forest-world",
+    level: 1,
+    ...overrides,
+  });
+}
+
 {
   const result = run([makeRow()]);
   assert.equal(result.report.totalSourceRows, 1);
@@ -140,6 +238,163 @@ function run(rows, sheet = "Forest L01") {
   assert.equal(result.report.skippedRows, 0);
 }
 
+{
+  const templateHeader = fs.readFileSync(path.resolve("ENGLISH_QUESTION_TEMPLATE.csv"), "utf8").trim().split(",");
+  assert.deepEqual(templateHeader, englishHeaders);
+}
+
+{
+  const result = runEnglish([makeEnglishRow()]);
+  assert.equal(result.report.totalSourceRows, 1);
+  assert.equal(result.report.importedRows, 1);
+  assert.equal(result.report.errorCount, 0);
+  assert.equal(result.rowsToWrite[0].Subject, "English");
+  assert.equal(result.rowsToWrite[0].World, "Forest World");
+  assert.ok(result.report.outputJsonPath.includes("content\\question-assets\\english\\year-1\\forest-world") || result.report.outputJsonPath.includes("content/question-assets/english/year-1/forest-world"));
+  assert.ok(result.report.reportJsonPath.includes("generated\\question-assets\\english") || result.report.reportJsonPath.includes("generated/question-assets/english"));
+}
+
+{
+  const result = runEnglish([
+    makeEnglishRow({
+      Status: "Review",
+      "Question ID": "ENG-Y1-L01-Q999",
+      "Question Type": "Drag and Drop (Future)",
+    }),
+  ]);
+  assert.equal(result.report.importedRows, 0);
+  assert.equal(result.report.skippedRows, 1);
+  assert.equal(result.report.rejectedRows, 0);
+  assert.equal(result.report.errorCount, 0);
+  assert.equal(result.report.skippedRowDetails[0].questionId, "ENG-Y1-L01-Q999");
+}
+
+{
+  const result = runEnglish([
+    makeEnglishRow({
+      "Question Type": "Drag and Drop (Future)",
+    }),
+  ]);
+  assert.equal(result.report.importedRows, 0);
+  assert.equal(result.report.rejectedRows, 1);
+  assert.ok(result.report.errorCount > 0);
+}
+
+{
+  const result = runEnglish([makeEnglishRow(), makeEnglishRow()]);
+  assert.equal(result.report.importedRows, 0);
+  assert.ok(result.report.errorCount > 0);
+  assert.ok(result.report.duplicateIds.length > 0);
+}
+
+{
+  const result = runEnglish([
+    makeEnglishRow({
+      Subject: "Mathematics",
+    }),
+  ]);
+  assert.equal(result.report.importedRows, 0);
+  assert.ok(result.report.errorCount > 0);
+  assert.ok(result.report.issues.some((issue) => issue.field === "Subject"));
+}
+
+{
+  const rows = [
+    makeEnglishRow({ "Question ID": "ENG-Y1-L01-Q001", "Question Type": "Multiple Choice", "Correct Answer": "a" }),
+    makeEnglishRow({ "Question ID": "ENG-Y1-L01-Q002", "Question Type": "Tap Correct", "Option A": "cat", "Option B": "dog", "Option C": "", "Option D": "", "Correct Answer": "cat" }),
+    makeEnglishRow({ "Question ID": "ENG-Y1-L01-Q003", "Question Type": "Fill Missing Letter", Question: "Fill the missing letter: c_t", "Option A": "", "Option B": "", "Option C": "", "Option D": "", "Correct Answer": "a" }),
+    makeEnglishRow({ "Question ID": "ENG-Y1-L01-Q004", "Question Type": "Fill Missing Word", Question: "I see a ____.", "Option A": "", "Option B": "", "Option C": "", "Option D": "", "Correct Answer": "cat" }),
+    makeEnglishRow({ "Question ID": "ENG-Y1-L01-Q005", "Question Type": "Text Input", Question: "Type the word cat.", "Option A": "", "Option B": "", "Option C": "", "Option D": "", "Correct Answer": "cat" }),
+    makeEnglishRow({ "Question ID": "ENG-Y1-L01-Q006", "Question Type": "True or False", Question: "A is an uppercase letter.", "Option A": "", "Option B": "", "Option C": "", "Option D": "", "Correct Answer": "True" }),
+    makeEnglishRow({ "Question ID": "ENG-Y1-L01-Q007", "Question Type": "Match Pairs", "Option A": "A=a", "Option B": "B=b", "Option C": "", "Option D": "", "Correct Answer": "A=a;B=b" }),
+  ];
+  const result = runEnglish(rows);
+  const rendererSummary = summarizeRendererSupport(result.rowsToWrite);
+  assert.equal(result.report.importedRows, rows.length);
+  assert.equal(result.report.errorCount, 0);
+  assert.equal(rendererSummary.unsupported.length, 0);
+  assert.equal(result.report.outputJsonPath.includes("active-content-manifest"), false);
+  assert.equal(result.report.reportJsonPath.includes("active-content-manifest"), false);
+}
+
+{
+  assert.equal(normalizeQuestionAssetStatus(" review "), "Review");
+  assert.equal(isSupportedQuestionAssetStatus("Approved"), true);
+  assert.equal(isSupportedQuestionAssetStatus("Pending"), false);
+  assert.equal(canTransitionQuestionAssetStatus("Draft", "Review"), true);
+  assert.equal(canTransitionQuestionAssetStatus("Review", "Approved"), true);
+  assert.equal(canTransitionQuestionAssetStatus("Review", "Draft"), false);
+  assert.deepEqual(questionAssetStatusTransitions.Review, ["Needs Revision", "Approved", "Rejected", "Archived"]);
+}
+
+{
+  const csvText = [
+    englishHeaders.join(","),
+    englishHeaders.map((header) => csvEscape(makeEnglishRow({ Status: "Review" })[header])).join(","),
+  ].join("\n");
+  const sourceRows = parseQuestionAssetCsv(csvText);
+  const assetRows = englishSourceRowsToQuestionAssetRows(sourceRows);
+  assert.equal(assetRows.length, 1);
+  assert.equal(assetRows[0].Status, "Review");
+  assert.equal(assetRows[0].Subject, "English");
+  assert.equal(assetRows[0]["Review Status"], "Review");
+}
+
+{
+  const imported = run([
+    makeRow({
+      "Question ID": "FW-Y1-L01-Q101",
+      Question: "Repeated wording test?",
+      "Final Explanation": "Repeated explanation.",
+      "LearnBot Tip": "Repeated tip.",
+      "Option A": "same distractor",
+      "Option B": "3",
+      "Option C": "other distractor",
+      "Correct Answer": "3",
+    }),
+    makeRow({
+      "Question ID": "FW-Y1-L01-Q102",
+      Question: "Repeated wording test?",
+      "Final Explanation": "Repeated explanation.",
+      "LearnBot Tip": "Repeated tip.",
+      "Option A": "same distractor",
+      "Option B": "3",
+      "Option C": "different distractor",
+      "Correct Answer": "3",
+    }),
+  ]).rowsToWrite;
+  const summary = buildCurriculumQaSummary(imported, "QA duplicate test");
+  assert.equal(summary.totalRows, 2);
+  assert.equal(summary.duplicates.questionText.length, 1);
+  assert.equal(summary.duplicates.explanations.length, 1);
+  assert.equal(summary.duplicates.learnBotTips.length, 1);
+  assert.equal(summary.approvalReadiness.structurallyValidRows, 2);
+}
+
+{
+  const imported = run([
+    makeRow({
+      "Question ID": "FW-Y1-L01-Q201",
+      "Learning Objective": "",
+      "Curriculum Alignment": "",
+      "Voice Script": "",
+    }),
+  ]).rowsToWrite;
+  const summary = buildCurriculumQaSummary(imported, "QA coverage test");
+  assert.equal(summary.curriculumCoverage.missingCurriculumAlignment, 1);
+  assert.equal(summary.curriculumCoverage.missingLearningObjective, 1);
+  assert.equal(summary.curriculumCoverage.missingVoiceScript, 1);
+  assert.ok(summary.validationErrors.length > 0);
+}
+
+{
+  const imported = run([
+    makeRow({ "Question ID": "FW-Y1-L01-Q301" }),
+  ]).rowsToWrite.map((row) => ({ ...row, Status: "Pending" }));
+  const summary = buildCurriculumQaSummary(imported, "QA unsupported status test");
+  assert.equal(summary.statusCounts.Unsupported, 1);
+  assert.ok(summary.qaWarnings.some((issue) => issue.field === "Status" && issue.message.includes("Unsupported QA status")));
+}
 {
   const result = run([makeRow({ Status: "  approved  " })]);
   assert.equal(result.report.importedRows, 1);

@@ -49,22 +49,22 @@ function ObjectStrip({
   }[tone];
 
   return (
-    <div className={`min-w-0 rounded-[1rem] border px-2 py-1.5 ${toneClass}`}>
+    <div className={`min-w-0 rounded-[0.9rem] border px-2 py-1.5 ${toneClass}`}>
       {label ? (
         <p className="mb-0.5 truncate text-[0.65rem] font-black uppercase tracking-wide text-[#5B6B94]">{label}</p>
       ) : null}
-      <div className="flex min-h-8 flex-wrap items-center justify-center gap-1">
+      <div className="flex min-h-7 flex-wrap items-center justify-center gap-1">
         {Array.from({ length: visibleCount }).map((_, index) => {
           const isCrossed = index < crossed;
           return (
             <span
               key={`${object}-${index}`}
-              className={`relative flex h-7 w-7 items-center justify-center rounded-xl bg-white shadow-sm ${
+              className={`relative flex h-6 w-6 items-center justify-center rounded-xl bg-white shadow-sm ${
                 isCrossed ? "opacity-45" : ""
               }`}
               aria-hidden
             >
-              <MathObjectIcon object={object} className="h-5 w-5" />
+              <MathObjectIcon object={object} className="h-4 w-4" />
               {isCrossed ? (
                 <span className="absolute left-1 right-1 top-1/2 h-0.5 -rotate-12 rounded-full bg-[#EF4444]" />
               ) : null}
@@ -89,7 +89,7 @@ function Operator({ children }: { children: string }) {
 
 function AnswerPill({ children }: { children: string }) {
   return (
-    <div className="flex min-h-9 items-center justify-center rounded-[1rem] border border-[#22C55E]/45 bg-[#DCFCE7] px-2.5 text-center text-lg font-black text-[#15803D]">
+    <div className="flex min-h-8 items-center justify-center rounded-[1rem] border border-[#22C55E]/45 bg-[#DCFCE7] px-2.5 text-center text-base font-black text-[#15803D]">
       {children}
     </div>
   );
@@ -98,7 +98,7 @@ function AnswerPill({ children }: { children: string }) {
 function NumberTile({ value, active = false }: { value: number; active?: boolean }) {
   return (
     <span
-      className={`flex h-8 min-w-8 items-center justify-center rounded-xl px-2 text-sm font-black shadow-sm ${
+      className={`flex h-7 min-w-7 items-center justify-center rounded-xl px-2 text-sm font-black shadow-sm ${
         active ? "border-2 border-[#22C55E] bg-[#DCFCE7] text-[#15803D]" : "border border-[#DDE8F5] bg-white text-[#082B80]"
       }`}
     >
@@ -118,9 +118,9 @@ function CountingVisual({ visual, correctAnswer }: { visual: VisualLearningModel
   const object = getGroupObject(visual, 0);
 
   return (
-    <div className="grid gap-2">
+    <div className="grid gap-1.5">
       <ObjectStrip object={object} count={total} label={`Count ${labelFor(object, total)}`} tone="blue" />
-      <div className="grid grid-cols-[auto_1fr] items-center gap-2">
+      <div className="grid grid-cols-[auto_1fr] items-center gap-1.5">
         <Operator>=</Operator>
         <AnswerPill>{getAnswerText(visual, correctAnswer)}</AnswerPill>
       </div>
@@ -162,11 +162,11 @@ function SubtractionVisual({ visual, correctAnswer }: { visual: VisualLearningMo
   const object = getGroupObject(visual, 0);
 
   return (
-    <div className="grid gap-2">
+    <div className="grid gap-1.5">
       <ObjectStrip object={object} count={total} crossed={removed} label={`Start: ${total}`} tone="yellow" />
-      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-2">
+      <div className="grid grid-cols-[auto_minmax(0,1fr)] items-center gap-1.5">
         <Operator>-</Operator>
-        <p className="rounded-[1rem] bg-white px-3 py-2 text-sm font-black text-[#3F527E]">
+        <p className="rounded-[1rem] bg-white px-2.5 py-1.5 text-sm font-black text-[#3F527E]">
           Cross out {removed}. Count what is left.
         </p>
       </div>
@@ -186,7 +186,7 @@ function ComparisonVisual({ visual, correctAnswer }: { visual: VisualLearningMod
   const relationship = visual.equation ?? `${first} ${first > second ? ">" : first < second ? "<" : "="} ${second}`;
 
   return (
-    <div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-center">
+    <div className="grid gap-1.5 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-center">
       <ObjectStrip object={firstObject} count={first} label={`Group A: ${first}`} tone={firstIsAnswer ? "green" : "blue"} />
       <Operator>{visual.comparisonSymbol ?? (first === second ? "=" : "vs")}</Operator>
       <ObjectStrip object={secondObject} count={second} label={`Group B: ${second}`} tone={secondIsAnswer ? "green" : "blue"} />
@@ -203,8 +203,8 @@ function SequenceVisual({ visual, correctAnswer }: { visual: VisualLearningModel
 
   if (sequence.length === 0) {
     return (
-      <div className="grid gap-2">
-        <p className="rounded-[1rem] bg-[#F8FBFF] px-3 py-2 text-sm font-black text-[#3F527E]">
+      <div className="grid gap-1.5">
+        <p className="rounded-[1rem] bg-[#F8FBFF] px-2.5 py-1.5 text-sm font-black text-[#3F527E]">
           Use the number clue in the question.
         </p>
         <AnswerPill>{getAnswerText(visual, correctAnswer)}</AnswerPill>
@@ -213,10 +213,10 @@ function SequenceVisual({ visual, correctAnswer }: { visual: VisualLearningModel
   }
 
   return (
-    <div className="grid gap-2">
-      <div className="flex flex-wrap items-center justify-center gap-2 rounded-[1rem] border border-[#DDE8F5] bg-[#F8FBFF] p-2">
+    <div className="grid gap-1.5">
+      <div className="flex flex-wrap items-center justify-center gap-1.5 rounded-[1rem] border border-[#DDE8F5] bg-[#F8FBFF] p-2">
         {sequence.map((number, index) => (
-          <span key={number} className="flex items-center gap-2">
+          <span key={number} className="flex items-center gap-1.5">
             <NumberTile value={number} active={number === answerNumber} />
             {index < sequence.length - 1 ? <span className="text-sm font-black text-[#5B6B94]">-&gt;</span> : null}
           </span>
@@ -244,8 +244,8 @@ export function CompactExplanationVisual({
   }[visual.type];
 
   return (
-    <div className="max-w-full overflow-visible rounded-[1.15rem] border border-[#DDE8F5] bg-white p-2">
-      <p className="mb-1.5 text-[0.68rem] font-black uppercase tracking-wide text-[#FF4FA0]">Visual recap</p>
+    <div className="max-w-full overflow-visible rounded-[1rem] border border-[#DDE8F5] bg-white p-1.5">
+      <p className="mb-1 text-[0.64rem] font-black uppercase tracking-wide text-[#FF4FA0]">Visual recap</p>
       {content}
     </div>
   );

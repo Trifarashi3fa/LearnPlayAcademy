@@ -117,44 +117,44 @@ export function ExplanationTabs({
 
   return (
     <section
-      className="lp-reveal-soft flex h-full min-h-0 max-w-full flex-col overflow-hidden rounded-[1.35rem] border border-[#BDE7D0] bg-gradient-to-br from-[#F8FBFF] via-white to-[#EAFBF0] shadow-sm transition-all duration-200 motion-reduce:transition-none lg:h-auto lg:overflow-visible"
+      className="lp-reveal-soft flex h-full min-h-0 max-w-full flex-col overflow-hidden rounded-[1.35rem] border border-[#BDE7D0] bg-gradient-to-br from-[#F8FBFF] via-white to-[#EAFBF0] shadow-sm transition-all duration-200 motion-reduce:transition-none xl:h-full xl:overflow-visible"
       aria-label="Answer explanation"
     >
-      <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto overflow-x-hidden p-2.5 sm:p-3 lg:gap-1.5 lg:overflow-visible lg:p-2">
-        <div className={`shrink-0 rounded-[1rem] border px-2.5 py-1.5 transition-all duration-200 motion-reduce:transition-none ${isCorrect ? "lp-correct-glow" : "lp-shake-soft"} ${status.className}`} aria-live="polite">
+      <div className="flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto overflow-x-hidden p-2 sm:p-2.5 xl:gap-1.5 xl:overflow-visible xl:p-2">
+        <div className={`shrink-0 rounded-[0.95rem] border px-2.5 py-1.5 transition-all duration-200 motion-reduce:transition-none ${isCorrect ? "lp-correct-glow" : "lp-shake-soft"} ${status.className}`} aria-live="polite">
           <div className="flex flex-wrap items-center gap-2">
             <p className="rounded-full bg-white/70 px-2.5 py-1 text-[0.68rem] font-black uppercase tracking-wide">
               {status.label}
             </p>
-            <h2 className="text-base font-black leading-tight text-[#082B80]">{status.title}</h2>
+            <h2 className="text-sm font-black leading-tight sm:text-base text-[#082B80]">{status.title}</h2>
           </div>
-          <p className="mt-0.5 text-xs font-bold leading-4 text-[#3F527E] sm:text-sm sm:leading-5">{status.body}</p>
+          <p className="mt-0.5 text-[0.74rem] font-bold leading-4 text-[#3F527E] sm:text-sm sm:leading-5">{status.body}</p>
         </div>
 
         <div className="lp-reveal-soft min-h-0 shrink-0">
           <CompactExplanationVisual visual={content.visual} correctAnswer={correctAnswer} />
         </div>
 
-        <ol className="grid shrink-0 gap-1.5 sm:grid-cols-3 lg:grid-cols-3">
+        <ol className="grid shrink-0 gap-1.5 sm:grid-cols-3 xl:grid-cols-1 2xl:grid-cols-3">
           {teachingSteps.map((step, index) => (
-            <li key={step.label} className="grid min-w-0 grid-cols-[1.65rem_1fr] items-start gap-1.5 rounded-[0.95rem] bg-white px-2 py-1.5 shadow-sm">
-              <span className="flex h-6 w-6 items-center justify-center rounded-lg bg-[#0B63F6] text-[0.68rem] font-black text-white">
+            <li key={step.label} className="grid min-w-0 grid-cols-[1.65rem_1fr] items-start gap-1.5 rounded-[0.9rem] bg-white px-2 py-1.5 shadow-sm">
+              <span className="flex h-5 w-5 items-center justify-center rounded-lg bg-[#0B63F6] text-[0.68rem] font-black text-white">
                 {index + 1}
               </span>
               <div className="min-w-0">
                 <p className="text-[0.66rem] font-black uppercase tracking-wide text-[#0B63F6]">{step.label}</p>
-                <p className="text-xs font-bold leading-4 text-[#3F527E]">{step.body}</p>
+                <p className="text-[0.74rem] font-bold leading-4 text-[#3F527E]">{step.body}</p>
               </div>
             </li>
           ))}
         </ol>
 
-        <div className="grid shrink-0 gap-1.5 sm:grid-cols-[minmax(0,0.75fr)_minmax(0,1.25fr)]">
+        <div className="grid shrink-0 gap-1.5 sm:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)] xl:grid-cols-1 2xl:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
           <div className="rounded-[0.95rem] border border-[#22C55E]/45 bg-[#DCFCE7] px-2.5 py-1.5">
             <p className="text-[0.68rem] font-black uppercase tracking-wide text-[#15803D]">
               {isCorrect ? "Answer" : "Correct answer"}
             </p>
-            <p className="mt-0.5 text-sm font-black leading-tight text-[#082B80] sm:text-base">
+            <p className="mt-0.5 text-sm font-black leading-tight text-[#082B80]">
               {isCorrect ? `Answer: ${correctAnswer}` : `Correct answer: ${correctAnswer}`}
             </p>
           </div>

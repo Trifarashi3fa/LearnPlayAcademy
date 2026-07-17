@@ -3,9 +3,10 @@
 import Image from "next/image";
 import Link from "next/link";
 import { forestLevels } from "@/data/mvp-forest-world";
+import { mathematicsForestWorldPackage } from "@/data/learning-packages";
 import { ProgressBar } from "@/components/mvp/MvpShell";
 import { useMvpProgress } from "@/components/mvp/useMvpProgress";
-import { getForestLevelAccess } from "@/lib/progress/level-access";
+import { getLevelAccess } from "@/lib/progress/level-access";
 
 const levelTone: Record<string, string> = {
   Learn: "bg-[#0B63F6]",
@@ -31,7 +32,7 @@ export function MathematicsMvpPage() {
               Enter the Free Math Starter World.
             </h1>
             <p className="mt-4 max-w-3xl text-lg font-bold leading-8 text-[#5B6B94]">
-              Forest World is a guided path with 10 levels and 100 questions. Children learn numbers, counting, addition, subtraction, and review skills step by step.
+              Forest World is a guided path with {mathematicsForestWorldPackage.totalLevels} levels and {mathematicsForestWorldPackage.questionContentSource.activeQuestionCount} questions. Children learn numbers, counting, addition, subtraction, and review skills step by step.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <Link
@@ -91,7 +92,11 @@ export function MathematicsMvpPage() {
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {forestLevels.map((level) => {
-            const unlocked = getForestLevelAccess(level.level, worldProgressRecord.completedLevels).accessible;
+            const unlocked = getLevelAccess({
+              level: level.level,
+              completedLevels: worldProgressRecord.completedLevels,
+              totalLevels: mathematicsForestWorldPackage.totalLevels,
+            }).accessible;
             const content = (
               <article className={`h-full rounded-[1.5rem] border bg-white p-4 shadow-sm transition ${
                 unlocked ? "border-[#0B63F6] hover:-translate-y-1 hover:shadow-playful" : "border-[#DDE8F5] opacity-75"

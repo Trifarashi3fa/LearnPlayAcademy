@@ -1,0 +1,1328 @@
+{
+  "generatedAt": "2026-07-17T03:50:27.331Z",
+  "totalRows": 300,
+  "overallScore": 76,
+  "levels": [
+    {
+      "level": 1,
+      "file": "forest-l01.csv",
+      "rows": 30,
+      "quality": {
+        "score": 93,
+        "factors": {
+          "curriculumCoverage": 20,
+          "vocabularyDiversity": 15,
+          "questionTypeBalance": 15,
+          "explanationQuality": 8,
+          "duplicateScore": 15,
+          "distractorQuality": 10,
+          "progressionConsistency": 10
+        },
+        "warnings": 5,
+        "duplicates": {
+          "questionText": [],
+          "similarQuestions": [],
+          "explanations": [],
+          "learnBotTips": [],
+          "distractors": []
+        },
+        "vocabulary": {
+          "totalTokens": 550,
+          "uniqueTokens": 163,
+          "diversityRatio": 0.2963636363636364,
+          "repeatedPatterns": [
+            {
+              "token": "m",
+              "count": 19
+            },
+            {
+              "token": "capital",
+              "count": 18
+            },
+            {
+              "token": "b",
+              "count": 18
+            },
+            {
+              "token": "alphabet",
+              "count": 17
+            },
+            {
+              "token": "t",
+              "count": 16
+            },
+            {
+              "token": "lowercase",
+              "count": 16
+            },
+            {
+              "token": "s",
+              "count": 14
+            },
+            {
+              "token": "small",
+              "count": 12
+            },
+            {
+              "token": "before",
+              "count": 12
+            },
+            {
+              "token": "letters",
+              "count": 11
+            },
+            {
+              "token": "c",
+              "count": 11
+            },
+            {
+              "token": "same",
+              "count": 11
+            }
+          ]
+        },
+        "statusCounts": {
+          "Approved": 30
+        }
+      }
+    },
+    {
+      "level": 2,
+      "file": "forest-l02.csv",
+      "rows": 30,
+      "quality": {
+        "score": 70,
+        "factors": {
+          "curriculumCoverage": 20,
+          "vocabularyDiversity": 15,
+          "questionTypeBalance": 15,
+          "explanationQuality": 0,
+          "duplicateScore": 0,
+          "distractorQuality": 10,
+          "progressionConsistency": 10
+        },
+        "warnings": 32,
+        "duplicates": {
+          "questionText": [],
+          "similarQuestions": [],
+          "explanations": [
+            {
+              "value": "Sun begins with /s/.",
+              "questionIds": [
+                "ENG-Y1-FW-L02-Q002",
+                "ENG-Y1-FW-L02-Q028"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Cat begins with c.",
+              "questionIds": [
+                "ENG-Y1-FW-L02-Q003",
+                "ENG-Y1-FW-L02-Q026"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Fish begins with /f/.",
+              "questionIds": [
+                "ENG-Y1-FW-L02-Q004",
+                "ENG-Y1-FW-L02-Q029"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Dog starts with d.",
+              "questionIds": [
+                "ENG-Y1-FW-L02-Q005",
+                "ENG-Y1-FW-L02-Q018"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Pen begins with /p/.",
+              "questionIds": [
+                "ENG-Y1-FW-L02-Q006",
+                "ENG-Y1-FW-L02-Q030"
+              ],
+              "count": 2
+            }
+          ],
+          "learnBotTips": [
+            {
+              "value": "Listen to the first sound.",
+              "questionIds": [
+                "ENG-Y1-FW-L02-Q002",
+                "ENG-Y1-FW-L02-Q017",
+                "ENG-Y1-FW-L02-Q023"
+              ],
+              "count": 3
+            },
+            {
+              "value": "Match one pair at a time.",
+              "questionIds": [
+                "ENG-Y1-FW-L02-Q007",
+                "ENG-Y1-FW-L02-Q008",
+                "ENG-Y1-FW-L02-Q009",
+                "ENG-Y1-FW-L02-Q010",
+                "ENG-Y1-FW-L02-Q011"
+              ],
+              "count": 5
+            },
+            {
+              "value": "Say dog slowly.",
+              "questionIds": [
+                "ENG-Y1-FW-L02-Q018",
+                "ENG-Y1-FW-L02-Q027"
+              ],
+              "count": 2
+            },
+            {
+              "value": "The first sound is /s/.",
+              "questionIds": [
+                "ENG-Y1-FW-L02-Q019",
+                "ENG-Y1-FW-L02-Q028"
+              ],
+              "count": 2
+            }
+          ],
+          "distractors": []
+        },
+        "vocabulary": {
+          "totalTokens": 399,
+          "uniqueTokens": 77,
+          "diversityRatio": 0.19298245614035087,
+          "repeatedPatterns": [
+            {
+              "token": "begins",
+              "count": 25
+            },
+            {
+              "token": "first",
+              "count": 24
+            },
+            {
+              "token": "sound",
+              "count": 16
+            },
+            {
+              "token": "match",
+              "count": 15
+            },
+            {
+              "token": "fish",
+              "count": 13
+            },
+            {
+              "token": "dog",
+              "count": 13
+            },
+            {
+              "token": "starts",
+              "count": 13
+            },
+            {
+              "token": "b",
+              "count": 12
+            },
+            {
+              "token": "sun",
+              "count": 12
+            },
+            {
+              "token": "cat",
+              "count": 12
+            },
+            {
+              "token": "p",
+              "count": 12
+            },
+            {
+              "token": "s",
+              "count": 11
+            }
+          ]
+        },
+        "statusCounts": {
+          "Review": 30
+        }
+      }
+    },
+    {
+      "level": 3,
+      "file": "forest-l03.csv",
+      "rows": 30,
+      "quality": {
+        "score": 76,
+        "factors": {
+          "curriculumCoverage": 20,
+          "vocabularyDiversity": 15,
+          "questionTypeBalance": 15,
+          "explanationQuality": 0,
+          "duplicateScore": 8,
+          "distractorQuality": 9,
+          "progressionConsistency": 10
+        },
+        "warnings": 26,
+        "duplicates": {
+          "questionText": [],
+          "similarQuestions": [
+            {
+              "value": "Which word matches the picture of a cat?",
+              "questionIds": [
+                "ENG-Y1-FW-L03-Q001",
+                "ENG-Y1-FW-L03-Q026"
+              ],
+              "values": [
+                "Which word matches the picture of a cat?",
+                "The word cat matches a cat picture."
+              ]
+            },
+            {
+              "value": "Which word matches the picture of a hat?",
+              "questionIds": [
+                "ENG-Y1-FW-L03-Q005",
+                "ENG-Y1-FW-L03-Q030"
+              ],
+              "values": [
+                "Which word matches the picture of a hat?",
+                "The word hat matches a hat picture."
+              ]
+            }
+          ],
+          "explanations": [],
+          "learnBotTips": [
+            {
+              "value": "Bus begins with b.",
+              "questionIds": [
+                "ENG-Y1-FW-L03-Q004",
+                "ENG-Y1-FW-L03-Q020"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Hat starts with h.",
+              "questionIds": [
+                "ENG-Y1-FW-L03-Q005",
+                "ENG-Y1-FW-L03-Q021"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Match one pair at a time.",
+              "questionIds": [
+                "ENG-Y1-FW-L03-Q007",
+                "ENG-Y1-FW-L03-Q008",
+                "ENG-Y1-FW-L03-Q009",
+                "ENG-Y1-FW-L03-Q010",
+                "ENG-Y1-FW-L03-Q011",
+                "ENG-Y1-FW-L03-Q012"
+              ],
+              "count": 6
+            }
+          ],
+          "distractors": [
+            {
+              "value": "bus",
+              "questionIds": [
+                "ENG-Y1-FW-L03-Q001",
+                "ENG-Y1-FW-L03-Q003",
+                "ENG-Y1-FW-L03-Q013",
+                "ENG-Y1-FW-L03-Q014"
+              ],
+              "count": 4
+            }
+          ]
+        },
+        "vocabulary": {
+          "totalTokens": 371,
+          "uniqueTokens": 76,
+          "diversityRatio": 0.20485175202156333,
+          "repeatedPatterns": [
+            {
+              "token": "fish",
+              "count": 20
+            },
+            {
+              "token": "cat",
+              "count": 19
+            },
+            {
+              "token": "sun",
+              "count": 19
+            },
+            {
+              "token": "match",
+              "count": 19
+            },
+            {
+              "token": "bus",
+              "count": 17
+            },
+            {
+              "token": "bag",
+              "count": 17
+            },
+            {
+              "token": "dog",
+              "count": 16
+            },
+            {
+              "token": "hat",
+              "count": 16
+            },
+            {
+              "token": "cup",
+              "count": 14
+            },
+            {
+              "token": "pen",
+              "count": 13
+            },
+            {
+              "token": "matches",
+              "count": 12
+            },
+            {
+              "token": "bird",
+              "count": 12
+            }
+          ]
+        },
+        "statusCounts": {
+          "Review": 30
+        }
+      }
+    },
+    {
+      "level": 4,
+      "file": "forest-l04.csv",
+      "rows": 30,
+      "quality": {
+        "score": 75,
+        "factors": {
+          "curriculumCoverage": 20,
+          "vocabularyDiversity": 15,
+          "questionTypeBalance": 15,
+          "explanationQuality": 0,
+          "duplicateScore": 5,
+          "distractorQuality": 10,
+          "progressionConsistency": 10
+        },
+        "warnings": 24,
+        "duplicates": {
+          "questionText": [],
+          "similarQuestions": [],
+          "explanations": [
+            {
+              "value": "Cat and bat both end with -at.",
+              "questionIds": [
+                "ENG-Y1-FW-L04-Q004",
+                "ENG-Y1-FW-L04-Q027"
+              ],
+              "count": 2
+            },
+            {
+              "value": "The correct answer is cat.",
+              "questionIds": [
+                "ENG-Y1-FW-L04-Q012",
+                "ENG-Y1-FW-L04-Q016"
+              ],
+              "count": 2
+            }
+          ],
+          "learnBotTips": [
+            {
+              "value": "Listen for the middle sound.",
+              "questionIds": [
+                "ENG-Y1-FW-L04-Q002",
+                "ENG-Y1-FW-L04-Q019"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Match one pair at a time.",
+              "questionIds": [
+                "ENG-Y1-FW-L04-Q007",
+                "ENG-Y1-FW-L04-Q008",
+                "ENG-Y1-FW-L04-Q009",
+                "ENG-Y1-FW-L04-Q010",
+                "ENG-Y1-FW-L04-Q011"
+              ],
+              "count": 5
+            }
+          ],
+          "distractors": []
+        },
+        "vocabulary": {
+          "totalTokens": 415,
+          "uniqueTokens": 105,
+          "diversityRatio": 0.25301204819277107,
+          "repeatedPatterns": [
+            {
+              "token": "cat",
+              "count": 25
+            },
+            {
+              "token": "sun",
+              "count": 20
+            },
+            {
+              "token": "pen",
+              "count": 17
+            },
+            {
+              "token": "match",
+              "count": 15
+            },
+            {
+              "token": "cup",
+              "count": 13
+            },
+            {
+              "token": "middle",
+              "count": 12
+            },
+            {
+              "token": "cvc",
+              "count": 11
+            },
+            {
+              "token": "fox",
+              "count": 11
+            },
+            {
+              "token": "at",
+              "count": 10
+            }
+          ]
+        },
+        "statusCounts": {
+          "Review": 30
+        }
+      }
+    },
+    {
+      "level": 5,
+      "file": "forest-l05.csv",
+      "rows": 30,
+      "quality": {
+        "score": 77,
+        "factors": {
+          "curriculumCoverage": 20,
+          "vocabularyDiversity": 15,
+          "questionTypeBalance": 15,
+          "explanationQuality": 0,
+          "duplicateScore": 10,
+          "distractorQuality": 7,
+          "progressionConsistency": 10
+        },
+        "warnings": 22,
+        "duplicates": {
+          "questionText": [],
+          "similarQuestions": [],
+          "explanations": [
+            {
+              "value": "It is hot is a correct sentence.",
+              "questionIds": [
+                "ENG-Y1-FW-L05-Q006",
+                "ENG-Y1-FW-L05-Q030"
+              ],
+              "count": 2
+            }
+          ],
+          "learnBotTips": [
+            {
+              "value": "Match one pair at a time.",
+              "questionIds": [
+                "ENG-Y1-FW-L05-Q007",
+                "ENG-Y1-FW-L05-Q008",
+                "ENG-Y1-FW-L05-Q009",
+                "ENG-Y1-FW-L05-Q010"
+              ],
+              "count": 4
+            }
+          ],
+          "distractors": [
+            {
+              "value": "go",
+              "questionIds": [
+                "ENG-Y1-FW-L05-Q001",
+                "ENG-Y1-FW-L05-Q004",
+                "ENG-Y1-FW-L05-Q006",
+                "ENG-Y1-FW-L05-Q010",
+                "ENG-Y1-FW-L05-Q013"
+              ],
+              "count": 5
+            },
+            {
+              "value": "cat",
+              "questionIds": [
+                "ENG-Y1-FW-L05-Q003",
+                "ENG-Y1-FW-L05-Q010",
+                "ENG-Y1-FW-L05-Q014",
+                "ENG-Y1-FW-L05-Q015"
+              ],
+              "count": 4
+            }
+          ]
+        },
+        "vocabulary": {
+          "totalTokens": 429,
+          "uniqueTokens": 117,
+          "diversityRatio": 0.2727272727272727,
+          "repeatedPatterns": [
+            {
+              "token": "go",
+              "count": 19
+            },
+            {
+              "token": "can",
+              "count": 19
+            },
+            {
+              "token": "it",
+              "count": 19
+            },
+            {
+              "token": "sentence",
+              "count": 16
+            },
+            {
+              "token": "i",
+              "count": 16
+            },
+            {
+              "token": "my",
+              "count": 16
+            },
+            {
+              "token": "sight",
+              "count": 15
+            },
+            {
+              "token": "we",
+              "count": 15
+            },
+            {
+              "token": "see",
+              "count": 14
+            },
+            {
+              "token": "like",
+              "count": 14
+            },
+            {
+              "token": "correct",
+              "count": 12
+            },
+            {
+              "token": "match",
+              "count": 12
+            }
+          ]
+        },
+        "statusCounts": {
+          "Review": 30
+        }
+      }
+    },
+    {
+      "level": 6,
+      "file": "forest-l06.csv",
+      "rows": 30,
+      "quality": {
+        "score": 75,
+        "factors": {
+          "curriculumCoverage": 20,
+          "vocabularyDiversity": 15,
+          "questionTypeBalance": 15,
+          "explanationQuality": 0,
+          "duplicateScore": 5,
+          "distractorQuality": 10,
+          "progressionConsistency": 10
+        },
+        "warnings": 19,
+        "duplicates": {
+          "questionText": [],
+          "similarQuestions": [
+            {
+              "value": "Match sentence starts and endings.",
+              "questionIds": [
+                "ENG-Y1-FW-L06-Q008",
+                "ENG-Y1-FW-L06-Q011"
+              ],
+              "values": [
+                "Match sentence starts and endings.",
+                "Match capital starts to sentence endings."
+              ]
+            },
+            {
+              "value": "It is ___. Picture: hot sun.",
+              "questionIds": [
+                "ENG-Y1-FW-L06-Q021",
+                "ENG-Y1-FW-L06-Q030"
+              ],
+              "values": [
+                "It is ___. Picture: hot sun.",
+                "It is hot matches a hot sun picture."
+              ]
+            }
+          ],
+          "explanations": [],
+          "learnBotTips": [
+            {
+              "value": "Choose the describing word.",
+              "questionIds": [
+                "ENG-Y1-FW-L06-Q003",
+                "ENG-Y1-FW-L06-Q022"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Use the picture clue.",
+              "questionIds": [
+                "ENG-Y1-FW-L06-Q005",
+                "ENG-Y1-FW-L06-Q021"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Match one pair at a time.",
+              "questionIds": [
+                "ENG-Y1-FW-L06-Q007",
+                "ENG-Y1-FW-L06-Q008",
+                "ENG-Y1-FW-L06-Q009",
+                "ENG-Y1-FW-L06-Q010",
+                "ENG-Y1-FW-L06-Q011"
+              ],
+              "count": 5
+            },
+            {
+              "value": "Choose the action in the picture.",
+              "questionIds": [
+                "ENG-Y1-FW-L06-Q013",
+                "ENG-Y1-FW-L06-Q018"
+              ],
+              "count": 2
+            }
+          ],
+          "distractors": []
+        },
+        "vocabulary": {
+          "totalTokens": 523,
+          "uniqueTokens": 113,
+          "diversityRatio": 0.21606118546845124,
+          "repeatedPatterns": [
+            {
+              "token": "i",
+              "count": 33
+            },
+            {
+              "token": "see",
+              "count": 30
+            },
+            {
+              "token": "cat",
+              "count": 27
+            },
+            {
+              "token": "sentence",
+              "count": 24
+            },
+            {
+              "token": "match",
+              "count": 18
+            },
+            {
+              "token": "dog",
+              "count": 15
+            },
+            {
+              "token": "bag",
+              "count": 15
+            },
+            {
+              "token": "go",
+              "count": 15
+            },
+            {
+              "token": "we",
+              "count": 15
+            },
+            {
+              "token": "runs",
+              "count": 14
+            },
+            {
+              "token": "can",
+              "count": 14
+            },
+            {
+              "token": "red",
+              "count": 11
+            }
+          ]
+        },
+        "statusCounts": {
+          "Review": 30
+        }
+      }
+    },
+    {
+      "level": 7,
+      "file": "forest-l07.csv",
+      "rows": 30,
+      "quality": {
+        "score": 74,
+        "factors": {
+          "curriculumCoverage": 20,
+          "vocabularyDiversity": 15,
+          "questionTypeBalance": 15,
+          "explanationQuality": 0,
+          "duplicateScore": 5,
+          "distractorQuality": 9,
+          "progressionConsistency": 10
+        },
+        "warnings": 24,
+        "duplicates": {
+          "questionText": [],
+          "similarQuestions": [],
+          "explanations": [
+            {
+              "value": "We use an before apple.",
+              "questionIds": [
+                "ENG-Y1-FW-L07-Q003",
+                "ENG-Y1-FW-L07-Q024"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Round describes the ball.",
+              "questionIds": [
+                "ENG-Y1-FW-L07-Q007",
+                "ENG-Y1-FW-L07-Q020"
+              ],
+              "count": 2
+            }
+          ],
+          "learnBotTips": [
+            {
+              "value": "Match one pair at a time.",
+              "questionIds": [
+                "ENG-Y1-FW-L07-Q008",
+                "ENG-Y1-FW-L07-Q009",
+                "ENG-Y1-FW-L07-Q010",
+                "ENG-Y1-FW-L07-Q011"
+              ],
+              "count": 4
+            },
+            {
+              "value": "Add s.",
+              "questionIds": [
+                "ENG-Y1-FW-L07-Q018",
+                "ENG-Y1-FW-L07-Q023"
+              ],
+              "count": 2
+            }
+          ],
+          "distractors": [
+            {
+              "value": "an cat",
+              "questionIds": [
+                "ENG-Y1-FW-L07-Q003",
+                "ENG-Y1-FW-L07-Q006",
+                "ENG-Y1-FW-L07-Q007",
+                "ENG-Y1-FW-L07-Q010"
+              ],
+              "count": 4
+            }
+          ]
+        },
+        "vocabulary": {
+          "totalTokens": 434,
+          "uniqueTokens": 113,
+          "diversityRatio": 0.26036866359447003,
+          "repeatedPatterns": [
+            {
+              "token": "cat",
+              "count": 29
+            },
+            {
+              "token": "action",
+              "count": 15
+            },
+            {
+              "token": "apple",
+              "count": 13
+            },
+            {
+              "token": "match",
+              "count": 12
+            },
+            {
+              "token": "book",
+              "count": 11
+            },
+            {
+              "token": "one",
+              "count": 11
+            },
+            {
+              "token": "at",
+              "count": 11
+            },
+            {
+              "token": "i",
+              "count": 11
+            }
+          ]
+        },
+        "statusCounts": {
+          "Review": 30
+        }
+      }
+    },
+    {
+      "level": 8,
+      "file": "forest-l08.csv",
+      "rows": 30,
+      "quality": {
+        "score": 70,
+        "factors": {
+          "curriculumCoverage": 20,
+          "vocabularyDiversity": 15,
+          "questionTypeBalance": 15,
+          "explanationQuality": 0,
+          "duplicateScore": 0,
+          "distractorQuality": 10,
+          "progressionConsistency": 10
+        },
+        "warnings": 30,
+        "duplicates": {
+          "questionText": [],
+          "similarQuestions": [
+            {
+              "value": "Read: Mia sees a cat. Who sees a cat?",
+              "questionIds": [
+                "ENG-Y1-FW-L08-Q002",
+                "ENG-Y1-FW-L08-Q022"
+              ],
+              "values": [
+                "Read: Mia sees a cat. Who sees a cat?",
+                "Read: Mia sees a cat. Type who sees a cat."
+              ]
+            },
+            {
+              "value": "Read: The cat is small. What is small?",
+              "questionIds": [
+                "ENG-Y1-FW-L08-Q008",
+                "ENG-Y1-FW-L08-Q018"
+              ],
+              "values": [
+                "Read: The cat is small. What is small?",
+                "Read: The cat is ___. Picture: small cat."
+              ]
+            }
+          ],
+          "explanations": [
+            {
+              "value": "Mia sees the cat.",
+              "questionIds": [
+                "ENG-Y1-FW-L08-Q002",
+                "ENG-Y1-FW-L08-Q022",
+                "ENG-Y1-FW-L08-Q030"
+              ],
+              "count": 3
+            },
+            {
+              "value": "The bird can fly.",
+              "questionIds": [
+                "ENG-Y1-FW-L08-Q005",
+                "ENG-Y1-FW-L08-Q020"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Ben goes to school.",
+              "questionIds": [
+                "ENG-Y1-FW-L08-Q007",
+                "ENG-Y1-FW-L08-Q019",
+                "ENG-Y1-FW-L08-Q026"
+              ],
+              "count": 3
+            }
+          ],
+          "learnBotTips": [
+            {
+              "value": "Where asks about place.",
+              "questionIds": [
+                "ENG-Y1-FW-L08-Q003",
+                "ENG-Y1-FW-L08-Q007",
+                "ENG-Y1-FW-L08-Q014"
+              ],
+              "count": 3
+            },
+            {
+              "value": "Match one pair at a time.",
+              "questionIds": [
+                "ENG-Y1-FW-L08-Q009",
+                "ENG-Y1-FW-L08-Q010",
+                "ENG-Y1-FW-L08-Q011"
+              ],
+              "count": 3
+            },
+            {
+              "value": "Who asks for a name.",
+              "questionIds": [
+                "ENG-Y1-FW-L08-Q015",
+                "ENG-Y1-FW-L08-Q030"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Find the action word.",
+              "questionIds": [
+                "ENG-Y1-FW-L08-Q016",
+                "ENG-Y1-FW-L08-Q020"
+              ],
+              "count": 2
+            }
+          ],
+          "distractors": []
+        },
+        "vocabulary": {
+          "totalTokens": 509,
+          "uniqueTokens": 114,
+          "diversityRatio": 0.22396856581532418,
+          "repeatedPatterns": [
+            {
+              "token": "read",
+              "count": 25
+            },
+            {
+              "token": "cat",
+              "count": 20
+            },
+            {
+              "token": "dog",
+              "count": 15
+            },
+            {
+              "token": "red",
+              "count": 14
+            },
+            {
+              "token": "what",
+              "count": 14
+            },
+            {
+              "token": "ben",
+              "count": 14
+            },
+            {
+              "token": "ball",
+              "count": 13
+            },
+            {
+              "token": "under",
+              "count": 13
+            },
+            {
+              "token": "tree",
+              "count": 13
+            },
+            {
+              "token": "where",
+              "count": 12
+            },
+            {
+              "token": "bird",
+              "count": 12
+            },
+            {
+              "token": "sam",
+              "count": 11
+            }
+          ]
+        },
+        "statusCounts": {
+          "Review": 30
+        }
+      }
+    },
+    {
+      "level": 9,
+      "file": "forest-l09.csv",
+      "rows": 30,
+      "quality": {
+        "score": 70,
+        "factors": {
+          "curriculumCoverage": 20,
+          "vocabularyDiversity": 15,
+          "questionTypeBalance": 15,
+          "explanationQuality": 0,
+          "duplicateScore": 0,
+          "distractorQuality": 10,
+          "progressionConsistency": 10
+        },
+        "warnings": 35,
+        "duplicates": {
+          "questionText": [
+            {
+              "value": "Which word is the opposite of big?",
+              "questionIds": [
+                "ENG-Y1-FW-L09-Q003",
+                "ENG-Y1-FW-L09-Q018"
+              ],
+              "count": 2
+            }
+          ],
+          "similarQuestions": [
+            {
+              "value": "Which word is the opposite of big?",
+              "questionIds": [
+                "ENG-Y1-FW-L09-Q003",
+                "ENG-Y1-FW-L09-Q018"
+              ],
+              "values": [
+                "Which word is the opposite of big?",
+                "The opposite of big is ___."
+              ]
+            }
+          ],
+          "explanations": [
+            {
+              "value": "Cat is an animal.",
+              "questionIds": [
+                "ENG-Y1-FW-L09-Q001",
+                "ENG-Y1-FW-L09-Q019"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Blue is a colour.",
+              "questionIds": [
+                "ENG-Y1-FW-L09-Q002",
+                "ENG-Y1-FW-L09-Q020"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Small is the opposite of big.",
+              "questionIds": [
+                "ENG-Y1-FW-L09-Q003",
+                "ENG-Y1-FW-L09-Q018"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Jump is an action.",
+              "questionIds": [
+                "ENG-Y1-FW-L09-Q004",
+                "ENG-Y1-FW-L09-Q026"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Apple is a fruit.",
+              "questionIds": [
+                "ENG-Y1-FW-L09-Q005",
+                "ENG-Y1-FW-L09-Q022",
+                "ENG-Y1-FW-L09-Q029"
+              ],
+              "count": 3
+            },
+            {
+              "value": "Run is an action word.",
+              "questionIds": [
+                "ENG-Y1-FW-L09-Q021",
+                "ENG-Y1-FW-L09-Q030"
+              ],
+              "count": 2
+            }
+          ],
+          "learnBotTips": [
+            {
+              "value": "Use the category clue.",
+              "questionIds": [
+                "ENG-Y1-FW-L09-Q005",
+                "ENG-Y1-FW-L09-Q029"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Look at the feeling.",
+              "questionIds": [
+                "ENG-Y1-FW-L09-Q006",
+                "ENG-Y1-FW-L09-Q023"
+              ],
+              "count": 2
+            },
+            {
+              "value": "Match one pair at a time.",
+              "questionIds": [
+                "ENG-Y1-FW-L09-Q008",
+                "ENG-Y1-FW-L09-Q009",
+                "ENG-Y1-FW-L09-Q010",
+                "ENG-Y1-FW-L09-Q011",
+                "ENG-Y1-FW-L09-Q012"
+              ],
+              "count": 5
+            }
+          ],
+          "distractors": []
+        },
+        "vocabulary": {
+          "totalTokens": 396,
+          "uniqueTokens": 105,
+          "diversityRatio": 0.26515151515151514,
+          "repeatedPatterns": [
+            {
+              "token": "apple",
+              "count": 16
+            },
+            {
+              "token": "match",
+              "count": 15
+            },
+            {
+              "token": "colour",
+              "count": 13
+            },
+            {
+              "token": "big",
+              "count": 13
+            },
+            {
+              "token": "cat",
+              "count": 11
+            },
+            {
+              "token": "blue",
+              "count": 11
+            },
+            {
+              "token": "action",
+              "count": 11
+            },
+            {
+              "token": "opposite",
+              "count": 10
+            }
+          ]
+        },
+        "statusCounts": {
+          "Review": 30
+        }
+      }
+    },
+    {
+      "level": 10,
+      "file": "forest-l10.csv",
+      "rows": 30,
+      "quality": {
+        "score": 80,
+        "factors": {
+          "curriculumCoverage": 20,
+          "vocabularyDiversity": 15,
+          "questionTypeBalance": 15,
+          "explanationQuality": 0,
+          "duplicateScore": 10,
+          "distractorQuality": 10,
+          "progressionConsistency": 10
+        },
+        "warnings": 26,
+        "duplicates": {
+          "questionText": [],
+          "similarQuestions": [
+            {
+              "value": "Mixed review: Which word begins with /s/?",
+              "questionIds": [
+                "ENG-Y1-FW-L10-Q002",
+                "ENG-Y1-FW-L10-Q029"
+              ],
+              "values": [
+                "Mixed review: Which word begins with /s/?",
+                "Mixed review: Dog begins with s."
+              ]
+            },
+            {
+              "value": "Mixed review: Match opposites.",
+              "questionIds": [
+                "ENG-Y1-FW-L10-Q010",
+                "ENG-Y1-FW-L10-Q028"
+              ],
+              "values": [
+                "Mixed review: Match opposites.",
+                "Mixed review: A and a match."
+              ]
+            }
+          ],
+          "explanations": [],
+          "learnBotTips": [
+            {
+              "value": "Listen to the first sound.",
+              "questionIds": [
+                "ENG-Y1-FW-L10-Q002",
+                "ENG-Y1-FW-L10-Q018",
+                "ENG-Y1-FW-L10-Q026",
+                "ENG-Y1-FW-L10-Q029"
+              ],
+              "count": 4
+            },
+            {
+              "value": "Match one pair at a time.",
+              "questionIds": [
+                "ENG-Y1-FW-L10-Q007",
+                "ENG-Y1-FW-L10-Q008",
+                "ENG-Y1-FW-L10-Q009",
+                "ENG-Y1-FW-L10-Q010",
+                "ENG-Y1-FW-L10-Q011"
+              ],
+              "count": 5
+            }
+          ],
+          "distractors": []
+        },
+        "vocabulary": {
+          "totalTokens": 453,
+          "uniqueTokens": 121,
+          "diversityRatio": 0.2671081677704194,
+          "repeatedPatterns": [
+            {
+              "token": "mixed",
+              "count": 30
+            },
+            {
+              "token": "review",
+              "count": 30
+            },
+            {
+              "token": "match",
+              "count": 17
+            },
+            {
+              "token": "dog",
+              "count": 16
+            },
+            {
+              "token": "fish",
+              "count": 14
+            },
+            {
+              "token": "cat",
+              "count": 12
+            },
+            {
+              "token": "sun",
+              "count": 10
+            }
+          ]
+        },
+        "statusCounts": {
+          "Review": 30
+        }
+      }
+    }
+  ]
+}

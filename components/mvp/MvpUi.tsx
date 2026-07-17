@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import type { ButtonHTMLAttributes, InputHTMLAttributes, ReactNode, SelectHTMLAttributes } from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, InputHTMLAttributes, ReactNode, SelectHTMLAttributes } from "react";
 
 type Tone = "blue" | "pink" | "green" | "yellow" | "white" | "danger" | "soft";
 type Size = "sm" | "md" | "lg";
@@ -60,7 +60,8 @@ export function MvpButtonLink({
   tone = "blue",
   size = "md",
   className = "",
-}: {
+  ...props
+}: AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
   children: ReactNode;
   tone?: Tone;
@@ -68,7 +69,7 @@ export function MvpButtonLink({
   className?: string;
 }) {
   return (
-    <Link href={href} className={mvpButtonClass({ tone, size, className })}>
+    <Link href={href} className={mvpButtonClass({ tone, size, className })} {...props}>
       {children}
     </Link>
   );

@@ -4,6 +4,7 @@ import { useMemo, useState, type FormEvent } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { MvpButton, MvpField, MvpInput, MvpStatusPill, MvpSurface } from "@/components/mvp/MvpUi";
+import { trackLearningEvent } from "@/lib/learning-analytics/client";
 import { getAuthRedirectUrl } from "@/lib/supabase/auth-redirect";
 import { createClient } from "@/lib/supabase/client";
 import { isSupabaseConfigured } from "@/lib/supabase/config";
@@ -55,9 +56,18 @@ export function ParentAuthForm({ mode }: ParentAuthFormProps) {
     setError(null);
 
     if (!isSupabaseConfigured()) {
+      trackLearningEvent("app_error", {
+        area: "auth",
+        message: "Supabase client is not configured.",
+        recoverable: true,
+      });
       setError("Supabase is not configured. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY to .env.local.");
       return;
     }
+
+    if (mode === "register") trackLearningEvent("auth_register_started", { method: "email" });
+    if (mode === "login") trackLearningEvent("auth_login_started", { method: "email" });
+    if (mode === "forgot-password") trackLearningEvent("auth_password_reset_requested", { method: "email" });
 
     setIsLoading(true);
     const supabase = createClient();
@@ -70,10 +80,12 @@ export function ParentAuthForm({ mode }: ParentAuthFormProps) {
 
       setIsLoading(false);
       if (resetError) {
+        trackLearningEvent("auth_password_reset_requested", { method: "email", result: "failure" });
         setError(resetError.message);
         return;
       }
 
+      trackLearningEvent("auth_password_reset_requested", { method: "email", result: "success" });
       setMessage("If an account exists for this email, a password reset link has been sent.");
       return;
     }
@@ -91,11 +103,13 @@ export function ParentAuthForm({ mode }: ParentAuthFormProps) {
       });
 
       if (signUpError) {
+        trackLearningEvent("auth_register_completed", { method: "email", result: "failure", reason: signUpError.message });
         setError(signUpError.message);
         setIsLoading(false);
         return;
       }
 
+      trackLearningEvent("auth_register_completed", { method: "email", result: "success" });
       if (data.session) {
         router.push("/account");
         router.refresh();
@@ -113,11 +127,13 @@ export function ParentAuthForm({ mode }: ParentAuthFormProps) {
     });
 
     if (signInError) {
+      trackLearningEvent("auth_login_completed", { method: "email", result: "failure", reason: signInError.message });
       setError(signInError.message);
       setIsLoading(false);
       return;
     }
 
+    trackLearningEvent("auth_login_completed", { method: "email", result: "success" });
     router.push(next);
     router.refresh();
   }

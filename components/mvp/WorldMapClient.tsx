@@ -1,12 +1,15 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { MvpCard, PrimaryLink, ProgressBar } from "@/components/mvp/MvpShell";
 import { useMvpProgress } from "@/components/mvp/useMvpProgress";
 import { forestWorldIdentity } from "@/data/forest-world-identity";
+import { mathematicsForestWorldPackage } from "@/data/learning-packages";
 import { forestLevels } from "@/data/mvp-forest-world";
-import { getForestLevelAccess } from "@/lib/progress/level-access";
+import { trackLearningEvent } from "@/lib/learning-analytics/client";
+import { getLevelAccess } from "@/lib/progress/level-access";
 
 const nodeColors: Record<string, string> = {
   Learn: "bg-[#0B63F6] text-white",
@@ -38,6 +41,16 @@ export function WorldMapClient() {
   const levelsRemaining = forestLevels.length - completedCount;
   const currentLevel = worldCompleted ? null : nextUnlockedLevel;
   const currentMission = currentLevel ? forestLevels[currentLevel - 1] : null;
+
+  useEffect(() => {
+    trackLearningEvent("world_map_viewed", {
+      subject: forestWorldIdentity.subject,
+      year: forestWorldIdentity.year,
+      worldId: forestWorldIdentity.worldId,
+      completedLevels: completedCount,
+      currentLevel,
+    });
+  }, [completedCount, currentLevel]);
 
   return (
     <div className="space-y-8">
@@ -85,13 +98,18 @@ export function WorldMapClient() {
 
           {forestLevels.map((level) => {
             const completed = worldProgressRecord.completedLevels.includes(level.level);
-            const unlocked = getForestLevelAccess(level.level, worldProgressRecord.completedLevels).accessible;
+            const unlocked = getLevelAccess({
+              level: level.level,
+              completedLevels: worldProgressRecord.completedLevels,
+              totalLevels: mathematicsForestWorldPackage.totalLevels,
+            }).accessible;
             const current = !worldCompleted && !completed && unlocked && level.level === currentLevel;
             const locked = !unlocked;
             const boss = level.level === 10;
             const stars = worldProgressRecord.levelStars[String(level.level)] ?? 0;
             const nodeClass = nodeColors[level.nodeType] ?? "bg-[#0B63F6] text-white";
             const stateLabel = completed ? "Completed" : current ? "Current mission" : locked ? "Locked" : "Unlocked";
+            const analyticsState = completed ? "completed" : current ? "current" : locked ? "locked" : "unlocked";
 
             const content = (
               <article
@@ -175,6 +193,13 @@ export function WorldMapClient() {
                 href={`/mvp/level/${level.level}`}
                 aria-current={current ? "step" : undefined}
                 aria-label={`${stateLabel}: Level ${level.level}, ${level.title}`}
+                onClick={() => trackLearningEvent("world_node_clicked", {
+                  subject: forestWorldIdentity.subject,
+                  year: forestWorldIdentity.year,
+                  worldId: forestWorldIdentity.worldId,
+                  level: level.level,
+                  state: analyticsState,
+                })}
                 className="block rounded-[1.75rem] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/30"
               >
                 {content}
@@ -210,8 +235,8 @@ export function WorldMapClient() {
               Complete one mission at a time. Every completed level opens the next step toward the Forest Guardian.
             </p>
             <div className="mt-5 grid grid-cols-3 gap-3 text-center">
-              <SummaryStat value="10" label="Levels" />
-              <SummaryStat value="100" label="Questions" />
+              <SummaryStat value={String(mathematicsForestWorldPackage.totalLevels)} label="Levels" />
+              <SummaryStat value={String(mathematicsForestWorldPackage.questionContentSource.activeQuestionCount)} label="Questions" />
               <SummaryStat value={String(progress.totalXp)} label="Total XP" />
             </div>
           </div>

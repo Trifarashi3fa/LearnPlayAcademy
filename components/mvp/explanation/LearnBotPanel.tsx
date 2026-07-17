@@ -76,7 +76,7 @@ export function LearnBotPanel({
   return (
     <aside
       className={`relative h-full min-h-0 overflow-hidden border border-[#BDE7D0] bg-gradient-to-br ${accent.glow} shadow-playful ${
-        compact ? "rounded-[1.5rem] p-3 sm:p-4" : "rounded-[2rem] p-5"
+        compact ? "rounded-[1.5rem] p-2.5" : "rounded-[2rem] p-5"
       }`}
       aria-label="LearnBot teaching assistant"
       aria-live="polite"
@@ -95,8 +95,8 @@ export function LearnBotPanel({
           </span>
         </div>
 
-        <div className="grid min-h-0 flex-1 items-center gap-3 pt-3 sm:grid-cols-[minmax(8rem,42%)_1fr] lg:grid-cols-1">
-          <div className="relative mx-auto flex w-full max-w-[15rem] items-end justify-center overflow-hidden bg-transparent sm:max-w-[17rem] lg:max-w-[18rem]">
+        <div className="grid min-h-0 flex-1 items-center gap-2 pt-2 sm:grid-cols-[minmax(8rem,42%)_1fr] lg:grid-cols-1">
+          <div className="relative mx-auto flex w-full max-w-[11rem] items-end justify-center overflow-hidden bg-transparent sm:max-w-[13rem] xl:max-w-[14rem] 2xl:max-w-[16rem]">
             <div className="absolute bottom-1 h-1/2 w-4/5 rounded-full bg-[#BDE7D0]/55 blur-sm" aria-hidden />
             <Image
               src={image}
@@ -104,27 +104,27 @@ export function LearnBotPanel({
               width={360}
               height={360}
               sizes={compact ? "(max-width: 640px) 42vw, 240px" : "320px"}
-              className="relative h-auto max-h-[15rem] w-full object-contain drop-shadow-xl motion-safe:animate-pulse"
+              className="relative h-auto max-h-[11rem] w-full 2xl:max-h-[13rem] object-contain drop-shadow-xl motion-safe:animate-pulse"
               priority={false}
             />
           </div>
 
           <div className="min-w-0">
-            <h2 className={`font-black leading-tight text-[#082B80] ${compact ? "text-xl sm:text-2xl" : "text-3xl"}`}>
+            <h2 className={`font-black leading-tight text-[#082B80] ${compact ? "text-lg sm:text-xl 2xl:text-2xl" : "text-3xl"}`}>
               {message.heading}
             </h2>
-            <div className={`relative mt-3 rounded-[1.4rem] border bg-white/95 p-4 shadow-sm ${accent.bubble}`}>
+            <div className={`relative mt-2 rounded-[1.2rem] border bg-white/95 p-3 shadow-sm ${accent.bubble}`}>
               <span className="absolute -left-2 top-8 hidden h-4 w-4 rotate-45 border-b border-l border-inherit bg-white/95 sm:block lg:hidden" aria-hidden />
               <span className="absolute -top-2 left-10 h-4 w-4 rotate-45 border-l border-t border-inherit bg-white/95 sm:hidden lg:block" aria-hidden />
-              <p className="text-base font-black leading-6 text-[#082B80]">{message.body}</p>
-              <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">{message.followUp}</p>
+              <p className="text-sm font-black leading-5 2xl:text-base 2xl:leading-6 text-[#082B80]">{message.body}</p>
+              <p className="mt-1.5 text-xs font-bold leading-5 2xl:text-sm 2xl:leading-6 text-[#5B6B94]">{message.followUp}</p>
             </div>
           </div>
         </div>
 
-        <div className="mt-3 shrink-0 rounded-[1.25rem] border border-white/80 bg-white/80 p-3">
+        <div className="mt-2 shrink-0 rounded-[1.25rem] border border-white/80 bg-white/80 p-3">
           <p className="text-xs font-black uppercase tracking-wide text-[#0B63F6]">Teaching shortcut</p>
-          <p className="mt-1 text-sm font-bold leading-6 text-[#3F527E]">{tip}</p>
+          <p className="mt-1 text-xs font-bold leading-5 2xl:text-sm 2xl:leading-6 text-[#3F527E]">{tip}</p>
         </div>
       </div>
     </aside>

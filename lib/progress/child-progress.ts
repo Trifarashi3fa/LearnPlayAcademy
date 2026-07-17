@@ -1,6 +1,7 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 import type { ChildProfile } from "@/data/account-types";
 import type { LocalProgressV2, ProgressWorldRef, WorldProgressRecord } from "@/data/progress-types";
+import { getLearningPackageByRef } from "@/data/learning-packages";
 import { getSelectedChildProfile } from "@/lib/account/profiles";
 import {
   createDefaultLocalProgress,
@@ -69,16 +70,13 @@ function currentLevel(progress: LocalProgressV2) {
 }
 
 function worldProgressSummary(progress: LocalProgressV2) {
-  const world = getActiveWorld(progress);
-  return {
-    [progressWorldKey(progress.active)]: {
+  return Object.fromEntries(Object.entries(progress.worlds).map(([key, world]) => [key, {
       currentLevel: world.currentLevel,
       completedLevels: world.completedLevels,
       levelStars: world.levelStars,
       questionsAnswered: world.questionsAnswered,
       correctAnswers: world.correctAnswers,
-    },
-  };
+    }]));
 }
 
 function progressPayload(progress: LocalProgressV2, childId: string, parentId: string) {
@@ -199,13 +197,14 @@ export function unlockLevel(progress: LocalProgressV2, ref: ProgressWorldRef, le
   const key = progressWorldKey(ref);
   const world = progress.worlds[key];
   if (!world) return progress;
+  const totalLevels = getLearningPackageByRef(ref)?.totalLevels ?? Math.max(1, world.completedLevels.length, world.currentLevel, level);
   return {
     ...progress,
     worlds: {
       ...progress.worlds,
       [key]: {
         ...world,
-        currentLevel: Math.max(world.currentLevel, Math.min(10, Math.max(1, level))),
+        currentLevel: Math.max(world.currentLevel, Math.min(totalLevels, Math.max(1, level))),
       },
     },
   };

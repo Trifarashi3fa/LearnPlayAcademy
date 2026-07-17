@@ -55,15 +55,15 @@ export function LearningSessionShell({
 
       <div className="relative z-10 min-h-0 shrink-0">{progress}</div>
 
-      <div className="relative z-10 mx-auto grid min-h-0 w-full max-w-[100rem] flex-1 gap-2 overflow-hidden p-2 sm:gap-3 sm:p-3 lg:grid-cols-[minmax(0,1fr)_minmax(29rem,38rem)] xl:grid-cols-[minmax(0,1fr)_minmax(34rem,42rem)]">
+      <div className="relative z-10 mx-auto grid min-h-0 w-full max-w-[108rem] flex-1 gap-2 overflow-hidden p-2 sm:gap-3 sm:p-3 xl:grid-cols-[minmax(0,1fr)_minmax(28rem,36rem)] 2xl:grid-cols-[minmax(0,1fr)_minmax(32rem,40rem)]">
         <section
-          className="min-h-0 min-w-0 touch-pan-y overflow-y-auto overflow-x-hidden overscroll-contain rounded-[1.5rem] scroll-smooth lg:overflow-visible lg:overscroll-auto"
+          className="min-h-0 min-w-0 touch-pan-y overflow-y-auto overflow-x-hidden overscroll-contain rounded-[1.5rem] scroll-smooth xl:overflow-visible xl:overscroll-auto"
           style={{ WebkitOverflowScrolling: "touch" }}
           aria-label="Current question"
         >
-          <div className="mx-auto min-h-full max-w-6xl pb-2 lg:min-h-0 lg:max-w-none lg:pb-0">{children}</div>
+          <div className="mx-auto min-h-full max-w-6xl pb-2 xl:min-h-0 xl:max-w-none xl:pb-0">{children}</div>
         </section>
-        <div className="min-h-0 min-w-0 overflow-hidden lg:overflow-visible">{support}</div>
+        <div className="min-h-0 min-w-0 overflow-hidden xl:overflow-visible">{support}</div>
       </div>
 
       <div className="relative z-20 shrink-0">{actionBar}</div>

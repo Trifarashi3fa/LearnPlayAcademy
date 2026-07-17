@@ -1,3 +1,5 @@
+import { getPublicSubjectRegistryEntries } from "@/data/subject-registry";
+
 export type FeatureStatus = "active" | "coming-soon";
 
 export const featureAvailability = {
@@ -9,9 +11,12 @@ export const featureAvailability = {
   },
   games: { label: "Quick Games", status: "coming-soon", route: "/games", description: "Preserved for future approved activity packages." },
   mathQuickGames: { label: "Mathematics Quick Games", status: "coming-soon", route: "/games/math-quiz-battle", description: "Not part of the current Foundation MVP." },
+  englishYear1ForestWorld: { label: "English Year 1 - Forest World", status: "coming-soon", route: "/subjects/english", description: "English Forest World is planned for beta after subject-isolated content approval." },
   englishWordBuilder: { label: "English Word Builder", status: "coming-soon", route: "/games/word-builder", description: "English remains inactive until its curriculum package is approved." },
+  scienceYear1ForestWorld: { label: "Science Year 1 - Forest World", status: "coming-soon", route: "/subjects/science", description: "Science Forest World is planned for beta after subject-isolated content approval." },
   science: { label: "Science", status: "coming-soon", route: "/science", description: "Science content is preserved but inactive for the current MVP." },
   lifeSkills: { label: "Life Skills", status: "coming-soon", route: "/life-skills", description: "Life Skills content is preserved but inactive for the current MVP." },
+  aiLiteracy: { label: "AI Literacy", status: "coming-soon", route: "/subjects/ai-literacy", description: "AI Literacy remains inactive until approved." },
   bahasaMelayu: { label: "Bahasa Melayu", status: "coming-soon", route: "/subjects/bahasa-melayu", description: "Bahasa Melayu remains inactive until approved." },
   criticalThinking: { label: "Critical Thinking", status: "coming-soon", route: "/subjects/critical-thinking", description: "Critical Thinking remains inactive until approved." },
   generalKnowledge: { label: "General Knowledge", status: "coming-soon", route: "/subjects", description: "General Knowledge remains inactive until approved." },
@@ -33,21 +38,14 @@ export function isFeatureActive(featureId: FeatureId) {
   return featureAvailability[featureId].status === "active";
 }
 
-export const publicSubjectAvailability = [
-  {
-    id: "mathematics",
-    featureId: "mathematicsYear1ForestWorld",
-    title: "Mathematics Year 1",
-    description: "Enter Forest World for the approved Foundation MVP learning path.",
-    image: "/subjects/math.webp",
-    href: "/mvp/world-map",
-  },
-  { id: "english", featureId: "englishWordBuilder", title: "English", description: "Preserved for a future approved curriculum package.", image: "/subjects/english.webp", href: "/subjects/english" },
-  { id: "science", featureId: "science", title: "Science", description: "Preserved for a future approved curriculum package.", image: "/subjects/science.webp", href: "/subjects/science" },
-  { id: "bahasa-melayu", featureId: "bahasaMelayu", title: "Bahasa Melayu", description: "Preserved for a future approved curriculum package.", image: "/subjects/bahasa-melayu.webp", href: "/subjects/bahasa-melayu" },
-  { id: "life-skills", featureId: "lifeSkills", title: "Life Skills", description: "Preserved for a future approved curriculum package.", image: "/subjects/life-skills.webp", href: "/subjects/life-skills" },
-  { id: "general-knowledge", featureId: "generalKnowledge", title: "General Knowledge", description: "Preserved for a future approved curriculum package.", image: "/subjects/general-knowledge.webp", href: "/subjects" },
-] as const satisfies ReadonlyArray<{
+export const publicSubjectAvailability = getPublicSubjectRegistryEntries().map((subject) => ({
+  id: subject.id,
+  featureId: subject.featureFlagId as FeatureId,
+  title: subject.id === "mathematics" ? "Mathematics Year 1" : subject.displayName,
+  description: subject.description,
+  image: subject.asset,
+  href: subject.status === "active" ? subject.navigationRoute : subject.navigationRoute,
+})) satisfies ReadonlyArray<{
   id: string;
   featureId: FeatureId;
   title: string;
@@ -67,4 +65,15 @@ export const questionEngineFeatureFlags = {
   nonMCQPreview: process.env.NODE_ENV !== "production",
   // Forest L01 random sessions are for local/dev review only until approved.
   forestL01RandomPoolPreview: process.env.NODE_ENV !== "production",
+} as const;
+
+export const adminFeatureFlags = {
+  // Internal analytics uses mock data only. It must remain inaccessible in production.
+  adminAnalyticsPreview: process.env.NODE_ENV !== "production",
+} as const;
+
+export const learningAnalyticsFeatureFlags = {
+  // Closed-beta learner analytics are local/no-op or console-only until a provider is connected.
+  enabled: process.env.NEXT_PUBLIC_ENABLE_LEARNING_ANALYTICS === "true" || (process.env.NODE_ENV !== "production" && process.env.NEXT_PUBLIC_ENABLE_LEARNING_ANALYTICS !== "false"),
+  provider: process.env.NEXT_PUBLIC_LEARNING_ANALYTICS_PROVIDER ?? "console",
 } as const;

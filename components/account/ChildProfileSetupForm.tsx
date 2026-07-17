@@ -8,6 +8,7 @@ import {
   type ChildProfile,
 } from "@/data/account-types";
 import { saveChildProfile } from "@/app/account/actions";
+import { trackLearningEvent } from "@/lib/learning-analytics/client";
 
 export function ChildProfileSetupForm({
   child,
@@ -32,7 +33,13 @@ export function ChildProfileSetupForm({
         </p>
       </div>
 
-      <form action={saveChildProfile} className="grid gap-5 md:grid-cols-2">
+      <form
+        action={saveChildProfile}
+        className="grid gap-5 md:grid-cols-2"
+        onSubmit={() => trackLearningEvent(isEdit ? "child_profile_update_started" : "child_profile_create_started", {
+          source: isEdit ? "child-profile-edit-form" : "child-profile-setup-form",
+        })}
+      >
         <MvpField label="Child nickname" helper="A short nickname is enough for LearnPlay.">
           <MvpInput name="nickname" defaultValue={child?.nickname ?? ""} required maxLength={40} />
         </MvpField>

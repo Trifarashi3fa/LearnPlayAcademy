@@ -75,14 +75,49 @@ export const forestL01AssetColumns = [
   "Version Notes",
 ] as const;
 
+export const englishQuestionTemplateColumns = [
+  "Question ID",
+  "Subject",
+  "Year",
+  "World",
+  "Level",
+  "Topic",
+  "Learning Objective",
+  "Curriculum Alignment",
+  "Cambridge Alignment",
+  "Question Type",
+  "Question",
+  "Instructions",
+  "Option A",
+  "Option B",
+  "Option C",
+  "Option D",
+  "Correct Answer",
+  "Explanation",
+  "LearnBot Tip",
+  "Voice Script",
+  "Visual Type",
+  "Visual Description",
+  "Difficulty",
+  "XP",
+  "Status",
+  "Version",
+  "QA Notes",
+] as const;
+
 export type ForestL01LegacyColumn = (typeof forestL01LegacyColumns)[number];
 export type ForestL01AssetColumn = (typeof forestL01AssetColumns)[number];
+export type EnglishQuestionTemplateColumn = (typeof englishQuestionTemplateColumns)[number];
 
 export const supportedForestL01QuestionTypes = [
   "Multiple Choice",
   "Count & Type",
   "Tap Correct Group",
+  "Tap Correct",
   "Fill Missing Number",
+  "Fill Missing Letter",
+  "Fill Missing Word",
+  "Text Input",
   "Match Pairs",
   "True or False",
 ] as const;
@@ -96,7 +131,7 @@ export type QuestionAssetValidationSeverity = "warning" | "error";
 export type QuestionAssetValidationIssue = {
   questionId: string;
   rowNumber: number;
-  field: ForestL01AssetColumn | ForestL01LegacyColumn | "Source" | "Import";
+  field: ForestL01AssetColumn | ForestL01LegacyColumn | EnglishQuestionTemplateColumn | "Options" | "Source" | "Import";
   severity: QuestionAssetValidationSeverity;
   message: string;
 };
