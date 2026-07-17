@@ -2,6 +2,7 @@
 import { AdminAnalyticsDashboard } from "@/components/admin/AdminAnalyticsDashboard";
 import { isAdminAnalyticsPreviewEnabled } from "@/lib/admin-analytics/access";
 import { getAdminAnalyticsService } from "@/lib/admin-analytics/service";
+import { isDevRouteAccessAllowed } from "@/lib/dev-routes/access";
 
 export const metadata = {
   title: "Admin Analytics | LearnPlay Academy",
@@ -12,7 +13,7 @@ export const metadata = {
 };
 
 export default async function AdminAnalyticsPage() {
-  if (!isAdminAnalyticsPreviewEnabled()) {
+  if (!isDevRouteAccessAllowed() || !isAdminAnalyticsPreviewEnabled()) {
     notFound();
   }
 

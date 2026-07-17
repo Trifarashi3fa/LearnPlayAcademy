@@ -3,6 +3,7 @@ import path from "node:path";
 import { notFound } from "next/navigation";
 import { questionEngineFeatureFlags } from "@/data/feature-flags";
 import { educationalQaChecklist } from "@/data/question-asset-qa";
+import { isDevRouteAccessAllowed } from "@/lib/dev-routes/access";
 import {
   buildCurriculumQaSummary,
   type CurriculumQaSummary,
@@ -128,7 +129,7 @@ function SourceSummary({ source }: { source: QaSource }) {
 }
 
 export default function CurriculumQaPage() {
-  if (!questionEngineFeatureFlags.nonMCQPreview) {
+  if (!isDevRouteAccessAllowed() || !questionEngineFeatureFlags.nonMCQPreview) {
     notFound();
   }
 

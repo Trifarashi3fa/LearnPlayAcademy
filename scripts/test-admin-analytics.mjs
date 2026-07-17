@@ -8,8 +8,11 @@ function assert(condition, message) {
   if (!condition) throw new Error(message);
 }
 
-function writeTempModule(name, sourcePath) {
-  const source = readFileSync(sourcePath, "utf8");
+function writeTempModule(name, sourcePath, replacements = {}) {
+  let source = readFileSync(sourcePath, "utf8");
+  for (const [from, to] of Object.entries(replacements)) {
+    source = source.replaceAll(from, to);
+  }
   const output = ts.transpileModule(source, {
     compilerOptions: {
       module: ts.ModuleKind.ES2022,
@@ -24,13 +27,18 @@ function writeTempModule(name, sourcePath) {
 
 const tempPaths = [];
 try {
-  const accessPath = writeTempModule("admin-analytics-access", path.resolve("lib/admin-analytics/access.ts"));
+  const devRouteAccessPath = writeTempModule("dev-route-access", path.resolve("lib/dev-routes/access.ts"));
+  tempPaths.push(devRouteAccessPath);
+  const accessPath = writeTempModule("admin-analytics-access", path.resolve("lib/admin-analytics/access.ts"), {
+    'from "@/lib/dev-routes/access"': `from "${pathToFileURL(devRouteAccessPath).href}"`,
+  });
   tempPaths.push(accessPath);
   const filtersPath = writeTempModule("admin-analytics-filters", path.resolve("lib/admin-analytics/filters.ts"));
   tempPaths.push(filtersPath);
   const mockPath = writeTempModule("admin-analytics-mock", path.resolve("lib/admin-analytics/mock-service.ts"));
   tempPaths.push(mockPath);
 
+  const { isDevRouteAccessAllowed } = await import(pathToFileURL(devRouteAccessPath).href);
   const { isAdminAnalyticsPreviewEnabled } = await import(pathToFileURL(accessPath).href);
   const {
     defaultAnalyticsFilters,
@@ -43,11 +51,13 @@ try {
   } = await import(pathToFileURL(filtersPath).href);
   const { MockAdminAnalyticsService, createMockAdminAnalyticsData } = await import(pathToFileURL(mockPath).href);
 
+  assert(isDevRouteAccessAllowed({ NODE_ENV: "development" }), "Developer routes should be available in development.");
+  assert(!isDevRouteAccessAllowed({ NODE_ENV: "production" }), "Developer routes should be blocked in production.");
   assert(isAdminAnalyticsPreviewEnabled({ NODE_ENV: "development" }), "Admin analytics should be available in development.");
   assert(!isAdminAnalyticsPreviewEnabled({ NODE_ENV: "production" }), "Admin analytics should be disabled in production by default.");
   assert(
-    isAdminAnalyticsPreviewEnabled({ NODE_ENV: "production", NEXT_PUBLIC_ENABLE_ADMIN_ANALYTICS: "true" }),
-    "Admin analytics should support explicit feature-flag preview access.",
+    !isAdminAnalyticsPreviewEnabled({ NODE_ENV: "production", NEXT_PUBLIC_ENABLE_ADMIN_ANALYTICS: "true" }),
+    "Admin analytics must not be enabled in production by a public feature flag.",
   );
 
   const data = createMockAdminAnalyticsData();
@@ -102,11 +112,13 @@ try {
   const routeSource = readFileSync(path.resolve("app/dev/admin-analytics/page.tsx"), "utf8");
   assert(routeSource.includes("notFound"), "Admin analytics route should be protected with notFound.");
   assert(routeSource.includes("isAdminAnalyticsPreviewEnabled"), "Admin analytics route should use the access guard.");
+  assert(routeSource.includes("isDevRouteAccessAllowed"), "Admin analytics route should use the shared dev-route production guard.");
 
   const featureFlagSource = readFileSync(path.resolve("data/feature-flags.ts"), "utf8");
   assert(featureFlagSource.includes("adminAnalyticsPreview"), "Central feature flags should expose adminAnalyticsPreview.");
+  assert(!featureFlagSource.includes("NEXT_PUBLIC_ENABLE_ADMIN_ANALYTICS === \"true\""), "Admin analytics must not use a public production enable flag.");
 
-  console.log("Admin analytics tests passed: 24");
+  console.log("Admin analytics tests passed: 28");
 } finally {
   for (const tempPath of tempPaths) {
     try {

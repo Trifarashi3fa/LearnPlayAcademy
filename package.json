@@ -16,6 +16,7 @@
         "test:mvp-level-access": "node scripts/test-mvp-level-access.mjs",
         "test:mvp-reset-safety": "node scripts/test-mvp-reset-safety.mjs",
         "test:mvp-year-availability": "node scripts/test-mvp-year-availability.mjs",
+        "test:production-security": "node scripts/test-production-security.mjs",
         "test": "node scripts/test-admin-analytics.mjs && npm run test:learning-analytics",
         "test:learning-analytics": "node scripts/test-learning-analytics.mjs"
     },

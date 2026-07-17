@@ -5,6 +5,7 @@ import pilotQuestions from "@/content/question-bank/mathematics/year-1/forest-wo
 import forestL01AssetRows from "@/content/question-assets/mathematics/year-1/forest-world/forest-l01-sample.json";
 import { questionEngineFeatureFlags } from "@/data/feature-flags";
 import type { ForestL01QuestionAssetRow } from "@/data/question-asset-schema";
+import { isDevRouteAccessAllowed } from "@/lib/dev-routes/access";
 import { importForestL01AssetRows } from "@/lib/question-assets/import-question-assets";
 import { validateForestL01AssetRows } from "@/lib/question-assets/validate-question-assets";
 import {
@@ -100,7 +101,7 @@ function loadImportedYear1ForestSources(): AssetPreviewSource[] {
 }
 
 export default function QuestionEnginePreviewPage() {
-  if (!questionEngineFeatureFlags.nonMCQPreview) {
+  if (!isDevRouteAccessAllowed() || !questionEngineFeatureFlags.nonMCQPreview) {
     notFound();
   }
 

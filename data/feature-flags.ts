@@ -68,8 +68,8 @@ export const questionEngineFeatureFlags = {
 } as const;
 
 export const adminFeatureFlags = {
-  // Internal analytics uses mock data only. It is disabled in production unless explicitly enabled.
-  adminAnalyticsPreview: process.env.NODE_ENV !== "production" || process.env.NEXT_PUBLIC_ENABLE_ADMIN_ANALYTICS === "true",
+  // Internal analytics uses mock data only. It must remain inaccessible in production.
+  adminAnalyticsPreview: process.env.NODE_ENV !== "production",
 } as const;
 
 export const learningAnalyticsFeatureFlags = {

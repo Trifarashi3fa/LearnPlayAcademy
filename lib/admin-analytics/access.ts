@@ -1,3 +1,7 @@
-﻿export function isAdminAnalyticsPreviewEnabled(env: NodeJS.ProcessEnv = process.env) {
-  return env.NODE_ENV !== "production" || env.NEXT_PUBLIC_ENABLE_ADMIN_ANALYTICS === "true";
+import { isDevRouteAccessAllowed } from "@/lib/dev-routes/access";
+
+export function isAdminAnalyticsPreviewEnabled(
+  env: Pick<NodeJS.ProcessEnv, "NODE_ENV"> = process.env,
+) {
+  return isDevRouteAccessAllowed(env);
 }

@@ -18,13 +18,19 @@ LearnPlay Academy is in a strong beta-ready technical state for the active Mathe
 - Supabase usage is mostly RLS-based and uses publishable keys, not service role keys.
 - Auth redirect handling is production-safe and no longer hardcodes localhost for production redirects.
 
-The main production readiness concerns are not compiler blockers. They are operational hardening and cleanup items:
+The remaining production readiness concerns are not compiler blockers. They are operational hardening and cleanup items:
 
 - Very large and duplicated image assets remain in `public/`.
-- Developer-only routes are still part of the production route manifest.
-- Child profile deletion likely needs a matching RLS delete policy and a stronger accessible confirmation flow.
+- Child profile deletion still needs a stronger accessible confirmation flow.
 - Old non-MVP dashboards/content modules remain in the repo and should be clearly archived or isolated.
 - Documentation is split across root files, `docs/`, and `Documentation/`, with some stale README content.
+
+## Security Resolution Update - 2026-07-17
+
+| Finding | Status | Resolution evidence |
+| --- | --- | --- |
+| Child profile deletion RLS | Resolved | `supabase/migrations/009_allow_parent_child_profile_delete.sql` adds a scoped `FOR DELETE` policy on `public.child_profiles` using `auth.uid() = parent_id`. Existing SELECT, INSERT, and UPDATE policies remain unchanged. The app delete flow already filters `child_profiles` by `.eq("parent_id", user.id)` and does not use service-role access. |
+| Production access to `/dev` routes | Resolved | `lib/dev-routes/access.ts` centralizes the `NODE_ENV !== "production"` guard. All current `app/dev/*/page.tsx` routes call this guard and return `notFound()` in production. Admin analytics no longer honors `NEXT_PUBLIC_ENABLE_ADMIN_ANALYTICS=true` as a production route-access override. |
 
 ## Automatic Low-Risk Fixes Applied
 
@@ -33,12 +39,16 @@ The main production readiness concerns are not compiler blockers. They are opera
 | `app/dev/curriculum-qa/page.tsx` | Replaced a mojibake separator with ASCII `-` in the dev-only QA summary. |
 | `app/dev/curriculum-qa/page.tsx` | Added `turbopackIgnore` scoping to dev-only filesystem path construction. |
 | `app/dev/question-engine-preview/page.tsx` | Added `turbopackIgnore` scoping to dev-only filesystem path construction. This removed the production build warning about tracing the whole project. |
+| `supabase/migrations/009_allow_parent_child_profile_delete.sql` | Added the minimum parent-owned child profile delete RLS policy. |
+| `lib/dev-routes/access.ts` | Added the shared production guard for internal developer routes. |
+| `app/dev/*/page.tsx` | Added the shared production guard so internal tooling returns `notFound()` in production. |
 
 ## Verification Results
 
 | Command | Result |
 | --- | --- |
 | `npm.cmd run lint` | Passed |
+| `npm.cmd run test:production-security` | Passed |
 | `npm.cmd run test:question-assets` | Passed |
 | `npm.cmd run test:mvp-level-access` | Passed |
 | `npm.cmd run test:mvp-reset-safety` | Passed |
@@ -63,16 +73,16 @@ No critical issues were found during this audit.
 
 | Severity | File | Reason | Suggested fix |
 | --- | --- | --- | --- |
-| High | `supabase/migrations/005_create_child_profiles.sql`, `supabase/migrations/007_repair_child_profiles_schema.sql`, `app/account/actions.ts`, `components/account/ChildProfileManager.tsx` | The UI and server action support deleting a child profile, and migration 008 grants `DELETE`, but the child profile migrations define select/insert/update RLS policies only. With RLS enabled, authenticated users may still be blocked from deleting their own child profile. | Add a new migration with explicit delete policies for `child_profiles` and, if direct progress deletion is ever exposed, `child_progress`. Keep `auth.uid() = parent_id` and verify cascade behavior. |
+| High | `supabase/migrations/005_create_child_profiles.sql`, `supabase/migrations/007_repair_child_profiles_schema.sql`, `app/account/actions.ts`, `components/account/ChildProfileManager.tsx` | Resolved. The UI and server action support deleting a child profile, and migration 008 grants `DELETE`, while migration 009 now adds the matching parent-owned child profile delete RLS policy. | Keep `supabase/migrations/009_allow_parent_child_profile_delete.sql` in the beta migration sequence. Direct `child_progress` deletion is still not exposed by the current UI; `child_progress.child_id` references `child_profiles.id` with `on delete cascade`. |
 | High | `public/`, `app/icon.png` | Public assets total about 133.7 MB. Many PNGs are 1-3 MB each, and `app/icon.png` is 1.3 MB and emitted into `.next/static/media`. This can slow installs, builds, Vercel uploads, cold starts, and first-load image experiences. | Continue the image optimization plan: use WebP/AVIF for large non-transparent artwork, keep small PNG only where transparency is required, replace `app/icon.png` with a much smaller icon, and remove confirmed duplicate PNGs after references point to optimized assets. |
-| High | `app/dev/admin-analytics/page.tsx`, `app/dev/curriculum-qa/page.tsx`, `app/dev/question-engine-preview/page.tsx` | Developer-only routes are included in the production route manifest. They are feature-flag protected and `robots: noindex`, but internal tooling remains routable and compiled in production. | Before public beta, add stronger server-side protection such as a server-only admin secret, authenticated admin role, middleware block, or move internal dashboards to a separate deployment. |
+| High | `app/dev/admin-analytics/page.tsx`, `app/dev/curriculum-qa/page.tsx`, `app/dev/question-engine-preview/page.tsx` | Resolved for production access. Developer-only routes are still compiled by Next, but each route now uses the centralized `isDevRouteAccessAllowed()` guard and returns `notFound()` when `NODE_ENV` is production. | Keep internal routes out of public navigation. For post-beta hardening, consider moving internal dashboards to a separate deployment or authenticated admin surface. |
 
 ## Medium Issues
 
 | Severity | File | Reason | Suggested fix |
 | --- | --- | --- | --- |
 | Medium | `components/account/ChildProfileManager.tsx` | Child profile deletion uses `window.confirm`, which is not a fully accessible, branded, two-step destructive confirmation like the local progress reset dialog. | Replace with an accessible modal using the same pattern as `components/mvp/RewardsClient.tsx`: focus management, Escape handling, explicit second action, and non-dismissable destructive confirmation. |
-| Medium | `data/feature-flags.ts`, `lib/admin-analytics/access.ts` | Admin analytics can be enabled in production by `NEXT_PUBLIC_ENABLE_ADMIN_ANALYTICS=true`. Because this is a public env var, it is easy to expose the route accidentally. | Use a server-only env var and require authenticated admin authorization. Keep public flags for UI previews only, not route access. |
+| Medium | `data/feature-flags.ts`, `lib/admin-analytics/access.ts` | Resolved for current beta. Admin analytics can no longer be enabled in production by `NEXT_PUBLIC_ENABLE_ADMIN_ANALYTICS=true`; route access delegates to the shared dev-route guard. | If admin analytics is needed after beta, use authenticated admin authorization rather than a public environment flag. |
 | Medium | `app/dev/question-engine-preview/page.tsx`, `app/dev/curriculum-qa/page.tsx` | Dev preview pages read local files at request/render time. The Turbopack warning is fixed, but production builds still include file-reading code for internal tooling. | Prefer pre-generated QA JSON or server-only admin tooling outside the production app tree. |
 | Medium | `app/dashboard/actions.ts`, `components/StudentDashboard.tsx`, `components/StudentProfileForm.tsx`, `lib/xp.ts` | Legacy student dashboard/progress code remains, while `/dashboard` redirects to `/mvp/parent-dashboard`. This is likely dead or rollback-only code and still references older profile fields and storage keys. | After beta branch is stable, archive or remove the legacy dashboard surface and old XP storage helpers, or move them to `docs/legacy` as reference. |
 | Medium | `data/subject-pathways.ts` | This file appears unused by active routes/components and contains older subject pathway assumptions. | Confirm no planned feature imports it, then remove or archive it. |
@@ -128,7 +138,7 @@ Positive findings:
 
 Needs attention:
 
-- Add delete RLS policies if profile deletion is part of beta.
+- Child profile delete RLS is now present in migration 009.
 - Document all required Supabase migrations in current order.
 - Ensure production Supabase Site URL and redirect URLs include the Vercel production domain.
 
@@ -176,10 +186,10 @@ Recommendation:
 
 ## Recommended Production Cleanup Order
 
-1. Add Supabase delete RLS policy migration for child profile deletion.
-2. Replace child profile `window.confirm` with an accessible destructive dialog.
-3. Optimize `app/icon.png` and the largest duplicate public assets.
-4. Harden or isolate `/dev/*` routes before public beta.
+1. Replace child profile `window.confirm` with an accessible destructive dialog.
+2. Optimize `app/icon.png` and the largest duplicate public assets.
+3. Keep `/dev/*` routes guarded in production; consider moving internal dashboards to a separate deployment after beta.
+4. Archive or isolate old non-MVP dashboards/content modules.
 5. Refresh README and environment documentation.
 6. Archive legacy dashboard/progress modules.
 7. Add Playwright viewport and accessibility smoke tests.
@@ -189,4 +199,12 @@ Recommendation:
 
 - `app/dev/curriculum-qa/page.tsx`
 - `app/dev/question-engine-preview/page.tsx`
+- `app/dev/admin-analytics/page.tsx`
+- `data/feature-flags.ts`
+- `lib/admin-analytics/access.ts`
+- `lib/dev-routes/access.ts`
+- `scripts/test-admin-analytics.mjs`
+- `scripts/test-production-security.mjs`
+- `supabase/migrations/009_allow_parent_child_profile_delete.sql`
+- `package.json`
 - `PRODUCTION_AUDIT_REPORT.md`
