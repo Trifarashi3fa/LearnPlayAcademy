@@ -1,38 +1,41 @@
 {
-    "name":  "learnplay-academy",
-    "version":  "0.1.0",
-    "private":  true,
-    "scripts":  {
-                    "dev":  "next dev",
-                    "build":  "next build",
-                    "start":  "next start",
-                    "lint":  "eslint .",
-                    "validate:curriculum":  "node scripts/validate-curriculum.mjs",
-                    "prebuild":  "npm run validate:curriculum",
-                    "import:questions":  "node scripts/import-question-assets.mjs",
-                    "import:questions:year1-forest":  "node scripts/import-year1-forest-question-assets.mjs",
-                    "test:question-assets":  "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/test-question-asset-import.mjs",
-                    "test:mvp-level-access":  "node scripts/test-mvp-level-access.mjs",
-                    "test:mvp-reset-safety":  "node scripts/test-mvp-reset-safety.mjs",
-                    "test:mvp-year-availability":  "node scripts/test-mvp-year-availability.mjs"
-                },
-    "dependencies":  {
-                         "@supabase/ssr":  "^0.12.0",
-                         "@supabase/supabase-js":  "^2.108.1",
-                         "@vercel/analytics":  "^2.0.1",
-                         "@vercel/speed-insights":  "^2.0.0",
-                         "next":  "^16.2.9",
-                         "react":  "^19.2.7",
-                         "react-dom":  "^19.2.7"
-                     },
-    "devDependencies":  {
-                            "@types/node":  "^22",
-                            "@types/react":  "^19",
-                            "@types/react-dom":  "^19",
-                            "eslint":  "^9.39.1",
-                            "eslint-config-next":  "^16.2.9",
-                            "postcss":  "^8",
-                            "tailwindcss":  "^3.4.17",
-                            "typescript":  "^6.0.3"
-                        }
+    "name": "learnplay-academy",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "eslint .",
+        "validate:curriculum": "node scripts/validate-curriculum.mjs",
+        "prebuild": "npm run validate:curriculum",
+        "import:questions": "node scripts/import-question-assets.mjs",
+        "import:questions:english-year1-forest": "node scripts/import-question-assets.mjs --subject english --year 1 --world forest-world",
+        "import:questions:year1-forest": "node scripts/import-year1-forest-question-assets.mjs",
+        "test:question-assets": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/test-question-asset-import.mjs",
+        "test:mvp-level-access": "node scripts/test-mvp-level-access.mjs",
+        "test:mvp-reset-safety": "node scripts/test-mvp-reset-safety.mjs",
+        "test:mvp-year-availability": "node scripts/test-mvp-year-availability.mjs",
+        "test": "node scripts/test-admin-analytics.mjs && npm run test:learning-analytics",
+        "test:learning-analytics": "node scripts/test-learning-analytics.mjs"
+    },
+    "dependencies": {
+        "@supabase/ssr": "^0.12.0",
+        "@supabase/supabase-js": "^2.108.1",
+        "@vercel/analytics": "^2.0.1",
+        "@vercel/speed-insights": "^2.0.0",
+        "next": "^16.2.9",
+        "react": "^19.2.7",
+        "react-dom": "^19.2.7"
+    },
+    "devDependencies": {
+        "@types/node": "^22",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "eslint": "^9.39.1",
+        "eslint-config-next": "^16.2.9",
+        "postcss": "^8",
+        "tailwindcss": "^3.4.17",
+        "typescript": "^6.0.3"
+    }
 }

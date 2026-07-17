@@ -24,10 +24,10 @@ export function ExplanationDrawer({ open, onClose, children }: ExplanationDrawer
       id="question-explanation-drawer"
       aria-label="Answer explanation"
       aria-hidden={!open}
-      className={`fixed inset-x-2 bottom-[calc(4.7rem+env(safe-area-inset-bottom))] z-40 flex max-h-[min(74dvh,34rem)] min-h-0 max-w-full flex-col overflow-hidden overflow-x-hidden rounded-[1.35rem] border border-[#BDE7D0] bg-white shadow-[0_-14px_44px_rgba(8,43,128,0.18)] transition duration-200 motion-reduce:transition-none sm:inset-x-4 lg:static lg:inset-auto lg:h-auto lg:max-h-none lg:w-full lg:min-w-0 lg:overflow-visible lg:rounded-[1.5rem] lg:shadow-playful ${
+      className={`fixed inset-x-2 bottom-[calc(4.35rem+env(safe-area-inset-bottom))] z-40 flex max-h-[min(76dvh,36rem)] min-h-0 max-w-full flex-col overflow-hidden overflow-x-hidden rounded-[1.35rem] border border-[#BDE7D0] bg-white shadow-[0_-14px_44px_rgba(8,43,128,0.18)] transition duration-200 motion-reduce:transition-none sm:inset-x-4 xl:static xl:inset-auto xl:h-full xl:max-h-none xl:w-full xl:min-w-0 xl:overflow-visible xl:rounded-[1.5rem] xl:shadow-playful ${
         open
-          ? "translate-y-0 opacity-100 lg:flex"
-          : "pointer-events-none translate-y-[112%] opacity-0 lg:hidden"
+          ? "translate-y-0 opacity-100 xl:flex"
+          : "pointer-events-none translate-y-[112%] opacity-0 xl:hidden"
       }`}
     >
       <div className="flex shrink-0 items-center justify-between gap-2 border-b border-[#DDE8F5] bg-white px-3 py-1.5 sm:px-4">
@@ -40,7 +40,7 @@ export function ExplanationDrawer({ open, onClose, children }: ExplanationDrawer
         </MvpButton>
       </div>
       <div
-        className="min-h-0 min-w-0 flex-1 touch-pan-y overflow-hidden overscroll-contain p-2 lg:overflow-visible"
+        className="min-h-0 min-w-0 flex-1 touch-pan-y overflow-hidden overscroll-contain p-2 xl:overflow-visible"
         style={{ WebkitOverflowScrolling: "touch" }}
       >
         {children}

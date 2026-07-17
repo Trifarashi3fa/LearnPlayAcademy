@@ -1,10 +1,17 @@
 "use client";
 
-import { forestLevels, mvpSubjects } from "@/data/mvp-forest-world";
+import { useEffect } from "react";
+import { forestLevels } from "@/data/mvp-forest-world";
 import { forestWorldIdentity } from "@/data/forest-world-identity";
+import {
+  learningPackages,
+  mathematicsForestWorldPackage,
+} from "@/data/learning-packages";
+import { subjectRegistry } from "@/data/subject-registry";
 import { getYearLevelAvailabilityMessage, isSupportedMvpYearLevel } from "@/data/account-types";
 import { MvpButtonLink, MvpEmptyState, MvpMetricCard, MvpProgressBar, MvpStatusPill, MvpSurface } from "@/components/mvp/MvpUi";
 import { useMvpProgress } from "@/components/mvp/useMvpProgress";
+import { trackLearningEvent } from "@/lib/learning-analytics/client";
 import type { ProgressSyncStatus } from "@/lib/progress/child-progress";
 
 export function ParentDashboardClient() {
@@ -34,6 +41,15 @@ export function ParentDashboardClient() {
   const noProgressYet = completedCount === 0 && worldProgressRecord.questionsAnswered === 0 && progress.totalXp === 0;
   const unsupportedYear = Boolean(selectedChild && !isSupportedMvpYearLevel(selectedChild.yearLevel));
 
+  useEffect(() => {
+    trackLearningEvent("parent_dashboard_viewed", {
+      subject: forestWorldIdentity.subject,
+      worldId: forestWorldIdentity.worldId,
+      completedLevels: completedCount,
+      totalXp: progress.totalXp,
+    });
+  }, [completedCount, progress.totalXp]);
+
   return (
     <div className="space-y-6">
       <MvpSurface className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" aria-live="polite">
@@ -43,7 +59,13 @@ export function ParentDashboardClient() {
             {syncDescription(syncStatus, lastSyncedAt)}
           </p>
         </div>
-        <MvpButtonLink href="/account" tone="white">Account</MvpButtonLink>
+        <MvpButtonLink
+          href="/account"
+          tone="white"
+          onClick={() => trackLearningEvent("parent_dashboard_cta_clicked", { cta: "account", destination: "/account" })}
+        >
+          Account
+        </MvpButtonLink>
       </MvpSurface>
 
       {!ready || syncStatus === "loading" ? (
@@ -69,7 +91,7 @@ export function ParentDashboardClient() {
           <MvpStatusPill tone="yellow">Year {selectedChild.yearLevel} coming soon</MvpStatusPill>
           <h2 className="mt-3 text-2xl font-black text-[#082B80]">Active lessons are Year 1 only</h2>
           <p className="mt-2 text-sm font-bold leading-6 text-[#5B6B94]">
-            {getYearLevelAvailabilityMessage(selectedChild.yearLevel)} Switch the profile to Year 1 to use the current Mathematics Forest World MVP.
+            {getYearLevelAvailabilityMessage(selectedChild.yearLevel)} Switch the profile to Year 1 to use the current {mathematicsForestWorldPackage.subjectName} {mathematicsForestWorldPackage.worldName} MVP.
           </p>
           <div className="mt-4">
             <MvpButtonLink href="/account" tone="white">Review Child Profile</MvpButtonLink>
@@ -97,14 +119,14 @@ export function ParentDashboardClient() {
       <MvpSurface>
         <h2 className="text-3xl font-black">Child Progress</h2>
         <p className="mt-2 text-base font-bold leading-7 text-[#5B6B94]">
-          Current subject: Mathematics Year {forestWorldIdentity.year}. Current world: Forest World. Current unlocked mission: Level {worldProgressRecord.currentLevel}.
+          Current subject: {mathematicsForestWorldPackage.subjectName} Year {forestWorldIdentity.year}. Current world: {mathematicsForestWorldPackage.worldName}. Current unlocked mission: Level {worldProgressRecord.currentLevel}.
         </p>
         <div className="mt-5">
           <div className="mb-2 flex justify-between text-sm font-black">
-            <span>Forest World progress</span>
+            <span>{mathematicsForestWorldPackage.worldName} progress</span>
             <span>{worldProgress}%</span>
           </div>
-          <MvpProgressBar value={worldProgress} label="Forest World progress" />
+          <MvpProgressBar value={worldProgress} label={`${mathematicsForestWorldPackage.worldName} progress`} />
         </div>
       </MvpSurface>
 
@@ -137,17 +159,23 @@ export function ParentDashboardClient() {
         <MvpSurface>
           <h2 className="text-2xl font-black">Subject Progress</h2>
           <div className="mt-4 space-y-4">
-            {mvpSubjects.map((subject) => (
+            {subjectRegistry.filter((subject) => subject.showInSubjectSelection).map((subject) => {
+              const pkg = learningPackages.find((item) => item.subject === subject.id);
+              const packageProgress = pkg?.packageId === mathematicsForestWorldPackage.packageId ? worldProgress : 0;
+              return (
               <div key={subject.id} className="rounded-[1.25rem] bg-[#EAF6FF] p-4">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="font-black">{subject.title}</p>
-                  <p className="text-sm font-black">{subject.enabled ? `${worldProgress}%` : "0%"}</p>
+                  <p className="font-black">{subject.parentDashboardDisplayName}</p>
+                  <p className="text-sm font-black">
+                    {pkg?.status === "active" ? `${packageProgress}%` : "Coming soon"}
+                  </p>
                 </div>
                 <div className="mt-2">
-                  <MvpProgressBar value={subject.enabled ? worldProgress : 0} label={`${subject.title} progress`} />
+                  <MvpProgressBar value={packageProgress} label={`${subject.parentDashboardDisplayName} progress`} />
                 </div>
               </div>
-            ))}
+            );
+            })}
           </div>
         </MvpSurface>
 
@@ -185,8 +213,19 @@ export function ParentDashboardClient() {
       </MvpSurface>
 
       <div className="flex flex-wrap gap-3">
-        <MvpButtonLink href="/mvp/world-map">Open Forest World Map</MvpButtonLink>
-        <MvpButtonLink href="/mvp/rewards" tone="white">View Rewards</MvpButtonLink>
+        <MvpButtonLink
+          href="/mvp/world-map"
+          onClick={() => trackLearningEvent("parent_dashboard_cta_clicked", { cta: "open_world_map", destination: "/mvp/world-map" })}
+        >
+          Open Forest World Map
+        </MvpButtonLink>
+        <MvpButtonLink
+          href="/mvp/rewards"
+          tone="white"
+          onClick={() => trackLearningEvent("parent_dashboard_cta_clicked", { cta: "view_rewards", destination: "/mvp/rewards" })}
+        >
+          View Rewards
+        </MvpButtonLink>
       </div>
     </div>
   );

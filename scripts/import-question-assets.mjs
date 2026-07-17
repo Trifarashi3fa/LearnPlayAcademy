@@ -4,14 +4,9 @@ import zlib from "node:zlib";
 import { fileURLToPath } from "node:url";
 
 const repoRoot = process.cwd();
-const outputJsonPath = path.join(
-  repoRoot,
-  "content/question-assets/mathematics/year-1/forest-world/forest-l01-imported.json",
-);
-const reportJsonPath = path.join(
-  repoRoot,
-  "generated/question-assets/year-1-forest-l01-import-report.json",
-);
+const defaultSubject = "mathematics";
+const defaultYear = 1;
+const defaultWorld = "forest-world";
 
 const canonicalColumns = [
   "Question ID",
@@ -95,7 +90,11 @@ const supportedQuestionTypes = new Set([
   "Multiple Choice",
   "Count & Type",
   "Tap Correct Group",
+  "Tap Correct",
   "Fill Missing Number",
+  "Fill Missing Letter",
+  "Fill Missing Word",
+  "Text Input",
   "Match Pairs",
   "True or False",
 ]);
@@ -123,13 +122,16 @@ function addAlias(canonical, ...headers) {
 
 canonicalColumns.forEach((column) => addAlias(column));
 addAlias("Question", "Prompt", "Question Text");
+addAlias("Final Explanation", "Explanation", "Answer Explanation");
 addAlias("Options", "Option A-D", "Answer Options");
 addAlias("Correct Answer", "Answer");
 addAlias("LearnBot Tip", "Coaching Tip");
-addAlias("Visual Object", "Visual");
+addAlias("Teaching Notes", "Instructions");
+addAlias("Visual Object", "Visual", "Visual Type");
 addAlias("Visual Description", "Visual Prompt");
 addAlias("Estimated Time", "Estimated Time (Seconds)", "Estimated Time Seconds", "Estimated Duration");
 addAlias("Required Assets", "Required Asset", "Asset Required");
+addAlias("Version Notes", "Version");
 
 function parseArgs(argv) {
   const args = {};
@@ -146,6 +148,43 @@ function parseArgs(argv) {
     }
   }
   return args;
+}
+
+function normalizeSubject(value) {
+  return trimCell(value || defaultSubject).toLocaleLowerCase("en");
+}
+
+function normalizeWorldSlug(value) {
+  return trimCell(value || defaultWorld)
+    .toLocaleLowerCase("en")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/(^-|-$)/g, "") || defaultWorld;
+}
+
+function parseTargetLevel({ level, sheet }) {
+  const explicit = Number(trimCell(level));
+  if (Number.isInteger(explicit) && explicit > 0) return explicit;
+  return parseLevelFromSheet(sheet) ?? 1;
+}
+
+function outputJsonPathForTarget({ subject, year, world, level }) {
+  const normalizedSubject = normalizeSubject(subject);
+  const normalizedWorld = normalizeWorldSlug(world);
+  const levelCode = String(level).padStart(2, "0");
+  return path.join(
+    repoRoot,
+    `content/question-assets/${normalizedSubject}/year-${year}/${normalizedWorld}/forest-l${levelCode}-imported.json`,
+  );
+}
+
+function reportJsonPathForTarget({ subject, year, world, level }) {
+  const normalizedSubject = normalizeSubject(subject);
+  const normalizedWorld = normalizeWorldSlug(world);
+  const levelCode = String(level).padStart(2, "0");
+  const reportRoot = normalizedSubject === "mathematics"
+    ? "generated/question-assets"
+    : `generated/question-assets/${normalizedSubject}`;
+  return path.join(repoRoot, reportRoot, `year-${year}-${normalizedWorld.replace(/-world$/, "")}-l${levelCode}-import-report.json`);
 }
 
 function normalizeHeaderKey(value) {
@@ -423,7 +462,14 @@ function normalizeQuestionType(value) {
     "count and type": "Count & Type",
     "count type": "Count & Type",
     "tap correct group": "Tap Correct Group",
+    "tap correct": "Tap Correct",
+    "tap correct answer": "Tap Correct",
     "fill missing number": "Fill Missing Number",
+    "fill missing letter": "Fill Missing Letter",
+    "fill missing word": "Fill Missing Word",
+    "text input": "Text Input",
+    "type answer": "Text Input",
+    "typed answer": "Text Input",
     "fill in blank": "Fill Missing Number",
     "match pairs": "Match Pairs",
     "true or false": "True or False",
@@ -551,7 +597,7 @@ function detectSource(rows) {
   };
 }
 
-function validateRows(rows, missingRequiredHeaders, requestedSheet, filePath) {
+function validateRows(rows, missingRequiredHeaders, requestedSheet, filePath, target = {}) {
   const issues = [];
   const ids = new Map();
   const expectedLevel = parseLevelFromSheet(requestedSheet);
@@ -577,6 +623,13 @@ function validateRows(rows, missingRequiredHeaders, requestedSheet, filePath) {
     const rowNumber = row.__sourceRowNumber ?? index + 2;
     for (const field of missingRequiredHeaders) addIssue(issues, row, rowNumber, field, "error", `Required header ${field} was not found.`);
     for (const field of blockingRequiredFields) {
+      if (
+        normalizeSubject(row.Subject) === "english" &&
+        ["Step 1", "Step 2", "Step 3"].includes(field) &&
+        row["Teaching Notes"]
+      ) {
+        continue;
+      }
       if (!row[field]) addIssue(issues, row, rowNumber, field, "error", `${field} is required.`);
     }
     const idParts = parseIdParts(row["Question ID"]);
@@ -585,6 +638,15 @@ function validateRows(rows, missingRequiredHeaders, requestedSheet, filePath) {
     }
     if (expectedLevel && Number(row.Level) && Number(row.Level) !== expectedLevel) {
       addIssue(issues, row, rowNumber, "Level", "error", `Level field ${row.Level} does not match requested ${requestedSheet}.`);
+    }
+    if (target.subject && normalizeSubject(row.Subject) !== normalizeSubject(target.subject)) {
+      addIssue(issues, row, rowNumber, "Subject", "error", `Subject ${row.Subject || "(blank)"} does not match requested ${target.subject}.`);
+    }
+    if (target.year && Number(row.Year) && Number(row.Year) !== Number(target.year)) {
+      addIssue(issues, row, rowNumber, "Year", "error", `Year ${row.Year} does not match requested Year ${target.year}.`);
+    }
+    if (target.world && normalizeWorldSlug(row.World) !== normalizeWorldSlug(target.world)) {
+      addIssue(issues, row, rowNumber, "World", "error", `World ${row.World || "(blank)"} does not match requested ${target.world}.`);
     }
     const id = normalizeAnswer(row["Question ID"]);
     if (id) ids.set(id, [...(ids.get(id) ?? []), rowNumber]);
@@ -596,7 +658,7 @@ function validateRows(rows, missingRequiredHeaders, requestedSheet, filePath) {
       if (options.length < 2) addIssue(issues, row, rowNumber, "Options", "Multiple Choice requires at least 2 options.", "error");
       else if (!options.some((option) => normalizeAnswer(option) === correct)) addIssue(issues, row, rowNumber, "Correct Answer", "error", "Correct Answer must match one Multiple Choice option.");
     }
-    if (type === "Tap Correct Group") {
+    if (type === "Tap Correct Group" || type === "Tap Correct") {
       if (options.length < 2) addIssue(issues, row, rowNumber, "Options", "Tap Correct Group requires at least 2 tap targets.", "error");
       else if (!correctAnswerMatchesTapTarget(options, row["Correct Answer"])) addIssue(issues, row, rowNumber, "Correct Answer", "error", "Correct Answer must match one tap target.");
     }
@@ -614,7 +676,8 @@ function validateRows(rows, missingRequiredHeaders, requestedSheet, filePath) {
         );
       }
     }
-    if (["Multiple Choice", "Count & Type", "Tap Correct Group"].includes(type) && !row["Visual Description"]) addIssue(issues, row, rowNumber, "Visual Description", "Visual Description is required for this question type.", "error");
+    if (["Multiple Choice", "Count & Type", "Tap Correct Group", "Tap Correct"].includes(type) && !row["Visual Description"]) addIssue(issues, row, rowNumber, "Visual Description", "Visual Description is required for this question type.", "error");
+    if (normalizeSubject(row.Subject) === "english" && !row["Visual Description"]) addIssue(issues, row, rowNumber, "Visual Description", "English rows require a visual description.", "error");
     if (!row["Teaching Notes"]) addIssue(issues, row, rowNumber, "Teaching Notes", "Teaching Notes were inferred or missing; review before approval.", "warning");
     else if (row["Teaching Notes"].includes("|")) addIssue(issues, row, rowNumber, "Teaching Notes", "Teaching Notes were inferred from existing explanation fields.", "warning");
     if (!row["Required Assets"]) addIssue(issues, row, rowNumber, "Required Assets", "Required Assets missing or not required.", "warning");
@@ -668,15 +731,45 @@ function writeJson(filePath, value) {
   fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
-export function importQuestionAssets({ filePath, sheet = "Forest L01", allowMismatch = false }) {
+export function importQuestionAssets({
+  filePath,
+  sheet = "Forest L01",
+  subject = defaultSubject,
+  year = defaultYear,
+  world = defaultWorld,
+  level,
+  outputPath,
+  reportPath,
+  allowMismatch = false,
+} = {}) {
   const resolvedFilePath = path.resolve(filePath);
   if (!fs.existsSync(resolvedFilePath)) throw new Error(`File not found: ${resolvedFilePath}`);
+  const target = {
+    subject: normalizeSubject(subject),
+    year: Number(year) || defaultYear,
+    world: normalizeWorldSlug(world),
+    level: parseTargetLevel({ level, sheet }),
+  };
+  const outputJsonPath = outputPath
+    ? path.resolve(outputPath)
+    : outputJsonPathForTarget(target);
+  const reportJsonPath = reportPath
+    ? path.resolve(reportPath)
+    : reportJsonPathForTarget(target);
   const loaded = loadRows(resolvedFilePath, sheet);
   const { sourceRows, mappedRows, headerAudit, inferredFields, explicitFields } = sourceToAssetRows(loaded.rows);
   const missingRequiredHeaders = headerAudit.missingRequiredHeaders;
-  const approvedRows = mappedRows.filter((row) => isApprovedContentStatus(row.Status));
-  const skippedRows = mappedRows.filter((row) => !isApprovedContentStatus(row.Status)).map(skippedRowForStatus);
-  const validation = validateRows(approvedRows, missingRequiredHeaders, sheet, resolvedFilePath);
+  const preparedRows = mappedRows.map((row) => ({
+    ...row,
+    Subject: row.Subject || target.subject,
+    Year: row.Year || String(target.year),
+    World: row.World || target.world,
+    Level: row.Level || String(target.level),
+    "Review Status": row["Review Status"] || row.Status,
+  }));
+  const approvedRows = preparedRows.filter((row) => isApprovedContentStatus(row.Status));
+  const skippedRows = preparedRows.filter((row) => !isApprovedContentStatus(row.Status)).map(skippedRowForStatus);
+  const validation = validateRows(approvedRows, missingRequiredHeaders, sheet, resolvedFilePath, target);
   const validRows = validation.sourceMismatch.hasMismatch && !allowMismatch ? [] : approvedRows.filter((_, index) => validation.rowResults[index]?.isValid);
   const importedRows = validRows.length;
   const rejectedRows = Math.max(0, approvedRows.length - importedRows);
@@ -698,6 +791,7 @@ export function importQuestionAssets({ filePath, sheet = "Forest L01", allowMism
     csvSheetNote: loaded.sourceType === "CSV" ? "CSV exports contain one tab only; --sheet is used for source validation." : null,
     outputJsonPath,
     reportJsonPath,
+    target,
     detectedQuestionIdPrefix: validation.detected.questionIdPrefix,
     detectedSubject: validation.detected.subject,
     detectedYear: validation.detected.year,
@@ -739,6 +833,12 @@ function main() {
   const result = importQuestionAssets({
     filePath: args.file,
     sheet: args.sheet ?? "Forest L01",
+    subject: args.subject ?? defaultSubject,
+    year: args.year ?? defaultYear,
+    world: args.world ?? defaultWorld,
+    level: args.level,
+    outputPath: args.output,
+    reportPath: args.report,
     allowMismatch: args["allow-mismatch"] === "true",
   });
   if (result.shouldWriteRows) writeJson(outputJsonPath, result.rowsToWrite);

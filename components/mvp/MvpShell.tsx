@@ -79,12 +79,11 @@ export function PrimaryLink({
   href,
   children,
   tone = "blue",
-}: {
-  href: string;
-  children: ReactNode;
+  ...props
+}: Omit<Parameters<typeof MvpButtonLink>[0], "size"> & {
   tone?: "blue" | "pink" | "green" | "white";
 }) {
-  return <MvpButtonLink href={href} tone={tone}>{children}</MvpButtonLink>;
+  return <MvpButtonLink href={href} tone={tone} {...props}>{children}</MvpButtonLink>;
 }
 
 export function ProgressBar({ value }: { value: number }) {

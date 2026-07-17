@@ -103,14 +103,14 @@ export function HintPanel({
 
   return (
     <aside
-      className="relative overflow-hidden rounded-[2rem] border border-[#FFD76A] bg-gradient-to-b from-[#FFF7D6] via-white to-[#EAFBF0] p-4 shadow-playful"
+      className="relative overflow-hidden rounded-[1.5rem] border border-[#FFD76A] bg-gradient-to-b from-[#FFF7D6] via-white to-[#EAFBF0] p-3 shadow-playful"
       aria-label="Question hint"
     >
       <span className="absolute -bottom-8 -left-8 h-28 w-28 rounded-full bg-[#66CC00]/20" aria-hidden />
       <div className="relative">
         <p className="text-xs font-black uppercase tracking-wide text-[#B66A00]">{/boss/i.test(nodeType ?? "") ? "Forest Guardian" : "Helpful Hint"}</p>
-        <div className="mt-3 flex justify-center">
-          <div className="relative h-28 w-28 bg-transparent drop-shadow-lg">
+        <div className="mt-2 flex justify-center">
+          <div className="relative h-20 w-20 2xl:h-24 2xl:w-24 bg-transparent drop-shadow-lg">
             <Image
               src="/mascots/learnbot-happy.webp"
               alt="LearnBot offering a hint"
@@ -121,22 +121,22 @@ export function HintPanel({
           </div>
         </div>
 
-        <div className="relative mt-3 rounded-[1.35rem] border border-[#FFD76A]/70 bg-white/95 p-4 shadow-sm">
+        <div className="relative mt-2 rounded-[1.15rem] border border-[#FFD76A]/70 bg-white/95 p-3 shadow-sm">
           <span className="absolute -top-2 left-1/2 h-4 w-4 -translate-x-1/2 rotate-45 border-l border-t border-[#FFD76A]/70 bg-white/95" aria-hidden />
-          <h2 className="text-xl font-black text-[#082B80]">{hintTitle}</h2>
-          <p className="mt-2 text-sm font-bold leading-6 text-[#3F527E]">{thinkHint}</p>
+          <h2 className="text-base font-black 2xl:text-lg text-[#082B80]">{hintTitle}</h2>
+          <p className="mt-1 text-xs font-bold leading-5 2xl:text-sm 2xl:leading-6 text-[#3F527E]">{thinkHint}</p>
         </div>
 
-        <div className="mt-3 grid gap-3 rounded-[1.25rem] bg-white/85 p-3">
-          <div className="flex min-h-12 items-center gap-3 rounded-2xl bg-[#EAF6FF] px-3 py-2">
-            <span className="flex h-10 min-w-10 items-center justify-center rounded-xl bg-[#0B63F6] text-sm font-black text-white">
+        <div className="mt-2 grid gap-2 rounded-[1.25rem] bg-white/85 p-3">
+          <div className="flex min-h-10 items-center gap-3 rounded-2xl bg-[#EAF6FF] px-3 py-2">
+            <span className="flex h-9 min-w-9 items-center justify-center rounded-xl bg-[#0B63F6] text-sm font-black text-white">
               {visual.icon}
             </span>
-            <p className="text-sm font-black leading-5 text-[#082B80]">{visual.example}</p>
+            <p className="text-xs font-black leading-5 2xl:text-sm text-[#082B80]">{visual.example}</p>
           </div>
           <div>
             <p className="text-xs font-black uppercase text-[#0B63F6]">Math rule</p>
-            <p className="mt-1 text-sm font-bold leading-6 text-[#5B6B94]">{rule}</p>
+            <p className="mt-1 text-xs font-bold leading-5 2xl:text-sm 2xl:leading-6 text-[#5B6B94]">{rule}</p>
           </div>
         </div>
       </div>

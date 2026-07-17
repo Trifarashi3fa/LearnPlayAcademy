@@ -5,6 +5,7 @@ import { useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { MvpButton, MvpButtonLink, MvpEmptyState, MvpMetricCard, MvpStatusPill, MvpSurface, mvpButtonClass } from "@/components/mvp/MvpUi";
 import { useMvpProgress } from "@/components/mvp/useMvpProgress";
 import { forestWorldIdentity } from "@/data/forest-world-identity";
+import { trackLearningEvent } from "@/lib/learning-analytics/client";
 import type { ProgressSyncStatus } from "@/lib/progress/child-progress";
 import {
   canSubmitProgressReset,
@@ -27,6 +28,16 @@ export function RewardsClient() {
     secondActionConfirmed: finalConfirmation,
     processing: resetProcessing,
   });
+
+  useEffect(() => {
+    trackLearningEvent("rewards_viewed", {
+      subject: forestWorldIdentity.subject,
+      year: forestWorldIdentity.year,
+      worldId: forestWorldIdentity.worldId,
+      totalXp: progress.totalXp,
+      totalStars: progress.totalStars,
+    });
+  }, [progress.totalStars, progress.totalXp]);
 
   useEffect(() => {
     if (!resetDialogOpen) return;

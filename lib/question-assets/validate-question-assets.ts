@@ -6,8 +6,8 @@ import {
   type ParsedForestL01QuestionAsset,
   type QuestionAssetValidationIssue,
   type QuestionAssetValidationSummary,
-} from "@/data/question-asset-schema";
-import { buildLegacyMatchPairs } from "@/lib/question-engine/match-pairs";
+} from "../../data/question-asset-schema";
+import { buildLegacyMatchPairs } from "../question-engine/match-pairs";
 
 const supportedQuestionTypeSet = new Set<string>(supportedForestL01QuestionTypes);
 const repeatedVisualObjectWarningThreshold = 8;
@@ -135,6 +135,7 @@ export function validateForestL01AssetRows(
       }
     }
 
+    const englishRow = text(row, "Subject").toLocaleLowerCase("en") === "english";
     for (const field of [
       "Question ID",
       "Subject",
@@ -150,6 +151,9 @@ export function validateForestL01AssetRows(
       "Step 3",
       "Final Explanation",
     ] as const) {
+      if (englishRow && ["Step 1", "Step 2", "Step 3"].includes(field) && text(row, "Teaching Notes")) {
+        continue;
+      }
       if (!text(row, field)) addIssue(issues, row, rowIndex, field, `Missing ${field}.`, "error");
     }
 
@@ -179,9 +183,9 @@ export function validateForestL01AssetRows(
       }
     }
 
-    if (questionType === "Tap Correct Group") {
+    if (questionType === "Tap Correct Group" || questionType === "Tap Correct") {
       if (options.length < 2) {
-        addIssue(issues, row, rowIndex, "Options", "Tap Correct Group requires at least 2 usable tap targets.", "error");
+        addIssue(issues, row, rowIndex, "Options", `${questionType} requires at least 2 usable tap targets.`, "error");
       } else if (!correctAnswerMatchesTapTarget(options, correctAnswer)) {
         addIssue(issues, row, rowIndex, "Correct Answer", "Correct Answer must match one tap target.", "error");
       }
@@ -213,8 +217,12 @@ export function validateForestL01AssetRows(
       addIssue(issues, row, rowIndex, "Correct Answer", "True or False rows must use True or False as the correct answer.", "error");
     }
 
-    if (["Count & Type", "Tap Correct Group", "Multiple Choice"].includes(questionType) && !text(row, "Visual Description")) {
+    if (["Count & Type", "Tap Correct Group", "Tap Correct", "Multiple Choice"].includes(questionType) && !text(row, "Visual Description")) {
       addIssue(issues, row, rowIndex, "Visual Description", "Missing visual description.", "error");
+    }
+
+    if (englishRow && !text(row, "Visual Description")) {
+      addIssue(issues, row, rowIndex, "Visual Description", "English preview rows require a visual description.", "error");
     }
 
     if (!text(row, "Assessment Eligible")) {

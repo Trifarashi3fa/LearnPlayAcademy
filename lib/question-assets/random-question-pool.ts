@@ -5,7 +5,11 @@ export type QuestionPoolQuestionType =
   | "Multiple Choice"
   | "Count & Type"
   | "Tap Correct Group"
+  | "Tap Correct"
   | "Fill Missing Number"
+  | "Fill Missing Letter"
+  | "Fill Missing Word"
+  | "Text Input"
   | "Match Pairs"
   | "True or False";
 
@@ -72,13 +76,17 @@ export const forestL01TargetDistribution = {
   "Fill Missing Number": 1,
   "Match Pairs": 1,
   "True or False": 1,
-} as const satisfies Record<QuestionPoolQuestionType, number>;
+} as const satisfies Partial<Record<QuestionPoolQuestionType, number>>;
 
 const supportedQuestionTypes = new Set<QuestionPoolQuestionType>([
   "Multiple Choice",
   "Count & Type",
   "Tap Correct Group",
+  "Tap Correct",
   "Fill Missing Number",
+  "Fill Missing Letter",
+  "Fill Missing Word",
+  "Text Input",
   "Match Pairs",
   "True or False",
 ]);
@@ -123,7 +131,11 @@ export function classifyQuestionRendererSupport(questionType: string): {
     questionType === "Multiple Choice" ||
     questionType === "Count & Type" ||
     questionType === "Tap Correct Group" ||
+    questionType === "Tap Correct" ||
     questionType === "Fill Missing Number" ||
+    questionType === "Fill Missing Letter" ||
+    questionType === "Fill Missing Word" ||
+    questionType === "Text Input" ||
     questionType === "True or False" ||
     questionType === "Match Pairs"
   ) {
@@ -367,6 +379,8 @@ export function selectForestL01RandomSession(options: {
 
 export function selectForestYear1RandomSession(options: {
   level: number;
+  subject?: string;
+  world?: string;
   questions: NormalizedQuestion[];
   assetRows: ForestL01QuestionAssetRow[];
   validQuestionIds?: Iterable<string>;
@@ -374,9 +388,9 @@ export function selectForestYear1RandomSession(options: {
   desiredQuestionCount?: number;
 }) {
   return selectRandomQuestionPool({
-    subject: "Mathematics",
+    subject: options.subject ?? "Mathematics",
     year: 1,
-    world: "Forest World",
+    world: options.world ?? "Forest World",
     level: options.level,
     desiredQuestionCount: options.desiredQuestionCount ?? 10,
     targetDistribution: forestL01TargetDistribution,

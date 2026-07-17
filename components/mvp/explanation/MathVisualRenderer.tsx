@@ -45,9 +45,9 @@ export function MathVisualRenderer({
   return (
     <VisualFrame visual={visual} compact={compact || fitNarrow}>
       {hasGroups ? (
-        <div className={`flex max-w-full min-w-0 justify-center gap-3 md:gap-4 ${groupLayout}`}>
+        <div className={`flex max-w-full min-w-0 justify-center gap-2 sm:gap-3 ${groupLayout}`}>
           {visual.groups.map((count, index) => (
-            <div key={`${visual.object}-${count}-${index}`} className={fitNarrow ? "flex min-w-0 flex-1 basis-[10rem] items-center gap-2" : "contents"}>
+            <div key={`${visual.object}-${count}-${index}`} className={fitNarrow ? "flex min-w-0 flex-1 basis-[7.5rem] items-center gap-2" : "contents"}>
               {index > 0 && operator ? <Operator value={operator} /> : null}
               <div className="min-w-0 md:flex-1">
                 <ObjectGroup
@@ -74,7 +74,7 @@ export function MathVisualRenderer({
         </p>
       ) : null}
       {!hasGroups && revealAnswer && visual.answerVisual ? (
-        <div className="mt-5 max-w-full text-center">
+        <div className="mt-3 max-w-full text-center">
           <Answer value={visual.answerVisual} prefix="Answer: " />
         </div>
       ) : null}
@@ -90,7 +90,7 @@ function SubtractionVisual({ visual, revealAnswer, compact = false, fitNarrow = 
   return (
     <VisualFrame visual={visual} compact={compact || fitNarrow}>
       <div className="max-w-full min-w-0 text-center">
-        <p className="mb-3 break-words text-xs font-black uppercase text-[#5B6B94]">
+        <p className="mb-2 break-words text-[0.7rem] font-black uppercase text-[#5B6B94]">
           Start with {total}. Cross out {removed}.
         </p>
         <ObjectGroup
@@ -100,15 +100,15 @@ function SubtractionVisual({ visual, revealAnswer, compact = false, fitNarrow = 
           compact={compact}
           crossOutCount={removed}
         />
-        <div className="mt-4 flex max-w-full flex-wrap items-center justify-center gap-2 sm:gap-3">
-          <span className="text-xl font-black text-[#082B80]">{total}</span>
+        <div className="mt-2.5 flex max-w-full flex-wrap items-center justify-center gap-2 sm:gap-3">
+          <span className="text-base font-black text-[#082B80]">{total}</span>
           <Operator value="-" />
-          <span className="text-xl font-black text-[#EF4444]">{removed}</span>
+          <span className="text-base font-black text-[#EF4444]">{removed}</span>
           <Operator value="=" />
           {revealAnswer ? <Answer value={String(remaining)} /> : <Operator value="?" />}
         </div>
         {revealAnswer ? (
-          <div className="mt-5 max-w-full">
+          <div className="mt-3 max-w-full">
             <p className="mb-2 break-words text-xs font-black uppercase text-[#15803D]">{remaining} left</p>
             <ObjectGroup count={remaining} object={visual.objects?.[0] ?? visual.object} context="none" compact />
           </div>
@@ -131,7 +131,7 @@ function ComparisonVisual({ visual, revealAnswer, compact = false, fitNarrow = f
 
   return (
     <VisualFrame visual={visual} compact={compact || fitNarrow}>
-      <div className={`grid max-w-full min-w-0 gap-2 sm:gap-2.5 ${gridClass}`}>
+      <div className={`grid max-w-full min-w-0 gap-1.5 sm:gap-2 ${gridClass}`}>
         <ComparisonGroup label={`Group A: ${first} ${objectVisualMap[firstObject].plural}`} correct={revealAnswer && answerNumber === first}>
           <ObjectGroup count={first} object={firstObject} context={visual.context} compact={compact} />
         </ComparisonGroup>
@@ -152,7 +152,7 @@ function ComparisonVisual({ visual, revealAnswer, compact = false, fitNarrow = f
 function ComparisonOperator({ value }: { value: string }) {
   return (
     <span className="self-center">
-      <span className="mx-auto inline-flex min-h-10 min-w-10 shrink-0 items-center justify-center rounded-xl bg-white px-2.5 text-lg font-black text-[#0B63F6] shadow-sm">
+      <span className="mx-auto inline-flex min-h-9 min-w-9 shrink-0 items-center justify-center rounded-xl bg-white px-2.5 text-base font-black text-[#0B63F6] shadow-sm">
         {value}
       </span>
     </span>
@@ -161,7 +161,7 @@ function ComparisonOperator({ value }: { value: string }) {
 
 function ComparisonAnswer({ value }: { value: string }) {
   return (
-    <span className="inline-flex min-h-11 max-w-full items-center justify-center whitespace-normal break-words rounded-2xl bg-[#DCFCE7] px-3 text-center text-xl font-black text-[#15803D] shadow-sm">
+    <span className="inline-flex min-h-9 max-w-full items-center justify-center whitespace-normal break-words rounded-2xl bg-[#DCFCE7] px-3 text-center text-base font-black text-[#15803D] shadow-sm">
       Relationship: {value}
     </span>
   );
@@ -169,8 +169,8 @@ function ComparisonAnswer({ value }: { value: string }) {
 
 function ComparisonGroup({ label, correct, children }: { label: string; correct: boolean; children: ReactNode }) {
   return (
-    <div className={`min-w-0 rounded-[1.2rem] border-2 p-2 ${correct ? "border-[#22C55E] bg-[#DCFCE7]" : "border-transparent bg-white"}`}>
-      <p className="mb-1.5 break-words text-center text-xs font-black text-[#082B80] sm:text-sm">{label}</p>
+    <div className={`min-w-0 rounded-[1rem] border-2 p-1.5 ${correct ? "border-[#22C55E] bg-[#DCFCE7]" : "border-transparent bg-white"}`}>
+      <p className="mb-1 break-words text-center text-[0.72rem] font-black text-[#082B80] sm:text-sm">{label}</p>
       {children}
     </div>
   );
@@ -187,7 +187,7 @@ function VisualFrame({
 }) {
   return (
     <div
-      className={`max-w-full min-w-0 overflow-visible rounded-[1.5rem] border border-[#DDE8F5] bg-[#F8FBFF] ${compact ? "p-3 sm:p-4" : "p-4 sm:p-6"}`}
+      className={`max-w-full min-w-0 overflow-visible rounded-[1.5rem] border border-[#DDE8F5] bg-[#F8FBFF] ${compact ? "p-2 sm:p-2.5" : "p-3 sm:p-4"}`}
       role="img"
       aria-label={visual.accessibleLabel}
     >
@@ -215,17 +215,17 @@ function ObjectGroup({
 
   return (
     <ContextScene context={context}>
-      <div className="flex max-w-full min-w-0 flex-wrap justify-center gap-1.5" aria-label={`${count} ${objectVisualMap[object].plural}`}>
+      <div className="flex max-w-full min-w-0 flex-wrap justify-center gap-1" aria-label={`${count} ${objectVisualMap[object].plural}`}>
         {items.map((index) => {
           const crossed = crossOutCount > 0 && index >= firstCrossedIndex;
           return (
             <span key={index} className={`relative inline-flex max-w-full shrink-0 ${crossed ? "opacity-45" : ""}`}>
               {object === "number" || object === "object" ? (
-                <span className={`flex items-center justify-center rounded-full bg-[#0B63F6] font-black text-white ${compact ? "h-8 w-8 text-xs" : "h-11 w-11 text-sm"}`}>
+                <span className={`flex items-center justify-center rounded-full bg-[#0B63F6] font-black text-white ${compact ? "h-8 w-8 text-xs" : "h-10 w-10 text-sm"}`}>
                   {index + 1}
                 </span>
               ) : (
-                <MathObjectIcon object={object} className={compact ? "h-9 w-9 max-w-full" : "h-12 w-12 max-w-full sm:h-14 sm:w-14"} />
+                <MathObjectIcon object={object} className={compact ? "h-8 w-8 max-w-full sm:h-9 sm:w-9" : "h-11 w-11 max-w-full sm:h-12 sm:w-12"} />
               )}
               {crossed ? <span className="pointer-events-none absolute left-0 top-1/2 h-1 w-full -rotate-45 rounded-full bg-[#EF4444]" /> : null}
             </span>
@@ -256,12 +256,12 @@ function ContextScene({ context, children }: { context: VisualSceneContext; chil
     water: "border-b-8 border-[#38BDF8] bg-[#E0F7FF]",
     none: "border border-[#DDE8F5] bg-white",
   }[context];
-  return <div className={`w-full max-w-full min-w-0 rounded-2xl p-3 shadow-sm ${sceneClass}`}>{children}</div>;
+  return <div className={`w-full max-w-full min-w-0 rounded-2xl p-2 shadow-sm ${sceneClass}`}>{children}</div>;
 }
 
 function Operator({ value }: { value: string }) {
   return (
-    <span className="mx-auto inline-flex min-h-11 min-w-11 shrink-0 items-center justify-center rounded-xl bg-white px-3 text-xl font-black text-[#0B63F6] shadow-sm">
+    <span className="mx-auto inline-flex min-h-9 min-w-9 shrink-0 items-center justify-center rounded-xl bg-white px-3 text-base font-black text-[#0B63F6] shadow-sm">
       {value}
     </span>
   );
@@ -269,7 +269,7 @@ function Operator({ value }: { value: string }) {
 
 function Answer({ value, prefix = "" }: { value: string; prefix?: string }) {
   return (
-    <span className="inline-flex min-h-14 max-w-full items-center justify-center whitespace-normal break-words rounded-2xl bg-[#DCFCE7] px-4 text-center text-2xl font-black text-[#15803D] shadow-sm">
+    <span className="inline-flex min-h-11 max-w-full items-center justify-center whitespace-normal break-words rounded-2xl bg-[#DCFCE7] px-3 text-center text-xl font-black text-[#15803D] shadow-sm">
       {prefix}{value}
     </span>
   );

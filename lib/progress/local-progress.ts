@@ -3,6 +3,13 @@ import {
   normalizeForestBadgeName,
   normalizeForestWorldId,
 } from "@/data/forest-world-identity";
+import {
+  getLearningPackageByProgressKey,
+  getLearningPackageByRef,
+  learningPackageProgressRef,
+  mathematicsForestWorldPackage,
+  normalizeLearningWorldId,
+} from "@/data/learning-packages";
 import type {
   CompleteLevelInput,
   CompleteLevelResult,
@@ -17,9 +24,7 @@ export const MVP_PROGRESS_V1_KEY = "learnplay-mvp-progress-v1";
 export const MVP_PROGRESS_V2_KEY = "learnplay-mvp-progress-v2";
 
 export const FOREST_PROGRESS_REF: ProgressWorldRef = {
-  subject: forestWorldIdentity.subject,
-  year: forestWorldIdentity.year,
-  worldId: forestWorldIdentity.worldId,
+  ...learningPackageProgressRef(mathematicsForestWorldPackage),
 };
 
 type LegacyProgressV1 = {
@@ -43,8 +48,12 @@ function safeNonNegative(value: unknown) {
   return typeof value === "number" && Number.isFinite(value) && value >= 0 ? value : 0;
 }
 
-function safeLevel(value: unknown, fallback = 1) {
-  return typeof value === "number" && Number.isInteger(value) && value >= 1 && value <= 10 ? value : fallback;
+function packageTotalLevels(ref: ProgressWorldRef): number {
+  return getLearningPackageByRef(ref)?.totalLevels ?? mathematicsForestWorldPackage.totalLevels;
+}
+
+function safeLevel(value: unknown, fallback = 1, totalLevels: number = mathematicsForestWorldPackage.totalLevels) {
+  return typeof value === "number" && Number.isInteger(value) && value >= 1 && value <= totalLevels ? value : fallback;
 }
 
 function forestNodeType(level: number): LevelCompletionRecord["nodeType"] {
@@ -61,14 +70,25 @@ function uniqueStrings(value: unknown) {
     : [];
 }
 
-function uniqueLevels(value: unknown) {
+function uniqueLevels(value: unknown, totalLevels: number = mathematicsForestWorldPackage.totalLevels) {
   return Array.isArray(value)
-    ? [...new Set(value.map((item) => safeLevel(item, 0)).filter((item) => item >= 1))].sort((a, b) => a - b)
+    ? [...new Set(value.map((item) => safeLevel(item, 0, totalLevels)).filter((item) => item >= 1))].sort((a, b) => a - b)
     : [];
 }
 
 export function progressWorldKey(ref: ProgressWorldRef) {
-  return `${ref.subject}:${ref.year}:${ref.worldId}`;
+  const worldId = normalizeLearningWorldId(ref.worldId);
+  return `${ref.subject}:${ref.year}:${typeof worldId === "string" ? worldId : ref.worldId}`;
+}
+
+function normalizeProgressWorldKey(key: string) {
+  const pkg = getLearningPackageByProgressKey(key);
+  if (pkg) return progressWorldKey(learningPackageProgressRef(pkg));
+  const [subject, year, ...worldParts] = key.split(":");
+  const normalizedWorldId = normalizeLearningWorldId(worldParts.join(":"));
+  return subject && year && typeof normalizedWorldId === "string"
+    ? `${subject}:${year}:${normalizedWorldId}`
+    : key;
 }
 
 export function createEmptyWorldProgress(ref: ProgressWorldRef): WorldProgressRecord {
@@ -133,9 +153,10 @@ function normalizeWorld(value: unknown, fallbackRef: ProgressWorldRef): WorldPro
   const ref: ProgressWorldRef = {
     subject: typeof value.subject === "string" ? value.subject as ProgressWorldRef["subject"] : fallbackRef.subject,
     year: typeof value.year === "number" && value.year > 0 ? value.year : fallbackRef.year,
-    worldId: typeof value.worldId === "string" && value.worldId ? value.worldId : fallbackRef.worldId,
+    worldId: typeof value.worldId === "string" && value.worldId ? String(normalizeLearningWorldId(value.worldId)) : fallbackRef.worldId,
   };
-  const completedLevels = uniqueLevels(value.completedLevels);
+  const totalLevels = packageTotalLevels(ref);
+  const completedLevels = uniqueLevels(value.completedLevels, totalLevels);
   const levelStars: Record<string, number> = {};
   if (record(value.levelStars)) {
     for (const [level, stars] of Object.entries(value.levelStars)) {
@@ -145,7 +166,7 @@ function normalizeWorld(value: unknown, fallbackRef: ProgressWorldRef): WorldPro
   const levelCompletions: Record<string, LevelCompletionRecord> = {};
   if (record(value.levelCompletions)) {
     for (const [levelKey, completion] of Object.entries(value.levelCompletions)) {
-      const level = safeLevel(Number(levelKey), 0);
+      const level = safeLevel(Number(levelKey), 0, totalLevels);
       const normalized = level > 0 ? normalizeLevelCompletion(completion, level) : null;
       if (normalized) levelCompletions[levelKey] = normalized;
     }
@@ -159,7 +180,7 @@ function normalizeWorld(value: unknown, fallbackRef: ProgressWorldRef): WorldPro
   }
   return {
     ...ref,
-    currentLevel: safeLevel(value.currentLevel, Math.min(10, completedLevels.length + 1)),
+    currentLevel: safeLevel(value.currentLevel, Math.min(totalLevels, completedLevels.length + 1), totalLevels),
     completedLevels,
     levelStars,
     levelCompletions,
@@ -175,13 +196,16 @@ function normalizeV2(value: unknown): LocalProgressV2 | null {
     ? {
         subject: typeof value.active.subject === "string" ? value.active.subject as ProgressWorldRef["subject"] : FOREST_PROGRESS_REF.subject,
         year: typeof value.active.year === "number" && value.active.year > 0 ? value.active.year : FOREST_PROGRESS_REF.year,
-        worldId: typeof value.active.worldId === "string" && value.active.worldId ? value.active.worldId : FOREST_PROGRESS_REF.worldId,
+        worldId: typeof value.active.worldId === "string" && value.active.worldId ? String(normalizeLearningWorldId(value.active.worldId)) : FOREST_PROGRESS_REF.worldId,
       }
     : FOREST_PROGRESS_REF;
   const worlds: Record<string, WorldProgressRecord> = {};
   if (record(value.worlds)) {
     for (const [key, world] of Object.entries(value.worlds)) {
-      worlds[key] = normalizeWorld(world, key === progressWorldKey(FOREST_PROGRESS_REF) ? FOREST_PROGRESS_REF : active);
+      const normalizedKey = normalizeProgressWorldKey(key);
+      const packageFromKey = getLearningPackageByProgressKey(normalizedKey);
+      const fallbackRef = packageFromKey ? learningPackageProgressRef(packageFromKey) : active;
+      worlds[normalizedKey] = normalizeWorld(world, normalizedKey === progressWorldKey(FOREST_PROGRESS_REF) ? FOREST_PROGRESS_REF : fallbackRef);
     }
   }
   const forestKey = progressWorldKey(FOREST_PROGRESS_REF);
@@ -192,8 +216,8 @@ function normalizeV2(value: unknown): LocalProgressV2 | null {
     totalXp: safeNonNegative(value.totalXp),
     totalStars: safeNonNegative(value.totalStars),
     badges: uniqueStrings(value.badges).map(normalizeForestBadgeName),
-    completedWorlds: uniqueStrings(value.completedWorlds),
-    unlockedWorlds: [...new Set([forestKey, ...uniqueStrings(value.unlockedWorlds)])],
+    completedWorlds: uniqueStrings(value.completedWorlds).map(normalizeProgressWorldKey),
+    unlockedWorlds: [...new Set([forestKey, ...uniqueStrings(value.unlockedWorlds).map(normalizeProgressWorldKey)])],
     worlds,
     migration: record(value.migration) && typeof value.migration.fromKey === "string" && typeof value.migration.migratedAt === "string"
       ? { fromKey: value.migration.fromKey, migratedAt: value.migration.migratedAt }
@@ -216,7 +240,7 @@ function migrateV1(value: unknown): LocalProgressV2 | null {
   };
   const world = createEmptyWorldProgress(migratedRef);
   world.completedLevels = completedLevels;
-  world.currentLevel = Math.min(10, Math.max(safeLevel(legacy.currentLevel), completedLevels.length + 1));
+  world.currentLevel = Math.min(mathematicsForestWorldPackage.totalLevels, Math.max(safeLevel(legacy.currentLevel), completedLevels.length + 1));
   world.questionsAnswered = safeNonNegative(legacy.questionsAnswered);
   world.correctAnswers = safeNonNegative(legacy.correctAnswers);
   if (record(legacy.levelStars)) {

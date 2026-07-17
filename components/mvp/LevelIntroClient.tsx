@@ -1,16 +1,31 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import { LockedLevelNotice } from "@/components/mvp/LockedLevelNotice";
 import { PrimaryLink } from "@/components/mvp/MvpShell";
 import { useMvpProgress } from "@/components/mvp/useMvpProgress";
+import { forestWorldIdentity } from "@/data/forest-world-identity";
 import type { MvpLevel } from "@/data/mvp-forest-world";
+import { trackLearningEvent } from "@/lib/learning-analytics/client";
 import { getForestLevelAccess } from "@/lib/progress/level-access";
 
 export function LevelIntroClient({ level }: { level: MvpLevel }) {
   const { ready, syncStatus, worldProgressRecord } = useMvpProgress();
   const progressLoading = level.level !== 1 && (!ready || syncStatus === "loading");
   const levelAccess = getForestLevelAccess(level.level, worldProgressRecord.completedLevels);
+
+  useEffect(() => {
+    if (!levelAccess.accessible || progressLoading) return;
+    trackLearningEvent("level_intro_viewed", {
+      subject: forestWorldIdentity.subject,
+      year: forestWorldIdentity.year,
+      worldId: forestWorldIdentity.worldId,
+      level: level.level,
+      nodeType: level.nodeType,
+      title: level.title,
+    });
+  }, [level.level, level.nodeType, level.title, levelAccess.accessible, progressLoading]);
 
   if (progressLoading) {
     return <LockedLevelNotice level={level.level} requiredLevel={levelAccess.requiredLevel} checking />;
@@ -38,7 +53,19 @@ export function LevelIntroClient({ level }: { level: MvpLevel }) {
       </div>
       <div className="flex flex-col gap-3 border-t border-[#DDE8F5] bg-[#F8FBFF] p-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div className="flex gap-3 text-sm font-black text-[#5B6B94]"><span>{level.questions.length} questions</span><span>10 XP each</span></div>
-        <div className="flex flex-col gap-3 sm:flex-row"><PrimaryLink href={`/mvp/question/${level.level}`} tone="green">Start Mission</PrimaryLink><PrimaryLink href="/mvp/world-map" tone="white">Back to World Map</PrimaryLink></div>
+        <div className="flex flex-col gap-3 sm:flex-row"><PrimaryLink
+            href={`/mvp/question/${level.level}`}
+            tone="green"
+            onClick={() => trackLearningEvent("level_started", {
+              subject: forestWorldIdentity.subject,
+              year: forestWorldIdentity.year,
+              worldId: forestWorldIdentity.worldId,
+              level: level.level,
+              questionCount: level.questions.length,
+            })}
+          >
+            Start Mission
+          </PrimaryLink><PrimaryLink href="/mvp/world-map" tone="white">Back to World Map</PrimaryLink></div>
       </div>
     </section>
   );

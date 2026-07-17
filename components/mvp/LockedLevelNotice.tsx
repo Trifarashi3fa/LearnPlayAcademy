@@ -1,7 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import { useEffect } from "react";
 import { MvpButtonLink, MvpSurface } from "@/components/mvp/MvpUi";
+import { forestWorldIdentity } from "@/data/forest-world-identity";
+import { trackLearningEvent } from "@/lib/learning-analytics/client";
 
 export function LockedLevelNotice({
   level,
@@ -13,6 +16,17 @@ export function LockedLevelNotice({
   checking?: boolean;
 }) {
   const title = checking ? "Checking your Forest trail..." : `Level ${level} is still locked`;
+
+  useEffect(() => {
+    if (checking) return;
+    trackLearningEvent("world_locked_level_viewed", {
+      subject: forestWorldIdentity.subject,
+      year: forestWorldIdentity.year,
+      worldId: forestWorldIdentity.worldId,
+      level,
+      requiredLevel: requiredLevel ?? null,
+    });
+  }, [checking, level, requiredLevel]);
   const description = checking
     ? "LearnBot is checking your saved progress before opening this mission."
     : `Complete Level ${requiredLevel ?? Math.max(1, level - 1)} first to open Level ${level}.`;

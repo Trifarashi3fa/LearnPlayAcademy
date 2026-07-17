@@ -186,6 +186,10 @@ function visualMetadata(
     teachingNotes: row.teachingNotes,
     requiredAssets: row.requiredAssets,
     requiredAssetList: requiredAssets,
+    subject: row.subject,
+    year: row.year,
+    world: row.world,
+    level: row.level,
     ...overrides,
   };
 }
@@ -363,8 +367,12 @@ function normalizeAssetRow(row: ReturnType<typeof parseForestL01AssetRows>[numbe
     case "Count & Type":
       return toCountObjects(row);
     case "Tap Correct Group":
+    case "Tap Correct":
       return toTapAnswer(row);
     case "Fill Missing Number":
+    case "Fill Missing Letter":
+    case "Fill Missing Word":
+    case "Text Input":
       return toFillInBlank(row);
     case "Match Pairs":
       try {
@@ -402,3 +410,5 @@ export function importForestL01AssetRows(rows: ForestL01QuestionAssetRow[]): Que
 
   return { questions, errors };
 }
+
+export const importQuestionAssetRows = importForestL01AssetRows;

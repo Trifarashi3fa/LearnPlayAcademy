@@ -553,12 +553,14 @@ function RandomSessionPreview({
     () =>
       selectForestYear1RandomSession({
         level: assetImportReport?.detectedLevel ?? 1,
+        subject: assetImportReport?.detectedSubject ?? "Mathematics",
+        world: assetImportReport?.detectedWorld ?? "Forest World",
         questions: importedQuestions,
         assetRows,
         validQuestionIds,
         seed: `forest-l01-preview-${seedIndex}`,
       }),
-    [assetImportReport?.detectedLevel, assetRows, importedQuestions, seedIndex, validQuestionIds],
+    [assetImportReport?.detectedLevel, assetImportReport?.detectedSubject, assetImportReport?.detectedWorld, assetRows, importedQuestions, seedIndex, validQuestionIds],
   );
 
   if (!assetValidation) return null;
