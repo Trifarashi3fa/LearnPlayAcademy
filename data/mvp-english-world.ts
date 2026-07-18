@@ -1,4 +1,4 @@
-import englishConfigJson from "../content/english/forest-world/forest-world-config.json";
+﻿import englishConfigJson from "../content/english/forest-world/forest-world-config.json";
 import { englishWorldIdentity } from "@/data/english-world-identity";
 import type { MvpLevel, MvpQuestion, VisualLearningModel } from "@/data/mvp-forest-world";
 import type { NodeType } from "@/data/curriculum-types";
@@ -146,7 +146,7 @@ const letterSoundItems: Array<[string, string, VisualObjectName, string[]]> = [
   ["nut", "n", "nut", ["m", "t", "p"]],
   ["orange", "o", "orange", ["a", "u", "e"]],
   ["pencil", "p", "pencil", ["b", "d", "q"]],
-  ["shell", "s", "shell", ["c", "f", "h"]],
+  ["shell", "sh", "shell", ["s", "ch", "th"]],
   ["tree", "t", "tree", ["f", "l", "p"]],
   ["star", "s", "star", ["t", "m", "r"]],
 ];
@@ -215,7 +215,7 @@ const familySchoolSeeds: EnglishSeed[] = [
   wordMeaning("pencil", "school", ["grandma", "brother", "home"], "Pencil is a school word."),
   wordMeaning("bag", "school", ["mother", "father", "sister"], "Bag is a school word."),
   wordMeaning("class", "school", ["uncle", "baby", "family"], "Class is a school word."),
-  wordMeaning("friend", "school", ["desk", "ruler", "door"], "Friend can be a school word."),
+  wordMeaning("friend", "school", ["mother", "father", "sister"], "Friend can be a school word."),
   wordMeaning("desk", "school", ["aunt", "cousin", "mother"], "Desk is a school word."),
   wordMeaning("grandma", "family", ["teacher", "book", "chair"], "Grandma is a family word."),
 ];
@@ -366,12 +366,12 @@ function alphabetSeed(lowercase: string, uppercase: string, distractors: string[
 
 function soundSeed(word: string, sound: string, object: VisualObjectName, distractors: string[]): EnglishSeed {
   return {
-    question: `What beginning sound do you hear in "${word}"?`,
+    question: `Which letter or sound starts "${word}"?`,
     correctAnswer: sound,
     options: uniqueOptions(sound, distractors),
-    explanation: `${word} starts with the /${sound}/ sound.`,
-    learnBotTip: "Say the word slowly and listen to the first sound.",
-    voiceScript: `${word}. The first sound is ${sound}.`,
+    explanation: `${word} starts with ${sound}.`,
+    learnBotTip: "Say the word slowly and listen to the beginning.",
+    voiceScript: `${word} starts with ${sound}.`,
     visual: objectVisual(object, sound),
   };
 }
@@ -446,3 +446,4 @@ export function getEnglishLevel(level: number) {
 }
 
 export { englishWorldConfig };
+

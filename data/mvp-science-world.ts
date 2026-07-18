@@ -1,4 +1,4 @@
-import scienceConfigJson from "../content/science/forest-world/forest-world-config.json";
+﻿import scienceConfigJson from "../content/science/forest-world/forest-world-config.json";
 import { scienceWorldIdentity } from "@/data/science-world-identity";
 import type { NodeType } from "@/data/curriculum-types";
 import type { MvpLevel, MvpQuestion, VisualLearningModel } from "@/data/mvp-forest-world";
@@ -177,8 +177,8 @@ const animalSeeds: ScienceSeed[] = [
   scienceQuestion("Which animal has feathers?", "bird", ["fish", "rabbit", "bee"], "A bird has feathers.", "Feathers are a bird clue.", objectVisual("bird", "bird"), "Look for the feather animal."),
   scienceQuestion("Which animal lives in water?", "fish", ["rabbit", "bee", "bird"], "A fish lives in water.", "Fish need water homes.", objectVisual("fish", "fish"), "Think about the animal's home."),
   scienceQuestion("Which animal can hop?", "rabbit", ["fish", "shell", "coin"], "A rabbit can hop.", "Animals move in different ways.", objectVisual("rabbit", "rabbit"), "Think about how it moves."),
-  scienceQuestion("Which animal can fly?", "bee", ["fish", "duck", "rabbit"], "A bee can fly with its wings.", "Wings help some animals fly.", objectVisual("bee", "bee"), "Find the animal with wings."),
-  scienceQuestion("Which animal has a shell?", "shell animal", ["bird", "rabbit", "bee"], "Some small animals have shells for protection.", "A shell can protect an animal.", objectVisual("shell", "shell animal"), "Look for the hard covering."),
+  scienceQuestion("Which animal can fly?", "bee", ["fish", "shell", "rabbit"], "A bee can fly with its wings.", "Wings help some animals fly.", objectVisual("bee", "bee"), "Find the animal with wings."),
+  scienceQuestion("Which animal has a shell?", "snail", ["bird", "rabbit", "bee"], "A snail has a shell for protection.", "A shell can protect some animals.", objectVisual("shell", "snail"), "Look for the animal with a hard covering."),
   scienceQuestion("What do animals need?", "food", ["glass", "plastic", "pencil"], "Animals need food to live and grow.", "Living animals need food.", textVisual("Animal need", "food"), "Think about what animals eat."),
   scienceQuestion("Which animal can swim and walk?", "duck", ["coin", "tree", "pencil"], "A duck can swim and walk.", "Some animals move in more than one way.", objectVisual("duck", "duck"), "Think about pond animals."),
   scienceQuestion("Which animal has fins?", "fish", ["rabbit", "bee", "bird"], "Fish have fins to help them swim.", "Fins help water animals move.", objectVisual("fish", "fish"), "Look for the swimming body part."),
@@ -227,7 +227,7 @@ const weatherSeeds: ScienceSeed[] = [
   scienceQuestion("What should you drink on a hot day?", "water", ["glue", "paint", "sand"], "Water helps your body on a hot day.", "Drink water when it is hot.", textVisual("Hot day clue", "water"), "Choose the healthy choice."),
   scienceQuestion("Which weather can make puddles?", "rainy", ["sunny", "dry", "windy"], "Rainy weather can make puddles.", "Rain adds water to the ground.", textVisual("Puddle clue", "rainy"), "Think about wet ground."),
   scienceQuestion("Which weather can make a kite fly?", "windy", ["rainy", "cloudy", "hot"], "Wind can help a kite fly.", "Moving air pushes a kite.", textVisual("Kite clue", "windy"), "Think about moving air."),
-  scienceQuestion("Which weather word means not cold?", "hot", ["cold", "wet", "dark"], "Hot means warm or very warm.", "Hot and cold describe temperature.", textVisual("Temperature clue", "hot"), "Choose the warm word."),
+  scienceQuestion("Which weather word means very warm?", "hot", ["cold", "wet", "dark"], "Hot means very warm.", "Hot and cold describe temperature.", textVisual("Temperature clue", "hot"), "Choose the very warm word."),
   scienceQuestion("Which weather word means low temperature?", "cold", ["hot", "sunny", "dry"], "Cold means low temperature.", "Cold and hot are opposites.", textVisual("Temperature clue", "cold"), "Choose the cool word."),
   scienceQuestion("Which is safest during a storm?", "stay indoors", ["stand under a tree", "fly a kite", "play in puddles"], "Staying indoors is safer during a storm.", "Storms need careful choices.", textVisual("Storm safety clue", "stay indoors"), "Choose the safe action."),
   scienceQuestion("Which sentence is true?", "Rain comes from clouds.", ["Wind is a toy.", "Sunny means dark.", "Clouds are animals."], "Rain can fall from clouds.", "Weather clues are in the sky.", textVisual("Weather fact check", "Rain comes from clouds."), "Choose the true weather fact."),
@@ -238,7 +238,7 @@ const waterSeeds: ScienceSeed[] = [
   scienceQuestion("Which activity uses water?", "washing hands", ["reading a book", "drawing a star", "counting coins"], "Washing hands uses water.", "Water helps us clean.", textVisual("Water use clue: clean hands", "washing hands"), "Think about cleaning."),
   scienceQuestion("Which is water from the sky?", "rain", ["stone", "coin", "leaf"], "Rain is water that falls from clouds.", "Rain is part of weather.", textVisual("Water clue: sky", "rain"), "Think about rainy weather."),
   scienceQuestion("Which form of water is hard and cold?", "ice", ["steam", "rain", "juice"], "Ice is frozen water.", "Water can freeze into ice.", textVisual("Water form clue: hard and cold", "ice"), "Think about frozen water."),
-  scienceQuestion("Which form of water looks like vapour?", "steam", ["ice", "stone", "shell"], "Steam is water vapour.", "Water can change form.", textVisual("Water form clue: vapour", "steam"), "Think about hot water."),
+  scienceQuestion("Which form of water can rise from hot water?", "steam", ["ice", "stone", "shell"], "Steam can rise from hot water.", "Water can change form when it gets hot or cold.", textVisual("Water form clue: hot water", "steam"), "Think about hot water."),
   scienceQuestion("Which animal needs water to swim?", "fish", ["rabbit", "tree", "pencil"], "A fish swims in water.", "Water is a home for some animals.", objectVisual("fish", "fish"), "Think about water animals."),
   scienceQuestion("Which thing can hold water?", "cup", ["leaf", "coin", "pencil"], "A cup can hold water for drinking.", "Containers can hold water.", textVisual("Water container clue", "cup"), "Think about what holds a drink."),
   scienceQuestion("Which is safe to do with clean water?", "drink it", ["spill it on wires", "throw it away", "mix it with dirt"], "Clean water can be safe to drink.", "Use clean water carefully.", textVisual("Clean water clue", "drink it"), "Choose the safe use."),
@@ -309,3 +309,4 @@ export const scienceLevels: MvpLevel[] = [
 export function getScienceLevel(level: number) {
   return scienceLevels.find((item) => item.level === level);
 }
+
