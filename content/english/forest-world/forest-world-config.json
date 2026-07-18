@@ -1,0 +1,74 @@
+{
+  "subject": "english",
+  "year": 1,
+  "worldId": "forest-world",
+  "worldName": "Forest World",
+  "packageName": "English Year 1 Foundation Package",
+  "status": "active",
+  "access": "free",
+  "bossName": "Forest Guardian English Challenge",
+  "completionBadge": "Forest Reader Badge",
+  "sessionQuestionCount": 10,
+  "levels": [
+    {
+      "level": 1,
+      "nodeType": "Learn",
+      "title": "Alphabet Recognition",
+      "learningObjective": "Recognise uppercase and lowercase letters."
+    },
+    {
+      "level": 2,
+      "nodeType": "Practice",
+      "title": "Letter Sounds",
+      "learningObjective": "Identify common beginning letter sounds."
+    },
+    {
+      "level": 3,
+      "nodeType": "Mini Game",
+      "title": "Basic Vocabulary",
+      "learningObjective": "Match simple words to familiar pictures."
+    },
+    {
+      "level": 4,
+      "nodeType": "Learn",
+      "title": "Colours & Shapes",
+      "learningObjective": "Recognise common colour and shape words."
+    },
+    {
+      "level": 5,
+      "nodeType": "Practice",
+      "title": "Family & School Words",
+      "learningObjective": "Read common family and classroom words."
+    },
+    {
+      "level": 6,
+      "nodeType": "Mini Game",
+      "title": "Simple Sentences",
+      "learningObjective": "Choose words that complete simple sentences."
+    },
+    {
+      "level": 7,
+      "nodeType": "Learn",
+      "title": "Grammar Basics",
+      "learningObjective": "Notice simple nouns, verbs, plurals, and sentence rules."
+    },
+    {
+      "level": 8,
+      "nodeType": "Review",
+      "title": "Matching & Categorising",
+      "learningObjective": "Group words by meaning and use."
+    },
+    {
+      "level": 9,
+      "nodeType": "Challenge",
+      "title": "Reading Practice",
+      "learningObjective": "Read short sentences and answer meaning questions."
+    },
+    {
+      "level": 10,
+      "nodeType": "Boss",
+      "title": "Forest Guardian English Challenge",
+      "learningObjective": "Review letters, sounds, words, sentences, and early reading."
+    }
+  ]
+}

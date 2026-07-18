@@ -1,0 +1,74 @@
+{
+  "subject": "science",
+  "year": 1,
+  "worldId": "forest-world",
+  "worldName": "Forest World",
+  "packageName": "Science Year 1 Foundation Package",
+  "status": "active",
+  "access": "free",
+  "bossName": "Forest Guardian Science Challenge",
+  "completionBadge": "Forest Scientist Badge",
+  "sessionQuestionCount": 10,
+  "levels": [
+    {
+      "level": 1,
+      "nodeType": "Learn",
+      "title": "Living & Non-living Things",
+      "learningObjective": "Sort familiar things into living and non-living groups."
+    },
+    {
+      "level": 2,
+      "nodeType": "Practice",
+      "title": "Plants",
+      "learningObjective": "Name simple plant parts and what plants need."
+    },
+    {
+      "level": 3,
+      "nodeType": "Mini Game",
+      "title": "Animals",
+      "learningObjective": "Recognise common animal features, homes, and movements."
+    },
+    {
+      "level": 4,
+      "nodeType": "Learn",
+      "title": "The Human Body",
+      "learningObjective": "Identify simple body parts and what they help us do."
+    },
+    {
+      "level": 5,
+      "nodeType": "Practice",
+      "title": "Five Senses",
+      "learningObjective": "Match each sense to the body part that helps us use it."
+    },
+    {
+      "level": 6,
+      "nodeType": "Mini Game",
+      "title": "Weather",
+      "learningObjective": "Recognise common weather words and suitable choices."
+    },
+    {
+      "level": 7,
+      "nodeType": "Learn",
+      "title": "Water",
+      "learningObjective": "Recognise simple uses and forms of water."
+    },
+    {
+      "level": 8,
+      "nodeType": "Review",
+      "title": "Materials",
+      "learningObjective": "Match objects to simple materials and properties."
+    },
+    {
+      "level": 9,
+      "nodeType": "Challenge",
+      "title": "Earth & Environment",
+      "learningObjective": "Make simple choices that care for plants, animals, and places."
+    },
+    {
+      "level": 10,
+      "nodeType": "Boss",
+      "title": "Forest Guardian Science Challenge",
+      "learningObjective": "Review living things, plants, animals, senses, weather, water, materials, and the environment."
+    }
+  ]
+}

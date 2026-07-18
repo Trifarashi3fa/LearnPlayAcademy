@@ -33,6 +33,14 @@ export function ForestRewardScreen({
   totalXp,
   syncStatus = "local-only",
   lastSyncedAt = null,
+  worldName = "Forest World",
+  bossName = forestWorldIdentity.bossName,
+  completionBadge = forestWorldIdentity.completionBadge,
+  skillLearned: skillLearnedOverride,
+  mapHref = "/mvp/world-map",
+  rewardsHref = "/mvp/rewards",
+  dashboardHref = "/mvp/parent-dashboard",
+  nextLevelHrefBase = "/mvp/level",
 }: {
   level: number;
   worldComplete: boolean;
@@ -44,9 +52,17 @@ export function ForestRewardScreen({
   totalXp?: number;
   syncStatus?: ProgressSyncStatus;
   lastSyncedAt?: string | null;
+  worldName?: string;
+  bossName?: string;
+  completionBadge?: string;
+  skillLearned?: string;
+  mapHref?: string;
+  rewardsHref?: string;
+  dashboardHref?: string;
+  nextLevelHrefBase?: string;
 }) {
-  const badgeName = worldComplete ? forestWorldIdentity.completionBadge : `Level ${level} Badge`;
-  const skillLearned = levelSkills[level] ?? "Forest mathematics";
+  const badgeName = worldComplete ? completionBadge : `Level ${level} Badge`;
+  const skillLearned = skillLearnedOverride ?? levelSkills[level] ?? `${worldName} skill`;
   const learnBotMessage = getLearnBotMessage({
     state: "celebration",
     seed: `${level}-${correctCount}-${starsEarned}`,
@@ -74,9 +90,9 @@ export function ForestRewardScreen({
         </div>
 
         <div>
-          <p className="text-sm font-black uppercase tracking-wide text-[#FF4FA0]">{worldComplete ? "Forest Guardian Victory" : "Level Completed"}</p>
-          <h2 className="mt-2 text-3xl font-black leading-tight text-[#082B80] sm:text-5xl">{worldComplete ? "Forest Guardian defeated!" : `Level ${level} complete!`}</h2>
-          <p className="mt-4 text-base font-bold leading-7 text-[#5B6B94] sm:text-lg sm:leading-8">{worldComplete ? "You completed all 10 Forest World missions, earned the Forest Explorer Badge, and finished the Forest Guardian challenge." : nextLevel ? `Excellent effort. Level ${nextLevel} is now unlocked for your next Forest World mission.` : "Excellent effort. Your next Forest World mission is ready."}</p>
+          <p className="text-sm font-black uppercase tracking-wide text-[#FF4FA0]">{worldComplete ? `${bossName} Victory` : "Level Completed"}</p>
+          <h2 className="mt-2 text-3xl font-black leading-tight text-[#082B80] sm:text-5xl">{worldComplete ? `${bossName} complete!` : `Level ${level} complete!`}</h2>
+          <p className="mt-4 text-base font-bold leading-7 text-[#5B6B94] sm:text-lg sm:leading-8">{worldComplete ? `You completed all 10 ${worldName} missions, earned the ${completionBadge}, and finished the ${bossName}.` : nextLevel ? `Excellent effort. Level ${nextLevel} is now unlocked for your next ${worldName} mission.` : `Excellent effort. Your next ${worldName} mission is ready.`}</p>
 
           <div className="mt-4 rounded-[1.25rem] bg-white/85 p-3 shadow-sm" aria-live="polite">
             <MvpStatusPill tone={syncTone(syncStatus)}>{syncLabel(syncStatus)}</MvpStatusPill>
@@ -119,12 +135,12 @@ export function ForestRewardScreen({
 
           <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {level < 10 ? (
-              <PrimaryLink href={`/mvp/level/${level + 1}`} tone="green">Continue</PrimaryLink>
+              <PrimaryLink href={`${nextLevelHrefBase}/${level + 1}`} tone="green">Continue</PrimaryLink>
             ) : (
-              <PrimaryLink href="/mvp/rewards" tone="green">View Badge</PrimaryLink>
+              <PrimaryLink href={rewardsHref} tone="green">View Badge</PrimaryLink>
             )}
-            <PrimaryLink href="/mvp/world-map" tone="blue">Back to Map</PrimaryLink>
-            <PrimaryLink href="/mvp/parent-dashboard" tone="white">Parent Dashboard</PrimaryLink>
+            <PrimaryLink href={mapHref} tone="blue">Back to Map</PrimaryLink>
+            <PrimaryLink href={dashboardHref} tone="white">Parent Dashboard</PrimaryLink>
           </div>
         </div>
       </div>

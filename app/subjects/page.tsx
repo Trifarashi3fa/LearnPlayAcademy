@@ -5,13 +5,13 @@ import { isFeatureActive, publicSubjectAvailability } from "@/data/feature-flags
 
 export const metadata: Metadata = {
   title: "Subjects | LearnPlay Academy",
-  description: "Mathematics Year 1 Forest World is the active LearnPlay Foundation MVP.",
+  description: "Mathematics, English, and Science Year 1 Forest World packages are active in LearnPlay Academy.",
 };
 
 export default function SubjectsPage() {
   return (
     <main className="bg-[#FFFDF7] text-[#082B80]">
-      <section className="bg-[#EAF6FF]"><div className="mx-auto max-w-6xl px-5 py-14 lg:px-8"><p className="text-sm font-black uppercase tracking-wide text-[#FF4FA0]">Foundation MVP</p><h1 className="mt-3 max-w-4xl text-5xl font-black leading-tight md:text-6xl">Choose the active learning adventure</h1><p className="mt-4 max-w-3xl text-lg font-bold leading-8 text-[#5B6B94]">Mathematics Year 1 Forest World is currently active. Other subjects are preserved for future approved expansion.</p></div></section>
+      <section className="bg-[#EAF6FF]"><div className="mx-auto max-w-6xl px-5 py-14 lg:px-8"><p className="text-sm font-black uppercase tracking-wide text-[#FF4FA0]">Foundation MVP</p><h1 className="mt-3 max-w-4xl text-5xl font-black leading-tight md:text-6xl">Choose an active learning adventure</h1><p className="mt-4 max-w-3xl text-lg font-bold leading-8 text-[#5B6B94]">Mathematics, English, and Science Year 1 Forest World packages are currently active. Other subjects are preserved for future approved expansion.</p></div></section>
       <section className="mx-auto max-w-6xl px-5 py-12 lg:px-8"><div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {publicSubjectAvailability.map((subject) => {
           const active = isFeatureActive(subject.featureId);

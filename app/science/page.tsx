@@ -1,32 +1,5 @@
-import { FeatureUnavailablePage } from "@/components/FeatureUnavailablePage";
-import { isFeatureActive } from "@/data/feature-flags";
-import type { Metadata } from "next";
-import { PageLayout } from "@/components/PageLayout";
-import { ScienceContentFactory } from "@/components/ScienceContentFactory";
+import { redirect } from "next/navigation";
 
-export const metadata: Metadata = {
-  title: "Science Explorer",
-  description:
-    "Explore LearnPlay Academy science quizzes, facts, activities, learning paths, XP, badges, and local progress tracking.",
-  openGraph: {
-    title: "LearnPlay Academy Science Explorer",
-    description:
-      "A child-friendly science module with quizzes, facts, activities, learning paths, XP, and badges.",
-  },
-};
-
-export default function SciencePage() {
-  if (!isFeatureActive("science")) {
-    return <FeatureUnavailablePage featureId="science" />;
-  }
-  return (
-    <PageLayout
-      eyebrow="Science Explorer"
-      title="Science Content Factory"
-      description="Explore quizzes, facts, hands-on activities, and guided learning paths with XP and badges saved on this device."
-      heroTone="blue"
-    >
-      <ScienceContentFactory />
-    </PageLayout>
-  );
+export default function ScienceEntryPage() {
+  redirect("/subjects/science");
 }

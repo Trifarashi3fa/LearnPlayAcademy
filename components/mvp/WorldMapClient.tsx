@@ -5,7 +5,8 @@ import Link from "next/link";
 import { MvpCard, PrimaryLink, ProgressBar } from "@/components/mvp/MvpShell";
 import { useMvpProgress } from "@/components/mvp/useMvpProgress";
 import { forestWorldIdentity } from "@/data/forest-world-identity";
-import { forestLevels } from "@/data/mvp-forest-world";
+import { forestLevels, type MvpLevel } from "@/data/mvp-forest-world";
+import type { ProgressWorldRef } from "@/data/progress-types";
 import { getForestLevelAccess } from "@/lib/progress/level-access";
 
 const nodeColors: Record<string, string> = {
@@ -17,16 +18,50 @@ const nodeColors: Record<string, string> = {
   Boss: "bg-[#FF4FA0] text-white",
 };
 
-const nodeMessages: Record<string, string> = {
-  Learn: "Learn a new skill",
-  Practice: "Build confidence",
-  "Mini Game": "Play a quick mission",
-  Review: "Check what you remember",
-  Challenge: "Try a stronger mission",
-  Boss: `Meet the ${forestWorldIdentity.bossName}`,
+function nodeMessage(nodeType: string, bossName: string) {
+  const messages: Record<string, string> = {
+    Learn: "Learn a new skill",
+    Practice: "Build confidence",
+    "Mini Game": "Play a quick mission",
+    Review: "Check what you remember",
+    Challenge: "Try a stronger mission",
+    Boss: `Meet the ${bossName}`,
+  };
+  return messages[nodeType] ?? "Complete a mission";
+}
+
+type WorldMapClientProps = {
+  levels?: MvpLevel[];
+  identity?: {
+    subject: ProgressWorldRef["subject"];
+    year: number;
+    worldId: string;
+    bossName: string;
+    completionBadge: string;
+  };
+  worldName?: string;
+  packageLabel?: string;
+  levelHrefBase?: string;
+  subjectsHref?: string;
+  rewardsHref?: string;
+  dashboardHref?: string;
 };
 
-export function WorldMapClient() {
+export function WorldMapClient({
+  levels = forestLevels,
+  identity = forestWorldIdentity,
+  worldName = "Forest World",
+  packageLabel = "Free Math Starter World",
+  levelHrefBase = "/mvp/level",
+  subjectsHref = "/subjects",
+  rewardsHref = "/mvp/rewards",
+  dashboardHref = "/mvp/parent-dashboard",
+}: WorldMapClientProps) {
+  const progressRef: ProgressWorldRef = {
+    subject: identity.subject,
+    year: identity.year,
+    worldId: identity.worldId,
+  };
   const {
     progress,
     worldProgressRecord,
@@ -34,10 +69,11 @@ export function WorldMapClient() {
     worldProgress,
     nextUnlockedLevel,
     completedCount,
-  } = useMvpProgress();
-  const levelsRemaining = forestLevels.length - completedCount;
+  } = useMvpProgress(progressRef, levels.length);
+  const levelsRemaining = levels.length - completedCount;
   const currentLevel = worldCompleted ? null : nextUnlockedLevel;
-  const currentMission = currentLevel ? forestLevels[currentLevel - 1] : null;
+  const currentMission = currentLevel ? levels.find((level) => level.level === currentLevel) : null;
+  const totalQuestions = levels.reduce((total, level) => total + (level.sessionQuestionCount ?? level.questions.length), 0);
 
   return (
     <div className="space-y-8">
@@ -51,12 +87,12 @@ export function WorldMapClient() {
               Your Forest Trail
             </p>
             <h2 id="level-path-title" className="mt-1 text-3xl font-black sm:text-4xl">
-              {worldCompleted ? "Forest World complete!" : `Level ${currentLevel} is your next mission`}
+              {worldCompleted ? `${worldName} complete!` : `Level ${currentLevel} is your next mission`}
             </h2>
             <p className="mt-2 max-w-2xl text-base font-bold leading-7 text-[#5B6B94]">
               {worldCompleted
-                ? `You completed every mission and earned the ${forestWorldIdentity.completionBadge}.`
-                : `${levelsRemaining} ${levelsRemaining === 1 ? "level remains" : "levels remain"}. Follow the trail to reach the ${forestWorldIdentity.bossName}.`}
+                ? `You completed every mission and earned the ${identity.completionBadge}.`
+                : `${levelsRemaining} ${levelsRemaining === 1 ? "level remains" : "levels remain"}. Follow the trail to reach the ${identity.bossName}.`}
             </p>
           </div>
           <div className="rounded-[1.5rem] border border-[#DDE8F5] bg-white px-5 py-4 shadow-sm" aria-live="polite">
@@ -64,7 +100,7 @@ export function WorldMapClient() {
               {worldCompleted ? "Adventure complete" : "You are here"}
             </p>
             <p className="mt-1 text-lg font-black">
-              {worldCompleted ? forestWorldIdentity.completionBadge : `Level ${currentLevel}: ${currentMission?.title}`}
+              {worldCompleted ? identity.completionBadge : `Level ${currentLevel}: ${currentMission?.title}`}
             </p>
           </div>
         </div>
@@ -72,7 +108,7 @@ export function WorldMapClient() {
         <div className="mb-7 rounded-[1.5rem] bg-white p-4 shadow-sm">
           <div className="mb-2 flex flex-wrap items-center justify-between gap-2 text-sm font-black">
             <span>Trail progress</span>
-            <span>{completedCount}/{forestLevels.length} levels - {worldProgress}%</span>
+            <span>{completedCount}/{levels.length} levels - {worldProgress}%</span>
           </div>
           <ProgressBar value={worldProgress} />
         </div>
@@ -83,7 +119,7 @@ export function WorldMapClient() {
             className="absolute bottom-10 left-[2.15rem] top-10 w-2 -translate-x-1/2 rounded-full bg-[#CFE0F5] sm:left-[2.65rem] sm:w-3"
           />
 
-          {forestLevels.map((level) => {
+          {levels.map((level) => {
             const completed = worldProgressRecord.completedLevels.includes(level.level);
             const unlocked = getForestLevelAccess(level.level, worldProgressRecord.completedLevels).accessible;
             const current = !worldCompleted && !completed && unlocked && level.level === currentLevel;
@@ -145,12 +181,12 @@ export function WorldMapClient() {
                       {level.title}
                     </h3>
                     <p className="mt-1 text-sm font-bold leading-6 text-[#5B6B94]">
-                      {nodeMessages[level.nodeType]} with 10 child-friendly questions.
+                      {nodeMessage(level.nodeType, identity.bossName)} with {level.sessionQuestionCount ?? level.questions.length} child-friendly questions.
                     </p>
                     {boss && (
                       <div className="mt-4 inline-flex items-center gap-2 rounded-full bg-white px-3 py-2 text-xs font-black text-[#082B80] shadow-sm">
                         <Image src="/rewards/star.webp" alt="" width={22} height={22} className="h-6 w-6 object-contain" />
-                        Badge reward: {forestWorldIdentity.completionBadge}
+                        Badge reward: {identity.completionBadge}
                       </div>
                     )}
                   </div>
@@ -172,7 +208,7 @@ export function WorldMapClient() {
             return unlocked ? (
               <Link
                 key={level.level}
-                href={`/mvp/level/${level.level}`}
+                href={`${levelHrefBase}/${level.level}`}
                 aria-current={current ? "step" : undefined}
                 aria-label={`${stateLabel}: Level ${level.level}, ${level.title}`}
                 className="block rounded-[1.75rem] focus:outline-none focus:ring-4 focus:ring-[#0B63F6]/30"
@@ -193,25 +229,25 @@ export function WorldMapClient() {
           <div className="relative min-h-48 overflow-hidden sm:min-h-56">
             <Image
               src="/worlds/level 1-forest-world.webp"
-              alt="Forest World landscape"
+              alt={`${worldName} landscape`}
               fill
               sizes="(min-width: 1024px) 420px, 100vw"
               className="object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#082B80]/60 to-transparent" />
             <p className="absolute inset-x-0 bottom-0 p-5 text-2xl font-black text-white">
-              Free Math Starter World
+              {packageLabel}
             </p>
           </div>
           <div className="p-5 sm:p-6">
             <p className="text-sm font-black uppercase text-[#15803D]">World summary</p>
-            <h2 className="mt-1 text-3xl font-black">Forest World</h2>
+            <h2 className="mt-1 text-3xl font-black">{worldName}</h2>
             <p className="mt-2 font-bold leading-7 text-[#5B6B94]">
-              Complete one mission at a time. Every completed level opens the next step toward the Forest Guardian.
+              Complete one mission at a time. Every completed level opens the next step toward the {identity.bossName}.
             </p>
             <div className="mt-5 grid grid-cols-3 gap-3 text-center">
-              <SummaryStat value="10" label="Levels" />
-              <SummaryStat value="100" label="Questions" />
+              <SummaryStat value={String(levels.length)} label="Levels" />
+              <SummaryStat value={String(totalQuestions)} label="Questions" />
               <SummaryStat value={String(progress.totalXp)} label="Total XP" />
             </div>
           </div>
@@ -219,9 +255,9 @@ export function WorldMapClient() {
       </MvpCard>
 
       <div className="flex flex-wrap gap-3">
-        <PrimaryLink href="/subjects" tone="white">Back to Subjects</PrimaryLink>
-        <PrimaryLink href="/mvp/rewards" tone="white">Rewards</PrimaryLink>
-        <PrimaryLink href="/mvp/parent-dashboard" tone="blue">Parent Dashboard</PrimaryLink>
+        <PrimaryLink href={subjectsHref} tone="white">Back to Subjects</PrimaryLink>
+        <PrimaryLink href={rewardsHref} tone="white">Rewards</PrimaryLink>
+        <PrimaryLink href={dashboardHref} tone="blue">Parent Dashboard</PrimaryLink>
       </div>
     </div>
   );

@@ -24,6 +24,7 @@ export type MvpQuestion = {
   question: string; options: string[]; correctAnswer: string; explanation: string; xpReward: number;
   steps?: string[]; visualPrompt?: string | string[]; visualExplanation?: string;
   voiceScript?: string; learnBotTip?: string; levelId?: string; worldId?: string;
+  subject?: string; subjectLabel?: string;
   visual?: VisualLearningModel;
 };
 
@@ -153,6 +154,23 @@ export type MvpLevel = {
   title: string;
   description: string;
   questions: MvpQuestion[];
+  subject?: "mathematics" | "english" | "science" | "bahasa-melayu" | "life-skills" | "general-knowledge";
+  subjectLabel?: string;
+  year?: number;
+  worldId?: string;
+  worldName?: string;
+  bossName?: string;
+  completionBadge?: string;
+  learningObjective?: string;
+  curriculumAlignment?: string;
+  cambridgeAlignment?: string;
+  mapHref?: string;
+  rewardsHref?: string;
+  dashboardHref?: string;
+  levelHrefBase?: string;
+  questionHrefBase?: string;
+  randomizeQuestions?: boolean;
+  sessionQuestionCount?: number;
 };
 
 export type MvpSubject = {

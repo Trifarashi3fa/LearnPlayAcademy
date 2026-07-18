@@ -16,11 +16,30 @@ import { calculateStars, useMvpProgress } from "@/components/mvp/useMvpProgress"
 import { forestWorldIdentity } from "@/data/forest-world-identity";
 import { getLevelBonusXp, getQuestionLearningContent, type MvpLevel } from "@/data/mvp-forest-world";
 import type { NodeType } from "@/data/curriculum-types";
-import type { LevelQuestionAttemptInput } from "@/data/progress-types";
+import type { LevelQuestionAttemptInput, ProgressWorldRef } from "@/data/progress-types";
 import { getForestLevelAccess } from "@/lib/progress/level-access";
 
+function createSessionQuestions(level: MvpLevel) {
+  const questionCount = Math.min(level.sessionQuestionCount ?? level.questions.length, level.questions.length);
+  if (!level.randomizeQuestions) return level.questions.slice(0, questionCount);
+
+  const shuffled = [...level.questions];
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+  return shuffled.slice(0, questionCount);
+}
+
 export function QuestionPlayer({ level }: { level: MvpLevel }) {
-  const { progress, ready, worldProgressRecord, worldCompleted, completeLevel, syncStatus, lastSyncedAt } = useMvpProgress();
+  const progressRef = useMemo<ProgressWorldRef>(() => ({
+    subject: level.subject ?? forestWorldIdentity.subject,
+    year: level.year ?? forestWorldIdentity.year,
+    worldId: level.worldId ?? forestWorldIdentity.worldId,
+  }), [level.subject, level.year, level.worldId]);
+  const totalLevelCount = 10;
+  const { progress, ready, worldProgressRecord, worldCompleted, completeLevel, syncStatus, lastSyncedAt } = useMvpProgress(progressRef, totalLevelCount);
+  const [sessionQuestions] = useState(() => createSessionQuestions(level));
   const [questionIndex, setQuestionIndex] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
@@ -30,16 +49,19 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
   const [rewardTotals, setRewardTotals] = useState({ stars: 0, xp: 0 });
   const [explanationOpen, setExplanationOpen] = useState(false);
   const finishingRef = useRef(false);
-  const currentQuestion = level.questions[questionIndex];
+  const currentQuestion = sessionQuestions[questionIndex];
   const learningContent = useMemo(() => getQuestionLearningContent(currentQuestion), [currentQuestion]);
   const answeredCorrectly = selectedAnswer === currentQuestion.correctAnswer;
-  const starsEarned = useMemo(() => calculateStars(correctCount, level.questions.length), [correctCount, level.questions.length]);
+  const starsEarned = useMemo(() => calculateStars(correctCount, sessionQuestions.length), [correctCount, sessionQuestions.length]);
   const answerXp = attempts.reduce((total, attempt) => total + (attempt.correct ? attempt.xpReward : 0), 0);
   const completesWorld = level.level === 10;
   const answered = selectedAnswer !== null;
   const thinkHint = getThinkModeHint(learningContent.visual.type, currentQuestion.id, learningContent.hint);
   const progressLoading = level.level !== 1 && (!ready || syncStatus === "loading");
   const levelAccess = getForestLevelAccess(level.level, worldProgressRecord.completedLevels);
+  const mapHref = level.mapHref ?? "/mvp/world-map";
+  const levelHrefBase = level.levelHrefBase ?? "/mvp/level";
+  const worldName = level.worldName ?? "Forest World";
 
   function chooseAnswer(answer: string | null) {
   if (selectedAnswer !== null || answer === null) return;
@@ -67,7 +89,7 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
   function nextQuestion() {
     if (!answered) return;
     setExplanationOpen(false);
-    if (questionIndex < level.questions.length - 1) {
+    if (questionIndex < sessionQuestions.length - 1) {
       setQuestionIndex((current) => current + 1);
       setSelectedAnswer(null);
       return;
@@ -85,19 +107,19 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
       xp: progress.totalXp + earnedXp,
     });
     completeLevel({
-      subject: forestWorldIdentity.subject,
-      year: forestWorldIdentity.year,
-      worldId: forestWorldIdentity.worldId,
+      subject: progressRef.subject,
+      year: progressRef.year,
+      worldId: progressRef.worldId,
       level: level.level,
       nodeType: level.nodeType as NodeType,
-      totalLevels: 10,
-      totalQuestions: level.questions.length,
+      totalLevels: totalLevelCount,
+      totalQuestions: sessionQuestions.length,
       correctAnswers: correctCount,
       starsEarned,
       completionBonusXp: getLevelBonusXp(level.level),
       worldCompletionXp: 500,
       completesWorld,
-      completionBadge: forestWorldIdentity.completionBadge,
+      completionBadge: level.completionBadge ?? forestWorldIdentity.completionBadge,
       questionAttempts: attempts,
     });
     setCompleted(true);
@@ -111,13 +133,21 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
             level={level.level}
             worldComplete={completesWorld}
             correctCount={correctCount}
-            totalQuestions={level.questions.length}
+            totalQuestions={sessionQuestions.length}
             starsEarned={starsEarned}
             xpEarned={rewardXp}
             totalStars={rewardTotals.stars}
             totalXp={rewardTotals.xp}
             syncStatus={syncStatus}
             lastSyncedAt={lastSyncedAt}
+            worldName={worldName}
+            bossName={level.bossName ?? forestWorldIdentity.bossName}
+            completionBadge={level.completionBadge ?? forestWorldIdentity.completionBadge}
+            skillLearned={level.title}
+            mapHref={mapHref}
+            rewardsHref={level.rewardsHref ?? "/mvp/rewards"}
+            dashboardHref={level.dashboardHref ?? "/mvp/parent-dashboard"}
+            nextLevelHrefBase={level.levelHrefBase ?? "/mvp/level"}
           />
         </div>
       </main>
@@ -125,11 +155,11 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
   }
 
   if (progressLoading) {
-    return <LockedLevelNotice level={level.level} requiredLevel={levelAccess.requiredLevel} checking />;
+    return <LockedLevelNotice level={level.level} requiredLevel={levelAccess.requiredLevel} checking worldName={worldName} mapHref={mapHref} levelHrefBase={levelHrefBase} />;
   }
 
   if (!levelAccess.accessible) {
-    return <LockedLevelNotice level={level.level} requiredLevel={levelAccess.requiredLevel} />;
+    return <LockedLevelNotice level={level.level} requiredLevel={levelAccess.requiredLevel} worldName={worldName} mapHref={mapHref} levelHrefBase={levelHrefBase} />;
   }
 
   const support = answered ? (
@@ -158,7 +188,7 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
           level={level.level}
           nodeType={level.nodeType}
           questionNumber={questionIndex + 1}
-          totalQuestions={level.questions.length}
+          totalQuestions={sessionQuestions.length}
           score={correctCount}
           xp={answerXp}
           syncStatus={syncStatus}
@@ -169,7 +199,7 @@ export function QuestionPlayer({ level }: { level: MvpLevel }) {
       actionBar={(
         <StickyActionBar
           answered={answered}
-          lastQuestion={questionIndex === level.questions.length - 1}
+          lastQuestion={questionIndex === sessionQuestions.length - 1}
           explanationOpen={explanationOpen}
           onToggleExplanation={() => setExplanationOpen((current) => !current)}
           onNext={nextQuestion}

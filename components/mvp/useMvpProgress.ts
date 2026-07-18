@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { ChildProfile } from "@/data/account-types";
 import { forestLevels, getMasteryLabel } from "@/data/mvp-forest-world";
-import type { CompleteLevelInput, LocalProgressV2 } from "@/data/progress-types";
+import type { CompleteLevelInput, LocalProgressV2, ProgressWorldRef } from "@/data/progress-types";
 import {
   loadProgress as loadChildProgress,
   saveProgress as saveChildProgress,
@@ -28,7 +28,10 @@ export function calculateStars(correct: number, total: number) {
   return 0;
 }
 
-export function useMvpProgress() {
+export function useMvpProgress(
+  worldRef: ProgressWorldRef = FOREST_PROGRESS_REF,
+  levelCount = forestLevels.length,
+) {
   const [progress, setProgress] = useState<LocalProgressV2>(createDefaultLocalProgress);
   const [ready, setReady] = useState(false);
   const [syncStatus, setSyncStatus] = useState<ProgressSyncStatus>("loading");
@@ -88,18 +91,18 @@ export function useMvpProgress() {
     return result.saved;
   }, []);
 
-  const worldProgressRecord = getWorldProgress(progress, FOREST_PROGRESS_REF);
+  const worldProgressRecord = getWorldProgress(progress, worldRef);
   const completedCount = worldProgressRecord.completedLevels.length;
-  const totalLevels = forestLevels.length;
+  const totalLevels = levelCount;
   const worldProgress = Math.round((completedCount / totalLevels) * 100);
   const accuracy = worldProgressRecord.questionsAnswered > 0
     ? Math.round((worldProgressRecord.correctAnswers / worldProgressRecord.questionsAnswered) * 100)
     : 0;
   const mastery = getMasteryLabel(accuracy);
-  const nextUnlockedLevel = forestLevels.find(
-    (level) => !worldProgressRecord.completedLevels.includes(level.level),
-  )?.level ?? totalLevels;
-  const worldCompleted = progress.completedWorlds.includes(progressWorldKey(FOREST_PROGRESS_REF));
+  const nextUnlockedLevel = Array.from({ length: totalLevels }, (_, index) => index + 1).find(
+    (level) => !worldProgressRecord.completedLevels.includes(level),
+  ) ?? totalLevels;
+  const worldCompleted = progress.completedWorlds.includes(progressWorldKey(worldRef));
 
   return useMemo(
     () => ({

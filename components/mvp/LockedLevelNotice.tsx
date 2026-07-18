@@ -7,12 +7,18 @@ export function LockedLevelNotice({
   level,
   requiredLevel,
   checking = false,
+  worldName = "Forest World",
+  mapHref = "/mvp/world-map",
+  levelHrefBase = "/mvp/level",
 }: {
   level: number;
   requiredLevel?: number | null;
   checking?: boolean;
+  worldName?: string;
+  mapHref?: string;
+  levelHrefBase?: string;
 }) {
-  const title = checking ? "Checking your Forest trail..." : `Level ${level} is still locked`;
+  const title = checking ? `Checking your ${worldName} trail...` : `Level ${level} is still locked`;
   const description = checking
     ? "LearnBot is checking your saved progress before opening this mission."
     : `Complete Level ${requiredLevel ?? Math.max(1, level - 1)} first to open Level ${level}.`;
@@ -34,7 +40,7 @@ export function LockedLevelNotice({
             />
           </div>
           <p className="relative mt-4 text-sm font-black uppercase tracking-wide text-[#15803D]">
-            Forest World
+            {worldName}
           </p>
           <h1 className="relative mt-2 text-3xl font-black leading-tight text-[#082B80] sm:text-4xl">
             {title}
@@ -51,11 +57,11 @@ export function LockedLevelNotice({
             </div>
           ) : null}
           <div className="relative mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-            <MvpButtonLink href="/mvp/world-map" tone="blue" size="lg">
-              Back to Forest World Map
+            <MvpButtonLink href={mapHref} tone="blue" size="lg">
+              Back to {worldName} Map
             </MvpButtonLink>
             {!checking ? (
-              <MvpButtonLink href={`/mvp/level/${requiredLevel ?? Math.max(1, level - 1)}`} tone="white" size="lg">
+              <MvpButtonLink href={`${levelHrefBase}/${requiredLevel ?? Math.max(1, level - 1)}`} tone="white" size="lg">
                 Go to Level {requiredLevel ?? Math.max(1, level - 1)}
               </MvpButtonLink>
             ) : null}

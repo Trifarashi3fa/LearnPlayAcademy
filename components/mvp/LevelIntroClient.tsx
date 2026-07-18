@@ -4,20 +4,30 @@ import Image from "next/image";
 import { LockedLevelNotice } from "@/components/mvp/LockedLevelNotice";
 import { PrimaryLink } from "@/components/mvp/MvpShell";
 import { useMvpProgress } from "@/components/mvp/useMvpProgress";
+import { forestWorldIdentity } from "@/data/forest-world-identity";
 import type { MvpLevel } from "@/data/mvp-forest-world";
+import type { ProgressWorldRef } from "@/data/progress-types";
 import { getForestLevelAccess } from "@/lib/progress/level-access";
 
 export function LevelIntroClient({ level }: { level: MvpLevel }) {
-  const { ready, syncStatus, worldProgressRecord } = useMvpProgress();
+  const progressRef: ProgressWorldRef = {
+    subject: level.subject ?? forestWorldIdentity.subject,
+    year: level.year ?? forestWorldIdentity.year,
+    worldId: level.worldId ?? forestWorldIdentity.worldId,
+  };
+  const { ready, syncStatus, worldProgressRecord } = useMvpProgress(progressRef, 10);
   const progressLoading = level.level !== 1 && (!ready || syncStatus === "loading");
   const levelAccess = getForestLevelAccess(level.level, worldProgressRecord.completedLevels);
+  const mapHref = level.mapHref ?? "/mvp/world-map";
+  const questionHref = `${level.questionHrefBase ?? "/mvp/question"}/${level.level}`;
+  const worldName = level.worldName ?? "Forest World";
 
   if (progressLoading) {
-    return <LockedLevelNotice level={level.level} requiredLevel={levelAccess.requiredLevel} checking />;
+    return <LockedLevelNotice level={level.level} requiredLevel={levelAccess.requiredLevel} checking worldName={worldName} mapHref={mapHref} levelHrefBase={level.levelHrefBase ?? "/mvp/level"} />;
   }
 
   if (!levelAccess.accessible) {
-    return <LockedLevelNotice level={level.level} requiredLevel={levelAccess.requiredLevel} />;
+    return <LockedLevelNotice level={level.level} requiredLevel={levelAccess.requiredLevel} worldName={worldName} mapHref={mapHref} levelHrefBase={level.levelHrefBase ?? "/mvp/level"} />;
   }
 
   return (
@@ -38,7 +48,7 @@ export function LevelIntroClient({ level }: { level: MvpLevel }) {
       </div>
       <div className="flex flex-col gap-3 border-t border-[#DDE8F5] bg-[#F8FBFF] p-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <div className="flex gap-3 text-sm font-black text-[#5B6B94]"><span>{level.questions.length} questions</span><span>10 XP each</span></div>
-        <div className="flex flex-col gap-3 sm:flex-row"><PrimaryLink href={`/mvp/question/${level.level}`} tone="green">Start Mission</PrimaryLink><PrimaryLink href="/mvp/world-map" tone="white">Back to World Map</PrimaryLink></div>
+        <div className="flex flex-col gap-3 sm:flex-row"><PrimaryLink href={questionHref} tone="green">Start Mission</PrimaryLink><PrimaryLink href={mapHref} tone="white">Back to {worldName} Map</PrimaryLink></div>
       </div>
     </section>
   );

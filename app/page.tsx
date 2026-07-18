@@ -5,11 +5,11 @@ import { Button } from "@/components/Button";
 import { isFeatureActive, publicSubjectAvailability } from "@/data/feature-flags";
 
 export const metadata: Metadata = {
-  title: "LearnPlay Academy | Mathematics Year 1",
-  description: "Start the approved LearnPlay Mathematics Year 1 Forest World Foundation MVP.",
+  title: "LearnPlay Academy | Year 1 Forest World",
+  description: "Start the LearnPlay Mathematics, English, and Science Year 1 Forest World Foundation MVP.",
 };
 
-const highlights = ["Mathematics Year 1", "10 guided levels", "100 approved pilot questions", "Local XP and rewards"];
+const highlights = ["Mathematics Year 1", "English Year 1", "Science Year 1", "10 guided levels per subject", "Local XP and rewards"];
 
 export default function Home() {
   return (
@@ -18,8 +18,8 @@ export default function Home() {
         <div className="mx-auto grid min-h-[calc(100vh-92px)] max-w-6xl items-center gap-10 px-5 py-12 lg:grid-cols-[1fr_440px] lg:px-8">
           <div>
             <p className="text-sm font-black uppercase tracking-wide text-[#FF4FA0]">Foundation MVP</p>
-            <h1 className="mt-4 max-w-3xl text-5xl font-black leading-tight md:text-7xl">Mathematics Year 1 starts in Forest World.</h1>
-            <p className="mt-5 max-w-2xl text-lg font-bold leading-8 text-[#5B6B94]">Complete a clear 10-level learning path covering early numbers, counting, addition, subtraction, review, and the Forest Guardian challenge.</p>
+            <h1 className="mt-4 max-w-3xl text-5xl font-black leading-tight md:text-7xl">Year 1 learning starts in Forest World.</h1>
+            <p className="mt-5 max-w-2xl text-lg font-bold leading-8 text-[#5B6B94]">Choose Mathematics, English, or Science and complete a clear 10-level learning path with LearnBot guidance, XP, rewards, and Forest Guardian challenges.</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button href="/subjects" variant="blue">Start Learning</Button>
               <Button href="/mvp/parent-dashboard" variant="secondary">Parent Dashboard</Button>
@@ -39,7 +39,7 @@ export default function Home() {
           <div className="relative rounded-[2rem] border border-[#DDE8F5] bg-white p-5 shadow-playful">
             <div className="overflow-hidden rounded-[1.5rem] bg-[#EAF6FF]"><Image src="/mascots/learnbot-explaining.png" alt="LearnBot welcoming children to Forest World" width={520} height={420} className="h-72 w-full object-cover object-top" priority /></div>
             <h2 className="mt-5 text-3xl font-black">Forest World is open</h2>
-            <p className="mt-2 text-base font-bold leading-7 text-[#5B6B94]">Other subjects and years remain safely preserved for later approval.</p>
+            <p className="mt-2 text-base font-bold leading-7 text-[#5B6B94]">Mathematics, English, and Science are open. Other subjects and years remain safely preserved for later approval.</p>
             <div className="mt-5 grid gap-3 sm:grid-cols-2">{highlights.map((item) => <div key={item} className="rounded-2xl border border-[#DDE8F5] bg-[#FFFDF7] px-4 py-3 text-sm font-black">{item}</div>)}</div>
           </div>
         </div>

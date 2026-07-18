@@ -14,7 +14,8 @@
                     "test:question-assets":  "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/test-question-asset-import.mjs",
                     "test:mvp-level-access":  "node scripts/test-mvp-level-access.mjs",
                     "test:mvp-reset-safety":  "node scripts/test-mvp-reset-safety.mjs",
-                    "test:mvp-year-availability":  "node scripts/test-mvp-year-availability.mjs"
+                    "test:mvp-year-availability":  "node scripts/test-mvp-year-availability.mjs",
+                    "test":  "npm run test:question-assets && npm run test:mvp-level-access && npm run test:mvp-reset-safety && npm run test:mvp-year-availability"
                 },
     "dependencies":  {
                          "@supabase/ssr":  "^0.12.0",
