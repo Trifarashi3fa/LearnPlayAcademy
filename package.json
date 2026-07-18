@@ -15,8 +15,9 @@
                     "test:mvp-level-access":  "node scripts/test-mvp-level-access.mjs",
                     "test:mvp-reset-safety":  "node scripts/test-mvp-reset-safety.mjs",
                     "test:mvp-year-availability":  "node scripts/test-mvp-year-availability.mjs",
-                    "test":  "npm run test:question-assets && npm run test:mvp-level-access && npm run test:mvp-reset-safety && npm run test:mvp-year-availability && npm run test:english-year1-content",
-                    "test:english-year1-content":  "node scripts/test-english-year1-content.mjs"
+                    "test":  "npm run test:question-assets && npm run test:mvp-level-access && npm run test:mvp-reset-safety && npm run test:mvp-year-availability && npm run test:english-year1-content && npm run test:english-question-schema",
+                    "test:english-year1-content":  "node scripts/test-english-year1-content.mjs",
+                    "test:english-question-schema":  "node scripts/test-english-question-schema.mjs"
                 },
     "dependencies":  {
                          "@supabase/ssr":  "^0.12.0",
