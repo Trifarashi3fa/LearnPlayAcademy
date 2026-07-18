@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import type { VisualLearningType } from "@/data/mvp-forest-world";
 
 const thinkModeHints: Record<VisualLearningType, string[]> = {
@@ -46,7 +46,87 @@ const thinkModeHints: Record<VisualLearningType, string[]> = {
   ],
 };
 
-function getHintVisual(type: VisualLearningType) {
+const englishHintsByLevel: Record<number, string[]> = {
+  1: [
+    "Look carefully at the letter shape.",
+    "Find the same letter family.",
+    "Say the letter name slowly.",
+    "Check if the letter is big or small.",
+  ],
+  2: [
+    "Say the word slowly.",
+    "Listen to the first sound.",
+    "Start with the sound at the beginning.",
+    "Look at the picture, then say the word.",
+  ],
+  3: [
+    "Look at the picture.",
+    "Say each word softly.",
+    "Choose the word that names the picture.",
+    "Match the picture to the word.",
+  ],
+  4: [
+    "Look at the colour or shape clue.",
+    "Say each answer word.",
+    "Choose the word that matches the picture.",
+    "Check the outline before choosing.",
+  ],
+  5: [
+    "Think about home or school.",
+    "Say each word and think where it belongs.",
+    "Choose the familiar word.",
+    "Look for a word you use every day.",
+  ],
+  6: [
+    "Read the whole sentence.",
+    "Try each word in the blank.",
+    "Choose the word that sounds right.",
+    "Read the sentence aloud.",
+  ],
+  7: [
+    "Read the whole sentence.",
+    "Look for the word that fits best.",
+    "Check the first letter or final mark.",
+    "Ask what the word does in the sentence.",
+  ],
+  8: [
+    "Think about what the words mean.",
+    "Find the word that belongs in the group.",
+    "Look for words that go together.",
+    "Choose the best match, not just a familiar word.",
+  ],
+  9: [
+    "Read one sentence at a time.",
+    "Look for the answer in the passage.",
+    "Find the clue words before choosing.",
+    "Read the question, then look back.",
+  ],
+  10: [
+    "Use your best English helper skill.",
+    "Read slowly and check the clue.",
+    "Think like a Forest Reader.",
+    "Look, say, and choose carefully.",
+  ],
+};
+
+function getEnglishLevelFromSeed(seed: string) {
+  const match = seed.match(/english-forest-l(\d{2})-/i);
+  return match ? Number(match[1]) : null;
+}
+
+function isEnglishSeed(seed: string) {
+  return /^english-/i.test(seed);
+}
+
+function getHintVisual(type: VisualLearningType, englishLevel: number | null) {
+  if (englishLevel) {
+    if (englishLevel === 1) return { icon: "Aa", example: "Match the letter shape." };
+    if (englishLevel === 2) return { icon: "abc", example: "Say the word slowly." };
+    if (englishLevel === 3 || englishLevel === 4) return { icon: "eye", example: "Look, then choose the word." };
+    if (englishLevel === 6 || englishLevel === 7 || englishLevel === 9) return { icon: "read", example: "Read the whole sentence." };
+    return { icon: "word", example: "Think about the word meaning." };
+  }
+
   return {
     counting: { icon: "1 2 3", example: "Touch each object once." },
     addition: { icon: "+", example: "Group A plus Group B." },
@@ -66,11 +146,22 @@ function hashText(value: string) {
 }
 
 export function getThinkModeHint(type: VisualLearningType, seed: string, fallback: string) {
+  const englishLevel = getEnglishLevelFromSeed(seed);
+  if (englishLevel) {
+    const hints = englishHintsByLevel[englishLevel] ?? englishHintsByLevel[10];
+    return hints[hashText(`${englishLevel}-${seed}`) % hints.length] ?? fallback;
+  }
+
   const hints = thinkModeHints[type] ?? thinkModeHints.none;
   return hints[hashText(`${type}-${seed}`) % hints.length] ?? fallback;
 }
 
 function getHintTitle(nodeType?: string, seed = "") {
+  if (isEnglishSeed(seed)) {
+    if (/boss/i.test(nodeType ?? "")) return "Guardian Reading Tip";
+    return "English Helper";
+  }
+
   if (/boss/i.test(nodeType ?? "")) {
     const bossLabels = ["Guardian Hint", "Forest Tip", "Boss Hint"];
     return bossLabels[hashText(seed || nodeType || "boss") % bossLabels.length] ?? "Guardian Hint";
@@ -89,15 +180,30 @@ export function HintPanel({
   nodeType?: string;
   messageSeed?: string;
 }) {
-  const rule = {
-    counting: "Point to each object once.",
-    addition: "Join the groups together.",
-    subtraction: "Take away, then count what is left.",
-    comparison: "Count both groups before choosing.",
-    matching: "The number must match the amount.",
-    none: "Look for the pattern or clue.",
-  }[type];
-  const visual = getHintVisual(type);
+  const englishLevel = getEnglishLevelFromSeed(messageSeed);
+  const isEnglish = Boolean(englishLevel);
+  const rule = isEnglish
+    ? {
+        1: "Letters can be big or small.",
+        2: "Words begin with sounds.",
+        3: "Pictures can help us read words.",
+        4: "Colour and shape words describe things.",
+        5: "Some words belong at home or school.",
+        6: "A sentence should sound complete.",
+        7: "Words have jobs in sentences.",
+        8: "Words can belong in groups.",
+        9: "The passage gives the answer.",
+        10: "Read the clue before choosing.",
+      }[englishLevel ?? 10]
+    : {
+        counting: "Point to each object once.",
+        addition: "Join the groups together.",
+        subtraction: "Take away, then count what is left.",
+        comparison: "Count both groups before choosing.",
+        matching: "The number must match the amount.",
+        none: "Look for the pattern or clue.",
+      }[type];
+  const visual = getHintVisual(type, englishLevel);
   const thinkHint = getThinkModeHint(type, messageSeed || hint, hint);
   const hintTitle = getHintTitle(nodeType, messageSeed);
 
@@ -108,7 +214,7 @@ export function HintPanel({
     >
       <span className="absolute -bottom-8 -left-8 h-28 w-28 rounded-full bg-[#66CC00]/20" aria-hidden />
       <div className="relative">
-        <p className="text-xs font-black uppercase tracking-wide text-[#B66A00]">{/boss/i.test(nodeType ?? "") ? "Forest Guardian" : "Helpful Hint"}</p>
+        <p className="text-xs font-black uppercase tracking-wide text-[#B66A00]">{/boss/i.test(nodeType ?? "") ? "Forest Guardian" : isEnglish ? "Reading Hint" : "Helpful Hint"}</p>
         <div className="mt-3 flex justify-center">
           <div className="relative h-28 w-28 bg-transparent drop-shadow-lg">
             <Image
@@ -129,13 +235,13 @@ export function HintPanel({
 
         <div className="mt-3 grid gap-3 rounded-[1.25rem] bg-white/85 p-3">
           <div className="flex min-h-12 items-center gap-3 rounded-2xl bg-[#EAF6FF] px-3 py-2">
-            <span className="flex h-10 min-w-10 items-center justify-center rounded-xl bg-[#0B63F6] text-sm font-black text-white">
+            <span className="flex h-10 min-w-10 items-center justify-center rounded-xl bg-[#0B63F6] text-xs font-black text-white">
               {visual.icon}
             </span>
             <p className="text-sm font-black leading-5 text-[#082B80]">{visual.example}</p>
           </div>
           <div>
-            <p className="text-xs font-black uppercase text-[#0B63F6]">Math rule</p>
+            <p className="text-xs font-black uppercase text-[#0B63F6]">{isEnglish ? "English tip" : "Math rule"}</p>
             <p className="mt-1 text-sm font-bold leading-6 text-[#5B6B94]">{rule}</p>
           </div>
         </div>

@@ -21,6 +21,7 @@ export function LevelIntroClient({ level }: { level: MvpLevel }) {
   const mapHref = level.mapHref ?? "/mvp/world-map";
   const questionHref = `${level.questionHrefBase ?? "/mvp/question"}/${level.level}`;
   const worldName = level.worldName ?? "Forest World";
+  const visibleQuestionCount = level.sessionQuestionCount ?? level.questions.length;
 
   if (progressLoading) {
     return <LockedLevelNotice level={level.level} requiredLevel={levelAccess.requiredLevel} checking worldName={worldName} mapHref={mapHref} levelHrefBase={level.levelHrefBase ?? "/mvp/level"} />;
@@ -43,11 +44,11 @@ export function LevelIntroClient({ level }: { level: MvpLevel }) {
       </div>
       <div className="grid gap-5 p-6 sm:p-8 lg:grid-cols-[1fr_1fr_220px]">
         <MissionSection title="What you will learn" body={level.description} />
-        <MissionSection title="Mission goal" body={`Complete ${level.questions.length} questions, learn from every explanation, and earn stars for careful answers.`} />
+        <MissionSection title="Mission goal" body={`Complete ${visibleQuestionCount} questions, learn from every explanation, and earn stars for careful answers.`} />
         <aside className="rounded-[1.5rem] bg-[#EAF6FF] p-4 text-center"><div className="relative mx-auto h-28 w-28"><Image src="/mascots/learnbot-thinking.webp" alt="LearnBot mission helper" fill sizes="112px" className="object-contain" /></div><p className="mt-2 text-sm font-black text-[#082B80]">LearnBot is ready to help.</p></aside>
       </div>
       <div className="flex flex-col gap-3 border-t border-[#DDE8F5] bg-[#F8FBFF] p-6 sm:flex-row sm:items-center sm:justify-between sm:px-8">
-        <div className="flex gap-3 text-sm font-black text-[#5B6B94]"><span>{level.questions.length} questions</span><span>10 XP each</span></div>
+        <div className="flex gap-3 text-sm font-black text-[#5B6B94]"><span>{visibleQuestionCount} questions</span><span>10 XP each</span></div>
         <div className="flex flex-col gap-3 sm:flex-row"><PrimaryLink href={questionHref} tone="green">Start Mission</PrimaryLink><PrimaryLink href={mapHref} tone="white">Back to {worldName} Map</PrimaryLink></div>
       </div>
     </section>
