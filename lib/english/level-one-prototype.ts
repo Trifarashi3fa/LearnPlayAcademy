@@ -9,6 +9,8 @@ export type EnglishLevelOneActivityVariant =
   | "same-letter"
   | "beginning-letter-picture";
 export type EnglishLevelOneSelectionMode = "tap-to-match" | "blank-completion" | "picture-choice";
+export type EnglishLevelOnePictureKind = "apple" | "bird" | "star";
+export type EnglishLevelOnePictureAssetStatus = "approved-local" | "placeholder";
 
 export type EnglishLevelOneChoice = {
   id: string;
@@ -43,10 +45,13 @@ export type EnglishLevelOnePrototype = {
     wordMeaning?: string;
   };
   picture?: {
-    emoji?: string;
+    kind: EnglishLevelOnePictureKind;
     assetSrc?: string;
     label: string;
+    expectedFirstLetter: string;
     altText: string;
+    assetStatus: EnglishLevelOnePictureAssetStatus;
+    replacementFor?: string;
   };
   initialState: {
     hintCollapsed: true;
@@ -100,7 +105,12 @@ export type EnglishLevelOneAssetQaIssue = {
     | "suspicious-image-source"
     | "missing-image-file"
     | "tiny-image"
-    | "duplicate-picture-asset";
+    | "duplicate-picture-asset"
+    | "forbidden-image-source"
+    | "invalid-picture-kind"
+    | "mismatched-picture-label"
+    | "mismatched-first-letter"
+    | "placeholder-picture-asset";
   message: string;
   assetSrc?: string;
 };
@@ -224,14 +234,14 @@ const prototypeOverrides: Record<string, PrototypeBase> = {
     type: "picture-choice",
     typeCode: "F",
     typeName: "Picture Choice",
-    activityLabel: "Picture Sound",
+    activityLabel: "Picture Choice",
     variant: "beginning-letter-picture",
     selectionMode: "picture-choice",
     rendererName: "EnglishPictureChoiceActivity",
     skill: "pictured beginning letter",
     instruction: "Look at the picture and tap the first letter.",
     selectionPrompt: "Tap the first letter you hear.",
-    prompt: "Which letter starts apple?",
+    prompt: "Which letter does apple start with?",
     displayText: "apple",
     visualLabel: "Picture clue",
     hint: "Say the word slowly and listen to the first sound.",
@@ -242,7 +252,7 @@ const prototypeOverrides: Record<string, PrototypeBase> = {
       exampleOrVisual: "A for apple.",
       learnBotTip: "Listen to the first sound.",
     },
-    picture: { assetSrc: "/assets/math-icons/apple.png", label: "apple", altText: "An apple picture clue." },
+    picture: { kind: "apple", assetSrc: "/english/year1/level1/apple.svg", label: "apple", expectedFirstLetter: "A", altText: "A clear red apple picture clue.", assetStatus: "approved-local", replacementFor: "/assets/math-icons/apple.png" },
   },
   "english-forest-l01-q06": {
     ...sharedState,
@@ -250,14 +260,14 @@ const prototypeOverrides: Record<string, PrototypeBase> = {
     type: "picture-choice",
     typeCode: "F",
     typeName: "Picture Choice",
-    activityLabel: "Picture Sound",
+    activityLabel: "Picture Choice",
     variant: "beginning-letter-picture",
     selectionMode: "picture-choice",
     rendererName: "EnglishPictureChoiceActivity",
     skill: "pictured beginning letter",
     instruction: "Look at the picture and tap the first letter.",
     selectionPrompt: "Tap the first letter you hear.",
-    prompt: "Which letter starts bird?",
+    prompt: "Which letter does bird start with?",
     displayText: "bird",
     visualLabel: "Picture clue",
     hint: "Say the word slowly and listen to the first sound.",
@@ -268,7 +278,7 @@ const prototypeOverrides: Record<string, PrototypeBase> = {
       exampleOrVisual: "B for bird.",
       learnBotTip: "Say the word slowly.",
     },
-    picture: { assetSrc: "/assets/math-icons/bird.png", label: "bird", altText: "A bird picture clue." },
+    picture: { kind: "bird", assetSrc: "/english/year1/level1/bird.svg", label: "bird", expectedFirstLetter: "B", altText: "A clear blue bird picture clue.", assetStatus: "approved-local", replacementFor: "/assets/math-icons/bird.png" },
   },
   "english-forest-l01-q07": {
     ...sharedState,
@@ -401,14 +411,14 @@ const prototypeOverrides: Record<string, PrototypeBase> = {
     type: "picture-choice",
     typeCode: "F",
     typeName: "Picture Choice",
-    activityLabel: "Picture Sound",
+    activityLabel: "Picture Choice",
     variant: "beginning-letter-picture",
     selectionMode: "picture-choice",
     rendererName: "EnglishPictureChoiceActivity",
     skill: "pictured beginning letter",
     instruction: "Look at the picture and tap the first letter.",
     selectionPrompt: "Tap the first letter you hear.",
-    prompt: "Which letter starts star?",
+    prompt: "Which letter does star start with?",
     displayText: "star",
     visualLabel: "Picture clue",
     hint: "Say the word slowly and listen to the first sound.",
@@ -419,7 +429,7 @@ const prototypeOverrides: Record<string, PrototypeBase> = {
       exampleOrVisual: "S for star.",
       learnBotTip: "Listen to the first sound.",
     },
-    picture: { assetSrc: "/assets/math-icons/star.webp", label: "star", altText: "A star picture clue." },
+    picture: { kind: "star", assetSrc: "/english/year1/level1/star.svg", label: "star", expectedFirstLetter: "S", altText: "A clear golden star picture clue.", assetStatus: "approved-local", replacementFor: "/assets/math-icons/star.webp" },
   },
 };
 
@@ -550,12 +560,27 @@ export function summarizeEnglishLevelOneQuestionTypes(questions: readonly MvpQue
   );
 }
 
+export function getEnglishLevelOnePicturePresentation(prototype: EnglishLevelOnePrototype) {
+  const picture = prototype.picture;
+  if (!picture) return null;
+
+  return {
+    kind: picture.kind,
+    label: picture.label.toLowerCase(),
+    altText: picture.altText,
+    assetSrc: picture.assetSrc,
+    usesFallback: !picture.assetSrc || picture.assetStatus === "placeholder",
+  };
+}
 export function validateEnglishLevelOnePrototypeAssets(
   prototypes: readonly EnglishLevelOnePrototype[],
   assetInfoBySrc: Record<string, EnglishLevelOneAssetInfo> = {},
 ): EnglishLevelOneAssetQaIssue[] {
   const issues: EnglishLevelOneAssetQaIssue[] = [];
   const seenPictureSources = new Map<string, string>();
+  const validKinds = new Set<EnglishLevelOnePictureKind>(["apple", "bird", "star"]);
+  const allowedPrefix = "/english/year1/level1/";
+  const forbiddenSourcePattern = /(world-map|level-map|mountain|forest-map|screenshot|sprite|dashboard|badge|reward|thumbnail|math-icons|science|subjects|\bui\b)/i;
 
   for (const prototype of prototypes) {
     if (prototype.type !== "picture-choice") continue;
@@ -571,6 +596,36 @@ export function validateEnglishLevelOnePrototypeAssets(
       continue;
     }
 
+    if (!validKinds.has(picture.kind)) {
+      issues.push({
+        questionId: prototype.questionId,
+        severity: "error",
+        code: "invalid-picture-kind",
+        message: "Type F picture metadata must use an approved English Level 1 picture kind.",
+        assetSrc: picture.assetSrc,
+      });
+    }
+
+    if (picture.label.trim().toLowerCase() !== picture.kind) {
+      issues.push({
+        questionId: prototype.questionId,
+        severity: "error",
+        code: "mismatched-picture-label",
+        message: "Type F picture label must match the intended vocabulary word.",
+        assetSrc: picture.assetSrc,
+      });
+    }
+
+    if (picture.expectedFirstLetter.trim().toLowerCase() !== prototype.correctAnswer.trim().toLowerCase()) {
+      issues.push({
+        questionId: prototype.questionId,
+        severity: "error",
+        code: "mismatched-first-letter",
+        message: "Type F expected first-letter metadata must match the correct answer.",
+        assetSrc: picture.assetSrc,
+      });
+    }
+
     if (!picture.altText.trim()) {
       issues.push({
         questionId: prototype.questionId,
@@ -584,9 +639,11 @@ export function validateEnglishLevelOnePrototypeAssets(
     if (!picture.assetSrc) {
       issues.push({
         questionId: prototype.questionId,
-        severity: "error",
-        code: "missing-picture",
-        message: "Type F picture-choice question is missing an image source.",
+        severity: picture.assetStatus === "placeholder" ? "warning" : "error",
+        code: picture.assetStatus === "placeholder" ? "placeholder-picture-asset" : "missing-picture",
+        message: picture.assetStatus === "placeholder"
+          ? "Type F is using a safe placeholder card until an approved local asset is available."
+          : "Type F picture-choice question is missing an image source.",
       });
       continue;
     }
@@ -611,12 +668,22 @@ export function validateEnglishLevelOnePrototypeAssets(
       });
     }
 
-    if (/map|world|sprite/i.test(picture.assetSrc)) {
+    if (!picture.assetSrc.startsWith(allowedPrefix) || forbiddenSourcePattern.test(picture.assetSrc)) {
+      issues.push({
+        questionId: prototype.questionId,
+        severity: "error",
+        code: "forbidden-image-source",
+        message: "Type F must use an English Level 1 learning-object asset, not a map, screenshot, sprite, UI, Mathematics, Science, or unrelated source.",
+        assetSrc: picture.assetSrc,
+      });
+    }
+
+    if (!picture.assetSrc.toLowerCase().includes(picture.kind)) {
       issues.push({
         questionId: prototype.questionId,
         severity: "warning",
         code: "suspicious-image-source",
-        message: "Image source looks like a map, world, or sprite asset rather than a teaching picture.",
+        message: "Image filename does not clearly match the intended vocabulary word.",
         assetSrc: picture.assetSrc,
       });
     }
@@ -632,7 +699,7 @@ export function validateEnglishLevelOnePrototypeAssets(
       });
     }
 
-    if (assetInfo?.width !== undefined && assetInfo.height !== undefined && (assetInfo.width < 64 || assetInfo.height < 64)) {
+    if (assetInfo?.width !== undefined && assetInfo.height !== undefined && (assetInfo.width < 128 || assetInfo.height < 128)) {
       issues.push({
         questionId: prototype.questionId,
         severity: "warning",

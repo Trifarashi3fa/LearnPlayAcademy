@@ -1,0 +1,21 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Apple illustration</title>
+  <desc id="desc">A clear red apple with one leaf.</desc>
+  <defs>
+    <radialGradient id="appleGlow" cx="35%" cy="28%" r="70%">
+      <stop offset="0" stop-color="#ff8a78"/>
+      <stop offset="0.48" stop-color="#f44336"/>
+      <stop offset="1" stop-color="#c62828"/>
+    </radialGradient>
+    <linearGradient id="leaf" x1="0" x2="1" y1="1" y2="0">
+      <stop offset="0" stop-color="#2e7d32"/>
+      <stop offset="1" stop-color="#8bc34a"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="256" cy="444" rx="134" ry="24" fill="#0b3f1d" opacity="0.1"/>
+  <path d="M248 156c-26-34-89-30-126 14-49 58-38 160 24 227 46 50 95 38 110 28 16 10 65 22 111-28 62-67 73-169 24-227-37-44-100-48-126-14-5 7-12 7-17 0Z" fill="url(#appleGlow)"/>
+  <path d="M254 164c-3-45 19-79 63-99" fill="none" stroke="#7b3f16" stroke-width="24" stroke-linecap="round"/>
+  <path d="M305 88c58-34 103-20 121 28-54 22-97 17-121-28Z" fill="url(#leaf)"/>
+  <path d="M149 202c15-28 50-47 86-41" fill="none" stroke="#ffc4b8" stroke-width="26" stroke-linecap="round" opacity="0.65"/>
+  <circle cx="186" cy="246" r="18" fill="#ffc4b8" opacity="0.5"/>
+</svg>

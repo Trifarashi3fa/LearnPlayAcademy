@@ -1,0 +1,26 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Bird illustration</title>
+  <desc id="desc">A clear blue bird standing and facing right.</desc>
+  <defs>
+    <radialGradient id="body" cx="35%" cy="30%" r="70%">
+      <stop offset="0" stop-color="#67d5ff"/>
+      <stop offset="0.55" stop-color="#1685e8"/>
+      <stop offset="1" stop-color="#0757bf"/>
+    </radialGradient>
+    <linearGradient id="wing" x1="0" x2="1">
+      <stop offset="0" stop-color="#4fc3f7"/>
+      <stop offset="1" stop-color="#0b63f6"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="256" cy="444" rx="128" ry="22" fill="#0b3f1d" opacity="0.1"/>
+  <ellipse cx="246" cy="286" rx="118" ry="102" fill="url(#body)"/>
+  <circle cx="325" cy="211" r="76" fill="url(#body)"/>
+  <path d="M386 214l62 30-62 31c-16 7-31-8-24-24l8-18-8-18c-7-16 8-31 24-21Z" fill="#ffb300"/>
+  <circle cx="347" cy="193" r="17" fill="#fff"/>
+  <circle cx="352" cy="197" r="9" fill="#082b80"/>
+  <path d="M195 286c43-35 93-33 134 0-23 58-86 83-134 0Z" fill="url(#wing)" opacity="0.86"/>
+  <path d="M169 203c-18-24-19-56 1-82 35 17 51 45 42 83" fill="#67d5ff"/>
+  <path d="M221 386v38M311 384v40" stroke="#ff9800" stroke-width="16" stroke-linecap="round"/>
+  <path d="M194 430h54M285 430h54" stroke="#ff9800" stroke-width="16" stroke-linecap="round"/>
+  <path d="M175 247c25-32 67-48 109-41" fill="none" stroke="#b3e5fc" stroke-width="22" stroke-linecap="round" opacity="0.62"/>
+</svg>

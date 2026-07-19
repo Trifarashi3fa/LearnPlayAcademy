@@ -107,6 +107,14 @@ function readWebpDimensions(buffer) {
   return null;
 }
 
+
+function readSvgDimensions(buffer) {
+  const source = buffer.toString("utf8", 0, Math.min(buffer.length, 2048));
+  const widthMatch = source.match(/<svg[^>]*\bwidth="(\d+)"/i);
+  const heightMatch = source.match(/<svg[^>]*\bheight="(\d+)"/i);
+  if (!widthMatch || !heightMatch) return null;
+  return { width: Number(widthMatch[1]), height: Number(heightMatch[1]) };
+}
 function buildAssetInfo(prototypes) {
   const assetInfo = {};
   for (const prototype of prototypes) {
@@ -118,7 +126,11 @@ function buildAssetInfo(prototypes) {
       continue;
     }
     const buffer = fs.readFileSync(filePath);
-    const dimensions = filePath.endsWith(".png") ? readPngDimensions(buffer) : readWebpDimensions(buffer);
+    const dimensions = filePath.endsWith(".png")
+      ? readPngDimensions(buffer)
+      : filePath.endsWith(".svg")
+        ? readSvgDimensions(buffer)
+        : readWebpDimensions(buffer);
     assetInfo[assetSrc] = { exists: true, ...(dimensions ?? {}) };
   }
   return assetInfo;
@@ -136,6 +148,7 @@ const {
   getEnglishLevelOneCorrectChoiceId,
   getEnglishLevelOneInitialInteractionState,
   getEnglishLevelOneMatchingModel,
+  getEnglishLevelOnePicturePresentation,
   getEnglishLevelOnePrototype,
   getEnglishLevelOneSelectedAnswer,
   isEnglishLevelOneChoiceCorrect,
@@ -250,8 +263,22 @@ assert.equal(getEnglishLevelOneSelectedAnswer(q01, q01Model.correctChoiceId), q0
 
 const q05 = getEnglishLevelOnePrototype(levelOne.questions.find((question) => question.id === "english-forest-l01-q05"));
 assert.equal(q05.type, "picture-choice");
+assert.equal(q05.activityLabel, "Picture Choice", "Type F should use the approved Picture Choice label.");
 assert.ok(q05.picture?.altText.length > 0, "Type F image alt text is required.");
-assert.ok(q05.picture?.assetSrc?.startsWith("/"), "Type F image source must use a public local path.");
+assert.ok(q05.picture?.assetSrc?.startsWith("/english/year1/level1/"), "Type F image source must use the English Level 1 asset folder.");
+assert.equal(q05.picture.assetSrc.includes("/assets/math-icons/"), false, "Type F must not reuse Mathematics icon assets.");
+assert.equal(q05.picture.label, "apple", "Type F vocabulary labels should stay lowercase and child-friendly.");
+assert.equal(q05.picture.expectedFirstLetter, q05.correctAnswer, "Type F expected first-letter metadata must match the answer.");
+assert.equal(getEnglishLevelOnePicturePresentation(q05).usesFallback, false, "Approved local Type F assets should render as images, not placeholders.");
+
+for (const prototype of prototypes.filter((item) => item.type === "picture-choice")) {
+  assert.equal(prototype.activityLabel, "Picture Choice", `${prototype.questionId} must use the approved Type F label.`);
+  assert.ok(prototype.picture.assetSrc.startsWith("/english/year1/level1/"), `${prototype.questionId} must use an English Level 1 asset path.`);
+  assert.equal(/math-icons|science|world-map|mountain|screenshot|sprite/i.test(prototype.picture.assetSrc), false, `${prototype.questionId} must not use a forbidden image source.`);
+  assert.equal(prototype.picture.label, prototype.picture.label.toLowerCase(), `${prototype.questionId} picture label should be lowercase.`);
+  assert.equal(prototype.picture.expectedFirstLetter.toLowerCase(), prototype.correctAnswer.toLowerCase(), `${prototype.questionId} first-letter metadata must match the correct answer.`);
+  assert.ok(prototype.picture.assetSrc.toLowerCase().includes(prototype.picture.kind), `${prototype.questionId} asset filename should match the vocabulary word.`);
+}
 
 const invalidExternalPicture = {
   ...q05,
@@ -264,15 +291,50 @@ const missingAltPicture = {
   ...q05,
   picture: { ...q05.picture, altText: "" },
 };
-const missingAltIssues = validateEnglishLevelOnePrototypeAssets([missingAltPicture], { [q05.picture.assetSrc]: { exists: true, width: 120, height: 120 } });
+const missingAltIssues = validateEnglishLevelOnePrototypeAssets([missingAltPicture], { [q05.picture.assetSrc]: { exists: true, width: 512, height: 512 } });
 assert.ok(missingAltIssues.some((issue) => issue.code === "missing-alt-text" && issue.severity === "error"), "Type F should require alt text.");
 
-const suspiciousPicture = {
+const forbiddenWorldPicture = {
   ...q05,
   picture: { ...q05.picture, assetSrc: "/world-map/apple-sprite.png" },
 };
-const suspiciousIssues = validateEnglishLevelOnePrototypeAssets([suspiciousPicture], { "/world-map/apple-sprite.png": { exists: true, width: 120, height: 120 } });
-assert.ok(suspiciousIssues.some((issue) => issue.code === "suspicious-image-source" && issue.severity === "warning"), "Type F should warn on map/world/sprite image sources.");
+const forbiddenWorldIssues = validateEnglishLevelOnePrototypeAssets([forbiddenWorldPicture], { "/world-map/apple-sprite.png": { exists: true, width: 512, height: 512 } });
+assert.ok(forbiddenWorldIssues.some((issue) => issue.code === "forbidden-image-source" && issue.severity === "error"), "Type F should reject world/map/sprite image sources.");
+
+const forbiddenMathPicture = {
+  ...q05,
+  picture: { ...q05.picture, assetSrc: "/assets/math-icons/apple.png" },
+};
+const forbiddenMathIssues = validateEnglishLevelOnePrototypeAssets([forbiddenMathPicture], { "/assets/math-icons/apple.png": { exists: true, width: 74, height: 78 } });
+assert.ok(forbiddenMathIssues.some((issue) => issue.code === "forbidden-image-source" && issue.severity === "error"), "Type F should reject Mathematics icon assets.");
+
+const missingFilePicture = {
+  ...q05,
+  picture: { ...q05.picture, assetSrc: "/english/year1/level1/missing-apple.svg" },
+};
+const missingFileIssues = validateEnglishLevelOnePrototypeAssets([missingFilePicture], { "/english/year1/level1/missing-apple.svg": { exists: false } });
+assert.ok(missingFileIssues.some((issue) => issue.code === "missing-image-file" && issue.severity === "error"), "Type F should reject missing local image files.");
+
+const tinyPictureIssues = validateEnglishLevelOnePrototypeAssets([q05], { [q05.picture.assetSrc]: { exists: true, width: 64, height: 64 } });
+assert.ok(tinyPictureIssues.some((issue) => issue.code === "tiny-image" && issue.severity === "warning"), "Type F should warn on tiny images.");
+
+const duplicatePicture = {
+  ...getEnglishLevelOnePrototype(levelOne.questions.find((question) => question.id === "english-forest-l01-q06")),
+  picture: { ...q05.picture },
+};
+const duplicateIssues = validateEnglishLevelOnePrototypeAssets([q05, duplicatePicture], { [q05.picture.assetSrc]: { exists: true, width: 512, height: 512 } });
+assert.ok(duplicateIssues.some((issue) => issue.code === "duplicate-picture-asset" && issue.severity === "warning"), "Type F should warn on duplicated picture assets.");
+
+const mismatchIssues = validateEnglishLevelOnePrototypeAssets([{ ...q05, picture: { ...q05.picture, expectedFirstLetter: "B" } }], { [q05.picture.assetSrc]: { exists: true, width: 512, height: 512 } });
+assert.ok(mismatchIssues.some((issue) => issue.code === "mismatched-first-letter" && issue.severity === "error"), "Type F should reject first-letter metadata that does not match the correct answer.");
+
+const placeholderPicture = {
+  ...q05,
+  picture: { ...q05.picture, assetSrc: undefined, assetStatus: "placeholder" },
+};
+const placeholderIssues = validateEnglishLevelOnePrototypeAssets([placeholderPicture], {});
+assert.ok(placeholderIssues.some((issue) => issue.code === "placeholder-picture-asset" && issue.severity === "warning"), "Type F should warn on safe placeholder assets.");
+assert.equal(getEnglishLevelOnePicturePresentation(placeholderPicture).usesFallback, true, "Invalid or missing assets should have a safe placeholder presentation path.");
 
 const beforeSubmitState = getEnglishLevelOneActivityState({ submitted: false });
 assert.equal(beforeSubmitState.showCorrectAnswer, false);

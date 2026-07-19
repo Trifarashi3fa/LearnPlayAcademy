@@ -19,6 +19,7 @@ import {
   getEnglishLevelOneBlankDisplay,
   getEnglishLevelOneChoiceById,
   getEnglishLevelOneMatchingModel,
+  getEnglishLevelOnePicturePresentation,
   getEnglishLevelOnePrototype,
   getEnglishLevelOneSelectedAnswer,
   isEnglishLevelOneChoiceCorrect,
@@ -555,23 +556,26 @@ function EnglishPictureChoiceActivity({
   onChooseChoice: (choiceId: string) => void;
 }) {
   const submitted = submittedChoiceId !== null;
+  const picturePresentation = getEnglishLevelOnePicturePresentation(prototype);
 
   return (
     <div className="mt-3 grid min-h-0 gap-3 rounded-[1.35rem] border border-[#CDEFD9] bg-[#F4FFF8] p-3 sm:p-4" data-english-activity-layout="picture-choice">
       <div className="grid min-w-0 gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.75fr)] lg:items-center">
         <div className="min-w-0 rounded-[1.25rem] bg-gradient-to-br from-[#EAFBF0] to-white p-4 text-center shadow-sm">
-          {prototype.picture?.assetSrc ? (
-            <Image
-              src={prototype.picture.assetSrc}
-              alt={prototype.picture.altText}
-              width={150}
-              height={150}
-              className="mx-auto h-28 w-28 object-contain sm:h-36 sm:w-36"
-            />
-          ) : (
-            <div className="text-6xl sm:text-7xl" role="img" aria-label={prototype.picture?.altText ?? prototype.displayText}>{prototype.picture?.emoji}</div>
-          )}
-          <p className="mt-3 text-2xl font-black capitalize text-[#082B80]">{prototype.picture?.label}</p>
+          <div className="mx-auto flex h-36 w-full max-w-[15rem] items-center justify-center rounded-[1.1rem] border border-white/80 bg-white/75 p-3 shadow-inner sm:h-44 lg:h-48">
+            {picturePresentation?.assetSrc && !picturePresentation.usesFallback ? (
+              <Image
+                src={picturePresentation.assetSrc}
+                alt={picturePresentation.altText}
+                width={512}
+                height={512}
+                className="h-full w-full object-contain"
+              />
+            ) : (
+              <EnglishPictureFallback label={picturePresentation?.label ?? prototype.displayText} altText={picturePresentation?.altText ?? "Picture clue placeholder"} />
+            )}
+          </div>
+          <p className="mt-3 text-2xl font-black lowercase text-[#082B80]">{picturePresentation?.label ?? prototype.displayText.toLowerCase()}</p>
           <p className="mt-1 text-sm font-bold text-[#3F527E]">Say the word slowly.</p>
         </div>
         <div className="rounded-[1.15rem] bg-white p-4 text-center shadow-sm">
@@ -602,6 +606,14 @@ function EnglishPictureChoiceActivity({
   );
 }
 
+function EnglishPictureFallback({ label, altText }: { label: string; altText: string }) {
+  return (
+    <div className="flex h-full w-full flex-col items-center justify-center rounded-[0.9rem] border-2 border-dashed border-[#CDEFD9] bg-[#F8FFF9] px-4 text-center" role="img" aria-label={altText}>
+      <span className="text-xs font-black uppercase tracking-wide text-[#15803D]">Picture coming soon</span>
+      <span className="mt-2 text-3xl font-black lowercase text-[#082B80]">{label}</span>
+    </div>
+  );
+}
 function EnglishChoiceTile({
   choice,
   selected,

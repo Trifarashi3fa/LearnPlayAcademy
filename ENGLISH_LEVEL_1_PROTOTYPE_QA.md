@@ -1,4 +1,4 @@
-# English Level 1 Prototype QA
+﻿# English Level 1 Prototype QA
 
 ## Scope
 
@@ -108,20 +108,31 @@ Added English Level 1 asset QA coverage for:
 - missing alt text
 - unsupported external image paths
 - non-public image paths
-- map/world/sprite-like image sources
+- forbidden world-map, map, mountain, screenshot, sprite, UI, dashboard, badge, reward, thumbnail, Mathematics, Science, and subject-card sources
 - missing local image files
 - very tiny detectable image dimensions
 - duplicate picture assets within the Level 1 pool
+- invalid picture kind
+- mismatched vocabulary label
+- mismatched expected first letter
+- explicit placeholder picture assets
 
 Current result:
 
 - Blocking asset errors: 0
 - Asset warnings: 0
-- No runtime asset files were added, deleted, or modified.
+- English Level 1 now uses subject-owned Type F assets:
+  - `/english/year1/level1/apple.svg`
+  - `/english/year1/level1/bird.svg`
+  - `/english/year1/level1/star.svg`
+
+Asset report:
+
+- `ENGLISH_LEVEL_1_ASSET_QA_REPORT.md`
 
 Remaining asset note:
 
-- The current Level 1 picture clues use existing lightweight local assets for apple, bird, and star. Final English-specific illustration assets can still replace these later without changing the interaction logic.
+- The new SVGs are safe local English Level 1 learning-object assets. A later artwork pass can replace them with final brand illustrations without changing the Type F metadata contract.
 
 ## Responsive Results
 
@@ -166,7 +177,7 @@ Implemented or preserved:
 - Type D does not reveal correctness before submission.
 - Type F alt text is required.
 - Type F rejects invalid external image sources.
-- Type F warns on suspicious map/world/sprite-like sources.
+- Type F rejects forbidden world/map/sprite, Mathematics, Science, screenshot, and UI-like image sources.
 - Labels match actual interaction variants.
 - English Level 1 visible text does not mention math.
 - Initial question state resets to no selection, hint closed, and listen closed.
@@ -189,7 +200,7 @@ Implemented or preserved:
 
 - Type D is tap-to-match, not drag-and-drop. This is intentional for accessibility and touch reliability.
 - Browser speech/audio playback is not added; Listen currently reveals the existing voice script text with a safe fallback experience.
-- Final English-specific picture artwork is still recommended for a later asset pass.
+- A future artwork pass may replace the simple English Level 1 SVGs with final LearnPlay-branded illustrations using the same metadata contract.
 - Levels 2-10 still use the compatibility renderer by design.
 
 ## Template Readiness Recommendation
