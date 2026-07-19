@@ -14,8 +14,15 @@ import type { LevelQuestionAttemptInput, ProgressWorldRef } from "@/data/progres
 import type { ProgressSyncStatus } from "@/lib/progress/child-progress";
 import {
   buildEnglishLevelOneExplanationSections,
+  canSubmitEnglishLevelOneAnswer,
   getEnglishLevelOneActivityState,
+  getEnglishLevelOneBlankDisplay,
+  getEnglishLevelOneChoiceById,
+  getEnglishLevelOneMatchingModel,
   getEnglishLevelOnePrototype,
+  getEnglishLevelOneSelectedAnswer,
+  isEnglishLevelOneChoiceCorrect,
+  type EnglishLevelOneChoice,
   type EnglishLevelOnePrototype,
 } from "@/lib/english/level-one-prototype";
 import { getForestLevelAccess } from "@/lib/progress/level-access";
@@ -62,8 +69,8 @@ export function EnglishLevelOneQuestionPlayer({ level }: { level: MvpLevel }) {
   const { progress, ready, worldProgressRecord, worldCompleted, completeLevel, syncStatus, lastSyncedAt } = useMvpProgress(progressRef, totalLevelCount);
   const [sessionQuestions] = useState(() => createSessionQuestions(level));
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [draftAnswer, setDraftAnswer] = useState<string | null>(null);
-  const [submittedAnswer, setSubmittedAnswer] = useState<string | null>(null);
+  const [selectedChoiceId, setSelectedChoiceId] = useState<string | null>(null);
+  const [submittedChoiceId, setSubmittedChoiceId] = useState<string | null>(null);
   const [correctCount, setCorrectCount] = useState(0);
   const [attempts, setAttempts] = useState<LevelQuestionAttemptInput[]>([]);
   const [completed, setCompleted] = useState(false);
@@ -74,8 +81,10 @@ export function EnglishLevelOneQuestionPlayer({ level }: { level: MvpLevel }) {
   const finishingRef = useRef(false);
   const currentQuestion = sessionQuestions[questionIndex];
   const prototype = useMemo(() => getEnglishLevelOnePrototype(currentQuestion), [currentQuestion]);
-  const answered = submittedAnswer !== null;
-  const answeredCorrectly = submittedAnswer === currentQuestion.correctAnswer;
+  const submittedAnswer = getEnglishLevelOneSelectedAnswer(prototype, submittedChoiceId);
+  const answered = submittedChoiceId !== null;
+  const answeredCorrectly = isEnglishLevelOneChoiceCorrect(prototype, submittedChoiceId);
+  const canSubmit = canSubmitEnglishLevelOneAnswer({ selectedChoiceId, submitted: answered });
   const starsEarned = useMemo(() => calculateStars(correctCount, sessionQuestions.length), [correctCount, sessionQuestions.length]);
   const answerXp = attempts.reduce((total, attempt) => total + (attempt.correct ? attempt.xpReward : 0), 0);
   const completesWorld = level.level === 10;
@@ -86,15 +95,18 @@ export function EnglishLevelOneQuestionPlayer({ level }: { level: MvpLevel }) {
   const worldName = level.worldName ?? "Forest World";
 
   function submitAnswer() {
-    if (answered || draftAnswer === null) return;
+    if (!canSubmit) return;
 
-    const correct = draftAnswer === currentQuestion.correctAnswer;
-    setSubmittedAnswer(draftAnswer);
+    const selectedAnswer = getEnglishLevelOneSelectedAnswer(prototype, selectedChoiceId);
+    if (selectedAnswer === null || selectedChoiceId === null) return;
+
+    const correct = selectedAnswer === currentQuestion.correctAnswer;
+    setSubmittedChoiceId(selectedChoiceId);
     setAttempts((current) => [
       ...current,
       {
         questionId: currentQuestion.id,
-        selectedAnswer: draftAnswer,
+        selectedAnswer,
         correct,
         xpReward: currentQuestion.xpReward,
       },
@@ -109,8 +121,8 @@ export function EnglishLevelOneQuestionPlayer({ level }: { level: MvpLevel }) {
     if (!answered) return;
     if (questionIndex < sessionQuestions.length - 1) {
       setQuestionIndex((current) => current + 1);
-      setDraftAnswer(null);
-      setSubmittedAnswer(null);
+      setSelectedChoiceId(null);
+      setSubmittedChoiceId(null);
       setHintOpen(false);
       setVoiceOpen(false);
       return;
@@ -200,11 +212,11 @@ export function EnglishLevelOneQuestionPlayer({ level }: { level: MvpLevel }) {
           <EnglishActivityCard
             question={currentQuestion}
             prototype={prototype}
-            draftAnswer={draftAnswer}
-            submittedAnswer={submittedAnswer}
+            selectedChoiceId={selectedChoiceId}
+            submittedChoiceId={submittedChoiceId}
             hintOpen={hintOpen}
             voiceOpen={voiceOpen}
-            onChoose={setDraftAnswer}
+            onChooseChoice={setSelectedChoiceId}
             onToggleHint={() => setHintOpen((current) => !current)}
             onToggleVoice={() => setVoiceOpen((current) => !current)}
           />
@@ -223,7 +235,7 @@ export function EnglishLevelOneQuestionPlayer({ level }: { level: MvpLevel }) {
       <EnglishActionBar
         mapHref={mapHref}
         answered={answered}
-        draftSelected={draftAnswer !== null}
+        draftSelected={selectedChoiceId !== null}
         lastQuestion={questionIndex === sessionQuestions.length - 1}
         correct={answeredCorrectly}
         onSubmit={submitAnswer}
@@ -305,36 +317,37 @@ function Metric({ label, value, tone }: { label: string; value: string; tone: "p
 function EnglishActivityCard({
   question,
   prototype,
-  draftAnswer,
-  submittedAnswer,
+  selectedChoiceId,
+  submittedChoiceId,
   hintOpen,
   voiceOpen,
-  onChoose,
+  onChooseChoice,
   onToggleHint,
   onToggleVoice,
 }: {
   question: MvpQuestion;
   prototype: EnglishLevelOnePrototype;
-  draftAnswer: string | null;
-  submittedAnswer: string | null;
+  selectedChoiceId: string | null;
+  submittedChoiceId: string | null;
   hintOpen: boolean;
   voiceOpen: boolean;
-  onChoose: (answer: string) => void;
+  onChooseChoice: (choiceId: string) => void;
   onToggleHint: () => void;
   onToggleVoice: () => void;
 }) {
-  const submitted = submittedAnswer !== null;
+  const submitted = submittedChoiceId !== null;
   const activityState = getEnglishLevelOneActivityState({ submitted });
+  const correct = isEnglishLevelOneChoiceCorrect(prototype, submittedChoiceId);
 
   return (
-    <article className="mx-auto flex min-h-0 w-full max-w-5xl flex-col overflow-hidden rounded-[1.75rem] border border-[#D8CDFC] bg-white p-3 shadow-playful sm:p-4 lg:max-w-none" aria-labelledby={`${question.id}-prompt`} data-english-level-one-prototype="true">
+    <article className={`mx-auto flex min-h-0 w-full max-w-5xl flex-col overflow-hidden rounded-[1.75rem] border bg-white p-3 shadow-playful sm:p-4 lg:max-w-none ${prototype.type === "picture-choice" ? "border-[#CDEFD9]" : "border-[#D8CDFC]"}`} aria-labelledby={`${question.id}-prompt`} data-english-level-one-prototype="true" data-english-activity-type={prototype.type}>
       <div className="flex shrink-0 flex-wrap items-center gap-2">
         <span className="rounded-full bg-[#6D28D9] px-3 py-1.5 text-xs font-black uppercase tracking-wide text-white">Type {prototype.typeCode}</span>
-        <span className="rounded-full bg-[#F3ECFF] px-3 py-1.5 text-xs font-black text-[#6D28D9]">{prototype.typeName}</span>
+        <span className="rounded-full bg-[#F3ECFF] px-3 py-1.5 text-xs font-black text-[#6D28D9]">{prototype.activityLabel}</span>
         <span className="rounded-full bg-[#EAF6FF] px-3 py-1.5 text-xs font-black uppercase tracking-wide text-[#0B63F6]">English - Alphabet Recognition</span>
         {submitted ? (
-          <span className={`rounded-full px-3 py-1.5 text-xs font-black uppercase tracking-wide ${submittedAnswer === question.correctAnswer ? "bg-[#DCFCE7] text-[#15803D]" : "bg-[#FEE2E2] text-[#B91C1C]"}`} role="status" aria-live="polite">
-            {submittedAnswer === question.correctAnswer ? "Correct" : "Review"}
+          <span className={`rounded-full px-3 py-1.5 text-xs font-black uppercase tracking-wide ${correct ? "bg-[#DCFCE7] text-[#15803D]" : "bg-[#FEE2E2] text-[#B91C1C]"}`} role="status" aria-live="polite">
+            {correct ? "Correct" : "Review"}
           </span>
         ) : null}
       </div>
@@ -346,120 +359,265 @@ function EnglishActivityCard({
           </h2>
           <p className="mt-1 text-sm font-bold leading-6 text-[#3F527E] sm:text-base">{prototype.instruction}</p>
         </div>
-        <div className="flex shrink-0 gap-2">
-          <button type="button" onClick={onToggleHint} aria-expanded={hintOpen} className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#FFE0A3] bg-[#FFF7D6] px-3 text-sm font-black text-[#8A4B00] transition hover:bg-[#FFF0B5] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#FFD76A]/40">
-            Hint
-          </button>
-          <button type="button" onClick={onToggleVoice} aria-expanded={voiceOpen} className="inline-flex min-h-11 items-center justify-center rounded-full border-2 border-[#CFE2FF] bg-[#EAF6FF] px-3 text-sm font-black text-[#0B63F6] transition hover:bg-[#DCEEFF] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#0B63F6]/25">
-            Listen
-          </button>
+        <div className="flex shrink-0 gap-2" aria-label="English help controls">
+          <LessonToolButton label="Hint" expanded={hintOpen} tone="hint" onClick={onToggleHint} />
+          <LessonToolButton label="Listen" expanded={voiceOpen} tone="voice" onClick={onToggleVoice} />
         </div>
       </div>
 
-      {hintOpen ? (
-        <div className="mt-3 rounded-[1.1rem] border border-[#FFD76A] bg-[#FFF7D6] px-4 py-3 text-sm font-black leading-6 text-[#082B80]" role="note">
-          {prototype.hint}
-        </div>
-      ) : null}
-      {voiceOpen ? (
-        <div className="mt-3 rounded-[1.1rem] border border-[#CFE2FF] bg-[#F8FBFF] px-4 py-3 text-sm font-black leading-6 text-[#082B80]" role="note">
-          {prototype.voiceScript}
-        </div>
-      ) : null}
+      {hintOpen ? <HelpNote tone="hint" label="Hint" body={prototype.hint} /> : null}
+      {voiceOpen ? <HelpNote tone="voice" label="Listen" body={prototype.voiceScript} /> : null}
 
-      <div className="mt-3 min-h-0 flex-1 overflow-visible rounded-[1.35rem] border border-[#DDE8F5] bg-[#F8FBFF] p-3">
-        <EnglishActivityVisual prototype={prototype} showCorrectAnswer={activityState.showCorrectAnswer} />
-      </div>
-
-      <div className="mt-3 grid shrink-0 gap-2 sm:grid-cols-2">
-        {prototype.choices.map((choice) => (
-          <AnswerButton
-            key={choice.id}
-            label={choice.label}
-            accessibilityLabel={choice.accessibilityLabel}
-            selected={draftAnswer === choice.label}
-            submitted={submitted}
-            correct={choice.label === question.correctAnswer}
-            chosenIncorrect={submitted && submittedAnswer === choice.label && submittedAnswer !== question.correctAnswer}
-            onClick={() => onChoose(choice.label)}
-          />
-        ))}
-      </div>
+      <EnglishActivityBody
+        prototype={prototype}
+        selectedChoiceId={selectedChoiceId}
+        submittedChoiceId={submittedChoiceId}
+        showCorrectAnswer={activityState.showCorrectAnswer}
+        onChooseChoice={onChooseChoice}
+      />
     </article>
   );
 }
 
-function EnglishActivityVisual({ prototype, showCorrectAnswer }: { prototype: EnglishLevelOnePrototype; showCorrectAnswer: boolean }) {
-  if (prototype.type === "picture-choice") {
-    return (
-      <div className="grid min-w-0 gap-3 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-center">
-        <div className="min-w-0 rounded-[1.25rem] bg-gradient-to-br from-[#EAFBF0] to-white p-4 text-center">
-          {prototype.picture?.assetSrc ? (
-            <Image
-              src={prototype.picture.assetSrc}
-              alt={prototype.picture.altText}
-              width={112}
-              height={112}
-              className="mx-auto h-24 w-24 object-contain sm:h-28 sm:w-28"
-            />
-          ) : (
-            <div className="text-6xl sm:text-7xl" role="img" aria-label={prototype.picture?.altText ?? prototype.displayText}>{prototype.picture?.emoji}</div>
-          )}
-          <p className="mt-2 text-lg font-black text-[#082B80]">{prototype.picture?.label}</p>
-        </div>
-        <div className="min-w-0 rounded-[1.15rem] bg-white p-4 text-center shadow-sm">
-          <p className="text-xs font-black uppercase tracking-wide text-[#6D28D9]">{prototype.visualLabel}</p>
-          <p className="mt-2 text-base font-black leading-6 text-[#082B80]">Choose the first letter.</p>
-          {showCorrectAnswer ? <p className="mt-3 rounded-full bg-[#DCFCE7] px-4 py-2 text-xl font-black text-[#15803D]">Answer: {prototype.correctAnswer}</p> : null}
-        </div>
-      </div>
-    );
-  }
-
-  if (prototype.type === "matching") {
-    return (
-      <div className="grid min-w-0 gap-3 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-center">
-        <div className="rounded-[1.25rem] bg-[#F3ECFF] p-4 text-center">
-          <p className="text-xs font-black uppercase tracking-wide text-[#6D28D9]">Clue</p>
-          <p className="mt-2 text-2xl font-black text-[#082B80] sm:text-3xl">{prototype.displayText}</p>
-        </div>
-        <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-xl font-black text-[#6D28D9] shadow-sm" aria-hidden>
-          =
-        </div>
-        <div className="rounded-[1.25rem] bg-white p-4 text-center shadow-sm">
-          <p className="text-xs font-black uppercase tracking-wide text-[#6D28D9]">Match</p>
-          <p className="mt-2 text-lg font-black text-[#082B80]">Choose the partner letter.</p>
-          {showCorrectAnswer ? <p className="mt-3 rounded-full bg-[#DCFCE7] px-4 py-2 text-xl font-black text-[#15803D]">Answer: {prototype.correctAnswer}</p> : null}
-        </div>
-      </div>
-    );
-  }
+function LessonToolButton({ label, expanded, tone, onClick }: { label: string; expanded: boolean; tone: "hint" | "voice"; onClick: () => void }) {
+  const toneClass = tone === "hint"
+    ? "border-[#FFE0A3] bg-[#FFF7D6] text-[#8A4B00] hover:bg-[#FFF0B5] focus-visible:ring-[#FFD76A]/40"
+    : "border-[#CFE2FF] bg-[#EAF6FF] text-[#0B63F6] hover:bg-[#DCEEFF] focus-visible:ring-[#0B63F6]/25";
+  const icon = tone === "hint" ? "?" : "))";
 
   return (
-    <div className="rounded-[1.25rem] bg-white p-4 text-center shadow-sm">
-      <p className="text-xs font-black uppercase tracking-wide text-[#6D28D9]">{prototype.visualLabel}</p>
-      <p className="mt-2 text-3xl font-black tracking-wide text-[#082B80] sm:text-4xl">{showCorrectAnswer ? prototype.displayText.replace("___", prototype.correctAnswer) : prototype.displayText}</p>
-      {showCorrectAnswer ? <p className="mx-auto mt-3 inline-flex rounded-full bg-[#DCFCE7] px-4 py-2 text-xl font-black text-[#15803D]">Answer: {prototype.correctAnswer}</p> : null}
+    <button type="button" onClick={onClick} aria-label={`${label}. ${expanded ? "Hide" : "Show"} help`} aria-expanded={expanded} className={`inline-flex min-h-11 items-center justify-center gap-2 rounded-full border-2 px-3 text-sm font-black transition focus-visible:outline-none focus-visible:ring-4 ${toneClass}`}>
+      <span aria-hidden className="flex h-7 w-7 items-center justify-center rounded-full bg-white/75 text-xs">{icon}</span>
+      {label}
+    </button>
+  );
+}
+
+function HelpNote({ tone, label, body }: { tone: "hint" | "voice"; label: string; body: string }) {
+  const toneClass = tone === "hint" ? "border-[#FFD76A] bg-[#FFF7D6]" : "border-[#CFE2FF] bg-[#F8FBFF]";
+  return (
+    <div className={`mt-3 rounded-[1.1rem] border px-4 py-3 text-sm font-black leading-6 text-[#082B80] ${toneClass}`} role="note">
+      <span className="mr-2 text-[0.68rem] uppercase tracking-wide text-[#5B6B94]">{label}</span>
+      {body}
     </div>
   );
 }
 
-function AnswerButton({
-  label,
-  accessibilityLabel,
+function EnglishActivityBody({
+  prototype,
+  selectedChoiceId,
+  submittedChoiceId,
+  showCorrectAnswer,
+  onChooseChoice,
+}: {
+  prototype: EnglishLevelOnePrototype;
+  selectedChoiceId: string | null;
+  submittedChoiceId: string | null;
+  showCorrectAnswer: boolean;
+  onChooseChoice: (choiceId: string) => void;
+}) {
+  if (prototype.type === "matching") {
+    return <EnglishMatchingActivity prototype={prototype} selectedChoiceId={selectedChoiceId} submittedChoiceId={submittedChoiceId} onChooseChoice={onChooseChoice} />;
+  }
+
+  if (prototype.type === "picture-choice") {
+    return <EnglishPictureChoiceActivity prototype={prototype} selectedChoiceId={selectedChoiceId} submittedChoiceId={submittedChoiceId} showCorrectAnswer={showCorrectAnswer} onChooseChoice={onChooseChoice} />;
+  }
+
+  return <EnglishFillBlankActivity prototype={prototype} selectedChoiceId={selectedChoiceId} submittedChoiceId={submittedChoiceId} showCorrectAnswer={showCorrectAnswer} onChooseChoice={onChooseChoice} />;
+}
+
+function EnglishFillBlankActivity({
+  prototype,
+  selectedChoiceId,
+  submittedChoiceId,
+  showCorrectAnswer,
+  onChooseChoice,
+}: {
+  prototype: EnglishLevelOnePrototype;
+  selectedChoiceId: string | null;
+  submittedChoiceId: string | null;
+  showCorrectAnswer: boolean;
+  onChooseChoice: (choiceId: string) => void;
+}) {
+  const submitted = submittedChoiceId !== null;
+  const blankDisplay = getEnglishLevelOneBlankDisplay(prototype, selectedChoiceId);
+  const selectedChoice = getEnglishLevelOneChoiceById(prototype, selectedChoiceId);
+
+  return (
+    <div className="mt-3 grid min-h-0 gap-3 rounded-[1.35rem] border border-[#D8CDFC] bg-[#FBF8FF] p-3 sm:p-4" data-english-activity-layout="blank-completion">
+      <div className="rounded-[1.25rem] bg-white p-4 text-center shadow-sm">
+        <p className="text-xs font-black uppercase tracking-wide text-[#6D28D9]">{prototype.visualLabel}</p>
+        <p className="mt-3 text-3xl font-black tracking-wide text-[#082B80] sm:text-4xl" aria-live="polite">{blankDisplay}</p>
+        <p className="mx-auto mt-3 inline-flex min-h-10 items-center rounded-full bg-[#F3ECFF] px-4 text-sm font-black text-[#6D28D9]">
+          {selectedChoice ? `Blank filled with ${selectedChoice.label}` : "Tap an answer to fill the blank"}
+        </p>
+        {showCorrectAnswer ? <p className="mx-auto mt-3 inline-flex rounded-full bg-[#DCFCE7] px-4 py-2 text-lg font-black text-[#15803D]">Correct answer: {prototype.correctAnswer}</p> : null}
+      </div>
+      <div>
+        <p className="mb-2 text-sm font-black text-[#3F527E]">{prototype.selectionPrompt}</p>
+        <div className="grid gap-2 sm:grid-cols-4">
+          {prototype.choices.map((choice) => (
+            <EnglishChoiceTile
+              key={choice.id}
+              choice={choice}
+              compact
+              selected={selectedChoiceId === choice.id}
+              submitted={submitted}
+              correct={choice.label === prototype.correctAnswer}
+              chosenIncorrect={submittedChoiceId === choice.id && choice.label !== prototype.correctAnswer}
+              onChoose={() => onChooseChoice(choice.id)}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function EnglishMatchingActivity({
+  prototype,
+  selectedChoiceId,
+  submittedChoiceId,
+  onChooseChoice,
+}: {
+  prototype: EnglishLevelOnePrototype;
+  selectedChoiceId: string | null;
+  submittedChoiceId: string | null;
+  onChooseChoice: (choiceId: string) => void;
+}) {
+  const model = getEnglishLevelOneMatchingModel(prototype);
+  const submitted = submittedChoiceId !== null;
+  const activeChoiceId = submittedChoiceId ?? selectedChoiceId;
+  const selectedChoice = getEnglishLevelOneChoiceById(prototype, activeChoiceId);
+  const correctChoice = getEnglishLevelOneChoiceById(prototype, model.correctChoiceId);
+  const chosenIncorrect = submitted && activeChoiceId !== model.correctChoiceId;
+
+  return (
+    <div className="mt-3 grid min-h-0 gap-3 rounded-[1.35rem] border border-[#D8CDFC] bg-[#FBF8FF] p-3 sm:p-4" data-english-activity-layout="tap-to-match">
+      <div className="grid min-w-0 gap-3 lg:grid-cols-[minmax(0,0.85fr)_auto_minmax(0,1.15fr)] lg:items-center">
+        <div className="rounded-[1.25rem] border border-[#D8CDFC] bg-white p-4 text-center shadow-sm">
+          <p className="text-xs font-black uppercase tracking-wide text-[#6D28D9]">Clue</p>
+          <p className="mt-2 text-2xl font-black text-[#082B80] sm:text-3xl">{model.clue.label}</p>
+          <p className="mt-2 text-sm font-bold text-[#5B6B94]">{model.clue.helper}</p>
+        </div>
+
+        <div className="mx-auto flex min-h-16 min-w-20 flex-col items-center justify-center rounded-2xl bg-white px-3 text-center shadow-sm" aria-live="polite">
+          <span className={`h-2 w-16 rounded-full ${selectedChoice ? "bg-[#6D28D9]" : "bg-[#DDE8F5]"}`} aria-hidden />
+          <span className="mt-2 text-xs font-black uppercase tracking-wide text-[#5B6B94]">{selectedChoice ? "Matched" : "Tap"}</span>
+        </div>
+
+        <div>
+          <p className="mb-2 text-sm font-black text-[#3F527E]">{prototype.selectionPrompt}</p>
+          <div className="grid gap-2 sm:grid-cols-2">
+            {model.partners.map((choice) => (
+              <EnglishChoiceTile
+                key={choice.id}
+                choice={choice}
+                selected={activeChoiceId === choice.id}
+                submitted={submitted}
+                correct={choice.id === model.correctChoiceId}
+                chosenIncorrect={submittedChoiceId === choice.id && choice.id !== model.correctChoiceId}
+                onChoose={() => onChooseChoice(choice.id)}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="grid gap-2 rounded-[1rem] bg-white/80 p-3 text-sm font-black text-[#082B80] sm:grid-cols-2" aria-live="polite">
+        <div>
+          <span className="text-[0.68rem] uppercase tracking-wide text-[#5B6B94]">Your match</span>
+          <p>{selectedChoice ? `${model.clue.label} = ${selectedChoice.label}` : "Choose a partner letter."}</p>
+        </div>
+        {submitted ? (
+          <div>
+            <span className="text-[0.68rem] uppercase tracking-wide text-[#5B6B94]">{chosenIncorrect ? "Correct match" : "Result"}</span>
+            <p>{chosenIncorrect ? `${model.clue.label} = ${correctChoice?.label ?? prototype.correctAnswer}` : "Your match is correct."}</p>
+          </div>
+        ) : null}
+      </div>
+    </div>
+  );
+}
+
+function EnglishPictureChoiceActivity({
+  prototype,
+  selectedChoiceId,
+  submittedChoiceId,
+  showCorrectAnswer,
+  onChooseChoice,
+}: {
+  prototype: EnglishLevelOnePrototype;
+  selectedChoiceId: string | null;
+  submittedChoiceId: string | null;
+  showCorrectAnswer: boolean;
+  onChooseChoice: (choiceId: string) => void;
+}) {
+  const submitted = submittedChoiceId !== null;
+
+  return (
+    <div className="mt-3 grid min-h-0 gap-3 rounded-[1.35rem] border border-[#CDEFD9] bg-[#F4FFF8] p-3 sm:p-4" data-english-activity-layout="picture-choice">
+      <div className="grid min-w-0 gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.75fr)] lg:items-center">
+        <div className="min-w-0 rounded-[1.25rem] bg-gradient-to-br from-[#EAFBF0] to-white p-4 text-center shadow-sm">
+          {prototype.picture?.assetSrc ? (
+            <Image
+              src={prototype.picture.assetSrc}
+              alt={prototype.picture.altText}
+              width={150}
+              height={150}
+              className="mx-auto h-28 w-28 object-contain sm:h-36 sm:w-36"
+            />
+          ) : (
+            <div className="text-6xl sm:text-7xl" role="img" aria-label={prototype.picture?.altText ?? prototype.displayText}>{prototype.picture?.emoji}</div>
+          )}
+          <p className="mt-3 text-2xl font-black capitalize text-[#082B80]">{prototype.picture?.label}</p>
+          <p className="mt-1 text-sm font-bold text-[#3F527E]">Say the word slowly.</p>
+        </div>
+        <div className="rounded-[1.15rem] bg-white p-4 text-center shadow-sm">
+          <p className="text-xs font-black uppercase tracking-wide text-[#15803D]">{prototype.visualLabel}</p>
+          <p className="mt-2 text-lg font-black leading-6 text-[#082B80]">Which first letter do you hear?</p>
+          {showCorrectAnswer ? <p className="mt-3 rounded-full bg-[#DCFCE7] px-4 py-2 text-xl font-black text-[#15803D]">Correct answer: {prototype.correctAnswer}</p> : null}
+        </div>
+      </div>
+
+      <div>
+        <p className="mb-2 text-sm font-black text-[#3F527E]">{prototype.selectionPrompt}</p>
+        <div className="grid gap-2 sm:grid-cols-4">
+          {prototype.choices.map((choice) => (
+            <EnglishChoiceTile
+              key={choice.id}
+              choice={choice}
+              compact
+              selected={selectedChoiceId === choice.id || submittedChoiceId === choice.id}
+              submitted={submitted}
+              correct={choice.label === prototype.correctAnswer}
+              chosenIncorrect={submittedChoiceId === choice.id && choice.label !== prototype.correctAnswer}
+              onChoose={() => onChooseChoice(choice.id)}
+            />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function EnglishChoiceTile({
+  choice,
   selected,
   submitted,
   correct,
   chosenIncorrect,
-  onClick,
+  compact = false,
+  onChoose,
 }: {
-  label: string;
-  accessibilityLabel: string;
+  choice: EnglishLevelOneChoice;
   selected: boolean;
   submitted: boolean;
   correct: boolean;
   chosenIncorrect: boolean;
-  onClick: () => void;
+  compact?: boolean;
+  onChoose: () => void;
 }) {
   const stateClass = submitted && correct
     ? "border-[#22C55E] bg-[#DCFCE7] text-[#15803D]"
@@ -468,20 +626,20 @@ function AnswerButton({
       : selected
         ? "border-[#6D28D9] bg-[#F3ECFF] text-[#6D28D9]"
         : "border-[#DDE8F5] bg-white text-[#082B80] hover:border-[#6D28D9] hover:bg-[#F8F4FF]";
+  const statusLabel = submitted && correct ? "Correct" : chosenIncorrect ? "Review" : selected ? "Selected" : "";
 
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={onChoose}
       disabled={submitted}
-      aria-label={accessibilityLabel}
+      aria-label={choice.accessibilityLabel}
       aria-pressed={selected || (submitted && correct)}
-      className={`flex min-h-14 min-w-0 items-center justify-between gap-3 rounded-[1.1rem] border-2 px-4 text-left text-lg font-black transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#6D28D9]/25 disabled:cursor-default ${stateClass}`}
+      className={`flex min-h-14 min-w-0 items-center gap-3 rounded-[1.1rem] border-2 px-4 text-left font-black transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#6D28D9]/25 disabled:cursor-default ${compact ? "justify-center text-xl sm:text-2xl" : "justify-between text-lg"} ${stateClass}`}
     >
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/70 text-sm font-black text-[#0B63F6]">{label.slice(0, 1).toUpperCase()}</span>
-      <span className="min-w-0 flex-1 break-words">{label}</span>
-      {submitted && correct ? <span className="rounded-full bg-white px-3 py-1 text-xs font-black uppercase">Correct</span> : null}
-      {chosenIncorrect ? <span className="rounded-full bg-white px-3 py-1 text-xs font-black uppercase">Review</span> : null}
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/70 text-sm font-black text-[#0B63F6]">{choice.label.slice(0, 1).toUpperCase()}</span>
+      <span className="min-w-0 flex-1 break-words">{choice.label}</span>
+      {statusLabel ? <span className="rounded-full bg-white px-3 py-1 text-xs font-black uppercase">{statusLabel}</span> : null}
     </button>
   );
 }
