@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useRef, useState } from "react";
+import { EnglishLevelOneQuestionPlayer } from "@/components/english/EnglishLevelOneQuestionPlayer";
 import { ExplanationTabs } from "@/components/mvp/explanation/ExplanationTabs";
 import { ForestRewardScreen } from "@/components/mvp/explanation/ForestRewardScreen";
 import { getThinkModeHint, HintPanel } from "@/components/mvp/explanation/HintPanel";
@@ -18,6 +19,7 @@ import { getLevelBonusXp, getQuestionLearningContent, type MvpLevel } from "@/da
 import type { NodeType } from "@/data/curriculum-types";
 import type { LevelQuestionAttemptInput, ProgressWorldRef } from "@/data/progress-types";
 import { getForestLevelAccess } from "@/lib/progress/level-access";
+import { shouldUseEnglishLevelOnePrototype } from "@/lib/english/level-one-prototype";
 
 function createSessionQuestions(level: MvpLevel) {
   const questionCount = Math.min(level.sessionQuestionCount ?? level.questions.length, level.questions.length);
@@ -32,6 +34,14 @@ function createSessionQuestions(level: MvpLevel) {
 }
 
 export function QuestionPlayer({ level }: { level: MvpLevel }) {
+  if (shouldUseEnglishLevelOnePrototype(level)) {
+    return <EnglishLevelOneQuestionPlayer level={level} />;
+  }
+
+  return <StandardQuestionPlayer level={level} />;
+}
+
+function StandardQuestionPlayer({ level }: { level: MvpLevel }) {
   const progressRef = useMemo<ProgressWorldRef>(() => ({
     subject: level.subject ?? forestWorldIdentity.subject,
     year: level.year ?? forestWorldIdentity.year,
