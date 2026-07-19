@@ -1,4 +1,4 @@
-﻿# English Level 1 Asset QA Report
+# English Level 1 Asset QA Report
 
 Date: 2026-07-19
 Project: LearnPlay Academy
@@ -69,6 +69,17 @@ Mathematics and Science were not modified.
 - Type F validates picture kind, lowercase label, and expected first letter.
 - Type F has a safe fallback presentation path for explicit placeholder metadata.
 
+## Responsive Type F Asset Presentation
+
+The apple, bird, and star assets remain unchanged, but the Type F presentation now uses a smaller height-aware frame so the image does not consume the available laptop viewport. The renderer still uses `object-contain`, centers the SVG, preserves the word label directly below the picture, and avoids cropping or stretching.
+
+Presentation rules added:
+
+- Use a compact Type F picture frame instead of the old tall fixed frame.
+- Keep the vocabulary word close to the picture.
+- Keep the clue card beside the picture on tablet/laptop/desktop widths.
+- Keep all four answers visible above the English action bar when the viewport allows.
+- Use scroll padding as a safety guard instead of allowing the answer row to sit behind the bottom action bar.
 ## Remaining Placeholders
 
 None in active English Level 1 Type F metadata.

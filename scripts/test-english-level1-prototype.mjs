@@ -5,6 +5,7 @@ import vm from "node:vm";
 import ts from "typescript";
 
 const root = process.cwd();
+const englishLevelOnePlayerSource = fs.readFileSync(path.join(root, "components/english/EnglishLevelOneQuestionPlayer.tsx"), "utf8");
 const moduleCache = new Map();
 
 function resolveRequest(request, parentFile) {
@@ -270,6 +271,33 @@ assert.equal(q05.picture.assetSrc.includes("/assets/math-icons/"), false, "Type 
 assert.equal(q05.picture.label, "apple", "Type F vocabulary labels should stay lowercase and child-friendly.");
 assert.equal(q05.picture.expectedFirstLetter, q05.correctAnswer, "Type F expected first-letter metadata must match the answer.");
 assert.equal(getEnglishLevelOnePicturePresentation(q05).usesFallback, false, "Approved local Type F assets should render as images, not placeholders.");
+
+const pictureChoiceFunctionStart = englishLevelOnePlayerSource.indexOf("function EnglishPictureChoiceActivity");
+const pictureChoiceFunctionEnd = englishLevelOnePlayerSource.indexOf("function EnglishPictureFallback");
+const pictureChoiceSource = englishLevelOnePlayerSource.slice(pictureChoiceFunctionStart, pictureChoiceFunctionEnd);
+const fillBlankSource = englishLevelOnePlayerSource.slice(
+  englishLevelOnePlayerSource.indexOf("function EnglishFillBlankActivity"),
+  englishLevelOnePlayerSource.indexOf("function EnglishMatchingActivity"),
+);
+const matchingSource = englishLevelOnePlayerSource.slice(
+  englishLevelOnePlayerSource.indexOf("function EnglishMatchingActivity"),
+  englishLevelOnePlayerSource.indexOf("function EnglishPictureChoiceActivity"),
+);
+assert.ok(englishLevelOnePlayerSource.includes('data-english-actionbar-safe-area="true"'), "English Level 1 shell must reserve scroll safe area for the bottom action bar.");
+assert.ok(englishLevelOnePlayerSource.includes("scrollPaddingBottom"), "English Level 1 shell should use scroll padding instead of clipping content behind the action bar.");
+assert.equal(englishLevelOnePlayerSource.includes("lg:overflow-hidden"), false, "English Level 1 shell must not clip desktop activity content.");
+assert.ok(pictureChoiceSource.includes('data-english-compact-type-f="true"'), "Type F should declare the compact responsive layout contract.");
+assert.ok(pictureChoiceSource.includes('data-english-picture-frame="compact"'), "Type F should use the compact picture frame.");
+assert.ok(pictureChoiceSource.includes('data-english-answer-grid="responsive-type-f"'), "Type F should use a responsive answer grid.");
+assert.ok(pictureChoiceSource.includes('choiceDensity="picture"'), "Type F choices should use the picture-specific compact density.");
+assert.ok(pictureChoiceSource.includes("object-contain"), "Type F images must use object-contain to avoid cropping or stretching.");
+assert.ok(pictureChoiceSource.includes("md:grid-cols-[minmax(0,1fr)_minmax(15rem,0.68fr)]"), "Type F should use compact two-column picture/clue layout when width allows.");
+assert.ok(pictureChoiceSource.includes("lg:grid-cols-4"), "Type F answers should fit in one row on laptop/desktop widths.");
+assert.equal(pictureChoiceSource.includes("h-36"), false, "Type F should not use the old tall h-36 picture frame.");
+assert.equal(pictureChoiceSource.includes("sm:h-44"), false, "Type F should not use the old tall sm:h-44 picture frame.");
+assert.equal(pictureChoiceSource.includes("lg:h-48"), false, "Type F should not use the old tall lg:h-48 picture frame.");
+assert.equal(fillBlankSource.includes('choiceDensity="picture"'), false, "Type B should not inherit the Type F picture-only answer density.");
+assert.equal(matchingSource.includes('choiceDensity="picture"'), false, "Type D should not inherit the Type F picture-only answer density.");
 
 for (const prototype of prototypes.filter((item) => item.type === "picture-choice")) {
   assert.equal(prototype.activityLabel, "Picture Choice", `${prototype.questionId} must use the approved Type F label.`);

@@ -208,7 +208,12 @@ export function EnglishLevelOneQuestionPlayer({ level }: { level: MvpLevel }) {
         syncStatus={syncStatus}
       />
 
-      <section className="mx-auto grid min-h-0 w-full max-w-[96rem] flex-1 gap-3 overflow-y-auto overflow-x-hidden p-3 lg:overflow-hidden lg:p-4" aria-label="English Level 1 question experience">
+      <section
+        className="mx-auto grid min-h-0 w-full max-w-[96rem] flex-1 gap-3 overflow-y-auto overflow-x-hidden px-3 pb-3 pt-3 lg:px-4 lg:pb-3 lg:pt-4"
+        style={{ scrollPaddingBottom: "calc(5.5rem + env(safe-area-inset-bottom))" }}
+        aria-label="English Level 1 question experience"
+        data-english-actionbar-safe-area="true"
+      >
         <div className={`grid min-h-0 gap-3 ${answered ? "lg:grid-cols-[minmax(0,1fr)_minmax(23rem,34rem)]" : "lg:grid-cols-1"}`}>
           <EnglishActivityCard
             question={currentQuestion}
@@ -559,10 +564,10 @@ function EnglishPictureChoiceActivity({
   const picturePresentation = getEnglishLevelOnePicturePresentation(prototype);
 
   return (
-    <div className="mt-3 grid min-h-0 gap-3 rounded-[1.35rem] border border-[#CDEFD9] bg-[#F4FFF8] p-3 sm:p-4" data-english-activity-layout="picture-choice">
-      <div className="grid min-w-0 gap-3 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.75fr)] lg:items-center">
-        <div className="min-w-0 rounded-[1.25rem] bg-gradient-to-br from-[#EAFBF0] to-white p-4 text-center shadow-sm">
-          <div className="mx-auto flex h-36 w-full max-w-[15rem] items-center justify-center rounded-[1.1rem] border border-white/80 bg-white/75 p-3 shadow-inner sm:h-44 lg:h-48">
+    <div className="mt-2 grid min-h-0 gap-2 rounded-[1.35rem] border border-[#CDEFD9] bg-[#F4FFF8] p-2.5 sm:p-3 [@media(max-height:800px)]:gap-2 [@media(max-height:800px)]:p-2" data-english-activity-layout="picture-choice" data-english-compact-type-f="true">
+      <div className="grid min-w-0 gap-2 md:grid-cols-[minmax(0,1fr)_minmax(15rem,0.68fr)] md:items-center lg:gap-3">
+        <div className="min-w-0 rounded-[1.1rem] bg-gradient-to-br from-[#EAFBF0] to-white px-3 py-2 text-center shadow-sm sm:py-2.5 lg:p-3">
+          <div className="mx-auto flex h-[clamp(5.625rem,14dvh,7.75rem)] w-full max-w-[12.5rem] items-center justify-center rounded-[1rem] border border-white/80 bg-white/75 p-2 shadow-inner sm:h-[clamp(6rem,16dvh,8.75rem)] lg:h-[clamp(7.5rem,18dvh,10.75rem)] lg:max-w-[14rem]" data-english-picture-frame="compact">
             {picturePresentation?.assetSrc && !picturePresentation.usesFallback ? (
               <Image
                 src={picturePresentation.assetSrc}
@@ -575,24 +580,25 @@ function EnglishPictureChoiceActivity({
               <EnglishPictureFallback label={picturePresentation?.label ?? prototype.displayText} altText={picturePresentation?.altText ?? "Picture clue placeholder"} />
             )}
           </div>
-          <p className="mt-3 text-2xl font-black lowercase text-[#082B80]">{picturePresentation?.label ?? prototype.displayText.toLowerCase()}</p>
-          <p className="mt-1 text-sm font-bold text-[#3F527E]">Say the word slowly.</p>
+          <p className="mt-2 text-xl font-black lowercase text-[#082B80] sm:text-2xl [@media(max-height:800px)]:mt-1.5 [@media(max-height:800px)]:text-xl">{picturePresentation?.label ?? prototype.displayText.toLowerCase()}</p>
+          <p className="mt-0.5 text-xs font-bold text-[#3F527E] sm:text-sm">Say the word slowly.</p>
         </div>
-        <div className="rounded-[1.15rem] bg-white p-4 text-center shadow-sm">
+        <div className="rounded-[1.1rem] bg-white px-3 py-3 text-center shadow-sm sm:px-4">
           <p className="text-xs font-black uppercase tracking-wide text-[#15803D]">{prototype.visualLabel}</p>
-          <p className="mt-2 text-lg font-black leading-6 text-[#082B80]">Which first letter do you hear?</p>
-          {showCorrectAnswer ? <p className="mt-3 rounded-full bg-[#DCFCE7] px-4 py-2 text-xl font-black text-[#15803D]">Correct answer: {prototype.correctAnswer}</p> : null}
+          <p className="mt-1.5 text-base font-black leading-6 text-[#082B80] sm:text-lg">Which first letter do you hear?</p>
+          {showCorrectAnswer ? <p className="mt-2 rounded-full bg-[#DCFCE7] px-4 py-1.5 text-lg font-black text-[#15803D]">Correct answer: {prototype.correctAnswer}</p> : null}
         </div>
       </div>
 
       <div>
-        <p className="mb-2 text-sm font-black text-[#3F527E]">{prototype.selectionPrompt}</p>
-        <div className="grid gap-2 sm:grid-cols-4">
+        <p className="mb-1.5 text-sm font-black text-[#3F527E]">{prototype.selectionPrompt}</p>
+        <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-4" data-english-answer-grid="responsive-type-f">
           {prototype.choices.map((choice) => (
             <EnglishChoiceTile
               key={choice.id}
               choice={choice}
               compact
+              choiceDensity="picture"
               selected={selectedChoiceId === choice.id || submittedChoiceId === choice.id}
               submitted={submitted}
               correct={choice.label === prototype.correctAnswer}
@@ -621,6 +627,7 @@ function EnglishChoiceTile({
   correct,
   chosenIncorrect,
   compact = false,
+  choiceDensity = "default",
   onChoose,
 }: {
   choice: EnglishLevelOneChoice;
@@ -629,6 +636,7 @@ function EnglishChoiceTile({
   correct: boolean;
   chosenIncorrect: boolean;
   compact?: boolean;
+  choiceDensity?: "default" | "picture";
   onChoose: () => void;
 }) {
   const stateClass = submitted && correct
@@ -647,7 +655,7 @@ function EnglishChoiceTile({
       disabled={submitted}
       aria-label={choice.accessibilityLabel}
       aria-pressed={selected || (submitted && correct)}
-      className={`flex min-h-14 min-w-0 items-center gap-3 rounded-[1.1rem] border-2 px-4 text-left font-black transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#6D28D9]/25 disabled:cursor-default ${compact ? "justify-center text-xl sm:text-2xl" : "justify-between text-lg"} ${stateClass}`}
+      className={`flex ${choiceDensity === "picture" ? "min-h-12" : "min-h-14"} min-w-0 items-center gap-3 rounded-[1.1rem] border-2 px-4 text-left font-black transition focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#6D28D9]/25 disabled:cursor-default ${compact ? "justify-center text-xl sm:text-2xl" : "justify-between text-lg"} ${stateClass}`}
     >
       <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-white/70 text-sm font-black text-[#0B63F6]">{choice.label.slice(0, 1).toUpperCase()}</span>
       <span className="min-w-0 flex-1 break-words">{choice.label}</span>

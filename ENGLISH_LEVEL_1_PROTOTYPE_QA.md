@@ -1,4 +1,4 @@
-﻿# English Level 1 Prototype QA
+# English Level 1 Prototype QA
 
 ## Scope
 
@@ -134,6 +134,33 @@ Remaining asset note:
 
 - The new SVGs are safe local English Level 1 learning-object assets. A later artwork pass can replace them with final brand illustrations without changing the Type F metadata contract.
 
+## Type F Responsive Hotfix
+
+Manual review at common laptop sizes found that Type F Picture Choice questions could push the answer row partly outside the visible frame before submission. The root cause was the combination of an oversized fixed picture frame (`h-36`, `sm:h-44`, `lg:h-48`), generous Type F padding, a late one-row answer grid breakpoint, and desktop content clipping from the English lesson shell.
+
+Changes made:
+
+- Type F now uses a compact height-aware image frame with `clamp(...)` and `dvh` sizing.
+- The picture/clue area switches to a compact two-column layout from tablet width upward.
+- Type F answers now use a responsive grid: 2 columns on tablet and 4 columns on laptop/desktop.
+- Type F answer buttons use a picture-only compact density while Type B and Type D keep their existing answer density.
+- The English Level 1 content shell no longer clips desktop overflow and uses scroll padding for the bottom action bar safe area.
+- The image remains `object-contain`, centered, and never cropped or stretched.
+
+Responsive sizing rules:
+
+- Mobile picture frame target: about 90-125px tall.
+- Tablet picture frame target: about 105-140px tall.
+- 1366 x 768 laptop target: about 120-155px tall.
+- Taller desktop target: about 150-190px tall when space allows.
+
+Viewport review targets:
+
+- 1600 x 900: Type F image, word label, clue, all four answers, and bottom action bar should be visible before submission.
+- 1366 x 768: Type F should use the compact frame; answer choices should not be hidden behind the bottom action bar.
+- 1024 x 768: Type F picture and clue should remain two-column where space allows, with answers visible below.
+- 768 x 1024: Type F should remain readable with the responsive two-column answer grid.
+- 390 x 844: Type F may stack naturally, but must avoid horizontal overflow and keep the action button accessible.
 ## Responsive Results
 
 Automated checks verify the Level 1 contract uses:
@@ -176,6 +203,10 @@ Implemented or preserved:
 - Type D selected match can change before submission.
 - Type D does not reveal correctness before submission.
 - Type F alt text is required.
+- Type F uses the compact responsive picture frame and answer grid.
+- Type F no longer uses the old tall fixed `h-36`, `sm:h-44`, or `lg:h-48` picture frame.
+- The English Level 1 shell reserves action-bar scroll padding and does not clip desktop activity content.
+- Type B and Type D do not inherit the Type F picture-only answer density.
 - Type F rejects invalid external image sources.
 - Type F rejects forbidden world/map/sprite, Mathematics, Science, screenshot, and UI-like image sources.
 - Labels match actual interaction variants.
